@@ -27,6 +27,78 @@ import ProductDetail from './ProductDetail.js'
 import ConfirmOrder from './ConfirmOrder.js'
 
 
+function addToCart(product, count = 1) {
+  // 迭代cart的orders搜索product
+  let cart
+  cart.orders.forEach((order) => {
+    return (order.seller._id === product.seller._id) ? (
+      // 存在product所属seller的order, 迭代items
+      order.items.forEach((item) => {
+        return (item.product.id === product._id) ? (
+          // 调整item的数量
+          // item.adjustBy(count)
+          item.count += count
+        ) : (
+          // 创建新的item
+          // order.items.push(createItem(product, count))
+          addItem(order, createItem(product, count))
+        )
+      })
+    ) : (
+      // 不存在order，创建新的order
+      // cart.orders.push(createOrder(product, count))
+      addOrder(cart, createOrder(product, count))
+    )
+  })
+}
+
+function createOrder(product, count = 1) {
+  let order = createEntry(createItem(product, count), 'items')
+  order.seller = product.seller
+  return order
+}
+
+function createItem(product, count = 1) {
+  return createEntry(Array(count).fill(product), 'product')
+}
+
+function createEntry(content, contentKey = 'content') {
+  return {
+    children: content,
+    [contentKey]: content,
+    count: content.length,
+    ...attrSum(content),
+    checked: false
+  }
+}
+
+function addOrder(cart, order) {
+  addEntry(cart, order)
+}
+
+function addItem(order, item) {
+  addEntry(order, item)
+}
+
+function addEntry(parent, entry) {
+  entry.parent = parent
+  parent.children.push(entry)
+}
+
+function attrSum(entries) {
+  return entries.reduce((sum, entry) => {
+    sum.price += entry.price
+    sum.discount += entry.discount
+    sum.shipping += entry.shipping
+    sum.total = sum.price - sum.discount + sum.shipping
+    return sum
+  }, {price: 0, discount: 0, shipping: 0, total: 0})
+}
+
+function removeItem(index, items) {
+  items.splice(index, 1)
+}
+
 class App extends Component {
   constructor(props) {
     super(props);

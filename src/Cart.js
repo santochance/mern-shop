@@ -5,10 +5,77 @@ import './ConfirmOrder.css'
 import fakeData from './fakeData/fakeData-Order.js'
 let { orders } = fakeData
 
-// orders.checked = false
-// orders.forEach((order) =>
-//   order.items.forEach((item) => (item.checked = false))
-// )
+function addToCart(product, count = 1) {
+  // 迭代cart的orders搜索product
+  let cart
+  cart.orders.forEach((order) => {
+    return (order.seller._id === product.seller._id) ? (
+      // 存在product所属seller的order, 迭代items
+      order.items.forEach((item) => {
+        return (item.product.id === product._id) ? (
+          // 调整item的数量
+          // item.adjustBy(count)
+          item.count += count
+        ) : (
+          // 创建新的item
+          // order.items.push(createItem(product, count))
+          addItem(order, createItem(product, count))
+        )
+      })
+    ) : (
+      // 不存在order，创建新的order
+      // cart.orders.push(createOrder(product, count))
+      addOrder(cart, createOrder(product, count))
+    )
+  })
+}
+
+function createOrder(product, count = 1) {
+  let order = createEntry(createItem(product, count), 'items')
+  order.seller = product.seller
+  return order
+}
+
+function createItem(product, count = 1) {
+  return createEntry(Array(count).fill(product), 'product')
+}
+
+function createEntry(content, contentKey = 'content') {
+  return {
+    children: content,
+    [contentKey]: content,
+    count: content.length,
+    ...attrSum(content),
+    checked: false
+  }
+}
+
+function addOrder(cart, order) {
+  addEntry(cart, order)
+}
+
+function addItem(order, item) {
+  addEntry(order, item)
+}
+
+function addEntry(parent, entry) {
+  entry.parent = parent
+  parent.children.push(entry)
+}
+
+function attrSum(entries) {
+  return entries.reduce((sum, entry) => {
+    sum.price += entry.price
+    sum.discount += entry.discount
+    sum.shipping += entry.shipping
+    sum.total = sum.price - sum.discount + sum.shipping
+    return sum
+  }, {price: 0, discount: 0, shipping: 0, total: 0})
+}
+
+function removeItem(index, items) {
+  items.splice(index, 1)
+}
 
 export default class Cart extends Component {
 
@@ -46,8 +113,7 @@ export default class Cart extends Component {
       allChecked: false,
     }
     */
-
-    this.setState(createEntry([], 'orders'))
+    this.state = createEntry([], 'orders')
 
     this.check = this.check.bind(this)
     /*
@@ -56,53 +122,9 @@ export default class Cart extends Component {
     */
   }
 
-  /*
-  init() {
-    {
-      orders: [
-        {
-          seller: {},
-          items: [
-            {
-              product: {},
-              price: 0,
-              discount: 0,
-              shipping: 0,
-              total: 0,
-              checked: false,
-            }
-          ],
-          price: 0,
-          discount: 0,
-          shipping: 0,
-          total: 0,
-          checked: false,
-        }
-      ],
-      checked: false
-    }
-  }
-  */
-
-  /*
-  checkOne(entry, index, entries, parent) {
-    // debugger
-    entry.checked = !entry.checked
-    this.setState({...this.state})
-    parent.checked = entries.every(entry => entry.checked)
-  }
-
-  checkAll(entry, index, entries, children) {
-    // debugger
-    entry.checked = !entry.checked
-    this.setState({...this.state})
-    entry.items.forEach((item) => (item.checked = entry.checked))
-  }
-  */
-
   check(self, parent, children) {
     self.checked = !self.checked
-    parent && parent.checked = parent.children.every((child.checkd = self.checked))
+    parent && (parent.checked = parent.children.every((child) => (child.checkd = self.checked)))
     children.forEach((child) => (child.checked = self.checked))
   }
 
@@ -193,8 +215,8 @@ export default class Cart extends Component {
               <div>确认订单</div>
               <div className="tr">
                 <div className="th all-chk">
-                  <input type="checkbox" name="" id=""/
-                    onChange={() => check(this.state, null, orders)}>全选
+                  <input type="checkbox" name="" id=""
+                    onChange={() => check(this.state, null, orders)} />全选
                 </div>
                 <div className="th cell-info">商品信息</div>
                 <div className="th cell-prop">商品属性</div>
