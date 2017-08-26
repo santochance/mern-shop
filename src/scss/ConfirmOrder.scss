@@ -1,0 +1,116 @@
+.order-confirm, .cart {
+  width: 960px;
+  // display: inline-block;
+  margin: auto;
+
+  .tr {
+    margin-right: -1px;
+  }
+
+  .th, .td {
+    display: inline-block;
+    margin-left: 1px;
+  }
+  .th {
+    text-align: center;
+    border-bottom: 3px solid blue;
+  }
+}
+
+.cart {
+  width: 1000px;
+}
+
+
+.order-orderInfo {
+  margin: 30px 0;
+}
+
+.order-shopInfo {
+  border-bottom: 1px dotted black;
+}
+
+.order-orderDesc, .order-orderInfo {
+
+  .cell-info {
+    width: 254px
+  }
+  .cell-img {
+    width: 50px;
+  }
+  .cell-title {
+    width: 200px;
+  }
+  .cell-prop {
+    width: 180px;
+  }
+  .cell-price {
+    width: 130px;
+    text-align: center;
+  }
+  .cell-amount {
+    width: 130px;
+  }
+  .cell-discount {
+    width: 130px;
+  }
+  .cell-total {
+    width: 130px;
+  }
+
+  .cell-price,
+  .cell-amount,
+  .cell-discount {
+    text-align: center;
+  }
+  .cell-total.td {
+    text-align: right;
+    color: red;
+    font-weight: 700;
+  }
+}
+
+.order-shipping,
+.order-payment {
+  span {
+    color: red;
+  }
+}
+
+.order-payment {
+  text-align: right;
+
+  span {
+    font-size: 20px;
+  }
+}
+
+.order-payInfo {
+  text-align: right;
+
+  .payInfo-wrap {
+    display: inline-block;
+  }
+}
+
+.order-realPay {
+  .realPay-title {
+    font-weight: 700;
+  }
+}
+
+.order-confirmAddr {
+  .confrimAddr-title {
+    font-weight: 700;
+  }
+}
+
+.order-submitOrder {
+  text-align: right;
+
+  .wrapper {
+    display: inline-block;
+  }
+}
+
+

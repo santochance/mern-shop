@@ -1,0 +1,82 @@
+.order-confirm, .cart {
+  width: 960px;
+  margin: auto; }
+  .order-confirm .tr, .cart .tr {
+    margin-right: -1px; }
+  .order-confirm .th, .order-confirm .td, .cart .th, .cart .td {
+    display: inline-block;
+    margin-left: 1px; }
+  .order-confirm .th, .cart .th {
+    text-align: center;
+    border-bottom: 3px solid blue; }
+
+.cart {
+  width: 1000px; }
+
+.order-orderInfo {
+  margin: 30px 0; }
+
+.order-shopInfo {
+  border-bottom: 1px dotted black; }
+
+.order-orderDesc .cell-info, .order-orderInfo .cell-info {
+  width: 254px; }
+
+.order-orderDesc .cell-img, .order-orderInfo .cell-img {
+  width: 50px; }
+
+.order-orderDesc .cell-title, .order-orderInfo .cell-title {
+  width: 200px; }
+
+.order-orderDesc .cell-prop, .order-orderInfo .cell-prop {
+  width: 180px; }
+
+.order-orderDesc .cell-price, .order-orderInfo .cell-price {
+  width: 130px;
+  text-align: center; }
+
+.order-orderDesc .cell-amount, .order-orderInfo .cell-amount {
+  width: 130px; }
+
+.order-orderDesc .cell-discount, .order-orderInfo .cell-discount {
+  width: 130px; }
+
+.order-orderDesc .cell-total, .order-orderInfo .cell-total {
+  width: 130px; }
+
+.order-orderDesc .cell-price,
+.order-orderDesc .cell-amount,
+.order-orderDesc .cell-discount, .order-orderInfo .cell-price,
+.order-orderInfo .cell-amount,
+.order-orderInfo .cell-discount {
+  text-align: center; }
+
+.order-orderDesc .cell-total.td, .order-orderInfo .cell-total.td {
+  text-align: right;
+  color: red;
+  font-weight: 700; }
+
+.order-shipping span,
+.order-payment span {
+  color: red; }
+
+.order-payment {
+  text-align: right; }
+  .order-payment span {
+    font-size: 20px; }
+
+.order-payInfo {
+  text-align: right; }
+  .order-payInfo .payInfo-wrap {
+    display: inline-block; }
+
+.order-realPay .realPay-title {
+  font-weight: 700; }
+
+.order-confirmAddr .confrimAddr-title {
+  font-weight: 700; }
+
+.order-submitOrder {
+  text-align: right; }
+  .order-submitOrder .wrapper {
+    display: inline-block; }

@@ -1,0 +1,21 @@
+{
+  "extends": ["standard", "standard-react"],
+  "rules": {
+    "no-debugger": "off",
+    "no-undef": "warn",
+    "no-unused-vars": "warn",
+    "no-multiple-empty-lines": "warn",
+    "space-before-function-paren": "off",
+    "semi": "off",
+    "camelcase": "off",
+    "comma-dangle": "off",
+    "padded-blocks": "off",
+    "indent": "warn",
+
+    "jsx-quotes": ["error", "prefer-double"],
+    "react/jsx-tag-spacing": "off",
+    "react/self-closing-comp": "off",
+    "react/prop-types": "warn",
+    "react/jsx-indent": "off"
+  }
+}

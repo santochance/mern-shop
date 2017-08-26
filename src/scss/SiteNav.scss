@@ -1,0 +1,10 @@
+.site-nav {
+  padding: .5em;
+  background-color: hsla(0, 0%, 70%, .8);
+  text-align: right;
+}
+
+.site-nav > * {
+  display: inline-block;
+  margin-left: 10px;
+}

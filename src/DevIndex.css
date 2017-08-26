@@ -1,0 +1,9 @@
+.route-nav {
+  display: flex;
+  margin: 5px 0;
+  padding: 0;
+}
+
+.route-nav > li{
+  margin-left: 2em;
+}

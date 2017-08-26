@@ -1,0 +1,5 @@
+.content {
+  margin: 10px; }
+  .content > div {
+    color: red;
+    font-size: 20px; }

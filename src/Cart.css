@@ -1,0 +1,143 @@
+/* layout auxi-outline */
+
+.cart {
+  outline: 1px solid blue;
+  /*padding: 10px;*/
+}
+
+.list-title {
+  position: relative;
+  outline: 1px solid green;
+}
+.list-title::before {
+  content: "." attr(class);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 188, 188, 1);
+  opacity: .5;
+}
+.list-title:hover::before {
+  opacity: 1;
+}
+
+.group-title {
+  outline: 1px solid silver;
+}
+
+.item {
+  outline: 1px solid lime;
+}
+
+[class*=col-] {
+  outline: 1px solid orange;
+}
+
+.left {
+  outline: 1px solid black;
+}
+
+.right {
+  outline: 1px solid red;
+}
+
+/* layout common space */
+
+.search-bar {
+  outline: 1px solid;
+  float: right;
+}
+
+.group-title {
+  height: 38px;
+  padding-left: 16px;
+  line-height: 38px;
+
+  background-color: silver;
+}
+
+.group-item, .list-title {
+  padding: 16px;
+}
+
+.cart {
+  width: 1000px;
+}
+
+.cart-header {
+  display: flex;
+}
+
+/* item-col */
+.group-item {
+}
+
+.col, [class*="col-"] {
+  display: inline-block;
+  height: 80px;
+  vertical-align: middle;
+}
+
+.col-selectAll {
+  width: 100px;
+}
+
+.col-info {
+  width: 400px;
+  margin-left: -50px;
+  padding-left: 100px;
+  /*margin-left: 50px;*/
+}
+
+.col-check {
+  width: 50px;
+}
+.col-thumbnail {
+  width: 100px;
+}
+.col-title {
+  width: 200px;
+}
+.col-param {
+  width: 100px;
+}
+.col-price {
+  width: 80px;
+}
+.col-quantity {
+  width: 80px;
+}
+.col-sum {
+  width: 80px;
+}
+.col-option {
+  width: 80px;
+}
+
+/*.left, .right {
+  display: inline-block;
+}*/
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.quantity-sum, .price-sum {
+  display: inline-block;
+  padding: .5em;
+}
+
+#js-selectdItemCount {
+  color: red;
+  font-weight: bold;
+}
+
+#js-total {
+  color: red;
+  font-weight: bold;
+}

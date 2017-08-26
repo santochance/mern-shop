@@ -1,0 +1,10 @@
+.pagetop {
+  position: relative; }
+
+.pagetop-search-bar {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  white-space: nowrap; }
+  .pagetop-search-bar input[name="search"] {
+    width: 400px; }
