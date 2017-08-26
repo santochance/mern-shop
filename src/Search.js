@@ -77,13 +77,12 @@ const ProductGrid = withRouter((props) => {
           <div className="title">{product.title}</div>
           <div>
             <span>{product.price}</span>
-            <button className="btn btn-danger" onClick={() => props.onAddToCart({ product, amount: 1 })}>Add to Cart</button>
+            <button className="btn btn-danger" onClick={() => props.onAddToCart(product, 1)}>Add to Cart</button>
           </div>
         </div>
       ))}
     </div>
   )
 })
-
 
 export default Search

@@ -73,10 +73,6 @@ function attrSum(entries) {
   }, {price: 0, discount: 0, shipping: 0, total: 0})
 }
 
-function removeItem(index, items) {
-  items.splice(index, 1)
-}
-
 export default class Cart extends Component {
 
   constructor(props) {

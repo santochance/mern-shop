@@ -11,6 +11,7 @@
     "comma-dangle": "off",
     "padded-blocks": "off",
     "indent": "warn",
+    "no-constant-condition": "warn",
 
     "jsx-quotes": ["error", "prefer-double"],
     "react/jsx-tag-spacing": "off",
