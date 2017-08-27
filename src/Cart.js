@@ -15,69 +15,136 @@ function addToCart(product, count = 1) {
         return (item.product.id === product._id) ? (
           // 调整item的数量
           // item.adjustBy(count)
-          item.count += count
+          (item.count += count),
+          updateItem(item)
         ) : (
           // 创建新的item
           // order.items.push(createItem(product, count))
-          addItem(order, createItem(product, count))
+          addItem(order, product, count)
         )
       })
     ) : (
       // 不存在order，创建新的order
       // cart.orders.push(createOrder(product, count))
-      addOrder(cart, createOrder(product, count))
+      addOrder(cart, product, count)
     )
   })
+  console.log('cart:\n', cart)
 }
 
-function createOrder(product, count = 1) {
-  let order = createEntry(createItem(product, count), 'items')
-  order.seller = product.seller
-  return order
+function addItem(order, product, count) {
+  return addEntry(
+    order,
+    createEntry('product', product, count)
+  )
 }
 
-function createItem(product, count = 1) {
-  return createEntry(Array(count).fill(product), 'product')
+function addOrder(cart, product, count) {
+  return addEntry(
+    cart,
+    addEntry(
+      createEntry('items'),
+      createEntry('product', product, count)
+    )
+  )
 }
 
-function createEntry(content, contentKey = 'content') {
-  return {
-    children: content,
-    [contentKey]: content,
-    count: content.length,
-    ...attrSum(content),
+function createEntry(key, content = [], count = 1) {
+  let rst = {
+    [key]: content,
+    count: count.length || count,
     checked: false
   }
+
+  rst[Array.isArray(content) ? 'children' : 'child'] = content
+
+  return aggregate(rst)
 }
 
-function addOrder(cart, order) {
-  addEntry(cart, order)
-}
-
-function addItem(order, item) {
-  addEntry(order, item)
+function aggregate(entry) {
+  let rst = {price: 0, discount: 0, shipping: 0, total: 0}
+  if (entry.children) {
+    entry.children.reduce((sum, item) => {
+      sum.price += item.price
+      sum.discount += item.discount
+      sum.shipping += item.shipping
+      sum.total = sum.price - sum.discount + sum.shipping
+      return sum
+    }, rst)
+  } else {
+    rst.price += entry.child.price * entry.count
+  }
+  return Object.assign(entry, rst)
 }
 
 function addEntry(parent, entry) {
-  entry.parent = parent
-  parent.children.push(entry)
+  if (parent) {
+    entry.parent = parent
+    parent.count = parent.children.push(entry)
+
+    updateItem(parent)
+
+    return parent
+  }
 }
 
-function attrSum(entries) {
-  return entries.reduce((sum, entry) => {
-    sum.price += entry.price
-    sum.discount += entry.discount
-    sum.shipping += entry.shipping
-    sum.total = sum.price - sum.discount + sum.shipping
-    return sum
-  }, {price: 0, discount: 0, shipping: 0, total: 0})
+function updateItem(item) {
+  let curr = item
+  do {
+    aggregate(curr)
+    curr = curr.parent
+  } while (curr)
 }
+
+//
+  // function createOrder(product, count = 1) {
+  //   let order = createEntry(createItem(product, count), 'items')
+  //   order.seller = product.seller
+  //   return order
+  // }
+
+  // function createItem(product, count = 1) {
+  //   return createEntry(Array(count).fill(product), 'product')
+  // }
+
+  // function createEntry(content, contentKey = 'content') {
+  //   return {
+  //     children: content,
+  //     [contentKey]: content,
+  //     count: content.length,
+  //     ...attrSum(content),
+  //     checked: false
+  //   }
+  // }
+
+  // function addOrder(cart, order) {
+  //   addEntry(cart, order)
+  // }
+
+  // function addItem(order, item) {
+  //   addEntry(order, item)
+  // }
+
+  // function addEntry(parent, entry) {
+  //   entry.parent = parent
+  //   parent.children.push(entry)
+  // }
+
+  // function attrSum(entries) {
+  //   return entries.reduce((sum, entry) => {
+  //     sum.price += entry.price
+  //     sum.discount += entry.discount
+  //     sum.shipping += entry.shipping
+  //     sum.total = sum.price - sum.discount + sum.shipping
+  //     return sum
+  //   }, {price: 0, discount: 0, shipping: 0, total: 0})
+  // }
 
 export default class Cart extends Component {
 
   constructor(props) {
     super(props);
-    /*
+
     this.state = {
 
       orders: [
@@ -108,8 +175,8 @@ export default class Cart extends Component {
       total: 0,
       allChecked: false,
     }
-    */
-    this.state = createEntry([], 'orders')
+
+    // this.state = createEntry([], 'orders')
 
     this.check = this.check.bind(this)
     /*

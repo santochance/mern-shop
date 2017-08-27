@@ -21,8 +21,11 @@ import TestCheckbox from './TestCheckbox.js'
 import TestAutoMakeFold from './TestAutoMakeFold.js'
 import ConfirmOrder from './ConfirmOrder.js'
 
+import ItemList from './ItemList.js'
+
 let views = [
   Home,
+  ItemList,
   Signup,
   Signin,
   Search,
