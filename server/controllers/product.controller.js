@@ -83,18 +83,6 @@ exports.create = function(req, res) {
     .catch(handleError(res))
 }
 
-/*
-exports.list = function(req, res) {
-  Product.find({}, (err, users) => {
-    if (err) {
-      handleError(err)
-    } else {
-      respondWithResult(res)
-    }
-  })
-}
-*/
-
 exports.list = function(req, res) {
   Product.findAsync()
     .then(respondWithResult(res))

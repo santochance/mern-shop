@@ -4,6 +4,10 @@ const products = require('./controllers/product.controller')
 const catalogs = require('./controllers/catalog.controller')
 const orders = require('./controllers/order.controller')
 
+const crud = require('./controllers/crud.js')
+// const products = crud(require('./controllers/product.controller'))
+const properties = crud(require('./models/property.model.js'))
+
 const passport = require('passport')
 
 module.exports = function(app) {
@@ -81,4 +85,18 @@ module.exports = function(app) {
     .put(orders.update)
     .patch(orders.update)
     .delete(orders.delete)
+
+  function registerRoutes(app, model, controller) {
+    app.route(`/${model}`)
+      .post(controller.create)
+      .get(controller.list)
+
+    app.route(`/${model}/:id`)
+      .get(controller.read)
+      .put(controller.update)
+      .patch(controller.update)
+      .delete(controller.delete)
+  }
+  // registerRoutes(app, 'products', products)
+  registerRoutes(app, 'properties', properties)
 }

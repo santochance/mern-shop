@@ -8,6 +8,7 @@ var PropertySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Catalog',
     // index: true,
+    required: true,
   },
   name: {
     type: String,
@@ -15,25 +16,25 @@ var PropertySchema = new Schema({
   },
   propType: {
     type: String,
-    required: true,
     enum: ['basic', 'spec', 'sale'],
     default: 'spec'
-  },
-  // 如果不指定schema，字段会被保存吗?
-  schemaCfg: {
-    // 怎样指定接受''或{}
-    // 使用validate?
-
-    type: {},
     required: true,
   },
+  // 如果不指定schema，字段会被保存吗?
+  // schemaCfg: {
+  //   // 怎样指定接受''或{}
+  //   // 使用validate?
+
+  //   type: {},
+  //   // required: true,
+  // },
   control: {
     ctrlType: {
       type: String,
       enum: ['text', 'textarea', 'checkbox', 'select', 'number', 'data'],
       default: 'text',
     },
-    'values': {
+    values: {
       type: [],
       default: undefined,
     }
