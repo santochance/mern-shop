@@ -99,4 +99,14 @@ module.exports = function(app) {
   }
   // registerRoutes(app, 'products', products)
   registerRoutes(app, 'properties', properties)
+
+  app.get('/test', function (req, res, next) {
+    console.log('hit /test')
+    console.log('query is:', req.query)
+    res.send('hit')
+  })
+
+  app.get('/test/query?', function (req, res, next) {
+    console.log('hit /test/query?')
+  })
 }

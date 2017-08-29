@@ -21,20 +21,23 @@ import TestCheckbox from './TestCheckbox.js'
 import TestAutoMakeFold from './TestAutoMakeFold.js'
 import ConfirmOrder from './ConfirmOrder.js'
 
+import CreateProduct from './CreateProduct.js'
+
 import ItemList from './ItemList.js'
 
 let views = [
   Home,
-  ItemList,
+  CreateProduct,
   Signup,
   Signin,
   Search,
   SearchResult,
+  ItemList,
   Cart,
   ConfirmOrder,
   TestCheckbox,
   TestRoutes,
-  TestAutoMakeFold
+  TestAutoMakeFold,
 ]
 // console.log(views)
 // debugger

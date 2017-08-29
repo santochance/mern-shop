@@ -9,8 +9,22 @@ const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
 
+const notice = function (req, res, next) {
+  console.log(`\n
+############################################
+          ${new Date().toISOString()}
+            New Request Comes in!
+############################################
+    `)
+  console.log('Request is:', req.constructor.name)
+  console.log('############################################\n')
+  next()
+}
+
 module.exports = function() {
   const app = express()
+
+  app.use(notice)
 
   // Q: bodyParser.urlencoded() ??
   app.use(bodyParser.urlencoded({

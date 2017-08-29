@@ -25,6 +25,8 @@ import Cart from './Cart.js'
 
 import ProductDetail from './ProductDetail.js'
 import ConfirmOrder from './ConfirmOrder.js'
+import CreateProduct from './CreateProduct.js'
+
 
 import ItemList from './ItemList.js'
 
@@ -112,6 +114,9 @@ class App extends Component {
               // debugger
               return <Search {...props} onAddToCart={this.addToCart} />
             }} />
+
+            <Route path="/createproduct" component={CreateProduct} />
+
             <Route path="/cart" render={props => (
               (1 < 2) ? (
                 <Cart {...props} cart={cart}/>

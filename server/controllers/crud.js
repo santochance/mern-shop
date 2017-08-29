@@ -49,13 +49,14 @@ function crud(model) {
   }
 
   var create = function(req, res) {
+    console.log('req.body is:', req.body)
     model.createAsync(req.body)
       .then(respondWithResult(res, 201))
       .catch(handleError(res))
   }
 
   var list = function (req, res) {
-    model.findAsync()
+    model.findAsync(req.query)
       .then(respondWithResult(res))
       .catch(handleError(res))
   }

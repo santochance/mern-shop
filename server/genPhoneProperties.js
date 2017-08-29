@@ -66,19 +66,21 @@ basicProps.map((prop) => {
 var props = specProps.concat(basicProps)
 
 const sendData = (data) => {
+
     // sendData
     return fetch('/properties', {
       method: 'POST',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          return Promise.reject(res)
-        }
-      })
+      // .then(res => {
+      //   if (res.ok) {
+      //     return res.json()
+      //   } else {
+      //     return Promise.reject(res)
+      //   }
+      // })
+      .then(res => res.json())
       // .catch(console.error)
 }
 

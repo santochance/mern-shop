@@ -93,7 +93,7 @@ exports.create = function(req, res) {
 }
 
 exports.list = function(req, res) {
-  Product.findAsync()
+  Product.findAsync(req.query)
     .then(respondWithResult(res))
     .catch(handleError(res))
 }
