@@ -40,11 +40,20 @@ function handleEntityNotFound(res) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = Object.assign({}, entity, updates)
+    var updated = Object.assign(entity, updates)
+    /*
+      spread()会导致以下错误的出现，api没有正确的server response，但不影响数据存入mongoDB
+      TypeError: expecting an array or an iterable object but got [object Null]
+          at C:\Users\Vincent\Data\Workspace\quick-react-app\node_modules\mongoose\lib\model.js:3822:16
+          at C:\Users\Vincent\Data\Workspace\quick-react-app\node_modules\mongoose\lib\services\model\applyHooks.js:162:20
+          at _combinedTickCallback (internal/process/next_tick.js:131:7)
+          at process._tickCallback (internal/process/next_tick.js:180:9) 500
+     */
+
     return updated.saveAsync()
-      .spread(function(updated) {
-        return updated
-      })
+      // .spread(function(updated) {
+      //   return updated
+      // })
   }
 }
 

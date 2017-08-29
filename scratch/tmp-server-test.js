@@ -7,7 +7,7 @@ function logger(req, res, next) {
   next()
 }
 
-function helloworld(req, res, next) {
+function helloWorld(req, res, next) {
   res.setHeader('Content-Type', 'text/plain')
   res.end('Hello World')
 }
@@ -18,6 +18,7 @@ function goodbyeWorld(req, res, next) {
 };
 
 app.use(logger);
+debugger
 app.use('/hello', helloWorld);
 app.use('/goodbye', goodbyeWorld);
 app.listen(3000);

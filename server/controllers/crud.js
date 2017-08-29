@@ -29,11 +29,11 @@ function crud(model) {
       delete updates._id
     }
     return function(entity) {
-      var updated = Object.assign({}, entity, updates)
+      var updated = Object.assign(entity, updates)
       return updated.saveAsync()
-        .spread(function(updated) {
-          return updated
-        })
+      // .spread(function(updated) {
+      //   return updated
+      // })
     }
   }
 
@@ -57,7 +57,7 @@ function crud(model) {
   var list = function (req, res) {
     model.findAsync()
       .then(respondWithResult(res))
-      .catch(handlerError(res))
+      .catch(handleError(res))
   }
 
   var read = function (req, res) {
