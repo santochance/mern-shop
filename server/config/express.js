@@ -16,7 +16,9 @@ const notice = function (req, res, next) {
             New Request Comes in!
 ############################################
     `)
-  console.log('Request is:', req.constructor.name)
+  console.log('req.url:', req.url)
+  console.log('req.method:', req.method)
+  console.log('req.body:\n', JSON.stringify(req.body, null, 2))
   console.log('############################################\n')
   next()
 }
@@ -24,13 +26,13 @@ const notice = function (req, res, next) {
 module.exports = function() {
   const app = express()
 
-  app.use(notice)
-
   // Q: bodyParser.urlencoded() ??
   app.use(bodyParser.urlencoded({
     extended: true
   }))
   app.use(bodyParser.json())
+
+  app.use(notice)
 
   app.use(methodOverride())
 

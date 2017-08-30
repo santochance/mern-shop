@@ -4,8 +4,8 @@ const mongoose = require('bluebird').promisifyAll(require('mongoose'))
 const Schema = mongoose.Schema
 
 var ProductSchema = new Schema({
-  title: { type: String, required: true, trim: true },
-  price: { type: Number, required: true, min: 0 },
+  productName: { type: String, /* required: true, */ trim: true },
+  price: { type: Number/*, required: true */, min: 0 },
   stock: { type: Number, default: 1 },
   description: String,
   imageBin: { data: Buffer, contentType: String },
@@ -13,6 +13,9 @@ var ProductSchema = new Schema({
   album: [{ type: String }],
   categories: [{ type: Schema.Types.ObjectId, ref: 'Catalog', index: true }],
 
+  basicProps: {},
+  specProps: {},
+/*
   name: String,
   ccc_serial_number: String,
   size: String,
@@ -21,6 +24,7 @@ var ProductSchema = new Schema({
   model: String,
   ram: String,
   cpu: String,
+*/
   /*
     shipping: { type: Number, min: 0 },
     sales: { type: Number, min: 0 },

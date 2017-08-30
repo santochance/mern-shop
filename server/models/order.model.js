@@ -22,10 +22,11 @@ var OrderSchema = new Schema({
     tel: String,
     addr: String,
   },
+  items: [OrderDetailsSchema],
+  // seller details
   shopName: String,
   seller: { type: Schema.Types.ObjectId, ref: 'User' },
   message: String,
-  items: [OrderDetailsSchema],
   // price details
   price: { type: Number, get: getPrice, set: setPrice },
   discount: { type: Number, get: getPrice, set: setPrice, default: 0.0 },

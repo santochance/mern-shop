@@ -179,10 +179,25 @@ export default class Cart extends Component {
     // this.state = createEntry([], 'orders')
 
     this.check = this.check.bind(this)
-    /*
+
     this.checkOne = this.checkOne.bind(this)
     this.checkAll = this.checkAll.bind(this)
-    */
+
+  }
+
+
+  checkOne(entry, index, entries, parent) {
+    // debugger
+    entry.checked = !entry.checked
+    this.setState({...this.state})
+    parent.checked = entries.every(entry => entry.checked)
+  }
+
+  checkAll(entry, index, entries, children) {
+    // debugger
+    entry.checked = !entry.checked
+    this.setState({...this.state})
+    entry.items.forEach((item) => (item.checked = entry.checked))
   }
 
   check(self, parent, children) {
@@ -279,7 +294,7 @@ export default class Cart extends Component {
               <div className="tr">
                 <div className="th all-chk">
                   <input type="checkbox" name="" id=""
-                    onChange={() => check(this.state, null, orders)} />全选
+                    onChange={() => this.check(this.state, null, orders)} />全选
                 </div>
                 <div className="th cell-info">商品信息</div>
                 <div className="th cell-prop">商品属性</div>

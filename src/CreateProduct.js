@@ -1,27 +1,33 @@
 import React from 'react'
 
+import { form2json, getDeep, setDeep } from './form2json.js'
+
 const SmartForm = (props) => {
-  let { field } = props
+  let { group, field } = props
+
+  let fullname = `${group}.${field.name}`
+  // 暂时去掉group部分
+  // let fullname = field.name
 
   if (['text', 'number', 'date', 'file'].indexOf(field.ctrlType) > -1) {
     return (
       <div className="form-group">
-        <label htmlFor={field.name}>{field.label}</label>
-        <input type={field.ctrlType} name={field.name} id={field.name} />
+        <label htmlFor={fullname}>{field.label}</label>
+        <input type={field.ctrlType} name={fullname} id={fullname} />
       </div>
     )
   } else if (field.ctrlType === 'textarea') {
     return (
       <div className="form-group">
-        <label htmlFor={field.name}>{field.label}</label>
-        <textarea name={field.name} id={field.name} cols="30" rows="10"></textarea>
+        <label htmlFor={fullname}>{field.label}</label>
+        <textarea name={fullname} id={fullname} cols="30" rows="10"></textarea>
       </div>
     )
   } else if (field.ctrlType === 'select') {
     return (
       <div className="form-group">
-        <label htmlFor={field.name}>{field.label}</label>
-        <select name={field.name} id={field.name}>
+        <label htmlFor={fullname}>{field.label}</label>
+        <select name={fullname} id={fullname}>
           {field.values && field.values.map((value, i) => (
             <option value={value}>{value}</option>
           ))}
@@ -35,7 +41,7 @@ const SmartForm = (props) => {
         <div>
           {field.values && field.values.map((value, i) => (
             <label>
-              <input type="checkbox" name={field.name} value={value}/>{value}
+              <input type="checkbox" name={fullname} value={value}/>{value}
             </label>
           ))}
         </div>
@@ -63,6 +69,8 @@ class CreateProduct extends React.Component {
         saleProps: {}
       }
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   groupBy(items, filter) {
@@ -100,29 +108,32 @@ class CreateProduct extends React.Component {
     this.loadData()
   }
 
-  form2json(form) {
-    // ...
-    // form.elements.reduce()
-    // return data
-  }
-
-  sendData() {
-    let form
-
+  sendData(data) {
     fetch('/products', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(this.form2json(form))
+      body: JSON.stringify(data)
     })
       .then(console.log)
       .catch(console.error)
   }
 
+  handleSubmit(e) {
+    console.log('this in handleSubmit:', this)
+    e.preventDefault()
+    let data = form2json(e.target)
+
+    console.log('data is:', data)
+
+    this.sendData(data)
+  }
+
   render() {
     let { property } = this.state
-    let { spec, basic } = this.state.property
 
-    if (!spec || !basic) return null
+    // if (!spec || !basic) return null
+
+    debugger
 
     return (
       <div>
@@ -139,23 +150,14 @@ class CreateProduct extends React.Component {
           propType: basic
           <pre>{JSON.stringify(property.basicProps, null, 2)}</pre>
         </div>
-
-        {basic.map((item, i) => (
-          <div>
-            <SmartForm field={item} key={i} />
-          </div>
-        ))}
-        <hr/>
-        {spec.map((item, i) => (
-          <div>
-            <SmartForm field={item} key={i} />
-          </div>
-        ))}
-        {Object.keys(property).map((group, i) =>
-          property[group].map((prop, j) => (
-            <SmartForm group={group} field={prop} />
-          ))
-        )}
+        <form action="/products" method="POST" onSubmit={this.handleSubmit} >
+          {Object.keys(property).map((group, i) =>
+            property[group].map((prop, j) => (
+              <SmartForm group={group} field={prop} />
+            ))
+          )}
+          <button type="submit">Submit</button>
+        </form>
       </div>
     )
   }

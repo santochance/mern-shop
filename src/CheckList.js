@@ -12,13 +12,6 @@ class CheckList extends React.Component {
     }
   }
 
-
-
-  Heading
-
-  Item  onChange
-
-
   checkOne(newValue, index) {
     checkedStatus.splice(index, 1, newValue)
     allChecked = checkedStatus.every(checked => checked)
@@ -33,8 +26,6 @@ class CheckList extends React.Component {
 
   // native change，input的value值 已经变化
   // 在onchange事件中修改绑定的数据值
-
-  input
 
   render() {
     <div>
