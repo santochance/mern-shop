@@ -60,6 +60,42 @@ class ItemList extends React.Component {
     this.setState({...this.state})
   }
 
+  outputData(itemlist) {
+    console.log('this in outputData:', this)
+    let rst = []
+    for (let list of itemlist.children) {
+      // 跳过没有选中项的list
+      if (list.count < 0) continue
+      let filteredList = {...list, children: []}
+
+      for (let [index, item] of list.children.entries()) {
+        if (item.checked) {
+          // 发现被勾选的item
+          filteredList.children.push(item)
+          this.removeItem(item, index)
+        }
+      }
+
+      // 添加公共属性
+      Object.assign(filteredList, {
+        buyer: 'buyer from itemlist',
+        address: 'address from itemlist',
+        realPay: filteredList.total,
+      })
+
+      // 存入输出结果
+      rst.push(filteredList)
+    }
+
+    // 发送数据
+    return rst.reduce((arr, data) => {
+      // fetch()
+      console.log('send data:', data)
+      return arr
+    }, rst)
+  }
+
+
   createItem(content, amount) {
     return {
       content,
@@ -92,11 +128,11 @@ class ItemList extends React.Component {
     // 插入item到list
     list.children.push(item)
 
+    this.updateChecked(item)
+
     // 从list开始往上迭代计算count
     // 往上迭代计算aggregate
     this.countUpwards(list)
-
-    this.updateChecked(item)
 
     this.setState({...this.state})
   }
@@ -104,11 +140,15 @@ class ItemList extends React.Component {
   countUpwards(entry) {
     while (entry) {
       Object.assign(entry, entry.children.reduce((sum, child) => {
-        sum.count += (child.count || 0)
-        sum.price += (child.price || 0)
-        sum.discount += (child.discount || 0)
-        sum.shipping += (child.shipping || 0)
-        sum.realPay += (child.realPay || 0)
+        // 如果entry是leaf item, 根据checked进行筛选
+        if ('children' in child || child.checked) {
+          sum.count += (child.count || 0)
+          sum.price += (child.price || 0)
+          sum.discount += (child.discount || 0)
+          sum.shipping += (child.shipping || 0)
+          sum.realPay += (child.realPay || 0)
+        }
+
         // !!!! 记得要返回值  !!!!!
         return sum
       }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0}))
@@ -118,6 +158,7 @@ class ItemList extends React.Component {
   }
 
   removeItem(item, index) {
+    console.log('remove item', item)
     let list = item.parent
     list.children.splice(index, 1)
 
@@ -126,9 +167,9 @@ class ItemList extends React.Component {
       this.destory(list)
     }
 
-    this.countUpwards(list)
-
     this.updateChecked(item)
+
+    this.countUpwards(list)
 
     this.setState({...this.state})
   }
@@ -138,10 +179,10 @@ class ItemList extends React.Component {
 
     this.destory(list)
 
-    this.countUpwards(list)
-
     list.checked = false
     this.updateChecked(list)
+
+    this.countUpwards(list)
 
     this.setState({...this.state})
   }
@@ -169,9 +210,10 @@ class ItemList extends React.Component {
   }
 
   check(item) {
-    debugger
     item.checked = !item.checked
     this.updateChecked(item)
+
+    this.countUpwards(item.parent)
 
     this.setState({...this.state})
   }
@@ -259,6 +301,57 @@ class ItemList extends React.Component {
             </ul>
           </div>
         </div>
+
+        <hr/>
+        <h3>只显示被勾选的叶对象, 有被勾选叶对象的list</h3>
+        <div className="main">
+          <input type="checkbox" name="" id="" checked={itemlist.checked} onChange={() => this.check(itemlist)}/>
+          <button className="btn btn-default" onClick={
+            () => this.append(itemlist, this.createList())
+          }>Create List</button>
+          <span>Count: {itemlist.count}</span>{' '}
+          <span>Price: {itemlist.price}</span>
+          <div>
+            <ul>
+              {itemlist.children.map((list, i) => list.count > 0 && (
+                <li key={i}>
+                  <div>
+                    <input type="checkbox" name="" id="" checked={list.checked} onChange={() => this.check(list)}/>
+                    <button className="btn btn-info btn-xs" onClick={
+                      () => this.append(list, this.createItem(products[random(products.length)], random(1, 5)))
+                    }>Create Item</button>
+                    <button className="btn btn-danger btn-xs"
+                      onClick={() => this.clearItems(list)}>Clear Items</button>
+                    <button className="btn btn-default btn-sm" onClick={() => this.removeItem(list, i)}>Remove List</button>
+                  </div>
+                  <div>
+                    <strong>{list.title} {i}</strong>{' '}
+                    <span>Count: {list.count}, Price: {list.price}</span>
+                  </div>
+                  <ul>
+                    {list.children.map((item, j) => item.checked && (
+                      <li key={j}>
+                        <input type="checkbox" name="" id="" checked={item.checked} onChange={() => this.check(item)}/>
+                        <button className="btn btn-danger btn-xs"
+                          onClick={() => this.removeItem(item, j)}>Remove</button>
+                        <span>{item.title} {j}: {item.content.title}</span>
+                        <div>
+                          Amount: {item.amount}{'  '}
+                          <span><input type="number" min="1" value={item.amount} style={{
+                              width: '50px'
+                          }} onChange={(e) => this.updateItem(item, e.target.value || 1)}/></span>
+                          <span>Price: {item.price}</span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div><button type="button" onClick={() => this.outputData(itemlist)}>Submit Order</button></div>
       </div>
     )
   }
