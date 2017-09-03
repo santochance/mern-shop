@@ -1,363 +1,252 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Cart.css'
 import './ConfirmOrder.css'
 
-import fakeData from './fakeData/fakeData-Order.js'
-let { orders } = fakeData
+// import fakeData from './fakeData/fakeData-Order.js'
+// let { orders } = fakeData
 
-function addToCart(product, count = 1) {
-  // 迭代cart的orders搜索product
-  let cart
-  cart.orders.forEach((order) => {
-    return (order.seller._id === product.seller._id) ? (
-      // 存在product所属seller的order, 迭代items
-      order.items.forEach((item) => {
-        return (item.product.id === product._id) ? (
-          // 调整item的数量
-          // item.adjustBy(count)
-          (item.count += count),
-          updateItem(item)
-        ) : (
-          // 创建新的item
-          // order.items.push(createItem(product, count))
-          addItem(order, product, count)
-        )
-      })
-    ) : (
-      // 不存在order，创建新的order
-      // cart.orders.push(createOrder(product, count))
-      addOrder(cart, product, count)
-    )
-  })
-  console.log('cart:\n', cart)
-}
-
-function addItem(order, product, count) {
-  return addEntry(
-    order,
-    createEntry('product', product, count)
-  )
-}
-
-function addOrder(cart, product, count) {
-  return addEntry(
-    cart,
-    addEntry(
-      createEntry('items'),
-      createEntry('product', product, count)
-    )
-  )
-}
-
-function createEntry(key, content = [], count = 1) {
-  let rst = {
-    [key]: content,
-    count: count.length || count,
-    checked: false
-  }
-
-  rst[Array.isArray(content) ? 'children' : 'child'] = content
-
-  return aggregate(rst)
-}
-
-function aggregate(entry) {
-  let rst = {price: 0, discount: 0, shipping: 0, total: 0}
-  if (entry.children) {
-    entry.children.reduce((sum, item) => {
-      sum.price += item.price
-      sum.discount += item.discount
-      sum.shipping += item.shipping
-      sum.total = sum.price - sum.discount + sum.shipping
-      return sum
-    }, rst)
-  } else {
-    rst.price += entry.child.price * entry.count
-  }
-  return Object.assign(entry, rst)
-}
-
-function addEntry(parent, entry) {
-  if (parent) {
-    entry.parent = parent
-    parent.count = parent.children.push(entry)
-
-    updateItem(parent)
-
-    return parent
-  }
-}
-
-function updateItem(item) {
-  let curr = item
-  do {
-    aggregate(curr)
-    curr = curr.parent
-  } while (curr)
-}
-
-//
-  // function createOrder(product, count = 1) {
-  //   let order = createEntry(createItem(product, count), 'items')
-  //   order.seller = product.seller
-  //   return order
-  // }
-
-  // function createItem(product, count = 1) {
-  //   return createEntry(Array(count).fill(product), 'product')
-  // }
-
-  // function createEntry(content, contentKey = 'content') {
-  //   return {
-  //     children: content,
-  //     [contentKey]: content,
-  //     count: content.length,
-  //     ...attrSum(content),
-  //     checked: false
-  //   }
-  // }
-
-  // function addOrder(cart, order) {
-  //   addEntry(cart, order)
-  // }
-
-  // function addItem(order, item) {
-  //   addEntry(order, item)
-  // }
-
-  // function addEntry(parent, entry) {
-  //   entry.parent = parent
-  //   parent.children.push(entry)
-  // }
-
-  // function attrSum(entries) {
-  //   return entries.reduce((sum, entry) => {
-  //     sum.price += entry.price
-  //     sum.discount += entry.discount
-  //     sum.shipping += entry.shipping
-  //     sum.total = sum.price - sum.discount + sum.shipping
-  //     return sum
-  //   }, {price: 0, discount: 0, shipping: 0, total: 0})
-  // }
-
-export default class Cart extends Component {
+export default class Cart extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
+      ident: 'Cart',
+      count: 0,
+      price: 0,
+      parent: null,
+      children: [],
+      checked: false,
+    }
+    this.app = props.app
+    this.addToCart = this.addToCart.bind(this)
+    props.app.addToCart = this.addToCart
+    props.app.cart = this
+  }
 
-      orders: [
-        {
-          seller: {},
-          items: [
-            {
-              product: {},
-              price: 0,
-              discount: 0,
-              shipping: 0,
-              total: 0,
-              checked: false,
-            }
-          ],
-          price: 0,
-          discount: 0,
-          shipping: 0,
-          total: 0,
-          allChecked: false,
-          checkedItems: [],
+  componentDidMount() {
+    this.app.forceUpdate()
+  }
+  componentDidUpdate() {
+    // this.app.forceUpdate()
+    // debugger
+    // this.app.setState({...this.app.state})
+  }
+
+  addToCart(product, amount = 1) {
+    let cart = this.state
+    // let { updateItem, createItem, createList, appendItem } = this
+
+    // 遍历寻找所属order
+    cart.children.some(order => {
+      // 找到所属order
+      if (order.seller === product.seller) {
+
+        // 遍历寻找所属item
+        order.children.some(item => {
+          // 找到所属item
+          if (item.content._id === product._id) {
+            this.updateItem(item, item.amount + amount)
+            return true
+          }
+        }) || (
+          // 没找到所属item
+          this.appendItem(order, this.createItem(product, amount))
+        )
+
+        return true
+      }
+    }) || (
+      // 没找到所属order
+      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount)))
+    )
+
+    console.log('cart:\n', cart)
+  }
+
+  createItem(content, amount) {
+    return {
+      ident: 'Item',
+      content,
+      amount,
+      count: 1,
+      price: content.price * amount || 0,
+      shipping: content.shipping * amount || 0,
+      discount: content.discount * amount || 0,
+      realPay: (content.price - content.discount + content.shipping) * amount || 0,
+      parent: null,
+      checked: false,
+    }
+  }
+
+  createList() {
+    return {
+      ident: 'Order',
+      count: 0,
+      price: 0,
+      parent: null,
+      children: [],
+      checked: false
+    }
+  }
+
+  createListByCont(content, amount) {
+    this.createList().append(this.createItem(content, amount))
+  }
+
+  appendItem(list, item) {
+    // 连接list和item
+    item.parent = list
+    // 插入item到list
+    list.children.push(item)
+
+    this.updateChecked(item)
+
+    // 从list开始往上迭代计算count
+    // 往上迭代计算aggregate
+    this.countUpwards(list)
+
+    this.setState({...this.state})
+
+    return list
+  }
+
+  countUpwards(entry) {
+    while (entry) {
+      Object.assign(entry, entry.children.reduce((sum, child) => {
+        // 如果entry是leaf item, 根据checked进行筛选
+        if ('children' in child || child.checked) {
+          sum.count += (child.count || 0)
+          sum.price += (child.price || 0)
+          sum.discount += (child.discount || 0)
+          sum.shipping += (child.shipping || 0)
+          sum.realPay += (child.realPay || 0)
         }
-      ],
 
-      orders: orders,
-      invalidItems: [],
-      itemCount: 0,
-      total: 0,
-      allChecked: false,
+        // !!!! 记得要返回值  !!!!!
+        return sum
+      }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0}))
+
+      entry = entry.parent
+    }
+  }
+
+  removeItem(item, index) {
+    console.log('remove item', item)
+    let list = item.parent
+    list.children.splice(index, 1)
+
+    // 自动清除空的list
+    if (list.children.length < 1) {
+      this.destory(list)
     }
 
-    // this.state = createEntry([], 'orders')
+    this.updateChecked(item)
 
-    this.check = this.check.bind(this)
+    this.countUpwards(list)
 
-    this.checkOne = this.checkOne.bind(this)
-    this.checkAll = this.checkAll.bind(this)
-
-  }
-
-
-  checkOne(entry, index, entries, parent) {
-    // debugger
-    entry.checked = !entry.checked
     this.setState({...this.state})
-    parent.checked = entries.every(entry => entry.checked)
   }
 
-  checkAll(entry, index, entries, children) {
-    // debugger
-    entry.checked = !entry.checked
+  clearItems(list) {
+    list.children.splice(0)
+
+    this.destory(list)
+
+    list.checked = false
+    this.updateChecked(list)
+
+    this.countUpwards(list)
+
     this.setState({...this.state})
-    entry.items.forEach((item) => (item.checked = entry.checked))
   }
 
-  check(self, parent, children) {
-    self.checked = !self.checked
-    parent && (parent.checked = parent.children.every((child) => (child.checkd = self.checked)))
-    children.forEach((child) => (child.checked = self.checked))
+  // 自动清除空list
+  destory(item) {
+    let parent = item.parent
+    parent && parent.children.splice(parent.children.indexOf(item), 1)
+  }
+
+  updateItem(item, amount) {
+    item.amount = amount
+    // 更新amount后触发更新item aggregation
+    item.price = item.content.price * amount
+    // 同时要更新祖先的aggregation和count
+    // ...
+
+    // this.refresh()
+    this.countUpwards(item.parent)
+    this.setState({...this.state})
+  }
+
+  aggregate() {
+
+  }
+
+  check(item) {
+    item.checked = !item.checked
+    this.updateChecked(item)
+
+    this.countUpwards(item.parent)
+
+    this.setState({...this.state})
+  }
+
+  updateChecked(item) {
+    let parent = item.parent
+    let children = item.children
+
+    while (parent) {
+      // parent.checked = parent.children.every((child) => child.checked)
+      parent.checked = parent.children.length > 0 ? parent.children.every((child) => child.checked) : false
+      parent = parent.parent
+    }
+
+    function recur(entries) {
+      entries.forEach((entry) => {
+        entry.checked = item.checked
+        entry.children && recur(entry.children)
+      })
+    }
+
+    children && recur(children)
+  }
+
+  outputData(itemlist) {
+    console.log('this in outputData:', this)
+    let rst = []
+    for (let list of itemlist.children) {
+      // 跳过没有选中项的list
+      if (list.count < 0) continue
+      let filteredList = {...list, children: []}
+
+      for (let [index, item] of list.children.entries()) {
+        if (item.checked) {
+          // 发现被勾选的item
+          filteredList.children.push(item)
+          this.removeItem(item, index)
+        }
+      }
+
+      // 添加公共属性
+      Object.assign(filteredList, {
+        buyer: 'buyer from itemlist',
+        address: 'address from itemlist',
+        realPay: filteredList.total,
+      })
+
+      // 存入输出结果
+      rst.push(filteredList)
+    }
+
+    // 发送数据
+    return rst.reduce((arr, data) => {
+      // fetch()
+      console.log('send data:', data)
+      return arr
+    }, rst)
   }
 
   render() {
-    let { orders } = this.state
-
-    return (
-      <section className="cart">
-        <header className="cart-header">
-          <div className="brand">
-            <img width="150" height="50" src="" alt="Logo" className="logo"/>购物车
-          </div>
-          <div className="search-bar">
-            <input type="text"/>
-          </div>
-        </header>
-        <section className="cart-items">
-          <header>
-            <div className="filter-tabs"></div>
-          </header>
-          <secstion className="grid">
-            <div className="list-title">
-              <div className="col-selectAll">
-                <input type="checkbox" name="" id=""/>全选
-              </div>
-              <div className="col-info">
-                商品信息
-              </div>
-              <div className="col-quantity">
-                数量
-              </div>
-              <div className="col-price">
-                单价
-              </div>
-              <div className="col-sum">
-                金额
-              </div>
-              <div className="col-option">
-                操作
-              </div>
-            </div>
-            <div className="list-group">
-              <div className="group-title">
-                <input type="checkbox" name="" id=""/>
-                <span className="badge">badge</span>
-                <span>店铺：XXXX</span>
-              </div>
-
-              <div className="item group-item">
-                <div className="col col-check">
-                  <input type="checkbox" name="" id=""/>
-                </div>
-                <div className="col col-thumbnail">
-                  <img width="80" height="80" src="" alt="IMGthumbnail"/>
-                </div>
-                <div className="col col-title">Title</div>
-                <div className="col col-param">Param</div>
-                <div className="col col-quantity">10</div>
-                <div className="col col-price">￥40</div>
-                <div className="col col-sum">
-                  400
-                </div>
-                <div className="col col-option">
-                  options
-                </div>
-              </div>
-              <div className="item group-item">
-                <div className="col col-check">
-                  <input type="checkbox" name="" id=""/>
-                </div>
-                <div className="col col-thumbnail">
-                  <img width="80" height="80" src="" alt="thumbnail"/>
-                </div>
-                <div className="col col-title">Title</div>
-                <div className="col col-param">Param</div>
-                <div className="col col-price">￥40</div>
-                <div className="col col-quantity">10</div>
-                <div className="col col-sum">
-                  400
-                </div>
-                <div className="col col-option">
-                  options
-                </div>
-              </div>
-            </div>
-
-            <div className="order-orderDesc">
-              <div>确认订单</div>
-              <div className="tr">
-                <div className="th all-chk">
-                  <input type="checkbox" name="" id=""
-                    onChange={() => this.check(this.state, null, orders)} />全选
-                </div>
-                <div className="th cell-info">商品信息</div>
-                <div className="th cell-prop">商品属性</div>
-                <div className="th cell-price">单价</div>
-                <div className="th cell-amount">数量</div>
-                <div className="th cell-discount">优惠</div>
-                <div className="th cell-total">小计</div>
-              </div>
-            </div>
-            {orders.map((order, index) => (
-              <div className="order-orderInfo">
-                <div className="order-shopInfo">
-                  <div className="order-chk">
-                    <input type="checkbox" name="" id=""
-                      checked={order.checked}
-                      onChange={() => this.checkAll(order, index, orders)}/>
-                  </div>
-                  <div className="shop-name">Seller</div>
-                </div>
-                {order.items.map((item, index) => (
-                  <div className="tr order-item">
-                    <div className="td cell-prodInfo">
-                      <div className="td cell-chk">
-                        <input type="checkbox" name="" id=""
-                          checked={item.checked}
-                          onChange={() => this.checkOne(item, index, order.items, order)}/>
-                      </div>
-                      <div className="td cell-img">Something</div>
-                      <div className="td cell-title">{item.product.name}</div>
-                      <div className="td cell-prop">Prop</div>
-                    </div>
-                    <div className="td cell-price">{item.price}</div>
-                    <div className="td cell-amount">{item.amount}</div>
-                    <div className="td cell-discount">{item.discount}</div>
-                    <div className="td cell-total">{item.total}</div>
-                  </div>
-                ))}
-                <div className="order-message">给卖家的留言：{order.message}</div>
-                <div className="order-shipping">运费：<span>{order.shipping}</span></div>
-                <div className="order-payment">店铺合计（含运费）<span>{order.total}</span></div>
-              </div>
-            ))}
-          </secstion>
-        </section>
-        <footer>
-          <div className="left">
-            <input type="checkbox" name="" id=""/>全选
-            <a href="#" id="js-deleteSelect">删除</a>
-            <a href="#" id="js-clearInvalid">清除失效宝贝</a>
-            <a href="#" id="js-toFav">移入收藏夹</a>
-            <a href="#" id="js-share">分享</a>
-          </div>
-          <div className="right">
-            <div className="quantity-sum">
-              已选商品<span id="js-selectdItemCount">{this.state.count}</span>件<span className="item-collapse">^</span>
-            </div>
-            <div className="price-sum">
-              合计（不含运费）：<span id="js-total">{this.state.total}</span>
-            </div>
-            <button className="btn btn-default">结算</button>
-          </div>
-        </footer>
-      </section>
-    )
+    return null
   }
 }

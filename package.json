@@ -25,7 +25,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "dev": "concurrently -k -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express\" -c \"bgGreen.bold,bgBlue.bold\" \"npm start\" \"npm run server\""
+    "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express,Gulp\" -c \"bgGreen.bold,bgBlue.bold,bgYellow.bold\" \"npm start\" \"npm run server\" \"npm run watch\" --allow-restart"
   },
   "devDependencies": {
     "body-parser": "^1.17.2",

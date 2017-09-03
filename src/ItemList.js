@@ -38,19 +38,15 @@ class ItemList extends React.Component {
       .catch(console.error)
   }
 
-  componentDidUpdate() {
-    // debugger
-  }
-
   makeList() {
     let { itemlist, products } = this.state
     // 创建一个list
-    this.append(itemlist, this.createList())
+    this.appendItem(itemlist, this.createList())
 
     // 在这个list中创建若干个内容, 数量随机的item
     let n = random(3, 6)
     while (n--) {
-      this.append(itemlist.children[0],
+      this.appendItem(itemlist.children[0],
         this.createItem(products[random(products.length)],
           random(1, 6))
       )
@@ -95,7 +91,6 @@ class ItemList extends React.Component {
     }, rst)
   }
 
-
   createItem(content, amount) {
     return {
       content,
@@ -122,7 +117,7 @@ class ItemList extends React.Component {
     }
   }
 
-  append(list, item) {
+  appendItem(list, item) {
     // 连接list和item
     item.parent = list
     // 插入item到list
@@ -135,6 +130,8 @@ class ItemList extends React.Component {
     this.countUpwards(list)
 
     this.setState({...this.state})
+
+    return list
   }
 
   countUpwards(entry) {
@@ -258,7 +255,7 @@ class ItemList extends React.Component {
         <div className="main">
           <input type="checkbox" name="" id="" checked={itemlist.checked} onChange={() => this.check(itemlist)}/>
           <button className="btn btn-default" onClick={
-            () => this.append(itemlist, this.createList())
+            () => this.appendItem(itemlist, this.createList())
           }>Create List</button>
           <span>Count: {itemlist.count}</span>{' '}
           <span>Price: {itemlist.price}</span>
@@ -269,7 +266,7 @@ class ItemList extends React.Component {
                   <div>
                     <input type="checkbox" name="" id="" checked={list.checked} onChange={() => this.check(list)}/>
                     <button className="btn btn-info btn-xs" onClick={
-                      () => this.append(list, this.createItem(products[random(products.length)], random(1, 5)))
+                      () => this.appendItem(list, this.createItem(products[random(products.length)], random(1, 5)))
                     }>Create Item</button>
                     <button className="btn btn-danger btn-xs"
                       onClick={() => this.clearItems(list)}>Clear Items</button>
@@ -307,7 +304,7 @@ class ItemList extends React.Component {
         <div className="main">
           <input type="checkbox" name="" id="" checked={itemlist.checked} onChange={() => this.check(itemlist)}/>
           <button className="btn btn-default" onClick={
-            () => this.append(itemlist, this.createList())
+            () => this.appendItem(itemlist, this.createList())
           }>Create List</button>
           <span>Count: {itemlist.count}</span>{' '}
           <span>Price: {itemlist.price}</span>
@@ -318,7 +315,7 @@ class ItemList extends React.Component {
                   <div>
                     <input type="checkbox" name="" id="" checked={list.checked} onChange={() => this.check(list)}/>
                     <button className="btn btn-info btn-xs" onClick={
-                      () => this.append(list, this.createItem(products[random(products.length)], random(1, 5)))
+                      () => this.appendItem(list, this.createItem(products[random(products.length)], random(1, 5)))
                     }>Create Item</button>
                     <button className="btn btn-danger btn-xs"
                       onClick={() => this.clearItems(list)}>Clear Items</button>

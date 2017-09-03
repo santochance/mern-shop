@@ -14,6 +14,8 @@ import Search from './Search.js'
 import SearchResult from './SearchResult.js'
 
 import Cart from './Cart.js'
+import TestCart from './TestCart.js'
+
 import TestRoutes from './TestRoutes.js'
 
 import TestCheckbox from './TestCheckbox.js'
@@ -27,6 +29,7 @@ import ItemList from './ItemList.js'
 
 let views = [
   Home,
+  TestCart,
   CreateProduct,
   Signup,
   Signin,

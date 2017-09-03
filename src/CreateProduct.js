@@ -5,9 +5,7 @@ import { form2json, getDeep, setDeep } from './form2json.js'
 const SmartForm = (props) => {
   let { group, field } = props
 
-  let fullname = `${group}.${field.name}`
-  // 暂时去掉group部分
-  // let fullname = field.name
+  let fullname = group === 'basicProps' ? field.name : `${group}.${field.name}`
 
   if (['text', 'number', 'date', 'file'].indexOf(field.ctrlType) > -1) {
     return (
@@ -133,8 +131,6 @@ class CreateProduct extends React.Component {
 
     // if (!spec || !basic) return null
 
-    debugger
-
     return (
       <div>
         <div style={{
@@ -153,7 +149,7 @@ class CreateProduct extends React.Component {
         <form action="/products" method="POST" onSubmit={this.handleSubmit} >
           {Object.keys(property).map((group, i) =>
             property[group].map((prop, j) => (
-              <SmartForm group={group} field={prop} />
+              <SmartForm key={j} group={group} field={prop} />
             ))
           )}
           <button type="submit">Submit</button>

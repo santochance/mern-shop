@@ -1,0 +1,73 @@
+.grid-left {
+  width: 860px
+}
+
+.grid {
+}
+
+
+.grid-item {
+  vertical-align: top;
+
+  width: 200px;
+  margin: 10px 15px 0;
+  padding: 0 10px;
+  outline: 1px solid hsla(0, 0%, 70%, 0.4);
+
+  &:hover {
+    outline: 1px solid orange;
+  }
+}
+
+.product {
+  .imgWrap {
+    height: 200px;
+    padding: 10px 0;
+
+    img {
+      max-width: 180px;
+      max-height: 180px;
+    }
+  }
+
+  .title-row {
+    overflow: hidden;
+    height: 2.4em;
+    line-height: 1.2em;
+    margin-bottom: 10px;
+
+    .title {
+      display: inline;
+    }
+
+    .desc {
+      // float: right;
+      display: inline;
+      overflow: hidden;
+      height: 2em;
+      padding-left: 5px;
+      color: red;
+    }
+  }
+
+  .sale-row {
+    margin-bottom: 5px;
+
+    .price {
+      display: inline-block;
+      color: red;
+      font-size: 1.2em;
+      font-weight: bold;
+      // font-family: Microsoft YaHei;
+
+      &:before {
+        content: '￥';
+      }
+
+    }
+
+    .sales {
+      float: right;
+    }
+  }
+}

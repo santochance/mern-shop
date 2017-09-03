@@ -22,11 +22,11 @@ import Signin from './Signin.js'
 import Search from './Search.js'
 import SearchResult from './SearchResult.js'
 import Cart from './Cart.js'
+import TestCart from './TestCart.js'
 
 import ProductDetail from './ProductDetail.js'
 import ConfirmOrder from './ConfirmOrder.js'
 import CreateProduct from './CreateProduct.js'
-
 
 import ItemList from './ItemList.js'
 
@@ -116,6 +116,8 @@ class App extends Component {
             }} />
 
             <Route path="/createproduct" component={CreateProduct} />
+
+            <Route path="/testcart" component={TestCart} />
 
             <Route path="/cart" render={props => (
               (1 < 2) ? (
