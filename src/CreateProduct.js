@@ -5,7 +5,9 @@ import { form2json, getDeep, setDeep } from './form2json.js'
 const SmartForm = (props) => {
   let { group, field } = props
 
-  let fullname = group === 'basicProps' ? field.name : `${group}.${field.name}`
+  if (!field) return null
+
+  let fullname = !group || group === 'basicProps' ? field.name : `${group}.${field.name}`
 
   if (['text', 'number', 'date', 'file'].indexOf(field.ctrlType) > -1) {
     return (
@@ -129,7 +131,7 @@ class CreateProduct extends React.Component {
   render() {
     let { property } = this.state
 
-    // if (!spec || !basic) return null
+    console.log('property:', property)
 
     return (
       <div>
@@ -147,11 +149,27 @@ class CreateProduct extends React.Component {
           <pre>{JSON.stringify(property.basicProps, null, 2)}</pre>
         </div>
         <form action="/products" method="POST" onSubmit={this.handleSubmit} >
+          <div>
+            <h4>商品基本属性</h4>
+            <div>
+              {['productName', 'price', 'shipping', 'localtion'].map((key, i) => (
+                <SmartForm key={i} field={property.basicProps.find(v => v.name === key)}></SmartForm>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4>商品规格属性</h4>
+            {property.specProps.map((prop, i) => (
+              <SmartForm key={i} group="specProps" field={prop}></SmartForm>
+            ))}
+          </div>
+          {/*
           {Object.keys(property).map((group, i) =>
             property[group].map((prop, j) => (
               <SmartForm key={j} group={group} field={prop} />
             ))
           )}
+          */}
           <button type="submit">Submit</button>
         </form>
       </div>
