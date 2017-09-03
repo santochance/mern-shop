@@ -152,6 +152,49 @@ exports.search = function(req, res) {
   Product.find({ $text: { $search: req.params.term } })
     .populate('categories')
     .execAsync()
+    .then(handleSearchResult({
+      ...req.query,
+      term: req.params.term,
+    }))
     .then(respondWithResult(res))
     .catch(handleError(res))
+}
+
+function handleSearchResult(query) {
+  let { term, size, index = 1 } = query
+  return function (result) {
+    // 如果没有size, 或size为0, 不使用分组
+    if (!size) return result
+    let splitedRst = splitArray(result, size)
+
+    // 自动修正index
+    let total = splitedRst.length
+    index = index > 0
+      ? index < total
+        ? index
+        : total
+      : 1
+
+    return {
+      page: {
+        term,
+        size,
+        index,
+        total,
+      },
+      content: splitedRst[index - 1]
+    }
+  }
+}
+
+function splitArray(arr, size) {
+  let count = Math.ceil(arr.length / size)
+  console.log('count:', count)
+  let rst = []
+
+  while (count--) {
+    rst.unshift(arr.slice(count * size, (count + 1) * size))
+  }
+
+  return rst
 }
