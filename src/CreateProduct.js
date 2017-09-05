@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { form2json, getDeep, setDeep } from './form2json.js'
+import { form2json, getDeep, setDeep } from './helper/form2json.js'
 
 import './ProductPreview.css'
 
@@ -234,7 +234,6 @@ class CreateProduct extends React.Component {
     )
   }
 }
-
 
 class ProductPreview extends React.Component {
   constructor(props) {

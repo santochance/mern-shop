@@ -1,0 +1,25 @@
+.product-new {
+  outline: 1px solid lime; }
+
+.fileList-wrapper {
+  margin: 10px 0; }
+
+.fileList-item {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: top;
+  outline: 1px solid rgba(204, 204, 204, 0.5); }
+  .fileList-item .removeFile-btn {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(204, 204, 204, 0.5);
+    opacity: .5; }
+  .fileList-item:hover {
+    outline: 1px solid red; }
+    .fileList-item:hover .removeFile-btn {
+      visibility: visible; }
+      .fileList-item:hover .removeFile-btn:hover {
+        opacity: .8; }

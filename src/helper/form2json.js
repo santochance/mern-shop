@@ -57,6 +57,41 @@ export function form2json(form) {
   return rst
 }
 
+export function form2formData(form) {
+  let controls = form.elements
+  let names = Object.keys(controls).filter(key => isNaN(Number(key)))
+  let rst = names.reduce((data, name) => {
+    let control = controls[name]
+    if (control instanceof RadioNodeList) {
+
+      let ctrlList = Array.from(control).reduce((arr, ctrl) => {
+        let value = getCtrlValue(ctrl)
+        return value ? [...arr, value] : arr
+      }, [])
+
+      // console.log('multiple controls with same name')
+      console.log('name: %s, value:%s', name, ctrlList)
+
+      // return {...data,
+      //   [name]: ctrlList.length > 1 ? ctrlList : ctrlList[0]
+      // }
+
+      return setDeep(data, name, ctrlList.length > 1 ? ctrlList : ctrlList[0])
+    } else {
+      let value = getCtrlValue(control)
+
+      // console.log('signle control')
+      console.log('name: %s, value:%s', name, value)
+
+      // return {...data,
+      //   [name]: value ? value : ''
+      // }
+      return setDeep(data, name, value ? value : '')
+    }
+  }, new FormData)
+  return rst
+}
+
 export function form2json_old(form) {
   let controls = form.elements
   let names = Object.keys(controls).filter(key => isNaN(Number(key)))

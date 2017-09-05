@@ -2,6 +2,15 @@
   "name": "quick-react-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "server": "nodemon -w server ./server/server.js",
+    "watch": "gulp watch",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express,Gulp\" -c \"bgGreen.bold,bgBlue.bold,bgYellow.bold\" \"npm start\" \"npm run server\" \"npm run watch\" --allow-restart"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "bootstrap": "^3.3.7",
@@ -17,15 +26,6 @@
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "server": "nodemon -w server ./server/server.js",
-    "watch": "gulp watch",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express,Gulp\" -c \"bgGreen.bold,bgBlue.bold,bgYellow.bold\" \"npm start\" \"npm run server\" \"npm run watch\" --allow-restart"
   },
   "devDependencies": {
     "body-parser": "^1.17.2",
@@ -44,12 +44,20 @@
     "gulp": "^3.9.1",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^3.1.0",
+    "jasmine": "2.5.2",
+    "jasmine-core": "2.5.2",
+    "karma": "1.3.0",
+    "karma-jasmine": "1.0.2",
+    "karma-phantomjs-launcher": "1.0.2",
     "mongoose": "^4.11.7",
+    "multiparty": "^4.1.3",
     "nodemon": "^1.11.0",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
-    "react-bootstrap": "^0.31.2"
+    "react-bootstrap": "^0.31.2",
+    "should": "11.1.1",
+    "supertest": "2.0.1"
   },
   "proxy": "http://localhost:8000"
 }

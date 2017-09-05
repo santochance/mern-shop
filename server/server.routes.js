@@ -11,6 +11,7 @@ const properties = crud(require('./models/property.model.js'))
 const passport = require('passport')
 
 const multiparty = require('connect-multiparty')
+// const multiparty = require('multiparty')
 const uploadOptions = { autoFile: true, uploadDir: 'public/uploads' }
 
 module.exports = function(app) {
@@ -63,9 +64,18 @@ module.exports = function(app) {
     .patch(products.update)
     .delete(products.delete)
 
-  app.post('/products/:id/upload', multiparty(uploadOptions), products.upload)
+  // app.post('/products/:id/upload', multiparty(uploadOptions), products.upload)
 
   app.post('/products/upload', multiparty(uploadOptions), products.upload)
+  // app.post('/products/upload', (req, res, next) => {
+  //   var form = new multiparty.Form()
+  //   form.parse(req, function(err, fields, files) {
+  //     if (err) next(err)
+  //     console.log('fields:', fields)
+  //     console.log('files:', files)
+  //     next()
+  //   })
+  // }, products.upload)
 
   app.get('/products/:slug/catalog', products.catalog)
   app.get('/products/:term/search', products.search)

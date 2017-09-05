@@ -28,8 +28,11 @@ import CreateProduct from './CreateProduct.js'
 import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
+import ProductNew from './ProductNew.js'
+
 let views = [
   Home,
+  ProductNew,
   TestCart,
   CreateProduct,
   Signup,

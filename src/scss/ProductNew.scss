@@ -1,0 +1,44 @@
+@media (min-width: 992px) {
+  .product-new {
+  }
+}
+
+.product-new {
+  outline: 1px solid lime;
+}
+
+.fileList-wrapper {
+  margin: 10px 0;
+}
+
+.fileList-item {
+  position: relative;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: top;
+
+  outline: 1px solid hsla(0, 0%, 80%, .5);
+
+  .removeFile-btn {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: hsla(0, 0%, 80%, .5);
+    opacity: .5;
+  }
+
+  &:hover {
+    outline: 1px solid red;
+
+    .removeFile-btn {
+      visibility: visible;
+
+      &:hover {
+        opacity: .8;
+      }
+    }
+  }
+
+
+}

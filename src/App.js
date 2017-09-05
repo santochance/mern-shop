@@ -31,6 +31,8 @@ import CreateProduct from './CreateProduct.js'
 import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
+import ProductNew from './ProductNew.js'
+
 
 import {
   addItem,
@@ -102,6 +104,7 @@ class App extends Component {
           <DevIndex />
           <SiteNav />
           <div className="page">
+            <Route path="/productnew" component={ProductNew}></Route>
             <Route exact path="/" component={Home}></Route>
             <Route path="/home" component={Home}></Route>
             <Route path="/signup" component={Signup}></Route>

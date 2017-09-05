@@ -127,6 +127,7 @@ exports.delete = function(req, res) {
 // POST /products/:id/upload
 // Uploads a new Product's image in the DB
 exports.upload = function(req, res) {
+  console.log('fields:', req.body)
   console.log('upload files:', req.files)
   var file = req.files.file
   if (!file) {
