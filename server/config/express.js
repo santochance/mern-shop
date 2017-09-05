@@ -16,9 +16,11 @@ const notice = function (req, res, next) {
             New Request Comes in!
 ############################################
     `)
-  console.log('req.url:', req.url)
+  console.log('req:', req.constructor.name)
   console.log('req.method:', req.method)
-  console.log('req.body:\n', JSON.stringify(req.body, null, 2))
+  console.log('req.url:', req.url)
+  console.log('req.headers:', req.headers)
+  console.log('req.body:\n', JSON.stringify(req.body, null, 2).slice(0, 1000))
   console.log('############################################\n')
   next()
 }

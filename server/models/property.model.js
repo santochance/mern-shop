@@ -35,6 +35,10 @@ var PropertySchema = new Schema({
     type: [],
     default: undefined,
   },
+  required: {
+    type: Boolean,
+    default: false,
+  }
 }).index({
   'catalog': 1,
   'name': 1,

@@ -28,7 +28,9 @@ import ProductDetail from './ProductDetail.js'
 import ConfirmOrder from './ConfirmOrder.js'
 import CreateProduct from './CreateProduct.js'
 
+import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
+
 
 import {
   addItem,
@@ -130,6 +132,7 @@ class App extends Component {
               )
             )}></Route>
 
+            <Route path="/datagrid" component={DataGrid} />
             <Route path="/itemlist" component={ItemList} />
 
             <Route path="/confirmorder" component={ConfirmOrder} />

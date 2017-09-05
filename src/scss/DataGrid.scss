@@ -1,0 +1,19 @@
+.data-grid-container {
+  display: table;
+  margin: 5px 20px;
+  width: 100%;
+
+  .tr {
+    display: table-row;
+  }
+
+  .td {
+    display: table-cell;
+  }
+}
+
+.data-grid {
+  [class*="col-"] {
+    height: auto;
+  }
+}

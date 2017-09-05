@@ -99,6 +99,7 @@ exports.list = function(req, res) {
 }
 
 exports.read = function(req, res) {
+  console.log('read product')
   Product.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
@@ -126,6 +127,7 @@ exports.delete = function(req, res) {
 // POST /products/:id/upload
 // Uploads a new Product's image in the DB
 exports.upload = function(req, res) {
+  console.log('upload files:', req.files)
   var file = req.files.file
   if (!file) {
     return handleError(res)('File not provided')

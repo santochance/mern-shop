@@ -22,4 +22,10 @@ function test() {
   console.log('size: 10', splitArray(seed, 10))
 }
 
+// Object.assign(module.exports, {
+//   splitArray
+// })
+
+module.exports = splitArray
+
 // test()

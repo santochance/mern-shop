@@ -10,6 +10,9 @@ const properties = crud(require('./models/property.model.js'))
 
 const passport = require('passport')
 
+const multiparty = require('connect-multiparty')
+const uploadOptions = { autoFile: true, uploadDir: 'public/uploads' }
+
 module.exports = function(app) {
   app.get('/', (req, res, next) => {
     let username = req.user && req.user.username ? ', ' + req.user.username : ''
@@ -60,8 +63,11 @@ module.exports = function(app) {
     .patch(products.update)
     .delete(products.delete)
 
-  app.get('/products/:slug/catalog', products.catalog)
+  app.post('/products/:id/upload', multiparty(uploadOptions), products.upload)
 
+  app.post('/products/upload', multiparty(uploadOptions), products.upload)
+
+  app.get('/products/:slug/catalog', products.catalog)
   app.get('/products/:term/search', products.search)
 
   // routes for catalogs

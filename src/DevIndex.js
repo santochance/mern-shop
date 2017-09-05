@@ -25,6 +25,7 @@ import ConfirmOrder from './ConfirmOrder.js'
 
 import CreateProduct from './CreateProduct.js'
 
+import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
 let views = [
@@ -35,6 +36,7 @@ let views = [
   Signin,
   Search,
   SearchResult,
+  DataGrid,
   ItemList,
   Cart,
   ConfirmOrder,

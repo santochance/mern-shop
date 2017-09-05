@@ -1,11 +1,15 @@
+// 最新版请查看 /server/genPhoneProperties.js
+
 var specProps = [
   {
     name: 'brand',
+    label: '品牌',
     ctrlType: 'select',
     values: ['苹果', '三星', '华为', '魅族', '小米', 'OPPO', '其他']
   },
   {
     name: 'cpu',
+    label: 'CPU品牌',
     ctrlType: 'select',
     values: ['高通', '联发科', '海思', '德州仪器', '苹果', '三星', '英特尔', '不详', '其他']
   },
@@ -53,7 +57,7 @@ var basicProps = [
   },
 ]
 
-specProps.map((prop) =>
+specProps.map((prop) => {
   prop.catalog = 'phone'
   prop.propType = 'spec'
 })
@@ -84,8 +88,7 @@ props.reduce((promise, prop) =>
   .catch(console.error)
 
 
-
-let promise = Promise()
-for (let prop of props) {
-  promise = promise.then(() => sendData(prop))
-}
+// let promise = Promise()
+// for (let prop of props) {
+//   promise = promise.then(() => sendData(prop))
+// }

@@ -30,6 +30,7 @@
   "devDependencies": {
     "body-parser": "^1.17.2",
     "connect": "^3.6.3",
+    "connect-multiparty": "^2.0.0",
     "eslint": "^4.4.1",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-promise": "^1.1.7",
