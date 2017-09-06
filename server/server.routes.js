@@ -12,7 +12,10 @@ const passport = require('passport')
 
 const multiparty = require('connect-multiparty')
 // const multiparty = require('multiparty')
-const uploadOptions = { autoFile: true, uploadDir: 'public/uploads' }
+const uploadOptions = {
+  autoFile: true,
+  // uploadDir: 'public/uploads'
+}
 
 module.exports = function(app) {
   app.get('/', (req, res, next) => {
@@ -55,7 +58,7 @@ module.exports = function(app) {
 
   // routes for products
   app.route('/products')
-    .post(products.create)
+    .post(multiparty(uploadOptions), products.create)
     .get(products.list)
 
   app.route('/products/:id')
@@ -67,15 +70,6 @@ module.exports = function(app) {
   // app.post('/products/:id/upload', multiparty(uploadOptions), products.upload)
 
   app.post('/products/upload', multiparty(uploadOptions), products.upload)
-  // app.post('/products/upload', (req, res, next) => {
-  //   var form = new multiparty.Form()
-  //   form.parse(req, function(err, fields, files) {
-  //     if (err) next(err)
-  //     console.log('fields:', fields)
-  //     console.log('files:', files)
-  //     next()
-  //   })
-  // }, products.upload)
 
   app.get('/products/:slug/catalog', products.catalog)
   app.get('/products/:term/search', products.search)

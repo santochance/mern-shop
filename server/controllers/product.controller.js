@@ -87,6 +87,9 @@ function productsInCategory(catalog) {
 }
 
 exports.create = function(req, res) {
+  // 创建product数据
+  // 查询获取product._id
+  // 然后以此作为dirName保存files
   Product.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
