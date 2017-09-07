@@ -10,8 +10,11 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 */
 
 const path = require('path')
+const fs = require('fs')
 const Product = require('../models/product.model')
 const Catalog = require('../models/catalog.model')
+const uploadDir = path.resolve(__dirname, '../../public/uploads/products')
+const saveImgs = require('../../src/helper/saveUploadedImages.js')
 
 function handleError(res, statusCode = 500) {
   return function(err) {
@@ -51,9 +54,9 @@ function saveUpdates(updates) {
      */
 
     return updated.saveAsync()
-      // .spread(function(updated) {
-      //   return updated
-      // })
+    // .spread(function(updated) {
+    //   return updated
+    // })
   }
 }
 
@@ -86,11 +89,24 @@ function productsInCategory(catalog) {
     .exec();
 }
 
+function saveUploadedImages(images, dist) {
+  return function (product) {
+    images = Array.isArray(images) ? images : [images]
+    let imgPaths = ['01.jpg', '02.jpg', '03.jpg']
+    let imgBasenames
+    let newDir = 'C:\\Users\\Vincent\\Data'
+    return saveImgs(imgPaths, newDir, imgBasenames)
+      .then(album => Object.assign(product, { album }).saveSync())
+  }
+}
+
 exports.create = function(req, res) {
   // 创建product数据
   // 查询获取product._id
   // 然后以此作为dirName保存files
+  // console.log('req.files', req.files)
   Product.createAsync(req.body)
+    .then(saveUploadedImages(req.files.images, uploadDir))
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
 }

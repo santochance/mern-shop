@@ -1,12 +1,11 @@
 'use strict'
 
 // Set the 'NODE_ENV' variable
-process.env.NODE_ENV = process.env.NODE_EVN || 'development'
+process.env.NODE_ENV = process.env.NODE_EVN || 'dev'
 
 const mongooseCfg = require('./config/mongoose')
 const expressCfg = require('./config/express')
 const passportCfg = require('./config/passport')
-
 
 // Create a new Mongoose connection instance
 let db = mongooseCfg()

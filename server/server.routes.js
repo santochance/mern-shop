@@ -63,7 +63,7 @@ module.exports = function(app) {
 
   app.route('/products/:id')
     .get(products.read)
-    .put(products.update)
+    .put(multiparty(uploadOptions), products.update)
     .patch(products.update)
     .delete(products.delete)
 

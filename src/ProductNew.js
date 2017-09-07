@@ -128,8 +128,8 @@ class ProductNew extends React.Component {
         <div className="row">
           <Form horizontal onSubmit={(e) => this.submitProduct(e)}>
             <div className="col-md-6">
-              {fields.map(field => (
-                <SmartField field={field} />
+              {fields.map((field, i) => (
+                <SmartField key={i} field={field} />
               ))}
             </div>
             <FormGroup className="col-md-6">
@@ -182,7 +182,7 @@ const SmartField = (props) => {
           {field.label}
         </Col>
         <Col sm={8} md={9}>
-          <FormControl type={field.type} {...field.props} />
+          <FormControl type={field.type} name={field.name} {...field.props} />
         </Col>
       </FormGroup>
     )

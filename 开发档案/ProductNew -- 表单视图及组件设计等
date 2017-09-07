@@ -27,10 +27,30 @@ field {
 <SmartForm />
 
 
-<SmartForm group={} field={} />
+<SmartForm field={} />
 
 
 <FormControl />
 <Checkbox />
 <Radio />
 <Button />
+
+**字段顺序**
+
+
+```js
+let { field } = this.state
+
+if (field.type === 'checkbox') {
+  <Checkbox />
+} else if (field.type === 'radio') {
+  <Radio />
+} else {
+
+}
+
+```
+
+<ImageUploader />
+
+
