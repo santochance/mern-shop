@@ -48,16 +48,20 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
     }
   })(bodySize, headSize)
 
-  const go = (function (min, max, size, headSize) {
+  const show = (function (min, max, size, headSize) {
+    // 修正body部分的size
+    size = Math.min(max - min + 1, size)
+
     return function(index = 1) {
       let rst = []
 
       index = fixIndex(index)
       let [head, left, right] = updateDisplayer(index)
-      console.log('head: %s, left: %s, right: %s', head, left, right)
+      // console.log('head: %s, left: %s, right: %s', head, left, right)
+
       // Prev部分
       if (index <= min) {
-        rst.push('dis-prev')
+        rst.push('')
       } else {
         rst.push('prev')
       }
@@ -74,7 +78,7 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
       // Body部分
       Array(size).fill().forEach((v, i) => {
         v = left + i
-        v = v === index ? '#' + v : v
+        v = v === index ? String(v) : v
         rst.push(v)
       })
 
@@ -85,7 +89,7 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
 
       // Next部分
       if (index >= max) {
-        rst.push('dis-next')
+        rst.push('')
       } else {
         rst.push('next')
       }
@@ -95,7 +99,7 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
   })(min, max, bodySize, headSize)
 
   return {
-    go,
+    show,
     min,
     max,
     bodySize,
@@ -103,15 +107,14 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
   }
 }
 
-module.exports = genIndexDisplay
-
 /* Test */
 const test = () => {
-  let max = 20
+  let max = 3
   let displayer = genIndexDisplay({ max, headSize: 3, bodySize: 6 })
 
   console.log(displayer)
-  Array(max + 4).fill().forEach((v, i) => console.log('\n', i, displayer.go(i)))
+  Array(max + 4).fill().forEach((v, i) => console.log('\n', i, displayer.show(i)))
 }
+test()
 
-// test()
+module.exports = genIndexDisplay

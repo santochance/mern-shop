@@ -2,7 +2,43 @@ import React from 'react'
 
 import { random, randomDate, randomPharse } from './helper/randoms.js'
 import splitArray from './helper/splitArray.js'
+import genIndexDisplay from './helper/genIndexDisplayer.js'
 import './DataGrid.css'
+
+const Pagination = (props) => {
+  let { indexKeys, prevLabel = '\u00AB', nextLabel = '\u00BB', index, gotoPage } = props
+  let prevDisabled = !indexKeys[0]
+  let nextDisabled = !indexKeys.slice(-1)[0]
+
+  // console.log('indexKeys in pagination:', indexKeys)
+  console.log('num keys', indexKeys.slice(1, -1))
+  return (
+    <div className="Page navigation">
+      <ul className="pagination">
+        <li className={prevDisabled && 'disabled'}>
+          <a href={'#' + (index)} aria-label="Previous" onClick={() => gotoPage(index - 1)}>
+            <span aria-hidden="true">{prevLabel}</span>
+          </a>
+        </li>
+        {indexKeys.slice(1, -1).map((key, i) =>
+          (key === '...') ? (
+            <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>
+          ) : (
+            <li key={i} className={typeof key === 'string' && 'active'}
+              onClick={() => gotoPage(parseInt(key) - 1)}>
+              <a href={'#' + key}>{key}</a>
+            </li>
+          )
+        )}
+        <li className={nextDisabled && 'disabled'}>
+          <a href={'#' + (index + 2)} aria-label="Next" onClick={() => gotoPage(index + 1)}>
+            <span aria-hidden="true">{nextLabel}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  )
+}
 
 class DataGrid extends React.Component {
   constructor(props) {
@@ -10,18 +46,22 @@ class DataGrid extends React.Component {
     this.state = {
       page: {
         size: 5,
-        index: 1
+        index: 0
       }
     }
+    this.gotoPage = this.gotoPage.bind(this)
   }
 
   componentDidMount() {
     let { size, index } = this.state.page
 
+    let pageCfg = this.paginate(this.genFakeDate(100), size, index)
+
     this.setState({
       ...this.state,
-      ...this.paginate(this.genFakeDate(100), size, index),
+      ...pageCfg,
     })
+
   }
 
   genFakeDate(num = 10) {
@@ -51,6 +91,8 @@ class DataGrid extends React.Component {
   paginate(data, size, index = 0) {
     if (!size) {}
     let splitedData = splitArray(data, size)
+    let total = splitedData.length
+    let displayer = genIndexDisplay({ max: total })
 
     return {
       rawData: data,
@@ -58,8 +100,9 @@ class DataGrid extends React.Component {
       page: {
         size,
         index,
-        total: splitedData.length
-      }
+        total,
+      },
+      displayer
     }
   }
 
@@ -101,14 +144,17 @@ class DataGrid extends React.Component {
   }
 
   render() {
-    let { data, page } = this.state
+    let { data, page, displayer } = this.state
     let { size, index, total } = page
+    // page.index是0-based, displayer的1-based的
+    let indexKeys = displayer && displayer.show(index + 1)
 
     if (!data) return null
 
     console.log('page:', page)
     console.log('data:', data)
 
+    console.log('indexKeys:', indexKeys)
     return (
       <div className="data-grid">
         <div className="row">
@@ -165,6 +211,7 @@ class DataGrid extends React.Component {
                 </li>
               </ul>
             </div>
+            <Pagination indexKeys={indexKeys} index={index} gotoPage={this.gotoPage} />
           </div>
         </div>
       </div>
