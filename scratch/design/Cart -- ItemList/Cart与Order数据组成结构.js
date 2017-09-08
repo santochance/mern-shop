@@ -109,16 +109,3 @@ order.items.forEach(/*...*/)
 checkStatus = [1,2,3,4,5]
 allChecked = false
 
-item, i
-
-checkOne(item, index) {}
-// 修改checked状态数组
-
-
-// 计算allChecked
-
-
-checkAll() {
-  // 修改所有checked状态数组的值为allChecked
-}
-

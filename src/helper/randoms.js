@@ -11,6 +11,7 @@ function random(min, max, base = 1, withMax = true) {
   return Math.floor(Math.random() * (_max - _min + (withMax ? 1 : 0)) + _min)
 }
 
+// randomTimeStamp
 function randomDate(min, max) {
   // console.log('min:', Date.parse(min))
   // console.log('max:', Date.parse(max))

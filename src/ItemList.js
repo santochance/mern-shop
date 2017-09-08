@@ -136,22 +136,98 @@ class ItemList extends React.Component {
 
   countUpwards(entry) {
     while (entry) {
-      Object.assign(entry, entry.children.reduce((sum, child) => {
-        // 如果entry是leaf item, 根据checked进行筛选
-        if ('children' in child || child.checked) {
-          sum.count += (child.count || 0)
-          sum.price += (child.price || 0)
-          sum.discount += (child.discount || 0)
-          sum.shipping += (child.shipping || 0)
-          sum.realPay += (child.realPay || 0)
-        }
+      if (entry.children) {
+        Object.assign(entry, entry.children.reduce((sum, child) => {
+          // 如果entry是leaf item, 根据checked进行筛选
+          if ('children' in child || child.checked) {
+            sum.count += (child.count || 0)
+            sum.price += (child.price || 0)
+            sum.discount += (child.discount || 0)
+            sum.shipping += (child.shipping || 0)
+            sum.realPay += (child.realPay || 0)
+          }
 
-        // !!!! 记得要返回值  !!!!!
-        return sum
-      }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0}))
-
+          // !!!! 记得要返回值  !!!!!
+          return sum
+        }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0}))
+      }
       entry = entry.parent
     }
+  }
+
+  countDownwards(entry) {
+    if (!entry.children) {
+      // 抽取entry的属性
+      return ['count', 'price', 'discount', 'shipping', 'realPay'].reduce((rst, key) => {
+        key in entry && (rst[key] = entry[key])
+        return rst
+      }, {})
+    }
+
+    let rst = entry.children.reduce((sum, child) => {
+      // 如果child有children，即不是leaf
+      // 或者是leaf, checked为true
+      if ('children' in child || child.checked) {
+        // 向下递归求和
+        let childSum = this.countDownwards(child)
+        // 把求和结果作为增量添加父对象的求和对象
+        sum.count += (childSum.count || 0)
+        sum.price += (childSum.price || 0)
+        sum.discount += (childSum.discount || 0)
+        sum.shipping += (childSum.shipping || 0)
+        sum.realPay += (childSum.realPay || 0)
+      }
+      return sum
+    }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0})
+    // 保存求和结果到当前entry
+
+    Object.assign(entry, rst)
+    return rst
+  }
+
+  aggregateDownwards(entry) {
+    if (!entry.children) {
+      // 抽取entry的属性
+      return ['count', 'price', 'discount', 'shipping', 'realPay'].reduce((rst, key) => {
+        key in entry && (rst[key] = entry[key])
+        return rst
+      }, {})
+    }
+
+    let rst =  entry.reduce((sum, child) => {
+      // 如果child有children，即不是leaf
+      // 或者是leaf, checked为true
+      if ('children' in child || child.checked) {
+        // 向下递归求和
+        let childSum = this.aggregateDownwards(child)
+        // 保存求和结果到child
+        Object(child, childSum)
+        // 把求和结果作为增量添加父对象的求和对象
+        this.objAdd(sum, childSum)
+      }
+      Object(entry, rst)
+      return sum
+    }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0})
+  }
+
+  aggregateUpwards(entry) {
+    let parent = entry.parent
+    if (parent) {
+      parent.children.reduce((sum, child) => {
+        if ('children' in child || child.checked) {
+          this.objAdd(sum, child)
+        }
+        return sum
+      }, {count: 0, price: 0, discount: 0, shipping: 0, realPay: 0})
+      this.aggregateUpwards(parent)
+    }
+  }
+
+  objAdd(base, delta) {
+    Object.keys(delta).reduce((obj, key) => {
+      key in obj && (obj[key] += delta[key] || 0)
+    }, base)
+    return base
   }
 
   removeItem(item, index) {
@@ -202,20 +278,20 @@ class ItemList extends React.Component {
     this.setState({...this.state})
   }
 
-  aggregate() {
-
-  }
-
   check(item) {
     item.checked = !item.checked
     this.updateChecked(item)
 
-    this.countUpwards(item.parent)
+    debugger
+
+    this.countDownwards(item)
+    this.countUpwards(item)
 
     this.setState({...this.state})
   }
 
   updateChecked(item) {
+
     let parent = item.parent
     let children = item.children
 

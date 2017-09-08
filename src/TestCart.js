@@ -118,7 +118,7 @@ export default class TestCart extends ItemList {
         */}
         <div style={{
           display: 'flex',
-          flexDirection: 'column',
+          // flexDirection: 'column',
         }}>
           <ProductList app={this} products={products} />
           <CartDetails app={this} />
@@ -177,6 +177,10 @@ const ProductList = (props) => {
                   <div className="price">{product.price || 'Product price'}</div>
                   <div className="sales">{product.sales || 'Product sales'}</div>
                 </div>
+                <div className="btn-row">
+                  <input type="number" name="" id=""/>
+                  <button className="btn btn-danger" onClick={() => app.addToCart(product, 1)}>添加到购物车</button>
+                </div>
               </div>
             ))}
           </div>
@@ -206,7 +210,14 @@ const CartDetails = (props) => {
             </div>
             <div className="itemInfo">
               {order.children.map((item, j) => (
-                <pre key={j}>{JSON.stringify(item.content, ['_id', 'title', 'price'], 2)}</pre>
+                // <pre key={j}>{JSON.stringify(item.content, ['_id', 'productName', 'price'], 2)}</pre>
+                <div key={j}>
+                  <div>{item.content.productName}</div>
+                  <div>
+                    <span>数量：{item.amount}</span>
+                    <span>合计：{item.price}</span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

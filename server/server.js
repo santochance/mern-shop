@@ -6,6 +6,7 @@ process.env.NODE_ENV = process.env.NODE_EVN || 'dev'
 const mongooseCfg = require('./config/mongoose')
 const expressCfg = require('./config/express')
 const passportCfg = require('./config/passport')
+const config = require('./config/env/index.js')
 
 // Create a new Mongoose connection instance
 let db = mongooseCfg()
@@ -17,7 +18,7 @@ let app = expressCfg()
 let passport = passportCfg()
 
 // Use the Express application instance to listen to the port
-const port = 8000
+const port = config.port
 app.listen(port);
 
 // Log the server status to the console

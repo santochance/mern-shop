@@ -27,18 +27,18 @@ for (let [index, img] of images.entries()) {
 
 var newDir = 'C:\\Users\\Vincent\\Data\\test_uploads_to\\' + Date.now().toString(16)
 
-cso({ images })
-cso({ newDir })
+// cso({ images })
+// cso({ newDir })
 
 function ensureDir(dir) {
-  cso({ dir })
+  // cso({ dir })
   return new Promise((resolve, reject) => {
     fs.access(dir, (err) => {
-      should.exist(err)
+      // should.exist(err)
       if (err) {
         fs.mkdir(dir, (err) => {
           if (err) { /* console.error(err) */ }
-          console.log('make new dir')
+          // console.log('make new dir')
           resolve(dir)
         })
       } else {
@@ -71,7 +71,9 @@ function saveImgs(imgPaths, dir, imgNames = []) {
 
 saveImgs(images, newDir)
   .then(paths => {
-    cso({ paths })
+
+    // cso({ paths })
+
     for (let [index, path] of paths.entries()) {
       path.should.match(new RegExp(newDir.replace(/\\/g, '\\\\')))
       path.should.match(new RegExp(bases[index]))

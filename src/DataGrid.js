@@ -24,21 +24,6 @@ class DataGrid extends React.Component {
     })
   }
 
-  paginate(data, size, index = 0) {
-    if (!size) {}
-    let splitedData = splitArray(data, size)
-
-    return {
-      rawData: data,
-      data: splitedData,
-      page: {
-        size,
-        index,
-        total: splitedData.length
-      }
-    }
-  }
-
   genFakeDate(num = 10) {
     // fakeData
     /*
@@ -63,6 +48,21 @@ class DataGrid extends React.Component {
     ))
   }
 
+  paginate(data, size, index = 0) {
+    if (!size) {}
+    let splitedData = splitArray(data, size)
+
+    return {
+      rawData: data,
+      data: splitedData,
+      page: {
+        size,
+        index,
+        total: splitedData.length
+      }
+    }
+  }
+
   switchSize(e) {
     let { rawData, page: { index } } = this.state
     let size = e.target.value
@@ -73,6 +73,31 @@ class DataGrid extends React.Component {
       ...this.state,
       ...updates
     })
+  }
+
+  prevPage() {
+    this.gotoPage(this.state.page.index - 1)
+  }
+
+  nextPage() {
+    this.gotoPage(this.state.page.index + 1)
+  }
+
+  gotoPage(index) {
+    let { page } = this.state
+    let total = page.total
+
+    // 修正index
+    index = index >= 0
+      ? index < total
+        ? index
+        : total - 1
+      : 0
+
+    // 应用index
+    page.index = index
+    this.setState({...this.state, page})
+
   }
 
   render() {
@@ -121,11 +146,23 @@ class DataGrid extends React.Component {
             Showing...
           </div>
           <div className="col-sm-6">
-            <div className="pagination">
-              <ul>
+            <div className="Page navigation">
+              <ul className="pagination">
+                <li>
+                  <a href="#" aria-label="Previous" onClick={() => this.prevPage()}>
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
                 {Array(total).fill().map((v, i) => (
-                  <li>{i + 1}</li>
+                  <li key={i} className={index === i && 'active'} >
+                    <a href="#" onClick={() => this.gotoPage(i)}>{i + 1}</a>
+                  </li>
                 ))}
+                <li>
+                  <a href="#" aria-label="Next" onClick={() => this.nextPage()}>
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

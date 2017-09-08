@@ -92,11 +92,12 @@ function productsInCategory(catalog) {
 function saveUploadedImages(images, dist) {
   return function (product) {
     images = Array.isArray(images) ? images : [images]
-    let imgPaths = ['01.jpg', '02.jpg', '03.jpg']
+    // let imgPaths = images.['01.jpg', '02.jpg', '03.jpg']
+    let imgPaths = images.map(img => img.path)
     let imgBasenames
-    let newDir = 'C:\\Users\\Vincent\\Data'
+    let newDir = path.join(dist, String(product._id))
     return saveImgs(imgPaths, newDir, imgBasenames)
-      .then(album => Object.assign(product, { album }).saveSync())
+      .then(album => Object.assign(product, { album }).saveAsync())
   }
 }
 
