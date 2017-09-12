@@ -1,4 +1,149 @@
 @charset "UTF-8";
+/* Normalize/Rest */
+/* Auxiliary */
+img[src=""] {
+  width: 100%;
+  height: 100%;
+  background-image: url("./01.jpg");
+  background-size: 100% 100%;
+  outline: none; }
+
+.main-content {
+  outline: 1px solid black; }
+  .main-content .left-box {
+    outline: 1px solid purple; }
+  .main-content .right-box {
+    outline: 1px solid navy; }
+  .main-content .list-container {
+    outline: 1px solid orange; }
+  .main-content .list-item {
+    outline: 1px solid green; }
+
+/* Main Layout */
+.main-content {
+  width: 1190px;
+  margin: auto; }
+  .main-content .left-box {
+    width: 950px; }
+  .main-content .right-box {
+    width: 230px; }
+
+.grid-mode {
+  margin-right: -18px;
+  margin-bottom: 16px; }
+  .grid-mode .list-item {
+    display: inline-block;
+    vertical-align: top;
+    width: 220px;
+    margin: 18px 16px 0 0;
+    line-height: 1.5em; }
+  .grid-mode .img-wrapper {
+    width: 220px;
+    height: 220px;
+    padding: 15px; }
+    .grid-mode .img-wrapper img {
+      max-width: 100%;
+      min-height: 100%; }
+  .grid-mode .img-caption div {
+    padding: 10px; }
+  .grid-mode .op .amount {
+    display: inline-block;
+    width: 30px;
+    margin-right: 10px; }
+
+/*
+@media (min-width: 1440px) {
+  .main-content {
+    width: 1350px;
+
+    .left-box {
+      width: 1070px;
+    }
+    .right-box {
+      width: 270px;
+    }
+
+    .list-container {
+      margin-right: -20px;
+      margin-bottom: 18px;
+    }
+    .list-item {
+      width: 246px;
+      margin: 20px 20px 0 0;
+      line-height: 1.8em;
+    }
+    .img-wrapper {
+      width: 246px;
+      height: 246px;
+    }
+  }
+}
+
+@media (max-width: 1250px) {
+  .main-content {
+    width: 1000px;
+    margin: auto;
+
+    .left-box {
+      width: 800px
+    }
+    .right-box {
+      width: 190px;
+    }
+
+    .list-container {
+      margin-right: -18px;
+      margin-bottom: 16px;
+    }
+    .list-item {
+      display: inline-block;
+      width: 180px;
+      margin: 16px 18px 0 0;
+      line-height: 1.3em;
+      vertical-align: top;
+    }
+    .img-wrapper {
+      width: 180px;
+      height: 180px;
+    }
+  }
+}
+*/
+.list-mode .list-item {
+  width: 100%;
+  padding: 20px 0; }
+
+.list-mode .col {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px; }
+
+.list-mode .col:nth-of-type(1) {
+  outline: 1px solid red; }
+
+.list-mode .col:nth-of-type(2) {
+  outline: 1px solid navy; }
+
+.list-mode .col:nth-of-type(3) {
+  outline: 1px solid lime; }
+
+.list-mode .img-wrapper {
+  width: 80px;
+  height: 80px; }
+
+/* Visual Effect */
+.grid-mode .list-item {
+  outline: 1px solid rgba(179, 179, 179, 0.4); }
+  .grid-mode .list-item:hover {
+    outline: 1px solid red; }
+  .grid-mode .list-item .info-price {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: red; }
+  .grid-mode .list-item .info-sales {
+    font-size: 0.9em;
+    color: silver; }
+
 .grid-left {
   width: 860px; }
 
@@ -43,3 +188,183 @@
       content: '￥'; }
   .product .sale-row .sales {
     float: right; }
+
+.cart-main {
+  width: 990px; }
+  .cart-main .th, .cart-main .col {
+    display: inline-block;
+    vertical-align: top; }
+  .cart-main .th {
+    line-height: 3em; }
+  .cart-main .col {
+    line-height: 1.5em; }
+  .cart-main .shopInfo {
+    line-height: 3em; }
+  .cart-main .item-content {
+    padding: 16px; }
+  .cart-main .desc-check,
+  .cart-main .cell-check {
+    width: 45px; }
+  .cart-main .desc-info,
+  .cart-main .cell-info {
+    width: 302px; }
+  .cart-main .cell-image {
+    width: 80px;
+    float: left; }
+  .cart-main .cell-title {
+    margin-left: 80px; }
+  .cart-main .desc-param,
+  .cart-main .cell-param {
+    width: 192px; }
+  .cart-main .desc-quantity,
+  .cart-main .cell-quantity {
+    width: 120px; }
+  .cart-main .desc-price,
+  .cart-main .cell-price {
+    width: 120px; }
+  .cart-main .desc-sum,
+  .cart-main .cell-sum {
+    width: 105px; }
+  .cart-main .desc-opera,
+  .cart-main .cell-opera {
+    width: 99px; }
+
+@media (min-width: 1440px) {
+  .cart-main {
+    width: 1190px; }
+    .cart-main .desc-check,
+    .cart-main .cell-check {
+      width: 50px; }
+    .cart-main .desc-info,
+    .cart-main .cell-info {
+      width: 342px; }
+    .cart-main .cell-image {
+      width: 80px; }
+    .cart-main .cell-title {
+      width: 222px; }
+    .cart-main .desc-param,
+    .cart-main .cell-param {
+      width: 252px; }
+    .cart-main .desc-price,
+    .cart-main .cell-price {
+      width: 130px; }
+    .cart-main .desc.quantity,
+    .cart-main .cell-quantity {
+      width: 120px; }
+    .cart-main .desc-sum,
+    .cart-main .cell-sum {
+      width: 140px; }
+    .cart-main .desc-opera,
+    .cart-main .cell-opera {
+      width: 119px; } }
+
+.cell-price .price-now {
+  font-weight: 700; }
+
+.cell-sum .item-sum {
+  font-weight: 700;
+  color: red; }
+
+.footer-bar-right .count-sum .count {
+  font-weight: 700;
+  color: red; }
+
+.footer-bar-right .price-sum .price {
+  font-weight: 700;
+  color: red; }
+
+.order-confirm {
+  width: 990px; }
+  .order-confirm .th, .order-confirm .td {
+    display: inline-block;
+    vertical-align: top; }
+  .order-confirm .th {
+    line-height: 2em; }
+  .order-confirm .td {
+    line-height: 1.5em; }
+  .order-confirm .desc-info,
+  .order-confirm .cell-info {
+    width: 255px; }
+  .order-confirm .cell-image {
+    width: 50px; }
+  .order-confirm .desc-param,
+  .order-confirm .cell-param {
+    width: 180px; }
+  .order-confirm .desc-price,
+  .order-confirm .cell-price {
+    width: 120px;
+    text-align: center; }
+  .order-confirm .desc-quantity,
+  .order-confirm .cell-quantity {
+    width: 120px;
+    text-align: center; }
+  .order-confirm .desc-discount,
+  .order-confirm .cell-discount {
+    width: 180px;
+    text-align: center; }
+  .order-confirm .desc-sum,
+  .order-confirm .cell-sum {
+    width: 130px; }
+  .order-confirm .order-shopInfo {
+    line-height: 2em; }
+  .order-confirm .item-content {
+    padding: 10px 0; }
+    .order-confirm .item-content .cell-info {
+      white-space: nowrap; }
+    .order-confirm .item-content .cell-image {
+      margin-right: 10px; }
+    .order-confirm .item-content .image-wrapper {
+      display: block;
+      width: 50px;
+      height: 50px;
+      outline: 1px solid rgba(230, 230, 230, 0.5); }
+    .order-confirm .item-content .cell-sum {
+      text-align: right;
+      font-weight: 700;
+      color: red; }
+  .order-confirm .order-message {
+    display: inline-block;
+    vertical-align: top;
+    width: 450px;
+    padding: 8px 0;
+    box-sizing: border-box; }
+    .order-confirm .order-message .message-name {
+      display: inline-block;
+      vertical-align: middle; }
+    .order-confirm .order-message .message-detail {
+      display: inline-block;
+      vertical-align: middle; }
+      .order-confirm .order-message .message-detail input {
+        width: 360px; }
+  .order-confirm .order-delivery {
+    display: inline-block;
+    vertical-align: top;
+    width: 540px;
+    padding: 8px 0; }
+    .order-confirm .order-delivery .delivery-title {
+      display: inline-block;
+      vertical-align: top;
+      width: 110px;
+      text-align: right; }
+    .order-confirm .order-delivery .delivery-select {
+      display: inline-block;
+      vertical-align: top;
+      width: 430px; }
+    .order-confirm .order-delivery .select-price {
+      float: right;
+      font-weight: 700;
+      color: red; }
+  .order-confirm .order-total {
+    text-align: right;
+    line-height: 3em; }
+    .order-confirm .order-total .order-sum {
+      font-size: 1.5em;
+      color: red; }
+  .order-confirm .order-payInfo {
+    padding: 15px 8px; }
+    .order-confirm .order-payInfo .realPay-title,
+    .order-confirm .order-payInfo .confrimAddr-title {
+      font-weight: 700; }
+    .order-confirm .order-payInfo .realPay-price {
+      color: red;
+      font-size: 2em; }

@@ -1,6 +1,6 @@
 function splitArray(arr, size) {
   let count = Math.ceil(arr.length / size)
-  console.log('count:', count)
+  // console.log('count:', count)
   let rst = []
 
   while (count--) {

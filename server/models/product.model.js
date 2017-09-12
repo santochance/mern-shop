@@ -9,6 +9,7 @@ var ProductSchema = new Schema({
   price: { type: Number/*, required: true */, min: 0 },
   stock: { type: Number, min: 0, default: 1 },
   shipping: { type: Number, min: 0, default: 0 },
+  discount: { type: Number, min: 0, default: 0 },
   album: [{ type: String }],
   imageBin: { data: Buffer, contentType: String },
   imageUrl: String,

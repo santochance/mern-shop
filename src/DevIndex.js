@@ -33,19 +33,19 @@ import ProductNew from './ProductNew.js'
 let views = [
   Home,
   ProductNew,
-  TestCart,
   CreateProduct,
+  TestCart,
+  ConfirmOrder,
   Signup,
   Signin,
-  Search,
-  SearchResult,
+  // Search,
+  // SearchResult,
   DataGrid,
   ItemList,
-  Cart,
-  ConfirmOrder,
-  TestCheckbox,
-  TestRoutes,
-  TestAutoMakeFold,
+  // Cart,
+  // TestCheckbox,
+  // TestRoutes,
+  // TestAutoMakeFold,
 ]
 // console.log(views)
 // debugger

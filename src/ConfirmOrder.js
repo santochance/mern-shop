@@ -14,7 +14,7 @@ class ConfirmOrder extends React.Component {
       submitDisabled: false,
       addresses: addrs,
       usedAddr: addrs[2],
-      buyer: {}, // 当前用户
+      buyer: 'current user', // 当前用户
       orders: orders,
       realPay: orders.reduce((sum, order) => (sum += order.total), 0),
       paymentType: '', // 选择支付方式
@@ -38,9 +38,11 @@ class ConfirmOrder extends React.Component {
     let orders = this.splitOrders(state)
     this.setState({ ...state, submitDisabled: true })
 
+    console.log('sending orders:', orders)
+
     fetch('/orders', {
       method: 'POST',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(orders)
     }).then((res) => res.json())
       .then(console.log)
@@ -86,12 +88,12 @@ class ConfirmOrder extends React.Component {
           </div>
         </div>
         {orders.map((order, index) => (
-          <div className="order-orderInfo">
+          <div key={index} className="order-orderInfo">
             <div className="order-shopInfo">
               <div className="shop-name">Seller</div>
             </div>
             {order.items.map((item, index) => (
-              <div className="tr order-item">
+              <div key={index} className="tr order-item">
                 <div className="td cell-prodInfo">
                   <div className="td cell-img">Something</div>
                   <div className="td cell-title">{item.product.name}</div>
@@ -111,7 +113,8 @@ class ConfirmOrder extends React.Component {
         <div className="order-payInfo">
           <div className="payInfo-wrap">
             <div className="order-realPay">
-              <span className="realPay-title">实付款：</span><span>{realPay}</span>
+              <span className="realPay-title">实付款：</span>
+              <span>{realPay}</span>
             </div>
             <div className="order-confirmAddr">
               <span className="confirmAddr-title">寄送至：</span>{usedAddr.addr}
@@ -122,7 +125,8 @@ class ConfirmOrder extends React.Component {
 
         <div className="order-submitOrder">
           <button>返回购物车</button>
-          <button className="btn btn-error" onClick={this.submitOrder}
+          <button className="btn btn-error"
+            onClick={() => this.submitOrder()}
             disabled={this.state.submitDisabled}>提交订单</button>
         </div>
       </div>

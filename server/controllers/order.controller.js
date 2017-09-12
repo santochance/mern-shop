@@ -8,14 +8,14 @@
 
 const Order = require('../models/order.model')
 
-function handleError(res, statusCode=500) {
+function handleError(res, statusCode = 500) {
   return function(err) {
     console.error(err, statusCode)
     res.status(statusCode).send(err)
   }
 };
 
-function respondWithResult(res, statusCode=200) {
+function respondWithResult(res, statusCode = 200) {
   return function(entity) {
     if (entity) {
       res.status(statusCode).json(entity)
@@ -38,7 +38,7 @@ function saveUpdates(updates) {
   return function(entity) {
     var updated = Object.assign({}, entity, updates)
     return updated.saveAsync()
-      .spread(function(updated){
+      .spread(function(updated) {
         return updated
       })
   }
@@ -56,7 +56,13 @@ function removeEntity(res) {
 }
 
 exports.create = function(req, res) {
-  Catalog.createAsync(req.body)
+  // req.body是一个orders数组
+
+  // 查询user
+  // 查询seller
+  // 填充更新orders数组
+
+  Order.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
 }

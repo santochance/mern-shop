@@ -16,7 +16,9 @@ var OrderSchema = new Schema({
   // billingAddress: String,
 
   // buyer details
-  buyer: { type: Schema.Types.ObjectId, ref: 'User' },
+  // buyer: { type: Schema.Types.ObjectId, ref: 'User' },
+  buyer: String,
+
   address: {
     name: String,
     tel: String,
@@ -25,7 +27,8 @@ var OrderSchema = new Schema({
   items: [OrderDetailsSchema],
   // seller details
   shopName: String,
-  seller: { type: Schema.Types.ObjectId, ref: 'User' },
+  // seller: { type: Schema.Types.ObjectId, ref: 'User' },
+  seller: String,
   message: String,
   // price details
   price: { type: Number, get: getPrice, set: setPrice },

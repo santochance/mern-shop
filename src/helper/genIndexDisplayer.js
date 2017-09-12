@@ -1,4 +1,4 @@
-function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
+function genIndexDisplay({ headSize = 2, bodySize = 5, min = 0, max }) {
   if (!max || max < min) {
     throw Error('error `max` setted')
   }
@@ -76,10 +76,10 @@ function genIndexDisplay({ headSize = 2, bodySize = 5, min = 1, max }) {
       }
 
       // Body部分
-      Array(size).fill().forEach((v, i) => {
-        v = left + i
-        v = v === index ? String(v) : v
-        rst.push(v)
+      Array(size).fill().forEach((label, i) => {
+        label = left + i + 1
+        label = label === index + 1 ? String(label) : label
+        rst.push(label)
       })
 
       // 后...部分
@@ -115,6 +115,6 @@ const test = () => {
   console.log(displayer)
   Array(max + 4).fill().forEach((v, i) => console.log('\n', i, displayer.show(i)))
 }
-test()
+// test()
 
 module.exports = genIndexDisplay

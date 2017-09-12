@@ -16,7 +16,7 @@ const Pagination = (props) => {
     <div className="Page navigation">
       <ul className="pagination">
         <li className={prevDisabled && 'disabled'}>
-          <a href={'#' + (index)} aria-label="Previous" onClick={() => gotoPage(index - 1)}>
+          <a href="#"aria-label="Previous" onClick={() => gotoPage(index - 1)}>
             <span aria-hidden="true">{prevLabel}</span>
           </a>
         </li>
@@ -31,7 +31,7 @@ const Pagination = (props) => {
           )
         )}
         <li className={nextDisabled && 'disabled'}>
-          <a href={'#' + (index + 2)} aria-label="Next" onClick={() => gotoPage(index + 1)}>
+          <a href="#" aria-label="Next" onClick={() => gotoPage(index + 1)}>
             <span aria-hidden="true">{nextLabel}</span>
           </a>
         </li>
@@ -192,25 +192,6 @@ class DataGrid extends React.Component {
             Showing...
           </div>
           <div className="col-sm-6">
-            <div className="Page navigation">
-              <ul className="pagination">
-                <li>
-                  <a href="#" aria-label="Previous" onClick={() => this.prevPage()}>
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                {Array(total).fill().map((v, i) => (
-                  <li key={i} className={index === i && 'active'} >
-                    <a href="#" onClick={() => this.gotoPage(i)}>{i + 1}</a>
-                  </li>
-                ))}
-                <li>
-                  <a href="#" aria-label="Next" onClick={() => this.nextPage()}>
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
             <Pagination indexKeys={indexKeys} index={index} gotoPage={this.gotoPage} />
           </div>
         </div>

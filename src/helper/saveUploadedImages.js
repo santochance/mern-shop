@@ -132,7 +132,7 @@ const test = (testDir) => {
 
 }
 
-test()
-test('C:\\Users\\Vincent\\Data\\test_uploads\\599846b6dc7fa139e04a7f45')
+// test()
+// test('C:\\Users\\Vincent\\Data\\test_uploads\\599846b6dc7fa139e04a7f45')
 
 module.exports = saveImgs

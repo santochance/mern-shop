@@ -1,0 +1,36 @@
+// 设计思考：Pagination进一步整合成层以提高使用便捷性
+
+rawData: data,
+
+data: splitedData,
+page: {
+
+}
+displayer
+
+indexKeys
+index
+
+page {
+  size,
+  index,
+  total,
+
+  rawData,
+  currData,
+  genIndexDisplayer,
+  displayer,
+  indexKeys,
+  gotoPageCallback,
+  beforeGotoPage,
+  afterGotoPage,
+}
+
+gotoPage(page) {
+
+  callback({size, index, total})
+}
+
+<Pagination />
+
+<Pagination page={page} />

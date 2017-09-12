@@ -19,8 +19,6 @@ class ItemList extends React.Component {
     this.state = {
       itemlist: {
         title: 'ItemList',
-        count: 0,
-        price: 0,
         parent: null,
         children: [],
         checked: false,
@@ -92,15 +90,16 @@ class ItemList extends React.Component {
   }
 
   createItem(content, amount) {
+    let { price = 0, discount = 0, shipping = 0 } = content
     return {
       content,
       title: 'Item',
       amount: amount,
       count: 1,
-      price: content.price * amount || 0,
-      shipping: random(6),
-      discount: random(4),
-      realPay: random(8),
+      price: price * amount || 0,
+      discount: discount * amount || 0,
+      shipping: shipping * amount || 0,
+      realPay: (price - discount + shipping) * amount,
       parent: null,
       checked: false,
     }
@@ -109,8 +108,6 @@ class ItemList extends React.Component {
   createList(items) {
     return {
       title: 'Order',
-      count: 0,
-      price: 0,
       parent: null,
       children: [],
       checked: false,
@@ -282,7 +279,7 @@ class ItemList extends React.Component {
     item.checked = !item.checked
     this.updateChecked(item)
 
-    debugger
+    // debugger
 
     this.countDownwards(item)
     this.countUpwards(item)
