@@ -9,3 +9,34 @@
 
 .data-grid [class*="col-"] {
   height: auto; }
+
+.data-grid .tr {
+  display: table-row;
+  line-height: 3em; }
+
+.data-grid .th, .data-grid .td {
+  display: table-cell; }
+
+.desc-name,
+.cell-name {
+  width: 160px; }
+
+.desc-position,
+.cell-position {
+  width: 220px; }
+
+.desc-office,
+.cell-office {
+  width: 140px; }
+
+.desc-age,
+.cell-age {
+  width: 60px; }
+
+.desc-startDate,
+.cell-startDate {
+  width: 120px; }
+
+.desc-salary,
+.cell-salary {
+  width: 100px; }

@@ -4,6 +4,19 @@ const passport = require('passport')
 
 const User = require('mongoose').model('User')
 
+exports.userById = function(req, res, next, id) {
+  User.findOne({
+    _id: id
+  }, (err, user) => {
+    if (err) {
+      return next(err)
+    } else {
+      req.user = user
+      next()
+    }
+  })
+}
+
 exports.create = function(req, res, next) {
   console.log('new request come in to **Create** user:', req.body)
 
@@ -28,29 +41,6 @@ exports.list = function(req, res, next) {
     }
   })
 }
-
-exports.userById = function(req, res, next, id) {
-  User.findOne({
-    _id: id
-  }, (err, user) => {
-    if (err) {
-      return next(err)
-    } else {
-      req.user = user
-      next()
-    }
-  })
-}
-
-//
-// or use a helper function
-//
-
-// const getUserByid = function(id) {}
-// exports.read = function(req, res, next) {
-//   const user = getUserByid(req.params['userId'])
-//   res.status(200).json(req.user)
-// }
 
 exports.read = function(req, res, next) {
   res.json(req.user)

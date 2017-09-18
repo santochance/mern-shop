@@ -1,0 +1,96 @@
+.main-header {
+  position: relative;
+  max-height: 100px;
+  z-index: 1030; }
+  .main-header > .navbar {
+    margin-bottom: 0;
+    margin-left: 230px;
+    border: none;
+    max-height: 50px;
+    border-radius: 0; }
+  .main-header .sidebar-toggle {
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding: 11px 15px;
+    font-family: fontAwesome;
+    position: relative;
+    transition: all 0.3s ease;
+    max-height: 50px; }
+    .main-header .sidebar-toggle:before {
+      content: "\f0c9";
+      font-size: 21px; }
+    .main-header .sidebar-toggle:focus, .main-header .sidebar-toggle:active {
+      background: transparent; }
+  .main-header .logo {
+    display: block;
+    width: 230px;
+    height: 50px;
+    font-family: 'Niconne';
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 15px;
+    float: left;
+    overflow: hidden; }
+  .main-header .navbar-brand {
+    color: #fff; }
+  .main-header .top-nav {
+    list-style: none;
+    padding-left: 0;
+    display: inline-block;
+    float: right;
+    margin-bottom: 0;
+    margin-right: 50px; }
+    .main-header .top-nav > li {
+      display: inline-block;
+      position: relative; }
+      .main-header .top-nav > li > a {
+        display: block;
+        padding: 10px 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        line-height: 20px; }
+    .main-header .top-nav .settings-menu li a {
+      font-weight: 500;
+      text-transform: uppercase; }
+    .main-header .top-nav .notification-menu .dropdown-menu {
+      min-width: 230px; }
+      .main-header .top-nav .notification-menu .dropdown-menu i {
+        width: auto; }
+      .main-header .top-nav .notification-menu .dropdown-menu .fa-stack {
+        text-align: center; }
+      .main-header .top-nav .notification-menu .dropdown-menu .fa-stack-1x, .main-header .top-nav .notification-menu .dropdown-menu .fa-stack-2x {
+        width: 100%; }
+      .main-header .top-nav .notification-menu .dropdown-menu .fa-stack-2x {
+        font-size: 2em; }
+    .main-header .top-nav .notification-menu .media {
+      display: block;
+      border-bottom: 1px solid #ddd; }
+      .main-header .top-nav .notification-menu .media .block:not(.text-muted) {
+        font-weight: 500; }
+    .main-header .top-nav .notification-menu .not-head {
+      padding: 8px 20px;
+      text-align: center;
+      font-weight: 500;
+      background-color: rgba(0, 150, 136, 0.4);
+      color: #333; }
+    .main-header .top-nav .notification-menu .not-footer {
+      text-align: center;
+      background-color: #eee; }
+
+@media (max-width: 767px) {
+  .main-header {
+    position: relative; }
+    .main-header .logo {
+      width: 100%;
+      float: none; }
+    .main-header .navbar {
+      width: 100%;
+      float: none;
+      margin: 0; } }
+
+@media (max-width: 768px) {
+  .main-header .top-nav {
+    margin-right: 20px; } }

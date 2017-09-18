@@ -32,7 +32,9 @@ import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
 import ProductNew from './ProductNew.js'
+import OrderHistory from './OrderHistory.js'
 
+import Admin from './Admin.js'
 
 import {
   addItem,
@@ -139,9 +141,13 @@ class App extends Component {
             <Route path="/itemlist" component={ItemList} />
 
             <Route path="/confirmorder" component={ConfirmOrder} />
+            <Route path="/orderhistory" component={OrderHistory} />
+
+            <Route path="/admin" component={Admin}></Route>
           </div>
           <div className="sidebar" style={!expanded ? {
-            right: '-265px'
+            right: '-265px',
+            display: 'none',
           } : null}>
             <div className="btn-bar">
               <button className="btn btn-default"

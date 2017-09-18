@@ -20,7 +20,7 @@ const notice = function (req, res, next) {
   console.log('req.method:', req.method)
   console.log('req.url:', req.url)
   console.log('req.headers:', req.headers)
-  console.log('req.body:\n', JSON.stringify(req.body, null, 2).slice(0, 1000))
+  console.log('req.body:\n', JSON.stringify(req.body, null, 2).slice(0, 2000))
   console.log('############################################\n')
   next()
 }

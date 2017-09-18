@@ -1,0 +1,42 @@
+.order-history {
+
+  .tr {
+
+  }
+
+  .th, .td {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .th {
+    line-height: 3em;
+  }
+  .td {
+    padding: 8px 0;
+  }
+
+  .main-content {
+    width: 990px;
+  }
+
+  .cell-product {
+    width: 130px;
+  }
+  .cell-price {
+    width: 80px;
+  }
+  .cell-amount {
+    width: 80px;
+  }
+  .cell-refund {
+    width: 60px;
+  }
+  .cell-realPay,
+  .cell-empty-0 {
+    width: 80px;
+  }
+  .cell-status,
+  .cell-empty-1 {
+    width: 120px;
+  }
+}

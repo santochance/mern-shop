@@ -1,0 +1,32 @@
+.order-history .th, .order-history .td {
+  display: inline-block;
+  vertical-align: middle; }
+
+.order-history .th {
+  line-height: 3em; }
+
+.order-history .td {
+  padding: 8px 0; }
+
+.order-history .main-content {
+  width: 990px; }
+
+.order-history .cell-product {
+  width: 130px; }
+
+.order-history .cell-price {
+  width: 80px; }
+
+.order-history .cell-amount {
+  width: 80px; }
+
+.order-history .cell-refund {
+  width: 60px; }
+
+.order-history .cell-realPay,
+.order-history .cell-empty-0 {
+  width: 80px; }
+
+.order-history .cell-status,
+.order-history .cell-empty-1 {
+  width: 120px; }

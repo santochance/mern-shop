@@ -29,9 +29,14 @@ import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
 import ProductNew from './ProductNew.js'
+import OrderHistory from './OrderHistory.js'
+
+import Admin from './Admin.js'
 
 let views = [
   Home,
+  Admin,
+  OrderHistory,
   ProductNew,
   CreateProduct,
   TestCart,

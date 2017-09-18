@@ -7,8 +7,11 @@ var Braintree = require('../braintree/braintree.model');
 
 var OrderDetailsSchema = new Schema({
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
-  quantity: Number,
-  total: { type: Number, get: getPrice, set: setPrice }
+  amount: Number,
+  price: { type: Number, get: getPrice, set: setPrice },
+  discount: { type: Number, get: getPrice, set: setPrice },
+  shipping: { type: Number, get: getPrice, set: setPrice },
+  realPay: { type: Number, get: getPrice, set: setPrice },
 });
 
 var OrderSchema = new Schema({
@@ -16,8 +19,8 @@ var OrderSchema = new Schema({
   // billingAddress: String,
 
   // buyer details
-  // buyer: { type: Schema.Types.ObjectId, ref: 'User' },
-  buyer: String,
+  buyer: { type: Schema.Types.ObjectId, ref: 'User' },
+  // buyer: String,
 
   address: {
     name: String,
@@ -27,14 +30,14 @@ var OrderSchema = new Schema({
   items: [OrderDetailsSchema],
   // seller details
   shopName: String,
-  // seller: { type: Schema.Types.ObjectId, ref: 'User' },
-  seller: String,
+  seller: { type: Schema.Types.ObjectId, ref: 'User' },
+  // seller: String,
   message: String,
   // price details
   price: { type: Number, get: getPrice, set: setPrice },
   discount: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
   shipping: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
-  total: { type: Number, required: true, get: getPrice, set: setPrice },
+  total: { type: Number, get: getPrice, set: setPrice },
   paymentStatus: Schema.Types.Mixed,
   paymentType: { type: String, default: 'braintree' },
   nonce: String,
@@ -48,10 +51,10 @@ var OrderSchema = new Schema({
 
 // execute payment
 OrderSchema.pre('validate', function (next) {
-  if(!this.nonce) { return next(); }
+  if (!this.nonce) { return next(); }
   executePayment(this, function (err, result) {
     this.paymentStatus = result;
-    if(err || !result.success){
+    if (err || !result.success) {
       this.status = 'failed. ' + result.errors + err;
       next(err || result.errors);
     } else {

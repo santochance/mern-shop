@@ -106,7 +106,13 @@ exports.create = function(req, res) {
   // 查询获取product._id
   // 然后以此作为dirName保存files
   // console.log('req.files', req.files)
+  let catalog_ids = req.body.categroies.map(cata => ({_id: Schema.Type.ObjectId(cata)}))
+
   Product.createAsync(req.body)
+    // .then(product => {
+    //  return Catalog.find({'_id': {$in: catalog_ids}})
+    //     .then(categories => ({...product, categories}))
+    // })
     .then(saveUploadedImages(req.files.images, uploadDir))
     .then(respondWithResult(res, 201))
     .catch(handleError(res))

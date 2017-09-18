@@ -7,6 +7,8 @@
 'use strict'
 
 const Order = require('../models/order.model')
+const User = require('../models/user.server.model')
+const Product = require('../models/product.model')
 
 function handleError(res, statusCode = 500) {
   return function(err) {
@@ -57,12 +59,24 @@ function removeEntity(res) {
 
 exports.create = function(req, res) {
   // req.body是一个orders数组
+  let mongoose = User.base
+  let orders = req.body
 
-  // 查询user
-  // 查询seller
-  // 填充更新orders数组
+  orders.map(order => {
+    order.buyer = new mongoose.Types.ObjectId(order.buyer)
+    order.seller = new mongoose.Types.ObjectId(order.seller)
+    order.items = order.items.map(item =>
+      Object.assign(item, {
+        product: new mongoose.Types.ObjectId(item.product)
+      })
+    )
 
-  Order.createAsync(req.body)
+    debugger
+
+    return order
+  })
+
+  Order.createAsync(orders)
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
 }
@@ -88,7 +102,7 @@ exports.update = function(req, res) {
   Order.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
-    .then(responseWithResult(res))
+    .then(respondWithResult(res))
     .catch(handleError(res))
 }
 

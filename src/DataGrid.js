@@ -1,44 +1,14 @@
 import React from 'react'
 
+import _ from 'lodash'
+
 import { random, randomDate, randomPharse } from './helper/randoms.js'
 import splitArray from './helper/splitArray.js'
 import genIndexDisplay from './helper/genIndexDisplayer.js'
+
+import Page from './helper/page.js'
+
 import './DataGrid.css'
-
-const Pagination = (props) => {
-  let { indexKeys, prevLabel = '\u00AB', nextLabel = '\u00BB', index, gotoPage } = props
-  let prevDisabled = !indexKeys[0]
-  let nextDisabled = !indexKeys.slice(-1)[0]
-
-  // console.log('indexKeys in pagination:', indexKeys)
-  console.log('num keys', indexKeys.slice(1, -1))
-  return (
-    <div className="Page navigation">
-      <ul className="pagination">
-        <li className={prevDisabled && 'disabled'}>
-          <a href="#"aria-label="Previous" onClick={() => gotoPage(index - 1)}>
-            <span aria-hidden="true">{prevLabel}</span>
-          </a>
-        </li>
-        {indexKeys.slice(1, -1).map((key, i) =>
-          (key === '...') ? (
-            <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>
-          ) : (
-            <li key={i} className={typeof key === 'string' && 'active'}
-              onClick={() => gotoPage(parseInt(key) - 1)}>
-              <a href={'#' + key}>{key}</a>
-            </li>
-          )
-        )}
-        <li className={nextDisabled && 'disabled'}>
-          <a href="#" aria-label="Next" onClick={() => gotoPage(index + 1)}>
-            <span aria-hidden="true">{nextLabel}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  )
-}
 
 class DataGrid extends React.Component {
   constructor(props) {
@@ -149,12 +119,16 @@ class DataGrid extends React.Component {
     // page.index是0-based, displayer的1-based的
     let indexKeys = displayer && displayer.show(index + 1)
 
+    let desc = ['Name', 'Position', 'Office', 'Age', 'Start date', 'Salary']
+    desc = desc.map(d => (
+      {
+        label: d,
+        className: _.camelCase(d),
+      }
+    ))
+
     if (!data) return null
 
-    console.log('page:', page)
-    console.log('data:', data)
-
-    console.log('indexKeys:', indexKeys)
     return (
       <div className="data-grid">
         <div className="row">
@@ -169,7 +143,10 @@ class DataGrid extends React.Component {
               entries
             </label>
           </div>
-          <div className="col-sm-6"></div>
+          <div className="col-sm-6">
+
+          </div>
+          <DescRow className="col-sm-12" desc={desc}></DescRow>
         </div>
         <div className="row">
           <div className="col-sm-12">
@@ -195,9 +172,88 @@ class DataGrid extends React.Component {
             <Pagination indexKeys={indexKeys} index={index} gotoPage={this.gotoPage} />
           </div>
         </div>
+
+        <div className="row">
+          <div className="col-sm-12">
+            <DescRow desc={desc} />
+          </div>
+        </div>
+        {data[index].map((d, i) => (
+          <div className="row">
+            <div className="col-sm-12">
+              <CellRow data={d} />
+            </div>
+          </div>
+        ))}
       </div>
     )
   }
+}
+
+const DescRow = (props) => {
+  let { desc } = props
+
+  // desc = {
+  //   label: 'Name',
+  //   className: 'name'
+  // }
+
+  return (
+    <div className="tr desc-row">
+      {desc.map((d, i) => (
+        <div className={'th desc-' + d.className}>{d.label}</div>
+      ))}
+    </div>
+  )
+}
+
+const CellRow = (props) => {
+  let { data } = props
+
+  return (
+    <div className="tr item-row">
+      <div className={'td cell-name'}>{data.name}</div>
+      <div className={'td cell-position'}>{data.position}</div>
+      <div className={'td cell-office'}>{data.office}</div>
+      <div className="td cell-age">{data.age}</div>
+      <div className={'td cell-startDate'}>{data.startDate}</div>
+      <div className={'td cell-salary'}>{data.salary}</div>
+    </div>
+  )
+}
+
+const Pagination = (props) => {
+  let { indexKeys, prevLabel = '\u00AB', nextLabel = '\u00BB', index, gotoPage } = props
+  let prevDisabled = !indexKeys.all[0]
+  let nextDisabled = !indexKeys.all.slice(-1)[0]
+
+  // console.log('indexKeys in pagination:', indexKeys)
+  return (
+    <div className="Page navigation">
+      <ul className="pagination">
+        <li className={prevDisabled && 'disabled'}>
+          <a href="#"aria-label="Previous" onClick={() => gotoPage(index - 1)}>
+            <span aria-hidden="true">{prevLabel}</span>
+          </a>
+        </li>
+        {indexKeys.all.slice(1, -1).map((key, i) =>
+          (key === '...') ? (
+            <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>
+          ) : (
+            <li key={i} className={typeof key === 'string' && 'active'}
+              onClick={() => gotoPage(parseInt(key) - 1)}>
+              <a href={'#' + key}>{key}</a>
+            </li>
+          )
+        )}
+        <li className={nextDisabled && 'disabled'}>
+          <a href="#" aria-label="Next" onClick={() => gotoPage(index + 1)}>
+            <span aria-hidden="true">{nextLabel}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  )
 }
 
 export default DataGrid

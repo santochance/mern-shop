@@ -115,5 +115,4 @@ UserSchema.set('toJSON', {
 
 
 // Create the 'User' model out of the 'UserSchema'
-mongoose.model('User', UserSchema);
-
+module.exports = mongoose.model('User', UserSchema);

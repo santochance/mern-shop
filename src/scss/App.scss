@@ -1,30 +1,30 @@
-.sidebar {
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 300px;
-  height: 100vh;
+// .sidebar {
+//   position: fixed;
+//   right: 0;
+//   top: 0;
+//   width: 300px;
+//   height: 100vh;
 
-  background-color: silver;
+//   background-color: silver;
 
-  .btn-bar {
-    height: 100%;
-    float: left;
-    background-color: gray;
-    outline: 1px solid lime;
-  }
+//   .btn-bar {
+//     height: 100%;
+//     float: left;
+//     background-color: gray;
+//     outline: 1px solid lime;
+//   }
 
-  .content {
-    // float: left;
-    height: 100%;
-    background-color: hsla(60, 100%, 60%, .3);
-  }
+//   .content {
+//     // float: left;
+//     height: 100%;
+//     background-color: hsla(60, 100%, 60%, .3);
+//   }
 
-  .btn {
-    display: block;
-    width: calc(1em + 20px);
-    padding: 10px;
-    white-space: normal;
-    word-break: break-all;
-  }
-}
+//   .btn {
+//     display: block;
+//     width: calc(1em + 20px);
+//     padding: 10px;
+//     white-space: normal;
+//     word-break: break-all;
+//   }
+// }

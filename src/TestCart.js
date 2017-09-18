@@ -137,10 +137,9 @@ export default class TestCart extends ItemList {
 
   // pagination
   paginate(data, size, index = 0) {
-    if (!size) {}
     let splitedData = splitArray(data, size)
     let total = splitedData.length
-    let displayer = genIndexDisplay({ max: total - 1 })
+    let displayer = genIndexDisplay({ total })
 
     return {
       rawData: data,
@@ -237,8 +236,8 @@ const ProductList = (props) => {
 
 const Pagination = (props) => {
   let { indexKeys, prevLabel = '\u00AB', nextLabel = '\u00BB', index, gotoPage } = props
-  let prevDisabled = !indexKeys[0]
-  let nextDisabled = !indexKeys.slice(-1)[0]
+  let prevDisabled = !indexKeys.all[0]
+  let nextDisabled = !indexKeys.all.slice(-1)[0]
 
   // console.log('indexKeys in pagination:', indexKeys)
   // console.log('num keys', indexKeys.slice(1, -1))
@@ -250,7 +249,7 @@ const Pagination = (props) => {
             <span aria-hidden="true">{prevLabel}</span>
           </a>
         </li>
-        {indexKeys.slice(1, -1).map((key, i) =>
+        {indexKeys.all.slice(1, -1).map((key, i) =>
           (key === '...') ? (
             <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>
           ) : (
