@@ -5,10 +5,20 @@
 
   .tr {
     display: table-row;
+    line-height: 3em;
+
+    background-color: #fff;
   }
 
-  .td {
+  .th, .td {
     display: table-cell;
+    box-sizing: border-box;
+    border: 1px solid silver;
+    text-align: center;
+  }
+
+  .th {
+    font-weight: bold;
   }
 }
 
@@ -17,18 +27,6 @@
     height: auto;
   }
 }
-
-.data-grid {
-  .tr {
-    display: table-row;
-    line-height: 3em;
-  }
-
-  .th, .td {
-    display: table-cell;
-  }
-}
-
 
 .desc-name,
 .cell-name {

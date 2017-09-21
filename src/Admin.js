@@ -28,7 +28,6 @@ class Admin extends React.Component {
   }
 }
 
-
 var Sidebar = React.createClass({
   render: function() {
     return (

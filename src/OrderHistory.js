@@ -84,7 +84,7 @@ class OrderHistory extends React.Component {
         <Pagination indexKeys={indexKeys} index={index}
           gotoPage={(index) => page.goto(index)} />
         */}
-        <Pagination page={page} indexKeys={indexKeys} index={index} gotoPage={(index) => page.goto(index)} />
+        <Pagination page={page} />
       </div>
     )
   }
@@ -92,20 +92,16 @@ class OrderHistory extends React.Component {
 }
 
 const Pagination = (props) => {
-  let {
-    indexKeys,
-    prevLabel = '\u00AB',
-    nextLabel = '\u00BB',
-    gotoPage,
-    index,
-    page
-  } = props
+  let { page } = props
+  let { index, indexKeys } = page
+  let prevLabel = '\u00AB'
+  let nextLabel = '\u00BB'
 
   return (
     <div className="Page navigation">
       <ul className="pagination">
         <li className={indexKeys.prev || 'disabled'}>
-          <a href={'#'} aria-label="Previous" onClick={() => gotoPage(index - 1)}>
+          <a href={'#'} aria-label="Previous" onClick={() => page.goto(index - 1)}>
             <span aria-hidden="true">{prevLabel}</span>
           </a>
         </li>
@@ -114,13 +110,13 @@ const Pagination = (props) => {
             <span key={i} style={{float: 'left', padding: '6px 12px'}}>{key}</span>
           ) : (
             <li key={i} className={typeof key === 'string' && 'active'}
-              onClick={() => gotoPage(parseInt(key) - 1)}>
+              onClick={() => page.goto(parseInt(key) - 1)}>
               <a href={'#'}>{key}</a>
             </li>
           )
         )}
         <li className={indexKeys.next || 'disabled'}
-          onClick={() => gotoPage(index + 1)}>
+          onClick={() => page.goto(index + 1)}>
           <a href={'#'} aria-label="Next">
             <span aria-hidden="true">{nextLabel}</span>
           </a>

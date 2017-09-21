@@ -1,5 +1,7 @@
 import React from 'react'
 
+import _ from 'lodash'
+
 import { random, randomDate, randomPharse } from './helper/randoms.js'
 import Page from './helper/page.js'
 

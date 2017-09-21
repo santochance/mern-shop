@@ -5,10 +5,17 @@ const should = require('should')
 
 class Page {
   constructor(data, size, index) {
-    this.init(data, size, index)
+    this.init({ data, size, index })
   }
 
-  init(data, size, index = 0) {
+  init({ data, size, index = 0, sort }) {
+    data = data || this._rawdata
+    size = size || this.size
+
+    if (sort) {
+      data = this.sorting(data, sort)
+    }
+
     let entries = splitArray(data, size)
     let total = entries.length
     let displayer = genIndexDisplay({ total })
@@ -20,12 +27,23 @@ class Page {
       data: entries[index],
       size,
       total,
+      sort,
     })
     this.goto(index)
   }
 
+  sorting(entries, sort) {
+    // 需要考虑不同数据类型的排序
+    let {key, type = 'desc'} = sort
+    let sorter
+    sorter = type === 'asc'
+      ? (a, b) => a[key] - b[key]
+      : (a, b) => b[key] - a[key]
+    return entries.sort(sorter)
+  }
+
   switchSize(size) {
-    this.init(this._rawdata, size)
+    this.init({ size })
   }
 
   goto(index) {
@@ -46,6 +64,10 @@ class Page {
   }
   prev() {
     this.goto(this.index - 1)
+  }
+
+  sortBy(sort) {
+    this.init({ sort })
   }
 }
 
@@ -141,13 +163,14 @@ const test = () => {
   unittest(size)
 
   let n = 10
-  while(n--) {
+  while (n--) {
     size = _.random(2, 10)
     page.switchSize(size)
     unittest(size)
   }
 }
 
+// 目前没有测试sortBy
 // test()
 
 module.exports = Page

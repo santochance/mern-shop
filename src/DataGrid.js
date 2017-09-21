@@ -1,5 +1,4 @@
 import React from 'react'
-
 import _ from 'lodash'
 
 import { random, randomDate, randomPharse } from './helper/randoms.js'
@@ -10,6 +9,9 @@ import Page from './helper/page.js'
 
 import './DataGrid.css'
 
+import 'react-virtualized/styles.css'
+import { Column, Table } from 'react-virtualized'
+
 class DataGrid extends React.Component {
   constructor(props) {
     super(props);
@@ -19,22 +21,62 @@ class DataGrid extends React.Component {
         index: 0
       }
     }
-    this.gotoPage = this.gotoPage.bind(this)
   }
 
   componentDidMount() {
-    let { size, index } = this.state.page
-
-    let pageCfg = this.paginate(this.genFakeDate(100), size, index)
-
-    this.setState({
-      ...this.state,
-      ...pageCfg,
+    let size = 5
+    Object.assign(this, {
+      page: new Page(this.genFakeData(100), 5)
     })
 
+    // desc数据
+    let desc = ['Name', 'Position', 'Office', 'Age', 'Start Date', 'Salary']
+    desc = desc.map(d => (
+      {
+        label: _.startCase(d),
+        key: _.camelCase(d),
+        className: _.snakeCase(d),
+      }
+    ))
+
+    this.toggleSorting(desc[0].key)
+    // 调用一次setState触发render()
+    this.setState({ ...this.state, desc })
   }
 
-  genFakeDate(num = 10) {
+  // loadData
+  loadData(url, query) {
+    if (query) {
+      let querySegs = []
+      if (Array.isArray(query)) {
+        querySegs = query
+      } else if ({}.toString.call(query).slice(8, -1) === 'Object') {
+        querySegs = Object.entries(query)
+          .map(([key, value]) => `${key}=${value}`)
+      } else {
+        querySegs = Array.from(arguments).slice(1)
+      }
+
+      let queryStr = querySegs.join('&')
+      queryStr && (
+        url += '?' + encodeURI(queryStr)
+      )
+    }
+
+    return new Promise((resolve, reject) =>
+      fetch(url)
+        .then(res => {
+          if (res.ok) {
+            res.json().then(data => resolve(data))
+          } else {
+            reject(res)
+          }
+        })
+        .catch(err => reject(err))
+    )
+  }
+
+  genFakeData(num = 10) {
     // fakeData
     /*
     var schema = {
@@ -58,157 +100,169 @@ class DataGrid extends React.Component {
     ))
   }
 
-  paginate(data, size, index = 0) {
-    if (!size) {}
-    let splitedData = splitArray(data, size)
-    let total = splitedData.length
-    let displayer = genIndexDisplay({ max: total })
-
-    return {
-      rawData: data,
-      data: splitedData,
-      page: {
-        size,
-        index,
-        total,
-      },
-      displayer
-    }
-  }
-
   switchSize(e) {
-    let { rawData, page: { index } } = this.state
-    let size = e.target.value
+    this.page.switchSize(e.target.value)
+    // 触发render()
+    this.setState({...this.state})
+  }
 
-    let updates = this.paginate(rawData, size, index)
+  toggleSorting(key) {
+    let page = this.page
+    let { key: prevKey, type: prevType } = page.sort || {}
+    // 如果sort使用的key改变了，不再使用上一次的sort.type状态
+    if (key !== prevKey) { prevType = null }
+    // 先升序后降序，依次切换
+    let type = prevType === 'asc' ? 'desc' : 'asc'
 
-    this.setState({
-      ...this.state,
-      ...updates
+    page.sortBy({
+      key,
+      type,
     })
-  }
-
-  prevPage() {
-    this.gotoPage(this.state.page.index - 1)
-  }
-
-  nextPage() {
-    this.gotoPage(this.state.page.index + 1)
-  }
-
-  gotoPage(index) {
-    let { page } = this.state
-    let total = page.total
-
-    // 修正index
-    index = index >= 0
-      ? index < total
-        ? index
-        : total - 1
-      : 0
-
-    // 应用index
-    page.index = index
-    this.setState({...this.state, page})
-
+    this.setState({...this.state})
   }
 
   render() {
-    let { data, page, displayer } = this.state
-    let { size, index, total } = page
-    // page.index是0-based, displayer的1-based的
-    let indexKeys = displayer && displayer.show(index + 1)
+    let { page } = this
+    if (!page) return null
 
-    let desc = ['Name', 'Position', 'Office', 'Age', 'Start date', 'Salary']
-    desc = desc.map(d => (
-      {
-        label: d,
-        className: _.camelCase(d),
+    let {
+      data,
+      index,
+      indexKeys,
+    } = page
+
+    let { desc } = this.state
+
+    function sortingIcon (props) {
+      let { key, type } = page.sort || {}
+      let currKey = props.sortingKey
+
+      if (currKey === key) {
+        return (
+          <div>{type}</div>
+        )
+      } else {
+        return null
       }
-    ))
-
-    if (!data) return null
+    }
 
     return (
       <div className="data-grid">
-        <div className="row">
-          <div className="col-sm-6">
-            <label htmlFor="pickSize">
-               Show
-              <select name="size" id="pickSize" onChange={(e) => this.switchSize(e)}>
-                {['5', '10', '20', '25', '50'].map((size, i) => (
-                  <option key={i} value={size}>{size}</option>
-                ))}
-              </select>
-              entries
-            </label>
-          </div>
-          <div className="col-sm-6">
 
-          </div>
-          <DescRow className="col-sm-12" desc={desc}></DescRow>
-        </div>
-        <div className="row">
-          <div className="col-sm-12">
-            <div className="data-grid-container">
-              {data[index].map((item, i) => (
-                <div key={i} className="tr data-grid-item">
-                  <div className="td item-name">{item.name}</div>
-                  <div className="td item-position">{item.position}</div>
-                  <div className="td item-office">{item.office}</div>
-                  <div className="td item-age">{item.age}</div>
-                  <div className="td item-startDate">{item.startDate}</div>
-                  <div className="td item-salary">￥{item.salary}</div>
-                </div>
-              ))}
+        <div className="gridview-wrapper">
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="btn-group">
+                <button className="btn btn-primary add-btn">Add</button>
+                <button className="btn btn-info edit-btn">Edit</button>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-6">
-            Showing...
+          <div className="row">
+            <div className="col-sm-6">
+              <label htmlFor="pickSize">
+                 Show
+                <select name="size" id="pickSize" onChange={(e) => this.switchSize(e)}>
+                  {['5', '10', '20', '25', '50'].map((size, i) => (
+                    <option key={i} value={size}>{size}</option>
+                  ))}
+                </select>
+                entries
+              </label>
+            </div>
           </div>
-          <div className="col-sm-6">
-            <Pagination indexKeys={indexKeys} index={index} gotoPage={this.gotoPage} />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-sm-12">
-            <DescRow desc={desc} />
-          </div>
-        </div>
-        {data[index].map((d, i) => (
           <div className="row">
             <div className="col-sm-12">
-              <CellRow data={d} />
+              <Grid
+                columns={desc}
+                entries={data}
+                headerRowRenderer={DescRow}
+                rowRenderer={CellRow}
+                sort={(key) => this.toggleSorting(key)}
+                sortIconRenderer={sortingIcon}
+              />
             </div>
           </div>
-        ))}
+          <div className="row">
+            <div className="col-sm-3">
+              Showing...
+            </div>
+            <div className="col-sm-9">
+              <Pagination page={page} />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <TestTable list={data} />
+        </div>
       </div>
     )
   }
 }
 
-const DescRow = (props) => {
-  let { desc } = props
+const GridHeader = (props) => {
 
-  // desc = {
-  //   label: 'Name',
-  //   className: 'name'
+  return (
+    <div>Grid Header</div>
+  )
+}
+
+const GridFooter = (props) => {
+
+  return (
+    <div>Grid Footer</div>
+  )
+}
+
+const Grid = (props) => {
+  // {
+  //   columns: Array,
+  //   entries: Array,
+  //   rowRenderer: Function Component,
+  //   headerRowRenderer: Function Component,
+  //   sort: Function,
   // }
+
+  let { headerRowRenderer, rowRenderer, entries } = props
+
+  return React.createElement(
+    'div',
+    { className: 'data-grid-container' },
+    [
+      headerRowRenderer({...props}),
+      ...entries.map((entry, i) =>
+        (rowRenderer({entry, ...props})))
+    ]
+  )
+}
+
+const DescRow = (props) => {
+  let {
+    columns: desc,
+    sort: onToggleSorting,
+    sortIconRenderer: RenderSortingIcon
+  } = props
 
   return (
     <div className="tr desc-row">
       {desc.map((d, i) => (
-        <div className={'th desc-' + d.className}>{d.label}</div>
+        <div key={i}
+          className={'th desc-' + d.className}
+          onClick={() => onToggleSorting(d.key)}
+        >
+          {d.label}
+          <RenderSortingIcon sortingKey={d.key} />
+        </div>
       ))}
     </div>
   )
 }
 
 const CellRow = (props) => {
-  let { data } = props
+  let {
+    entry: data
+  } = props
 
   return (
     <div className="tr item-row">
@@ -217,42 +271,89 @@ const CellRow = (props) => {
       <div className={'td cell-office'}>{data.office}</div>
       <div className="td cell-age">{data.age}</div>
       <div className={'td cell-startDate'}>{data.startDate}</div>
-      <div className={'td cell-salary'}>{data.salary}</div>
+      <div className={'td cell-salary'}>￥{data.salary}</div>
     </div>
   )
 }
 
 const Pagination = (props) => {
-  let { indexKeys, prevLabel = '\u00AB', nextLabel = '\u00BB', index, gotoPage } = props
-  let prevDisabled = !indexKeys.all[0]
-  let nextDisabled = !indexKeys.all.slice(-1)[0]
+  let { page } = props
+  let { index, indexKeys } = page
+  let prevLabel = '\u00AB'
+  let nextLabel = '\u00BB'
 
-  // console.log('indexKeys in pagination:', indexKeys)
   return (
     <div className="Page navigation">
       <ul className="pagination">
-        <li className={prevDisabled && 'disabled'}>
-          <a href="#"aria-label="Previous" onClick={() => gotoPage(index - 1)}>
+        <li className={indexKeys.prev || 'disabled'}>
+          <a href={'#'} aria-label="Previous" onClick={() => page.goto(index - 1)}>
             <span aria-hidden="true">{prevLabel}</span>
           </a>
         </li>
         {indexKeys.all.slice(1, -1).map((key, i) =>
           (key === '...') ? (
-            <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>
+            <span key={i} style={{float: 'left', padding: '6px 12px'}}>{key}</span>
           ) : (
             <li key={i} className={typeof key === 'string' && 'active'}
-              onClick={() => gotoPage(parseInt(key) - 1)}>
-              <a href={'#' + key}>{key}</a>
+              onClick={() => page.goto(parseInt(key) - 1)}>
+              <a href={'#'}>{key}</a>
             </li>
           )
         )}
-        <li className={nextDisabled && 'disabled'}>
-          <a href="#" aria-label="Next" onClick={() => gotoPage(index + 1)}>
+        <li className={indexKeys.next || 'disabled'}
+          onClick={() => page.goto(index + 1)}>
+          <a href={'#'} aria-label="Next">
             <span aria-hidden="true">{nextLabel}</span>
           </a>
         </li>
       </ul>
     </div>
+  )
+}
+
+const TestTable = (props) => {
+  let { list } = props
+
+  return (
+    <Table
+      width={990}
+      height={300}
+      headerHeight={20}
+      rowHeight={30}
+      rowCount={list.length}
+      rowGetter={({ index }) => list[index]}
+    >
+      <Column
+        label="Name"
+        dataKey="name"
+        width={160}
+      />
+      <Column
+        label="Position"
+        dataKey="position"
+        width={200}
+      />
+      <Column
+        label="Office"
+        dataKey="office"
+        width={140}
+      />
+      <Column
+        label="Age"
+        dataKey="age"
+        width={60}
+      />
+      <Column
+        label="Start Date"
+        dataKey="startDate"
+        width={120}
+      />
+      <Column
+        label="Salary"
+        dataKey="salary"
+        width={100}
+      />
+    </Table>
   )
 }
 

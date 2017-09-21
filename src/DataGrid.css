@@ -3,19 +3,19 @@
   margin: 5px 20px;
   width: 100%; }
   .data-grid-container .tr {
-    display: table-row; }
-  .data-grid-container .td {
-    display: table-cell; }
+    display: table-row;
+    line-height: 3em;
+    background-color: #fff; }
+  .data-grid-container .th, .data-grid-container .td {
+    display: table-cell;
+    box-sizing: border-box;
+    border: 1px solid silver;
+    text-align: center; }
+  .data-grid-container .th {
+    font-weight: bold; }
 
 .data-grid [class*="col-"] {
   height: auto; }
-
-.data-grid .tr {
-  display: table-row;
-  line-height: 3em; }
-
-.data-grid .th, .data-grid .td {
-  display: table-cell; }
 
 .desc-name,
 .cell-name {
