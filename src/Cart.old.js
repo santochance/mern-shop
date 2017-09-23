@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React, { Component } from 'react'
 import './Cart.css'
 import './ConfirmOrder.css'

@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
@@ -35,6 +37,8 @@ import ProductNew from './ProductNew.js'
 import OrderHistory from './OrderHistory.js'
 
 import Admin from './Admin.js'
+import UserCrud from './UserCrud.js'
+import UserAdmin from './components/UserAdmin.js'
 
 import {
   addItem,
@@ -106,6 +110,7 @@ class App extends Component {
           <DevIndex />
           <SiteNav />
           <div className="page">
+            <Route path="/useradmin" component={UserAdmin}></Route>
             <Route path="/productnew" component={ProductNew}></Route>
             <Route exact path="/" component={Home}></Route>
             <Route path="/home" component={Home}></Route>
@@ -144,6 +149,8 @@ class App extends Component {
             <Route path="/orderhistory" component={OrderHistory} />
 
             <Route path="/admin" component={Admin}></Route>
+            <Route path="/usercrud" component={UserCrud}></Route>
+
           </div>
           <div className="sidebar" style={!expanded ? {
             right: '-265px',

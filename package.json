@@ -3,15 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-app-rewired start",
     "server": "nodemon -w server ./server/server.js",
     "watch": "gulp watch",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
     "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express,Gulp\" -c \"bgGreen.bold,bgBlue.bold,bgYellow.bold\" \"npm start\" \"npm run server\" \"npm run watch\" --allow-restart"
   },
   "dependencies": {
+    "antd": "^2.13.3",
     "bluebird": "^3.5.0",
     "bootstrap": "^3.3.7",
     "braintree": "^2.2.0",
@@ -29,6 +30,7 @@
     "react-virtualized": "^9.10.0"
   },
   "devDependencies": {
+    "babel-plugin-import": "^1.5.0",
     "body-parser": "^1.17.2",
     "connect": "^3.6.3",
     "connect-multiparty": "^2.0.0",
@@ -57,6 +59,7 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "react-app-rewired": "^1.2.9",
     "react-bootstrap": "^0.31.2",
     "should": "^11.1.1",
     "supertest": "^2.0.1"

@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 // import Cart from './Cart.js'
 import ItemList from './ItemList.js'
@@ -93,7 +95,7 @@ export default class TestCart extends ItemList {
     }
 
     fetch('/products')
-      .then(req => req.json())
+      .then(res => res.json())
       // .then(products => this.setState({ ...this.state, products }))
       .then(configPagination.bind(this))
       .catch(console.error)

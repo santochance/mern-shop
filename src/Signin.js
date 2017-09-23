@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
+import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
 
 function form2json(form) {
   let controls = form.elements

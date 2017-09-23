@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 

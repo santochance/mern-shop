@@ -48,7 +48,7 @@ class Search extends React.Component {
 }
 
 const ProductGrid = withRouter((props) => {
-
+  /*
   function showDetail(props, id) {
     console.log('load data to show product')
     fetch(`/products/${id}`)
@@ -60,6 +60,7 @@ const ProductGrid = withRouter((props) => {
         })
       })
   }
+   */
 
   return (
     <div className="product-grid grid">

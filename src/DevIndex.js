@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 import React from 'react'
 import {
   BrowserRouter as Router,
@@ -29,12 +31,16 @@ import DataGrid from './DataGrid.js'
 import ItemList from './ItemList.js'
 
 import ProductNew from './ProductNew.js'
-import OrderHistory from './OrderHistory.js'
+import OrderHistory from './OrderHistory.js';
 
 import Admin from './Admin.js'
+import UserCrud from './UserCrud.js'
+import UserAdmin from './components/UserAdmin.js'
 
 let views = [
   Home,
+  UserAdmin,
+  UserCrud,
   Admin,
   OrderHistory,
   ProductNew,
