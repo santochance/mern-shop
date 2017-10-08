@@ -100,7 +100,12 @@ class UserCrud extends React.Component {
       .catch(console.error)
   }
 
-  openModal ({ mode, entry = {username: 'test' + Date.now(), password: 'password', email: 'email@xx.com'}, title }) {
+  openModal ({ mode, entry, title }) {
+    entry = entry || {
+      username: 'test' + Date.now(),
+      password: 'password',
+      email: 'email@xx.com'
+    }
     this.setState({
       showModal: true,
       modalMode: mode,

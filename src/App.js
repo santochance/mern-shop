@@ -19,7 +19,7 @@ import DevIndex from './DevIndex.js'
 
 import SiteNav from './SiteNav.js'
 import Home from './Home.js'
-import Signup from './Signup.js'
+// import Signup from './Signup.js'
 import Signin from './Signin.js'
 import Search from './Search.js'
 import SearchResult from './SearchResult.js'
@@ -39,6 +39,8 @@ import OrderHistory from './OrderHistory.js'
 import Admin from './Admin.js'
 import UserCrud from './UserCrud.js'
 import UserAdmin from './components/UserAdmin.js'
+import { Login, Signup, UserCenter } from './components'
+import EditUserForm from './components/EditUserForm.js'
 
 import {
   addItem,
@@ -110,6 +112,9 @@ class App extends Component {
           <DevIndex />
           <SiteNav />
           <div className="page">
+            <Route path="/usercenter" component={UserCenter} />
+            <Route path="/edituserform" component={EditUserForm} />
+            <Route path="/login" component={Login} />
             <Route path="/useradmin" component={UserAdmin}></Route>
             <Route path="/productnew" component={ProductNew}></Route>
             <Route exact path="/" component={Home}></Route>

@@ -10,7 +10,7 @@ import {
 import './DevIndex.css'
 
 import Home from './Home.js'
-import Signup from './Signup.js'
+// import Signup from './Signup.js'
 import Signin from './Signin.js'
 import Search from './Search.js'
 import SearchResult from './SearchResult.js'
@@ -36,9 +36,15 @@ import OrderHistory from './OrderHistory.js';
 import Admin from './Admin.js'
 import UserCrud from './UserCrud.js'
 import UserAdmin from './components/UserAdmin.js'
+import { Login, Signup, UserCenter } from './components'
+import EditUserForm from './components/EditUserForm.js'
 
 let views = [
   Home,
+  EditUserForm,
+  UserCenter,
+  Login,
+  Signup,
   UserAdmin,
   UserCrud,
   Admin,
@@ -47,7 +53,7 @@ let views = [
   CreateProduct,
   TestCart,
   ConfirmOrder,
-  Signup,
+  // Signup,
   Signin,
   // Search,
   // SearchResult,

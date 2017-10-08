@@ -45,7 +45,7 @@ const SiteNav = withRouter(({ history }) => {
         <span>
           <img width="30" height="30" src="" alt="Avarta"/><span>{auth.username}</span>
         </span>
-        <Link to="/signin" onClick={handleClick({})} className="btn btn-info">Sign out</Link>
+        <Link to="/login" onClick={handleClick({})} className="btn btn-info">Sign out</Link>
       </div>
     ) : (
       <div className="site-nav">

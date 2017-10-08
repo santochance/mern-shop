@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Fo",
+				"TestAutoMakeFold.js"
+			],
+			[
 				"OrderHis",
 				"OrderHistory.js"
 			],
@@ -510,31 +514,76 @@
 			[
 				"bascss",
 				"base-info.scss\t(main.scss)"
-			],
-			[
-				"wrapper-ani",
-				"wrapper-anim.scss"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "import React from 'react'\nimport {\n  NavBar,\n  Nav,\n  NavItem,\n} from 'react-bootstrap'\n\nclass Admin extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n\n    }\n  }\n\n  render() {\n    return (\n      <div className=\"admin\">\n        <div className=\"app-bar\"></div>\n        <Navbar>\n          <Navbar.Header>\n            <Navbar.Brand>\n              <a href=\"#\">Mern-Shop</a>\n            </Navbar.Brand>\n          </Navbar.Header>\n          <Navbar.Collapse>\n            <Nav>\n              <NavDropdown eventKey={1} title=\"Dropdown\" id=\"basic-nav-dropdown\">\n                <MenuItem eventKey={1.1}>Action</MenuItem>\n                <MenuItem eventKey={1.2}>Another action</MenuItem>\n                <MenuItem eventKey={1.3}>Something else here</MenuItem>\n                <MenuItem divider />\n                <MenuItem eventKey={1.4}>Separated link</MenuItem>\n              </NavDropdown>\n              <NavDropdown eventKey={2} title=\"Dropdown\" id=\"basic-nav-dropdown\">\n                <MenuItem eventKey={3.1}>Action</MenuItem>\n                <MenuItem eventKey={3.2}>Another action</MenuItem>\n                <MenuItem eventKey={3.3}>Something else here</MenuItem>\n                <MenuItem divider />\n                <MenuItem eventKey={3.4}>Separated link</MenuItem>\n              </NavDropdown>\n            </Nav>\n          </Navbar.Collapse>\n        </Navbar>\n        <div className=\"main\">\n          <div className=\"nav-menu\">导航菜单</div>\n          <div className=\"main-content\">主内容</div>\n        </div>\n      </div>\n    )\n  }\n}\n",
-			"file": "src/Admin.js",
-			"file_size": 0,
-			"file_write_time": 131500984080927859,
+			"contents": "items.filter(item => {\n  Object.entries(item)\n    .some(([key, value]) =>\n      dataKeys.indexOf(key) >= 0 &&\n        conditions.some(c =>\n          c.have.every(key => value.search(key) >= 0) &&\n            c.not.every(key => value.search(key) <0)\n          )\n      )\n})\n\n.filter(([key, value]) =>\n      dataKeys.indexOf(key) >= 0)\n\n\n// 对于数据数据中的每一个item\nitems.filter(item =>\n  // 如果它的任一键值对满足条件则返回真\n  Object.entries(item)\n    .some(([key, value]) =>\n      // 条件是key在dataKeys数组中\n      dataKeys.indexOf(key) >= 0 &&\n        // 并且value符合任一condition的要求\n        conditions.some(c =>\n          // 要求是value能够逐一匹配have数组但不匹配not数组的元素\n          c.have.every(key => value.search(key) >= 0) &&\n            c.not.every(key => value.search(key) <0)\n        )\n    )\n)",
 			"settings":
 			{
-				"buffer_size": 1566,
+				"buffer_size": 750,
+				"line_ending": "Windows",
+				"name": "items.filter(item => {"
+			}
+		},
+		{
+			"contents": "import React from 'react'\nimport { Form, Icon, Input, Button, Checkbox, Avatar } from 'antd';\nconst FormItem = Form.Item;\n\nclass NormalLoginForm extends React.Component {\n  handleSubmit = (e) => {\n    e.preventDefault();\n    this.props.form.validateFields((err, values) => {\n      if (!err) {\n        console.log('Received values of form: ', values);\n      }\n    });\n  }\n  render() {\n    const { getFieldDecorator } = this.props.form;\n    return (\n      <Form onSubmit={this.handleSubmit} className=\"login-form\">\n        <FormItem>\n          {getFieldDecorator('userName', {\n            rules: [{ required: true, message: 'Please input your username!' }],\n          })(\n            <Input prefix={<Icon type=\"user\" style={{ fontSize: 13 }} />} placeholder=\"用户名\" />\n          )}\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('password', {\n            rules: [{ required: true, message: 'Please input your Password!' }],\n          })(\n            <Input prefix={<Icon type=\"lock\" style={{ fontSize: 13 }} />} type=\"password\" placeholder=\"用户密码\" />\n          )}\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('remember', {\n            valuePropName: 'checked',\n            initialValue: true,\n          })(\n            <Checkbox>记住我的登录状态</Checkbox>\n          )}\n          <a style={{ float: 'right' }} className=\"login-form-forgot\" href=\"\">忘记密码</a>\n        </FormItem>\n        <div style={{ marginTop: '-20px' }}>\n          <Button type=\"primary\" htmlType=\"submit\" className=\"login-form-button\">\n            Log in\n          </Button>\n          <div style={{ float: 'right' }}>\n            还没有账号？<a href=\"\">现在注册！</a>\n          </div>\n        </div>\n      </Form>\n    );\n  }\n}\n\nconst WrappedNormalLoginForm = Form.create()(NormalLoginForm);\n\nconst Login = (props) => {\n\n  return (\n    <div style={{ width: 320, margin: 'auto', marginTop: 100, }}>\n      <WrappedNormalLoginForm />\n    </div>\n  )\n}\n\nexport default Login\n",
+			"file": "src/components/Login/Login.js",
+			"file_size": 2074,
+			"file_write_time": 131514217522236147,
+			"settings":
+			{
+				"buffer_size": 1957,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_navbar.pug",
+			"contents": "import React from 'react'\n\nimport { Form, Input, Button, Icon } from 'antd'\nconst FormItem = Form.Item\n\nclass EditUserForm extends React.Component {\n\n  render() {\n    const { getFieldDecorator } = this.props.form\n\n    return (\n      <Form className=\"user-editForm\">\n        <FormItem\n          labelCol={span: 3}\n          wrapperCol={span: 3}>\n          {getFieldDecorator('avatar'), {\n            rules: [\n              { type: 'file' }\n            ]\n          }}(\n            <Input />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('username'), {\n\n          }}(\n            <Input placeholder=\"用户名\" />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('email'), {\n            rules: [\n              { type: 'email',  message: '不是有效格式的邮箱！'},\n              { required: true, message: '请输入邮箱！'}\n            ]\n          }}(\n            <Input />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('phone'), {\n            rules: [{ type: 'tel' }]\n          }}(\n            <Input placeholder=\"手机\" />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('sex'), {\n            rules: \n          }}(\n            <Input placeholder=\"性别\" />\n          )\n        </FormItem>\n      </Form>\n    )\n  }\n}",
+			"file": "src/components/EditUser.js",
+			"file_size": 0,
+			"file_write_time": 131512513432502625,
 			"settings":
 			{
-				"buffer_size": 1949,
+				"buffer_size": 1311,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "import { Menu, Icon } from 'antd';\nconst SubMenu = Menu.SubMenu;\nconst MenuItemGroup = Menu.ItemGroup;\n\nclass Sider extends React.Component {\n  handleClick = (e) => {\n    console.log('click ', e);\n  }\n  render() {\n    return (\n      <Menu\n        onClick={this.handleClick}\n        style={{ width: 240 }}\n        defaultSelectedKeys={['1']}\n        defaultOpenKeys={['sub1']}\n        mode=\"inline\"\n      >\n        <SubMenu key=\"sub1\" title={<span><Icon type=\"mail\" /><span>Navigation One</span></span>}>\n          <MenuItemGroup key=\"g1\" title=\"Item 1\">\n            <Menu.Item key=\"1\">Option 1</Menu.Item>\n            <Menu.Item key=\"2\">Option 2</Menu.Item>\n          </MenuItemGroup>\n          <MenuItemGroup key=\"g2\" title=\"Item 2\">\n            <Menu.Item key=\"3\">Option 3</Menu.Item>\n            <Menu.Item key=\"4\">Option 4</Menu.Item>\n          </MenuItemGroup>\n        </SubMenu>\n        <SubMenu key=\"sub2\" title={<span><Icon type=\"appstore\" /><span>Navigation Two</span></span>}>\n          <Menu.Item key=\"5\">Option 5</Menu.Item>\n          <Menu.Item key=\"6\">Option 6</Menu.Item>\n          <SubMenu key=\"sub3\" title=\"Submenu\">\n            <Menu.Item key=\"7\">Option 7</Menu.Item>\n            <Menu.Item key=\"8\">Option 8</Menu.Item>\n          </SubMenu>\n        </SubMenu>\n        <SubMenu key=\"sub4\" title={<span><Icon type=\"setting\" /><span>Navigation Three</span></span>}>\n          <Menu.Item key=\"9\">Option 9</Menu.Item>\n          <Menu.Item key=\"10\">Option 10</Menu.Item>\n          <Menu.Item key=\"11\">Option 11</Menu.Item>\n          <Menu.Item key=\"12\">Option 12</Menu.Item>\n        </SubMenu>\n      </Menu>\n    );\n  }\n}\n\nReactDOM.render(<Sider />, mountNode);",
+			"settings":
+			{
+				"buffer_size": 1672,
+				"line_ending": "Windows",
+				"name": "import { Menu, Icon } from 'antd';"
+			}
+		},
+		{
+			"file": "src/components/EditUserForm.js",
+			"settings":
+			{
+				"buffer_size": 3865,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/UserAdmin.js",
+			"settings":
+			{
+				"buffer_size": 7029,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/FormModal.js",
+			"settings":
+			{
+				"buffer_size": 3151,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -542,7 +591,7 @@
 			"file": "src/App.js",
 			"settings":
 			{
-				"buffer_size": 5984,
+				"buffer_size": 6545,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -551,17 +600,70 @@
 			"file": "src/SiteNav.js",
 			"settings":
 			{
-				"buffer_size": 1610,
+				"buffer_size": 1641,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "node_modules/react-scripts/config/webpack.config.prod.js",
+			"settings":
+			{
+				"buffer_size": 16507,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/C/Users/Vincent/Data/Examples/vali-admin/README.md",
+			"file": "node_modules/react-scripts/config/paths.js",
 			"settings":
 			{
-				"buffer_size": 1008,
+				"buffer_size": 4450,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/DevIndex.js",
+			"settings":
+			{
+				"buffer_size": 2391,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/index.js",
+			"settings":
+			{
+				"buffer_size": 98,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/user.server.controller.js",
+			"settings":
+			{
+				"buffer_size": 4237,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ".avatar\n  img\n  input onChange=this.uploadAvatar\n\n\n.form-group // username\n.form-group  // email\n\nuploadAvatar() {\n  this.loading = true\n\n  loadAvatar() {\n    // 头像加载完成时\n    this.loading = false\n  }  \n}\n\nwidth 100% x\n\n// 有哪些字段？\n\navatar\nusername\nemail\nsex\n\n地址管理\n",
+			"settings":
+			{
+				"buffer_size": 261,
+				"line_ending": "Windows",
+				"name": ".avatar"
+			}
+		},
+		{
+			"contents": ".avatar onClick\n\n// onClick打开头像上传控件\n// 选择头像图片文件\n// 可选的图片裁剪操作\n// 确认保存图片\n\n// 如果修改了头像(实际是avartar字段添加了数据)\n// 提交表单时连同头像图片一起提交\n\n// 服务端如果接收到头像图片，存储图片并返回路径\n// 保存数据实体时有一字段avatar用于保存头像路径\n\n\n// 打开页面时，有一user数据，它的avatar属性保存着图片路径\n\ninput:file name='avatar'\n\n.avatar\n  img\n  input:file\n\nlabel.avatar\n  img\ninput:file",
+			"settings":
+			{
+				"buffer_size": 299,
+				"line_ending": "Windows",
+				"name": ".avatar onClick"
 			}
 		},
 		{
@@ -574,21 +676,28 @@
 			}
 		},
 		{
-			"contents": "## 管理后台\n\n用户管理\n产品管理\n订单管理\n\n## 用户中心\n\n我的订单\n账户资料\n收货地址\n\n",
+			"contents": "// 临时备份\n\nimport React from 'react'\n\nimport {\n  Modal\n} from 'react-bootstrap'\n\nimport { form2json } from './helper/form2json.js'\nimport FormModal from './TestAutoMakeFold.js'\n\nclass UserCrud extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      editing: false,\n      editedEntry: undefined,\n      baseURI: '/users',\n      entries: [],\n      form: null,\n      removing: false,\n      removedEntry: undefined,\n      errorMsg: '',\n\n      showModal: false,\n      modalMode: '',\n      modalTitle: '',\n    }\n  }\n\n  componentDidMount() {\n    this.list()\n  }\n\n  list() {\n    fetch(this.state.baseURI)\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(entries => this.setState({...this.state, entries}))\n      .catch(console.error)\n  }\n\n  add({ item }) {\n    fetch(this.state.baseURI, {\n      method: 'POST',\n      headers: {'Content-Type': 'application/json'},\n      body: JSON.stringify(item)\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  update({ item, id }) {\n    id = id || item._id\n\n    fetch(this.state.baseURI + '/' + id, {\n      method: 'PUT',\n      headers: {'Content-Type': 'application/json'},\n      body: JSON.stringify(item)\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  remove({ item, id }) {\n    id = id || item._id\n    \n    fetch(this.state.baseURI + '/' + id, {\n      method: 'DELETE',\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  openEdit(entry) {\n    this.setState({\n      ...this.state,\n      editing: true,\n      editedItem: entry\n    })\n  }\n\n  closeEdit() {\n    this.setState({\n      ...this.state,\n      editing: false,\n      editedItem: undefined,\n      removing: false,\n      removedItem: undefined,\n      veriCode: '',\n      errorMsg: '',\n    })\n  }\n\n  saveEdit(entry, mode = 'update') {\n    mode === 'add'\n      ? this.add(entry)\n      : this.update(entry._id, entry)\n\n    this.closeEdit()\n  }\n\n  openModal({ mode, entry, title }) {\n    this.setState({\n      modalShow: true,\n      modalMode: mode,\n      modalTitle: title,\n      editedEntry: entry,\n    })\n  }\n\n  closeModal() {\n    this.setState({\n      modalShow: false,\n      modalMode: '',\n      modalTitle: '',\n      editedEntry: undefined,\n    })\n  }\n\n  saveModal({ mode, entry }) {\n    this[mode]({ entry })\n    this.closeModal()\n  }\n\n  confirmRemove(entry) {\n    this.setState({\n      ...this.state,\n      removing: true,\n      removedItem: entry,\n      veriCode: '123456',\n    })\n  }\n\n  verififyRemove(actual) {\n    let { veriCode, removedItem } = this.state\n    if (actual === veriCode) {\n      this.remove(removedItem._id)\n      this.closeEdit()\n    } else {\n      // 确认码不正确\n      this.setState({\n        ...this.state,\n        errorMsg: '确认码不正确！'\n      })\n    }\n  }\n\n  render() {\n    let {\n      editing,\n      editedItem,\n      removing,\n      removedItem,\n      entries,\n      errorMsg,\n    } = this.state\n\n    let inputVeriCode\n\n    return (\n      <div className=\"user-crud\">\n        <div className=\"operation\">\n          <button className=\"btn btn-primary\"\n            onClick={() => this.openEdit()}>Add</button>\n        </div>\n        <div className=\"data\">\n          <ol>\n            {entries.map((entry, i) => (\n              <li key={i}>\n                <pre>{JSON.stringify(entry, ['_id', 'username', 'email'], 2)}</pre>\n                <div>\n                  <button className=\"btn btn-success\"\n                    onClick={() => this.openEdit(entry)}>修改</button>\n                  <button className=\"btn btn-danger\"\n                    onClick={() => this.confirmRemove(entry)}>删除</button>\n                </div>\n              </li>\n            ))}\n          </ol>\n        </div>\n        <Modal\n          show={editing}>\n          <Modal.Header>\n            <Modal.Title>添加用户</Modal.Title>\n          </Modal.Header>\n          <Modal.Body>\n            <EditedForm getRef={(form) => (this.form = form)}\n              entry={editedItem} />\n          </Modal.Body>\n          <Modal.Footer>\n            <button className=\"btn btn-primary\"\n              onClick={() =>\n              this.saveEdit(form2json(this.form), editedItem ? 'update' : 'add')}\n            >添加</button>\n            <button className=\"btn btn-danger\"\n              onClick={() => this.closeEdit()}>取消</button>\n          </Modal.Footer>\n        </Modal>\n\n        <Modal\n          show={removing}\n        >\n          <Modal.Header>\n            <Modal.Title>确认删除</Modal.Title>\n          </Modal.Header>\n          <Modal.Body>\n            <div>\n              <p>\n                你正在删除下面数据：\n                <pre>{JSON.stringify(removedItem, null, 2)}</pre>\n                注意！删除后数据将不可恢复。\n              </p>\n              <p>\n                如果你知道自己正在做什么，并且依然坚持要执行删除操作，请输入以下确认码（字母区分大小写），然后点击“删除”按钮。\n              </p>\n              <p>\n                确认码：{this.state.veriCode}\n              </p>\n              <p>\n                输入确认码：<input type=\"text\" value={inputVeriCode} onChange={(e) => (inputVeriCode = e.target.value)}/>\n              </p>\n              {errorMsg && (\n                <div className=\"bg-warning\">确认码输入错误！</div>\n              )}\n            </div>\n          </Modal.Body>\n          <Modal.Footer>\n            <button className=\"btn btn-danger\"\n              onClick={() => this.verififyRemove(inputVeriCode)}>删除</button>\n            <button className=\"btn btn-default\"\n              onClick={() => this.closeEdit()}>取消</button>\n          </Modal.Footer>\n        </Modal>\n\n        <FormModal\n          showModal={showModal}\n          modalMode={modalMode}\n          modalTitle={modalTitle}\n          formConfigs={formConfigs}\n          formValues={formValue}\n          onSubmitForm={}\n          onCancelForm={}\n          onChange={}\n        />\n      </div>\n    )\n  }\n}\n\nconst EditedForm = (props) => {\n  let { entry = {}, getRef } = props\n\n  return (\n    <form ref={getRef}>\n      <div className=\"form-group\">\n        <label htmlFor=\"username\" className=\"control-label\">用户名：</label>\n        <input type=\"text\" name=\"username\" id=\"username\" defaultValue={entry.username} />\n      </div>\n      <div className=\"form-group\">\n        <label htmlFor=\"email\" className=\"control-label\">邮箱：</label>\n        <input type=\"email\" name=\"email\" id=\"email\" defaultValue={entry.email} />\n      </div>\n      <div className=\"form-group\">\n        <label htmlFor=\"password\" className=\"control-label\">密码：</label>\n        <input type=\"password\" name=\"password\" id=\"password\" defaultValue={entry.password} />\n      </div>\n      {entry._id && (\n        <input type=\"hidden\" name=\"_id\" id=\"_id\" defaultValue={entry._id} />\n      )}\n    </form>\n  )\n}\n\nexport default UserCrud\n",
 			"settings":
 			{
-				"buffer_size": 50,
-				"line_ending": "Windows",
-				"name": "# 管理后台"
+				"buffer_size": 7146,
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "/admin\n\n.app-bar\n.main\n  .nav-menu\n  .main-content\n  \n.footer",
+			"contents": "<Modal>\n  <Form>\n    <Input>Username</Input>\n    <Input>Email</Input>\n  </Form>\n</Modal>\n\n.user-admin\n  Search\n  .create-btn\n    Button\n  Table\n  FormModal\n  ",
 			"settings":
 			{
-				"buffer_size": 61,
-				"line_ending": "Windows",
-				"name": "/admin"
+				"buffer_size": 158,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/UserCrud.js",
+			"settings":
+			{
+				"buffer_size": 4799,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -616,20 +725,36 @@
 	"command_palette":
 	{
 		"height": 94.0,
-		"last_filter": "ssgfm",
+		"last_filter": "ssjsb",
 		"selected_items":
 		[
-			[
-				"ssgfm",
-				"Set Syntax: Markdown GFM"
-			],
 			[
 				"ssjsb",
 				"Set Syntax: JavaScript (Babel)"
 			],
 			[
+				"delete",
+				"File: Delete"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript (Rails)"
+			],
+			[
 				"rename",
 				"File: Rename"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"renam",
+				"File: Rename"
+			],
+			[
+				"ssgfm",
+				"Set Syntax: Markdown GFM"
 			],
 			[
 				"move",
@@ -638,10 +763,6 @@
 			[
 				"ssjsb ",
 				"Set Syntax: JavaScript (Babel)"
-			],
-			[
-				"ssjs",
-				"Set Syntax: JavaScript (Rails)"
 			],
 			[
 				"build",
@@ -724,10 +845,6 @@
 				"Set Syntax: JavaScript (Babel)"
 			],
 			[
-				"renam",
-				"File: Rename"
-			],
-			[
 				"sshtml",
 				"Set Syntax: HTML"
 			],
@@ -768,20 +885,12 @@
 				"SublimeLinter: Enable Linter"
 			],
 			[
-				"delete",
-				"File: Delete"
-			],
-			[
 				"sssass",
 				"Set Syntax: Sass"
 			],
 			[
 				"ssssas",
 				"Set Syntax: Sass"
-			],
-			[
-				"sass",
-				"Snippet: +include - Sass syntax"
 			],
 			[
 				"scss",
@@ -944,7 +1053,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 239.0
+		"width": 410.0
 	},
 	"console":
 	{
@@ -973,14 +1082,93 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal/FormModal.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/node_modules/eslint-plugin-react/lib/util/Components.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/env.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/webpack.config.dev.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Search.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal/FormModal.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/user.server.model.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/style/themes/default.less",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/style/index.less",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/search.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/components/Search/Search.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserAdmin.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/components/Page/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/UserCrud.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/models/user.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/.roadhogrc.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/index.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/theme.config.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/version.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/routes/app.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/components/index.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/models/login.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/router.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/Search.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/parseConditions.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/filterItemsBy.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/index.d.ts",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/UserAdmin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/paths.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SiteNav.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/config-overrides.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.old.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Search.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
+		"/C/Users/Vincent/Data/Examples/antd-admin/src/routes/login/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.js",
+		"/C/Users/Vincent/Data/Examples/react-antd-crud/src/components/App.jsx",
+		"/C/Users/Vincent/Data/Examples/react-antd-crud/src/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/Admin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/DataGrid封装设计.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/DataGrid.scss",
+		"/C/Users/Vincent/Data/Examples/react-antd-crud/README.md",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react/lib/ReactElement.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/gulpfile.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/page.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/genIndexDisplayer.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/App.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/sass/Admin.sass",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/test.scss",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_sidebar.pug",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_navbar.pug",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TableView.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/test.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.css",
+		"/C/Data/Examples/vali-admin/src/sass/3-component/_sidebar.sass",
+		"/C/Data/Examples/vali-admin/src/sass/3-component/_top-navbar.sass",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/_Admin.sass",
+		"/C/Data/Examples/vali-admin/src/sass/main.sass",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/sass/3-component/_sidebar.sass",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
+		"/C/Users/Vincent/Data/Examples/vali-admin/README.md",
+		"/C/html/includes/_navbar.html",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/html/includes/_navbar.html",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/index.pug",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/blank-page.pug",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_javascript.pug",
+		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_head.pug",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/user.server.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/order.model.test.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/OrderHistory.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/page.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/ObjectId2JSON(双向转换).js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/开发档案 - 草稿.md",
@@ -988,8 +1176,6 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
 		"/C/Users/Vincent/Desktop/Everything_search_syntax.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/设计：通用Pagination插件.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/genIndexDisplayer.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/product.model.tests.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/Cart -- ItemList/CartDetail结构大纲.md",
@@ -1001,11 +1187,9 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/mongoose.js",
 		"/C/Users/Vincent/AppData/Local/Sublime Text 3/Data/Packages/User/Node_Inspector.sublime-build",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/user.server.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/seed/seed.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/express.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/test_mongoose_api_again.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/saveUploadedImages.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/property.model.js",
@@ -1024,83 +1208,8 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/设计genIndexDisplayer.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/ListView/设计主文档.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/开发档案/开发档案 - 草稿.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/ListView/listview结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.old.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/indexShow.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/SearchResult.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/.eslintrc",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/设计搜索与过滤.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SearchResult.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/fs-copy.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/getIndexDisplayer.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/cart_func.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/exp-test/tree_and_recur.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/exp_create_trunk_branch_and_leaf.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/Cart -- ItemList/Cart与Order数据组成结构.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CheckList.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/schema.md",
-		"/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/www/templates/manage_blogs.html",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/webpack.config.dev.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/开发档案/ProductNew -- 表单视图及组件设计等",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/tmp-test_fs.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductNew.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/exp-test/should_str_match_its_re.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/test/product.model.tests.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/form2json.js",
-		"/C/Users/Vincent/AppData/Local/Sublime Text 3/Data/Packages/User/Node.sublime-build",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/Debugger listening on ws:/127.0.0.1",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/module.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/Debugger listening on ws",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/For help see https",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductNew.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CreateProduct.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/exp-node_fs.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/passport.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/prod.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/concurrently.cfg",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signup.js",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/sass/1-tools/_animate.scss",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/sass/1-tools/_bootstrap-datepicker.scss",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/sass/1-tools/_dataTables.bootstrap.scss",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/sass/1-tools/_fullcalendar.scss",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/pug/form-samples.pug",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/pug/index.pug",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/pug/table-data-table.pug",
-		"/D/Downloads/vali-admin-master/vali-admin-master/src/pug/layouts/_layout.pug",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.css",
-		"/C/Users/Vincent/Data/Learning Material/Web Application Development with MEAN_Code/Module 2/Chapter 10/meanshop/server/config/environment/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/ProductPreview.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/genPhoneProperties.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/DataGrid.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Search.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/node_modules/promise/lib/rejection-tracking.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/    at Object.Module._extensions..js (module.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductPreview.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/crud.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/View-ProductList_outline.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/genLaptopProperties.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/public/599846b6dc7fa139e04a7f43/06.txt",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/Property.phone数据生成.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/sortBy.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/seed_data.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/思考--通用CheckList组件.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design_search_and_pagination.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/  console.log('size",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/ReferenceError",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/    at test (C",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/    at Object.<anonymous> (C",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/    at Module._compile (module.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/fakeData/fakeData-Order.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/ProductDetail(View)_structure.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/view_order_structure.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/Cart与Order数据组成结构.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/model_order.js"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/indexShow.js"
 	],
 	"find":
 	{
@@ -1108,7 +1217,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 106.0,
+		"height": 175.0,
 		"where_history":
 		[
 			"<open folders>, -node_modules/",
@@ -1141,6 +1250,73 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"handleSubmit",
+			"handleTableSelectionChange",
+			"showCheckbox",
+			"formmodal",
+			"'/users' + '/' + entry._id",
+			"alias",
+			"components",
+			"alias",
+			"searchText",
+			"value",
+			"from",
+			"entries",
+			"rst",
+			"have",
+			"segs",
+			"seg",
+			"showDetail",
+			"+ ",
+			"react-scripts",
+			"paths",
+			"/>",
+			"defaultValue",
+			"item",
+			"modalShow",
+			"React",
+			"editedItem",
+			"div",
+			", ",
+			",",
+			"Modal",
+			"ul",
+			"req",
+			"baseURI",
+			"('/users",
+			"/users",
+			"users",
+			"newItem",
+			"this.",
+			", ...this.state",
+			"onToggleSorting",
+			"label",
+			"direction",
+			",",
+			"debugger",
+			"this.page",
+			"this.init",
+			"sortBy",
+			"position",
+			"200",
+			"position",
+			"Position",
+			"Name",
+			"'",
+			"list",
+			"render\\(",
+			"gotoPage",
+			"(.desc-(\\w+))",
+			".desc-\\w+",
+			".desc-position",
+			"position",
+			"</div>",
+			"th",
+			"div",
+			"\\.sidebar",
+			"SCSS_DEST",
+			"$",
+			"li",
 			"3.",
 			"3",
 			"buyer",
@@ -1201,74 +1377,7 @@
 			"List",
 			"v",
 			"page",
-			"needle",
-			"ul",
-			"div",
-			"background-color",
-			"244px",
-			"190px",
-			"250px",
-			"246px",
-			"240px",
-			"188px",
-			"190px",
-			"gotopage",
-			"display",
-			"paginat",
-			"pagina",
-			"li",
-			"go",
-			"display",
-			"Pagination",
-			"currIndex",
-			"saveUpload",
-			"basename",
-			"bases",
-			"paths",
-			"path",
-			"\\",
-			"base",
-			"child",
-			"countItem\\(",
-			"count",
-			"itemcount",
-			"price",
-			"bodySize",
-			"switchPage",
-			"index",
-			"paginate",
-			"req",
-			"imgBasenames",
-			"cons(",
-			"cons",
-			"img",
-			"images",
-			"imgPath",
-			"\\",
-			"newPath",
-			"saveUpl",
-			"save",
-			"f43",
-			"3",
-			"\\",
-			"\\\\",
-			"file",
-			"( ",
-			"files",
-			"\\",
-			"field",
-			"mean-test",
-			"multiparty",
-			"upload",
-			"key",
-			"form2json",
-			"warning",
-			"h3",
-			"FormControl",
-			"Checkbox",
-			"}",
-			"}\n",
-			"text"
+			"needle"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1276,6 +1385,8 @@
 		"regex": true,
 		"replace_history":
 		[
+			"$1,\\n.cell-$2",
+			"$1,\\n.cell-($2)",
 			"^\\n",
 			"'$1', ",
 			"",
@@ -1331,167 +1442,106 @@
 	"groups":
 	[
 		{
-			"selected": 0,
-			"sheets":
-			[
-				{
-					"buffer": 0,
-					"file": "src/Admin.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1566,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1037,
-								1039
-							],
-							[
-								1096,
-								1098
-							],
-							[
-								1163,
-								1165
-							],
-							[
-								1272,
-								1274
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 325.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_navbar.pug",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1949,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
-			]
-		},
-		{
 			"selected": 2,
 			"sheets":
 			[
 				{
-					"buffer": 2,
-					"file": "src/App.js",
+					"buffer": 0,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5984,
+						"buffer_size": 750,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								227,
-								227
+								374,
+								374
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"auto_name": "items.filter(item => {",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 48.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "src/SiteNav.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1610,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/C/Users/Vincent/Data/Examples/vali-admin/README.md",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1008,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/MarkdownEditing/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1501,7 +1551,1855 @@
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "src/components/Login/Login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										79,
+										80
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										33,
+										34
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 273.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/components/EditUser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								487,
+								487
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										499,
+										500
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										465,
+										466
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1672,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								494,
+								494
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import { Menu, Icon } from 'antd';",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										501,
+										502
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										440,
+										441
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 59.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/Login/Login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1957,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								187
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										79,
+										80
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										33,
+										34
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/components/EditUserForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3744,
+								3744
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3782,
+										3783
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										3726,
+										3727
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1638.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
 					"buffer": 5,
+					"file": "src/components/UserAdmin.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7029,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6268,
+								6273
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										6288,
+										6289
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										6235,
+										6236
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/FormModal.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1621,
+								1621
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2480,
+										2481
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1557,
+										1558
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1116.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6545,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								712,
+								712
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 410.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/SiteNav.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1641,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1112,
+								1112
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1342,
+										1343
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1078,
+										1079
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 719.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "node_modules/react-scripts/config/webpack.config.prod.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16507,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3127,
+								3127
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2083.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "node_modules/react-scripts/config/paths.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4450,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3,
+								3
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1320.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "src/FormModal.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3151,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								391,
+								391
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 567.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/DevIndex.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								109,
+								109
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										110,
+										111
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										65,
+										66
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/components/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 98,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/UserAdmin.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7029,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4123,
+								4123
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2839.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "server/user.server.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								292,
+								292
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										291,
+										292
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										250,
+										251
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 242.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".avatar",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 59.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6545,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2993,
+								2993
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2499.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								299,
+								299
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".avatar onClick",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 84.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
 					"file": "server/server.routes.js",
 					"semi_transient": false,
 					"settings":
@@ -1513,89 +3411,590 @@
 						"selection":
 						[
 							[
-								208,
-								208
+								0,
+								0
 							]
 						],
 						"settings":
 						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 520.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 17,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 50,
+						"buffer_size": 7146,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								33,
-								33
+								2872,
+								2872
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										2972,
+										2973
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										2871,
+										2872
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2930.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 158,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								158,
+								158
 							]
 						],
 						"settings":
 						{
 							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/MarkdownEditing/Markdown.sublime-syntax"
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 23,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"sheets":
-			[
-			]
-		},
-		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
-					"buffer": 7,
+					"buffer": 19,
+					"file": "src/UserCrud.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 61,
+						"buffer_size": 4799,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								53,
-								53
+								4414,
+								4414
 							]
 						],
 						"settings":
 						{
-							"auto_name": "/admin",
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4766,
+										4767
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										3301,
+										3302
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4084.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/DevIndex.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2391,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								767,
+								767
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1243,
+										1244
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/square_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										969,
+										970
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 773.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/components/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 98,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								46
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1603,11 +4002,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 30.0
 	},
 	"input":
 	{
-		"height": 42.0
+		"height": 60.0
 	},
 	"layout":
 	{
@@ -1641,20 +4040,20 @@
 		"cols":
 		[
 			0.0,
-			0.507339449541,
+			0.525233322773,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.738310708899,
+			0.812081059005,
 			1.0
 		]
 	},
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 145.0
+		"height": 76.0
 	},
 	"output.find_results":
 	{
@@ -1668,7 +4067,7 @@
 	"project": "quick-react-app.sublime-project",
 	"replace":
 	{
-		"height": 54.0
+		"height": 56.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1678,12 +4077,172 @@
 		"selected_items":
 		[
 			[
-				"sitenav.js",
-				"quick-react-app\\src\\SiteNav.js"
+				"login.js",
+				"quick-react-app\\src\\components\\Login\\Login.js"
 			],
 			[
 				"app.js",
 				"quick-react-app\\src\\App.js"
+			],
+			[
+				"sitenav.js",
+				"quick-react-app\\src\\SiteNav.js"
+			],
+			[
+				"componentindex",
+				"quick-react-app\\src\\components\\index.js"
+			],
+			[
+				"component.js",
+				"react-scripts\\node_modules\\eslint-plugin-react\\lib\\util\\Components.js"
+			],
+			[
+				"devindex.js",
+				"quick-react-app\\src\\DevIndex.js"
+			],
+			[
+				"sitenva.js",
+				"quick-react-app\\src\\SiteNav.js"
+			],
+			[
+				"serverroutes.js",
+				"quick-react-app\\server\\server.routes.js"
+			],
+			[
+				"usercontroller.js",
+				"quick-react-app\\server\\user.server.controller.js"
+			],
+			[
+				"usercrud.js",
+				"quick-react-app\\src\\UserCrud.js"
+			],
+			[
+				"useradmin.js",
+				"quick-react-app\\src\\components\\UserAdmin.js"
+			],
+			[
+				"formmodal.js",
+				"quick-react-app\\src\\FormModal.js"
+			],
+			[
+				"compformmodal.js",
+				"quick-react-app\\src\\components\\FormModal\\FormModal.js"
+			],
+			[
+				"parsecondi",
+				"quick-react-app\\src\\helper\\parseConditions.js"
+			],
+			[
+				"user.model.js",
+				"quick-react-app\\server\\models\\user.server.model.js"
+			],
+			[
+				"testcart.js",
+				"quick-react-app\\src\\TestCart.js"
+			],
+			[
+				"cart.js",
+				"quick-react-app\\src\\Cart.js"
+			],
+			[
+				"site.js",
+				"quick-react-app\\src\\SiteNav.js"
+			],
+			[
+				"home.js",
+				"quick-react-app\\src\\Home.js"
+			],
+			[
+				"search.js",
+				"quick-react-app\\src\\Search.js"
+			],
+			[
+				"sign.js",
+				"quick-react-app\\src\\Signin.js"
+			],
+			[
+				"package.json",
+				"quick-react-app\\package.json"
+			],
+			[
+				"overi",
+				"quick-react-app\\config-overrides.js"
+			],
+			[
+				"useradmin.scss",
+				"quick-react-app\\src\\scss\\UserAdmin.scss"
+			],
+			[
+				"overri",
+				"quick-react-app\\config-overrides.js"
+			],
+			[
+				"router.js",
+				"quick-react-app\\src\\router.js"
+			],
+			[
+				"configover",
+				"quick-react-app\\config-overrides.js"
+			],
+			[
+				"",
+				"quick-react-app\\src\\UserCrud.js"
+			],
+			[
+				"adminscss",
+				"quick-react-app\\src\\scss\\Admin.scss"
+			],
+			[
+				"page.js",
+				"quick-react-app\\src\\helper\\page.js"
+			],
+			[
+				"datagrid.scss",
+				"quick-react-app\\src\\scss\\DataGrid.scss"
+			],
+			[
+				"gendisplayer",
+				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
+			],
+			[
+				"datagrid.css",
+				"quick-react-app\\src\\DataGrid.css"
+			],
+			[
+				"orderhistory.js",
+				"quick-react-app\\src\\OrderHistory.js"
+			],
+			[
+				"confirmorder",
+				"quick-react-app\\src\\ConfirmOrder.js"
+			],
+			[
+				"datagrid.js",
+				"quick-react-app\\src\\DataGrid.js"
+			],
+			[
+				"app.scss",
+				"quick-react-app\\src\\scss\\App.scss"
+			],
+			[
+				"admin.css",
+				"quick-react-app\\src\\Admin.css"
+			],
+			[
+				"gulpfile.js",
+				"quick-react-app\\gulpfile.js"
+			],
+			[
+				"test.css",
+				"quick-react-app\\src\\test.css"
+			],
+			[
+				"test.scss",
+				"quick-react-app\\src\\scss\\test.scss"
+			],
+			[
+				"admin.scss",
+				"quick-react-app\\src\\scss\\Admin.scss"
 			],
 			[
 				"server.routes.js",
@@ -1692,10 +4251,6 @@
 			[
 				"user.server.controller.js",
 				"quick-react-app\\server\\user.server.controller.js"
-			],
-			[
-				"testcart.js",
-				"quick-react-app\\src\\TestCart.js"
 			],
 			[
 				"app",
@@ -1730,10 +4285,6 @@
 				"quick-react-app\\scratch\\开发档案\\design\\OrderHistory\\OrderHistory结构大纲.md"
 			],
 			[
-				"",
-				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
-			],
-			[
 				"envtest.js",
 				"quick-react-app\\server\\config\\env\\test.js"
 			],
@@ -1748,10 +4299,6 @@
 			[
 				"geninde",
 				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
-			],
-			[
-				"devindex.js",
-				"quick-react-app\\src\\DevIndex.js"
 			],
 			[
 				"pagi",
@@ -1922,24 +4469,12 @@
 				"quick-react-app\\src\\helper\\splitArray.js"
 			],
 			[
-				"user.model.js",
-				"quick-react-app\\server\\models\\user.server.model.js"
-			],
-			[
 				"confir.js",
 				"quick-react-app\\src\\ConfirmOrder.js"
 			],
 			[
-				"cart.js",
-				"quick-react-app\\src\\Cart.old.js"
-			],
-			[
 				"gendi",
 				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
-			],
-			[
-				"datagrid.js",
-				"quick-react-app\\src\\DataGrid.js"
 			],
 			[
 				"testcartjs",
@@ -2052,142 +4587,6 @@
 			[
 				"productcont",
 				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"server.route.js",
-				"quick-react-app\\server\\server.routes.js"
-			],
-			[
-				"prodcumodel.js",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"craetep",
-				"quick-react-app\\src\\CreateProduct.js"
-			],
-			[
-				"product.css",
-				"quick-react-app\\src\\ProductNew.css"
-			],
-			[
-				"createproduct.js",
-				"quick-react-app\\src\\CreateProduct.js"
-			],
-			[
-				"pack",
-				"quick-react-app\\package.json"
-			],
-			[
-				"package.json",
-				"quick-react-app\\package.json"
-			],
-			[
-				"product.controll.js",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"splitarray",
-				"quick-react-app\\src\\helper\\splitArray.js"
-			],
-			[
-				"split",
-				"react-scripts\\node_modules\\promise\\lib\\rejection-tracking.js"
-			],
-			[
-				"search.js",
-				"quick-react-app\\src\\Search.js"
-			],
-			[
-				"productprcss",
-				"quick-react-app\\src\\ProductPreview.css"
-			],
-			[
-				"producpscss",
-				"quick-react-app\\src\\scss\\ProductPreview.scss"
-			],
-			[
-				"productpre.css",
-				"quick-react-app\\src\\ProductPreview.css"
-			],
-			[
-				"express",
-				"quick-react-app\\server\\config\\express.js"
-			],
-			[
-				"servroutes.js",
-				"quick-react-app\\server\\server.routes.js"
-			],
-			[
-				"productcon",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"crud.js",
-				"quick-react-app\\server\\controllers\\crud.js"
-			],
-			[
-				"property.model",
-				"quick-react-app\\server\\models\\property.model.js"
-			],
-			[
-				"proper",
-				"quick-react-app\\scratch\\Property.phone数据生成.js"
-			],
-			[
-				"createproduc",
-				"quick-react-app\\src\\CreateProduct.js"
-			],
-			[
-				"seed_data.js",
-				"quick-react-app\\server\\config\\seed_data.js"
-			],
-			[
-				"product.control",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"proudmod",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"pack.",
-				"quick-react-app\\package.json"
-			],
-			[
-				"sort",
-				"quick-react-app\\src\\helper\\sortBy.js"
-			],
-			[
-				"sortby.js",
-				"quick-react-app\\scratch\\helper\\sortBy.js"
-			],
-			[
-				"product.mo",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"createprodu",
-				"quick-react-app\\src\\CreateProduct.js"
-			],
-			[
-				"product.js",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"devindejs",
-				"quick-react-app\\src\\DevIndex.js"
-			],
-			[
-				"cart.old.js",
-				"quick-react-app\\src\\Cart.old.js"
-			],
-			[
-				"cart.sj",
-				"quick-react-app\\src\\Cart.js"
-			],
-			[
-				"confirjs",
-				"quick-react-app\\src\\ConfirmOrder.js"
 			]
 		],
 		"width": 0.0
