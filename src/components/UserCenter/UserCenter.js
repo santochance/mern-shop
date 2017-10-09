@@ -65,6 +65,9 @@ class Sider extends React.Component {
           </Link>
         </Menu.Item>
         <SubMenu key="sub1" title={<span><Icon type="user" /><span>用户管理</span></span>}>
+          <Menu.Item key="4">
+            <Link to={`${match.url}/addresses`}>收货地址</Link>
+          </Menu.Item>
           <Menu.Item key="5">
             <Link to={`${match.url}/modify-profile`}>修改资料</Link>
           </Menu.Item>

@@ -36,11 +36,12 @@ import OrderHistory from './OrderHistory.js';
 import Admin from './Admin.js'
 import UserCrud from './UserCrud.js'
 import UserAdmin from './components/UserAdmin.js'
-import { Login, Signup, UserCenter } from './components'
+import { Login, Signup, UserCenter, ProductList } from './components'
 import EditUserForm from './components/EditUserForm.js'
 
 let views = [
   Home,
+  ProductList,
   EditUserForm,
   UserCenter,
   Login,

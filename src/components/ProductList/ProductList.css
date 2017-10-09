@@ -1,0 +1,36 @@
+.product-list {
+  padding-top: 20px;
+}
+
+.product-item {
+  margin-bottom: 30px;
+}
+
+.product-item:hover {
+  outline: 1px solid orange;
+}
+
+.product-pic {  }
+
+.pic-wrapper {  }
+
+.product-info {  }
+
+.product-title {
+  overflow: hidden;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+}
+
+.product-desc {
+  overflow: hidden;
+  height: 3em;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+}
+
+.product-price {
+  font-size: 120%;
+  color: red;
+}

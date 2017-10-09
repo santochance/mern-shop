@@ -39,7 +39,12 @@ import OrderHistory from './OrderHistory.js'
 import Admin from './Admin.js'
 import UserCrud from './UserCrud.js'
 import UserAdmin from './components/UserAdmin.js'
-import { Login, Signup, UserCenter } from './components'
+import {
+  Login,
+  Signup,
+  UserCenter,
+  ProductList,
+} from './components'
 import EditUserForm from './components/EditUserForm.js'
 
 import {
@@ -112,6 +117,7 @@ class App extends Component {
           <DevIndex />
           <SiteNav />
           <div className="page">
+            <Route path="/productlist" component={ProductList} />
             <Route path="/usercenter" component={UserCenter} />
             <Route path="/edituserform" component={EditUserForm} />
             <Route path="/login" component={Login} />
@@ -122,10 +128,6 @@ class App extends Component {
             <Route path="/signup" component={Signup}></Route>
             <Route path="/signin" component={Signin}></Route>
             <Route path="/searchresult" component={SearchResult}></Route>
-            {/*
-            <Route path="/search" component={Search}
-              onAddToCart={this.addToCart}></Route>
-            */}
             <Route path="/products/:id" render={props => <ProductDetail {...props} onAddToCart={this.addToCart} />} />
             <Route path="/search" render={props => {
               // debugger
@@ -155,7 +157,6 @@ class App extends Component {
 
             <Route path="/admin" component={Admin}></Route>
             <Route path="/usercrud" component={UserCrud}></Route>
-
           </div>
           <div className="sidebar" style={!expanded ? {
             right: '-265px',

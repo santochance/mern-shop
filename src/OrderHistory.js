@@ -142,7 +142,7 @@ const TableView = (props) => {
             <div key={i} className="order-content">
               <div className="thead">
                 <div className="cell-orderInfo"></div>
-                <div className="cell-seller"></div>
+                <div className="cell-seller">卖家：{order.seller}</div>
               </div>
               <div className="tbody">
                 {order.items.map((item, i) =>

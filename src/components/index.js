@@ -3,6 +3,7 @@ import Login from './Login'
 import Signup from './Signup'
 import UserCenter from './UserCenter'
 import UploadAvatar from './UploadAvatar'
+import ProductList from './ProductList'
 
 export {
   FormModal,
@@ -10,4 +11,5 @@ export {
   Signup,
   UserCenter,
   UploadAvatar,
+  ProductList,
 }
