@@ -64,7 +64,8 @@ class ProductList extends React.Component {
 
     return (
       <div className="product-list" style={{
-        width: 990
+        width: 990,
+        margin: 'auto',
       }}>
         <Row gutter={16}>
           {currData.map((d, idx) => (
@@ -88,16 +89,14 @@ const ProductItem = (props) => {
   return (
     <div className="product-item">
       <div className="product-pic">
-        <div className="pic-wrapper">
-          <a href="">
-            <img style={{ width: '100%', height: '100%' }} src={'/01.jpg'} alt=""/>
-          </a>
-        </div>
+        <a href="" className="pic-wrapper">
+          <img style={{ width: '100%', height: '100%' }} src={'/01.jpg'} alt=""/>
+        </a>
       </div>
       <div className="product-info">
-        <div className="product-title">
-          <a>{item.title || item.productName}</a>
-        </div>
+        <a href="" className="product-title">
+          {item.title || item.productName}
+        </a>
         <div className="product-desc">
           {item.description}
         </div>

@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import _ from 'lodash'
 
 import Home from './Home.js'
-import Signin from './Sign.js'
+import Signin from './Signin.js'
 import Search from './Search.js'
 import SearchResult from './SearchResult.js'
 
@@ -31,10 +30,13 @@ import UserAdmin from './components/UserAdmin.js'
 import { Login, Signup, UserCenter, ProductList } from './components'
 import EditUserForm from './components/EditUserForm.js'
 
+import ProductShowcase from './components/ProductShowcase/ProductShowcase'
+
 const routes = [
   {
-    path: '/home',
+    path: '/',
     component: Home,
+    exact: true,
   },
   {
     path: '/signin',
@@ -74,7 +76,7 @@ const routes = [
   },
   {
     path: '/data-grid',
-    component: DAtaGrid,
+    component: DataGrid,
   },
   {
     path: '/item-list',
@@ -120,18 +122,10 @@ const routes = [
     path: '/edit-user-form',
     component: EditUserForm,
   },
+  {
+    path: '/product-showcase',
+    component: ProductShowcase,
+  }
 ]
-
-const DevIndex = () => (
-  <div>
-    <ur className="route-nav">
-      {routes.map((route, idx) => (
-        <li key={idx}>
-          <Link to={route.path}>{_.camelCase(route.path)}</Link>
-        </li>
-      ))}
-    </ur>
-  </div>
-)
 
 export default routes

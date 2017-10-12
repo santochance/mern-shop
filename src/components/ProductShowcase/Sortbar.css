@@ -1,0 +1,28 @@
+/*
+.sort-filter-bar
+  .sort-wrapper
+    .sort-link
+    .sort-link
+  .price-range
+    input.price-from
+    span{-}
+    input.price-to
+    button.price-submit
+*/
+
+.sort-filter-bar {
+  background-color: silver;
+}
+
+.sort-wrapper {
+  display: flex;
+  line-height: 3em;
+}
+
+.sort-link {
+  padding: 0 15px;
+  color: hsl(0, 0, 50%);
+}
+.sort-link.active {
+  color: hsl(240, 100%, 50%);
+}
