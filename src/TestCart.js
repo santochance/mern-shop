@@ -194,8 +194,8 @@ export default class TestCart extends ItemList {
           // display: 'flex',
           // flexDirection: 'column',
         }}>
-          <ConfirmOrder app={this} />
           <CartDetails app={this} />
+          <ConfirmOrder app={this} />
           <ProductList app={this} products={products} indexKeys={indexKeys} index={page.index} />
 
         </div>
@@ -388,17 +388,13 @@ const CartDetails = (props) => {
     <div className="cart">
       <div className="cart-main">
         <div className="cart-desc">
-          <div>
-            <div>
-              <span>Count: {cart.count}</span>{'  '}
-              <span>Price: {cart.price}</span>
-            </div>
-          </div>
           <div className="th desc-check">
-            <input type="checkbox" name="" id=""
-              checked={cart.checked}
-              onChange={() => app.check(cart)}
-            />全选
+            <label>
+              <input type="checkbox" name="" id=""
+                checked={cart.checked}
+                onChange={() => app.check(cart)}
+              />全选
+            </label>
           </div>
           <div className="th desc-info">商品信息</div>
           <div className="th desc-param">&nbsp;</div>
@@ -411,20 +407,22 @@ const CartDetails = (props) => {
         <div className="order-list">
           {cart.children.map((order, i) => (
             <div key={i} className="order-content">
-              <div className="order-shopInfo">
-                <div className="checkOrder">
-                  <input type="checkbox" name="" id=""
-                    checked={order.checked}
-                    onChange={() => app.check(order)}/>
+              {/*
+                <div className="order-shopInfo">
+                  <div className="checkOrder">
+                    <input type="checkbox" name="" id=""
+                      checked={order.checked}
+                      onChange={() => app.check(order)}/>
+                  </div>
+                  <span className="badge shopIcon">badge</span>
+                  <span>Shop Name</span>
+                  <span>Count: {order.count}</span>{'  '}
+                  <span>Price: {order.price}</span>
                 </div>
-                <span className="badge shopIcon">badge</span>
-                <span>Shop Name</span>
-                <span>Count: {order.count}</span>{'  '}
-                <span>Price: {order.price}</span>
-              </div>
+              */}
               <div className="order-items">
                 {order.children.map((item, i) => (
-                  <div key={i} className="item-content">
+                  <div key={i} className='item-content'>
                     <div className="col cell-check">
                       <input className="check" type="checkbox" name="" id=""
                         checked={item.checked}
@@ -453,7 +451,7 @@ const CartDetails = (props) => {
                         <a href="#" onClick={() => app.removeItem(item)}>删除</a>
                       </div>
                       <div>
-                        <a href="#">移动到收藏夹</a>
+                        <a href="#">移入收藏夹</a>
                       </div>
                     </div>
                   </div>
@@ -464,10 +462,12 @@ const CartDetails = (props) => {
         </div>
         <div className="order-footer">
           <div className="footer-check">
-            <input type="checkbox" name="" id=""
-              checked={cart.checked}
-              onChange={() => app.check(cart)}
-            />全选
+            <label>
+              <input type="checkbox" name="" id=""
+                checked={cart.checked}
+                onChange={() => app.check(cart)}
+              />全选
+            </label>
           </div>
           <div className="footer-opera">
             <a className="footer-favSelected">
@@ -490,7 +490,7 @@ const CartDetails = (props) => {
                 <span className="total">{cart.price || 0}</span>
               </span>
             </div>
-            <a className="checkout">结算</a>
+            <a className="checkout">结&nbsp;算</a>
           </div>
         </div>
       </div>
