@@ -1,0 +1,94 @@
+import React, { Component, PropTypes } from 'react'
+import './CartDetails.js'
+
+const CartDetails = ({ cart, toggleCheck, updateItem, removeItem }) => {
+
+  return (
+    <div className="cart">
+      <div className="cart-main">
+        <div className="cart-desc">
+          <div>
+            <div>
+              <span>Count: {cart.count}</span>{'  '}
+              <span>Price: {cart.price}</span>
+            </div>
+          </div>
+          <div className="th desc-check">
+            <input type="checkbox" name="" id=""
+              checked={cart.checked}
+              onChange={() => toggleCheck(cart)}/>全选
+          </div>
+          <div className="th desc-info">商品信息</div>
+          <div className="th desc-param">&nbsp;</div>
+          <div className="th desc-price">单价
+          </div>
+          <div className="th desc-quantity">数量</div>
+          <div className="th desc-sum">金额</div>
+          <div className="th desc-opera">操作</div>
+        </div>
+        <div className="order-list">
+          {cart.children.map((order, i) => (
+            <div key={i} className="order-content">
+              <div className="order-shopInfo">
+                <div className="checkOrder">
+                  <input type="checkbox" name="" id=""
+                    checked={order.checked}
+                    onChange={() => toggleCheck(order)}/>
+                </div>
+                <span className="badge">badge</span>
+                <span>Shop Name</span>
+                <span>Count: {order.count}</span>{'  '}
+                <span>Price: {order.price}</span>
+              </div>
+              <div className="order-items">
+                {order.children.map((item, i) => (
+                  <div key={i} className="item-content">
+                    <div className="col cell-check">
+                      <input className="check" type="checkbox" name="" id=""
+                        checked={item.checked}
+                        onChange={() => toggleCheck(item)}/>
+                    </div>
+                    <div className="col cell-info">
+                      <div className="col cell-image">
+                        <img src="" alt=""/>
+                      </div>
+                      <div className="col cell-title">{item.content.productName}</div>
+                    </div>
+                    <div className="col cell-param"></div>
+                    <div className="col cell-price">
+                      <div className="price-now">￥{item.content.price}</div>
+                    </div>
+                    <div className="col cell-quantity">
+                      <input type="number" name="" id="" min="1"
+                        value={item.amount} style={{width: '80px'}}
+                        onChange={(e) => updateItem(item, e.target.value || 1)} />
+                    </div>
+                    <div className="col cell-sum">
+                      <div className="item-sum">￥{item.price}</div>
+                    </div>
+                    <div className="col cell-opera">
+                      <div>
+                        <a href="#" onClick={() => removeItem(item)}>删除</a>
+                      </div>
+                      <div>
+                        <a href="#">移动到收藏夹</a>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+CartDetails.propTypes = {
+  cart: PropTypes.object
+}
+
+export default CartDetails
+
+// cart的数据结构是怎样的？

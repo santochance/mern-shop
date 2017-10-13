@@ -32,12 +32,15 @@ class ItemList extends React.Component {
       .then(res => res.json())
       // .then(products => this.setState({ ...this.state, products, prod: products, p: products  }))
       .then(products => this.setState({ ...this.state, products }))
-      .then(() => setTimeout(() => this.makeList(), 200))
+      // .then(() => setTimeout(() => this.makeList(), 200))
       .catch(console.error)
   }
 
   makeList() {
     let { itemlist, products } = this.state
+
+    debugger
+
     // 创建一个list
     this.appendItem(itemlist, this.createList())
 

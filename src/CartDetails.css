@@ -1,0 +1,178 @@
+.cart-main {
+  width: 990px;
+  font-size: 14px; }
+  .cart-main .th, .cart-main .col {
+    display: inline-block;
+    vertical-align: top; }
+  .cart-main .th {
+    position: relative;
+    line-height: 3em;
+    border: none;
+    margin: 0; }
+  .cart-main .th:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    right: 1px;
+    border: 2px solid blue; }
+  .cart-main .col {
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 1.5em; }
+  .cart-main .desc-check {
+    width: 45px; }
+  .cart-main .desc-info {
+    width: 302px; }
+  .cart-main .desc-param {
+    width: 192px; }
+  .cart-main .desc-price {
+    width: 120px; }
+  .cart-main .desc-quantity {
+    width: 120px; }
+  .cart-main .desc-quantity {
+    width: 120px; }
+  .cart-main .desc-sum {
+    width: 120px; }
+  .cart-main .desc-opera {
+    width: 99px; }
+  .cart-main .cell-check {
+    width: 45px; }
+  .cart-main .cell-info {
+    width: 302px; }
+  .cart-main .cell-image {
+    width: 80px;
+    height: 80px; }
+  .cart-main .cell-param {
+    width: 192px; }
+  .cart-main .cell-price {
+    width: 120px; }
+  .cart-main .cell-quantity {
+    width: 120px; }
+  .cart-main .cell-sum {
+    width: 120px; }
+  .cart-main .cell-opera {
+    width: 99px; }
+  .cart-main .cell-image {
+    float: left; }
+  .cart-main .cell-title {
+    margin-left: 80px;
+    padding: 0 10px; }
+  .cart-main .cell-price, .cart-main .cell-sum {
+    padding-right: 10px;
+    text-align: right; }
+  .cart-main .cell-check, .cart-main .cell-quantity {
+    text-align: center; }
+  .cart-main .cell-opera {
+    padding-left: 10px; }
+
+.cart-desc {
+  margin-bottom: 16px; }
+
+.order-list .order-content {
+  outline: 1px solid orange; }
+
+.order-list .order-shopInfo {
+  line-height: 3em;
+  outline: 1px solid blue; }
+
+.order-list .checkOrder {
+  display: inline-block; }
+
+.order-list .shopIcon {
+  margin: 0 5px; }
+
+.order-list .item-content {
+  padding: 16px 0; }
+
+.order-list .price-now {
+  font-weight: 700; }
+
+.order-list .item-sum {
+  font-weight: 700;
+  color: red; }
+
+.order-footer {
+  outline: 1px solid blue; }
+  .order-footer > * {
+    outline: 1px solid red; }
+  .order-footer .footer-right > div {
+    outline: 1px solid lime; }
+  .order-footer .price-sum > div {
+    outline: 1px solid silver; }
+
+.order-footer {
+  margin-left: 5px;
+  line-height: 3.2em; }
+  .order-footer .footer-check,
+  .order-footer .footer-opera {
+    display: inline-block;
+    vertical-align: top; }
+  .order-footer .footer-right {
+    float: right; }
+  .footer-opera {
+    margin-left: 15px; }
+    .footer-opera a {
+      display: inline-block;
+      vertical-align: top;
+      padding: 0 .5em; }
+  .footer-right .amount-sum, .footer-right .price-sum, .footer-right .checkout {
+    display: inline-block;
+    vertical-align: top; }
+  .footer-right .price-sum > *, .footer-right .amount-sum > * {
+    display: inline-block;
+    vertical-align: top; }
+  .footer-right .amount-sum {
+    margin: 0 10px; }
+  .footer-right .selectedItemCount {
+    padding: 0 4px; }
+  .footer-right .totalSymol {
+    vertical-align: baseline; }
+  .footer-right .checkout {
+    line-height: inherit;
+    padding: 0 40px; }
+  .footer-right .selectedItemCount, .footer-right .price {
+    color: red;
+    font-weight: 700; }
+  .footer-right .selectedItemCount {
+    font-size: 130%; }
+  .footer-right .price {
+    font-size: 170%; }
+  .footer-right .totalSymbol {
+    font-size: 60%;
+    font-weight: normal; }
+  .footer-right .checkout {
+    color: #fff;
+    background-color: orange;
+    font-size: 20px;
+    border-radius: 5px; }
+
+@media (min-width: 1440px) {
+  .cart-main {
+    width: 1190px; }
+    .cart-main .desc-check,
+    .cart-main .cell-check {
+      width: 50px; }
+    .cart-main .desc-info,
+    .cart-main .cell-info {
+      width: 342px; }
+    .cart-main .cell-image {
+      width: 80px; }
+    .cart-main .cell-title {
+      width: 222px; }
+    .cart-main .desc-param,
+    .cart-main .cell-param {
+      width: 252px; }
+    .cart-main .desc-price,
+    .cart-main .cell-price {
+      width: 130px; }
+    .cart-main .desc.quantity,
+    .cart-main .cell-quantity {
+      width: 120px; }
+    .cart-main .desc-sum,
+    .cart-main .cell-sum {
+      width: 140px; }
+    .cart-main .desc-opera,
+    .cart-main .cell-opera {
+      width: 119px; } }

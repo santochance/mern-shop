@@ -9,6 +9,7 @@ import splitArray from './helper/splitArray.js'
 import genIndexDisplay from './helper/genIndexDisplayer.js'
 
 import './TestCart.css'
+import './CartDetails.css'
 
 // Cart 页内测试
 export default class TestCart extends ItemList {
@@ -17,7 +18,10 @@ export default class TestCart extends ItemList {
 
     let { state } = this
     state.cart = state.itemlist
-    delete state.itemlist
+    // ItemList.js应用到App.js时
+    // makeList报错是因为这里删除了itemlist属性？
+    // delete state.itemlist
+    // 应该是因为App没有把ItemList的state注入
     this.state = {
       ...state,
       products: null,
@@ -183,9 +187,7 @@ export default class TestCart extends ItemList {
     let products = data && data[page.index]
 
     if (!products) return null
-
-    // console.log('curr products:', products)
-
+      // console.log('curr products:', products)
     return (
       <div className="app">
         <div style={{
@@ -384,35 +386,6 @@ const CartDetails = (props) => {
 
   return (
     <div className="cart">
-      {/*
-      <div className="tr cart-desc">
-        <div className="th chk">
-          <input type="checkbox" name="" id="" />全选
-          <input type="checkbox" name="" id="" checked={cart.checked} onChange={() => this.check(cart)}/>全选
-        </div>
-      </div>
-      <div className="cart-orders">
-        {cart.children.map((order, i) => (
-          <div key={i} >
-            <div className="shopInfo">
-              <input type="checkbox" name="" id=""/>店铺：xxx
-            </div>
-            <div className="itemInfo">
-              {order.children.map((item, j) => (
-                <div key={j}>
-                  <input type="checkbox" name="" id=""/>
-                  <div>{item.content.productName}</div>
-                  <div>
-                    <span>数量：{item.amount}</span>
-                    <span>合计：{item.price}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      */}
       <div className="cart-main">
         <div className="cart-desc">
           <div>
@@ -424,7 +397,8 @@ const CartDetails = (props) => {
           <div className="th desc-check">
             <input type="checkbox" name="" id=""
               checked={cart.checked}
-              onChange={() => app.check(cart)}/>全选
+              onChange={() => app.check(cart)}
+            />全选
           </div>
           <div className="th desc-info">商品信息</div>
           <div className="th desc-param">&nbsp;</div>
@@ -443,7 +417,7 @@ const CartDetails = (props) => {
                     checked={order.checked}
                     onChange={() => app.check(order)}/>
                 </div>
-                <span className="badge">badge</span>
+                <span className="badge shopIcon">badge</span>
                 <span>Shop Name</span>
                 <span>Count: {order.count}</span>{'  '}
                 <span>Price: {order.price}</span>
@@ -460,7 +434,7 @@ const CartDetails = (props) => {
                       <div className="col cell-image">
                         <img src="" alt=""/>
                       </div>
-                      <div className="col cell-title">{item.content.productName}</div>
+                      <div className="col cell-title">{item.content.productName || '商品标题...'}</div>
                     </div>
                     <div className="col cell-param"></div>
                     <div className="col cell-price">
@@ -487,6 +461,37 @@ const CartDetails = (props) => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="order-footer">
+          <div className="footer-check">
+            <input type="checkbox" name="" id=""
+              checked={cart.checked}
+              onChange={() => app.check(cart)}
+            />全选
+          </div>
+          <div className="footer-opera">
+            <a className="footer-favSelected">
+              移入收藏夹
+            </a>
+            <a className="footer-delSelected">
+              删除
+            </a>
+          </div>
+          <div className="footer-right">
+            <div className="amount-sum">
+              <span className="text">已选商品</span>
+              <span className="selectedItemCount">{cart.count || 0}</span>
+              <span className="text">件</span>
+            </div>
+            <div className="price-sum">
+              <span className="text">合计（不含运费）：</span>
+              <span className="price">
+                <span className="totalSymbol">￥</span>
+                <span className="total">{cart.price || 0}</span>
+              </span>
+            </div>
+            <a className="checkout">结算</a>
+          </div>
         </div>
       </div>
     </div>

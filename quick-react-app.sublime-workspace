@@ -520,60 +520,10 @@
 	"buffers":
 	[
 		{
-			"contents": "items.filter(item => {\n  Object.entries(item)\n    .some(([key, value]) =>\n      dataKeys.indexOf(key) >= 0 &&\n        conditions.some(c =>\n          c.have.every(key => value.search(key) >= 0) &&\n            c.not.every(key => value.search(key) <0)\n          )\n      )\n})\n\n.filter(([key, value]) =>\n      dataKeys.indexOf(key) >= 0)\n\n\n// 对于数据数据中的每一个item\nitems.filter(item =>\n  // 如果它的任一键值对满足条件则返回真\n  Object.entries(item)\n    .some(([key, value]) =>\n      // 条件是key在dataKeys数组中\n      dataKeys.indexOf(key) >= 0 &&\n        // 并且value符合任一condition的要求\n        conditions.some(c =>\n          // 要求是value能够逐一匹配have数组但不匹配not数组的元素\n          c.have.every(key => value.search(key) >= 0) &&\n            c.not.every(key => value.search(key) <0)\n        )\n    )\n)",
+			"file": "src/components/Home/Home.js",
 			"settings":
 			{
-				"buffer_size": 750,
-				"line_ending": "Windows",
-				"name": "items.filter(item => {"
-			}
-		},
-		{
-			"contents": "import React from 'react'\nimport { Form, Icon, Input, Button, Checkbox, Avatar } from 'antd';\nconst FormItem = Form.Item;\n\nclass NormalLoginForm extends React.Component {\n  handleSubmit = (e) => {\n    e.preventDefault();\n    this.props.form.validateFields((err, values) => {\n      if (!err) {\n        console.log('Received values of form: ', values);\n      }\n    });\n  }\n  render() {\n    const { getFieldDecorator } = this.props.form;\n    return (\n      <Form onSubmit={this.handleSubmit} className=\"login-form\">\n        <FormItem>\n          {getFieldDecorator('userName', {\n            rules: [{ required: true, message: 'Please input your username!' }],\n          })(\n            <Input prefix={<Icon type=\"user\" style={{ fontSize: 13 }} />} placeholder=\"用户名\" />\n          )}\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('password', {\n            rules: [{ required: true, message: 'Please input your Password!' }],\n          })(\n            <Input prefix={<Icon type=\"lock\" style={{ fontSize: 13 }} />} type=\"password\" placeholder=\"用户密码\" />\n          )}\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('remember', {\n            valuePropName: 'checked',\n            initialValue: true,\n          })(\n            <Checkbox>记住我的登录状态</Checkbox>\n          )}\n          <a style={{ float: 'right' }} className=\"login-form-forgot\" href=\"\">忘记密码</a>\n        </FormItem>\n        <div style={{ marginTop: '-20px' }}>\n          <Button type=\"primary\" htmlType=\"submit\" className=\"login-form-button\">\n            Log in\n          </Button>\n          <div style={{ float: 'right' }}>\n            还没有账号？<a href=\"\">现在注册！</a>\n          </div>\n        </div>\n      </Form>\n    );\n  }\n}\n\nconst WrappedNormalLoginForm = Form.create()(NormalLoginForm);\n\nconst Login = (props) => {\n\n  return (\n    <div style={{ width: 320, margin: 'auto', marginTop: 100, }}>\n      <WrappedNormalLoginForm />\n    </div>\n  )\n}\n\nexport default Login\n",
-			"file": "src/components/Login/Login.js",
-			"file_size": 2074,
-			"file_write_time": 131514217522236147,
-			"settings":
-			{
-				"buffer_size": 1957,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import React from 'react'\n\nimport { Form, Input, Button, Icon } from 'antd'\nconst FormItem = Form.Item\n\nclass EditUserForm extends React.Component {\n\n  render() {\n    const { getFieldDecorator } = this.props.form\n\n    return (\n      <Form className=\"user-editForm\">\n        <FormItem\n          labelCol={span: 3}\n          wrapperCol={span: 3}>\n          {getFieldDecorator('avatar'), {\n            rules: [\n              { type: 'file' }\n            ]\n          }}(\n            <Input />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('username'), {\n\n          }}(\n            <Input placeholder=\"用户名\" />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('email'), {\n            rules: [\n              { type: 'email',  message: '不是有效格式的邮箱！'},\n              { required: true, message: '请输入邮箱！'}\n            ]\n          }}(\n            <Input />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('phone'), {\n            rules: [{ type: 'tel' }]\n          }}(\n            <Input placeholder=\"手机\" />\n          )\n        </FormItem>\n        <FormItem>\n          {getFieldDecorator('sex'), {\n            rules: \n          }}(\n            <Input placeholder=\"性别\" />\n          )\n        </FormItem>\n      </Form>\n    )\n  }\n}",
-			"file": "src/components/EditUser.js",
-			"file_size": 0,
-			"file_write_time": 131512513432502625,
-			"settings":
-			{
-				"buffer_size": 1311,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "import { Menu, Icon } from 'antd';\nconst SubMenu = Menu.SubMenu;\nconst MenuItemGroup = Menu.ItemGroup;\n\nclass Sider extends React.Component {\n  handleClick = (e) => {\n    console.log('click ', e);\n  }\n  render() {\n    return (\n      <Menu\n        onClick={this.handleClick}\n        style={{ width: 240 }}\n        defaultSelectedKeys={['1']}\n        defaultOpenKeys={['sub1']}\n        mode=\"inline\"\n      >\n        <SubMenu key=\"sub1\" title={<span><Icon type=\"mail\" /><span>Navigation One</span></span>}>\n          <MenuItemGroup key=\"g1\" title=\"Item 1\">\n            <Menu.Item key=\"1\">Option 1</Menu.Item>\n            <Menu.Item key=\"2\">Option 2</Menu.Item>\n          </MenuItemGroup>\n          <MenuItemGroup key=\"g2\" title=\"Item 2\">\n            <Menu.Item key=\"3\">Option 3</Menu.Item>\n            <Menu.Item key=\"4\">Option 4</Menu.Item>\n          </MenuItemGroup>\n        </SubMenu>\n        <SubMenu key=\"sub2\" title={<span><Icon type=\"appstore\" /><span>Navigation Two</span></span>}>\n          <Menu.Item key=\"5\">Option 5</Menu.Item>\n          <Menu.Item key=\"6\">Option 6</Menu.Item>\n          <SubMenu key=\"sub3\" title=\"Submenu\">\n            <Menu.Item key=\"7\">Option 7</Menu.Item>\n            <Menu.Item key=\"8\">Option 8</Menu.Item>\n          </SubMenu>\n        </SubMenu>\n        <SubMenu key=\"sub4\" title={<span><Icon type=\"setting\" /><span>Navigation Three</span></span>}>\n          <Menu.Item key=\"9\">Option 9</Menu.Item>\n          <Menu.Item key=\"10\">Option 10</Menu.Item>\n          <Menu.Item key=\"11\">Option 11</Menu.Item>\n          <Menu.Item key=\"12\">Option 12</Menu.Item>\n        </SubMenu>\n      </Menu>\n    );\n  }\n}\n\nReactDOM.render(<Sider />, mountNode);",
-			"settings":
-			{
-				"buffer_size": 1672,
-				"line_ending": "Windows",
-				"name": "import { Menu, Icon } from 'antd';"
-			}
-		},
-		{
-			"file": "src/components/EditUserForm.js",
-			"settings":
-			{
-				"buffer_size": 3865,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/UserAdmin.js",
-			"settings":
-			{
-				"buffer_size": 7029,
+				"buffer_size": 151,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -588,115 +538,125 @@
 			}
 		},
 		{
+			"contents": "/* eslint no-unused-vars: 0 */\n\nimport React from 'react'\n// import Cart from './Cart.js'\nimport ItemList from './ItemList.js'\n\nimport { random } from './helper/randoms.js'\nimport splitArray from './helper/splitArray.js'\nimport genIndexDisplay from './helper/genIndexDisplayer.js'\n\nimport './TestCart.css'\nimport './CartDetails.css'\n\n// Cart 页内测试\nexport default class TestCart extends ItemList {\n  constructor(props) {\n    super(props);\n\n    let { state } = this\n    state.cart = state.itemlist\n    // ItemList.js应用到App.js时\n    // makeList报错是因为这里删除了itemlist属性？\n    // delete state.itemlist\n    // 应该是因为App没有把ItemList的state注入\n    this.state = {\n      ...state,\n      products: null,\n      user: {},\n      selectedAddr: '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102',\n      // 分页初始化设置\n      page: {\n        size: 8\n      }\n    }\n    // this.sortProductsBy = this.sortProductsBy.bind(this)\n  }\n\n  componentDidMount() {\n    this.loadData()\n\n    // 模拟添加products到cart，并check cart\n    setTimeout(() => {\n      let { data, page, cart } = this.state\n      let products = data && data[page.index]\n      let n = random(4, 7)\n      while (n--) {\n        this.addToCart(products[random(0, products.length - 1)])\n      }\n      setTimeout(() => {\n        this.check(cart)\n      }, 500)\n    }, 800)\n    window.app = this\n  }\n\n  addToCart(product, amount = 1) {\n    let { cart } = this.state\n    // let { updateItem, createItem, createList, appendItem } = this\n\n    // 遍历寻找所属order\n    cart.children.some(order => {\n      // 找到所属order\n      if (order.seller === product.seller) {\n\n        // 遍历寻找所属item\n        order.children.some(item => {\n          // 找到所属item\n          if (item.content._id === product._id) {\n            this.updateItem(item, item.amount + amount)\n            return true\n          }\n        }) || (\n          // 没找到所属item\n          this.appendItem(order, this.createItem(product, amount))\n        )\n\n        return true\n      }\n    }) || (\n      // 没找到所属order\n      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount)))\n    )\n\n    console.log('cart:\\n', cart)\n  }\n\n  loadData() {\n    function configPagination (data) {\n      // 获取分页的初始化设置\n      let { size, index = 0 } = this.state.page\n      // 生成分页相关数据\n      let pageCfg = this.paginate(data, size, index)\n\n      // 更新state\n      this.setState({\n        ...this.state,\n        ...pageCfg,\n      })\n    }\n\n    fetch('/products')\n      .then(res => res.json())\n      // .then(products => this.setState({ ...this.state, products }))\n      .then(configPagination.bind(this))\n      .catch(console.error)\n  }\n\n  filterBy() { }\n\n  sortBy(entries, key, isDesc = true) {\n    let sorter\n\n    if (typeof isDesc === 'number') {\n      isDesc = (isDesc !== 1)\n    }\n\n    if (key) {\n      if (isDesc) {\n        sorter = (a, b) => b[key] - a[key]\n      } else {\n        sorter = (a, b) => a[key] - b[key]\n      }\n    } else {\n      if (isDesc) {\n        sorter = (a, b) => b - a\n      } else {\n        sorter = (a, b) => a - b\n      }\n    }\n\n    return entries.sort(sorter)\n  }\n\n  sortProductsBy(key, isDesc) {\n    debugger\n\n    let { products } = this.state\n    this.setState({\n      ...this.state,\n      products: this.sortBy(products, key, isDesc)\n    })\n  }\n\n  // pagination\n  paginate(data, size, index = 0) {\n    let splitedData = splitArray(data, size)\n    let total = splitedData.length\n    let displayer = genIndexDisplay({ total })\n\n    return {\n      rawData: data,\n      data: splitedData,\n      page: {\n        size,\n        index,\n        total,\n      },\n      displayer\n    }\n  }\n\n  gotoPage(index) {\n    let { page } = this.state\n    let total = page.total\n\n    // 修正index\n    index = index >= 0\n      ? index < total\n        ? index\n        : total - 1\n      : 0\n\n    // 应用index\n    page.index = index\n    this.setState({...this.state, page})\n  }\n\n  submitOrder() {\n\n  }\n\n  render() {\n\n    let { data, displayer, page } = this.state\n    // displayer.show()要求1-based的index\n    let indexKeys = displayer && displayer.show(page.index)\n    let products = data && data[page.index]\n\n      <div className=\"app\">\n        <div style={{\n          // display: 'flex',\n          // flexDirection: 'column',\n        }}>\n          <ConfirmOrder app={this} />\n          <CartDetails app={this} />\n          <ProductList app={this} products={products} indexKeys={indexKeys} index={page.index} />\n\n        </div>\n\n        {/*\n          {this.cart ? (\n            <div style={{ display: 'flex' }}>\n            </div>\n          ) : (\n            <div>Cart is not loaded yet.</div>\n          )}\n        <ConfirmOrder cart={this.cart} />\n        */}\n      </div>\n    )\n  }\n}\n\nconst ProductList = (props) => {\n  // let products = props.products\n  // let app = props.app\n  let { app, products, indexKeys, index } = props\n\n  // console.log('products in ProductList:', products)\n\n  return (\n    <div style={{\n      // height: '80vh',\n      // overflow: 'auto',\n    }}>\n      <div className=\"main-content\">\n        <div className=\"left-box\">\n          <Grid {...{ products, app }} />\n          <List {...{ products, app }} />\n        </div>\n        <div className=\"right-box\"></div>\n        <Pagination indexKeys={indexKeys} index={index} gotoPage={(index) => app.gotoPage(index)} />\n      </div>\n    </div>\n  )\n}\n\nconst Pagination = (props) => {\n  let { indexKeys, prevLabel = '\\u00AB', nextLabel = '\\u00BB', index, gotoPage } = props\n  let prevDisabled = !indexKeys.all[0]\n  let nextDisabled = !indexKeys.all.slice(-1)[0]\n\n  // console.log('indexKeys in pagination:', indexKeys)\n  // console.log('num keys', indexKeys.slice(1, -1))\n  return (\n    <div className=\"Page navigation\">\n      <ul className=\"pagination\">\n        <li className={prevDisabled && 'disabled'}>\n          <a href=\"#\"aria-label=\"Previous\" onClick={() => gotoPage(index - 1)}>\n            <span aria-hidden=\"true\">{prevLabel}</span>\n          </a>\n        </li>\n        {indexKeys.all.slice(1, -1).map((key, i) =>\n          (key === '...') ? (\n            <span style={{float: 'left', padding: '6px 12px'}}>{key}</span>\n          ) : (\n            <li key={i} className={typeof key === 'string' && 'active'}\n              onClick={() => gotoPage(parseInt(key) - 1)}>\n              <a href={'#' + key}>{key}</a>\n            </li>\n          )\n        )}\n        <li className={nextDisabled && 'disabled'}>\n          <a href=\"#\" aria-label=\"Next\" onClick={() => gotoPage(index + 1)}>\n            <span aria-hidden=\"true\">{nextLabel}</span>\n          </a>\n        </li>\n      </ul>\n    </div>\n  )\n}\n\nconst GridTotal = (props) => {\n  let { app, products } = props\n\n  return (\n    <div className=\"grid-total\">\n      <div className=\"grid-left\">\n        <div className=\"grid-sortbar\">\n          <ul>\n            <li onClick={() => app.sortProductsBy()}>综合</li>\n            <li onClick={() => app.sortProductsBy('sales')}>销量</li>\n            <li onClick={() => app.sortProductsBy('listingDate')}>上市时间</li>\n            <li onClick={() => app.sortProductsBy('price')}>价格从高到低</li>\n            <li onClick={() => app.sortProductsBy('price', 1)}>价格从低到高</li>\n          </ul>\n        </div>\n        <div className=\"grid\">\n          {products.map((product, i) => (\n            <div className=\"grid-item product\">\n              <div className=\"imgWrap\">\n                <a href=\"\">\n                  <img src=\"\" alt=\"\" width=\"200\" height=\"200\"/>\n                </a>\n              </div>\n              <div className=\"title-row\">\n                <a href=\"\">\n                  <span className=\"title\">{product.productName || 'Product Name'}</span>\n                  <span className=\"desc\">{product.description || 'Product desc...'}</span>\n                </a>\n              </div>\n              <div className=\"sale-row\">\n                <div className=\"price\">{product.price || 'Product price'}</div>\n                <div className=\"sales\">{product.sales || 'Product sales'}</div>\n              </div>\n              <div className=\"btn-row\">\n                <input type=\"number\" name=\"\" id=\"\"/>\n                <button className=\"btn btn-danger\" onClick={() => app.addToCart(product, 1)}>添加到购物车</button>\n              </div>\n            </div>\n          ))}\n        </div>\n      </div>\n    </div>\n  )\n}\n\nconst Grid = (props) => {\n  let { app, products } = props\n\n  return (\n    <div className=\"list-container grid-mode\">\n      <div className=\"list-wrapper\">\n        {products.map((product, i) => (\n          <div key={i} className=\"list-item\">\n            <div className=\"img-wrapper\">\n              <img src=\"\" alt=\"\"/>\n            </div>\n            <div className=\"img-caption\">\n              <div className=\"title\">{product.productName}}</div>\n              <div className=\"sale\">Sale {i}</div>\n              <div className=\"op\">\n                <input className=\"amount\" type=\"number\" name=\"\" id=\"\"/>\n                <div className=\"addToCart-btn\">\n                  <button className=\"btn btn-danger\" onClick={() => app.addToCart(product, 1)}>添加到购物车</button>\n                </div>\n              </div>\n            </div>\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n\nconst List = (props) => {\n  let { products } = props\n\n  return (\n    <div className=\"list-container list-mode\">\n      <div className=\"list-wrapper\">\n        {products.map((item, i) => (\n          <div key={i} className=\"list-item\">\n            <div className=\"col\">\n              <div className=\"img-wrapper\">\n                <img src=\"\" alt=\"\"/>\n              </div>\n            </div>\n            <div className=\"col\">\n              <div className=\"title\">{item.productName}</div>\n              <div className=\"icon\">Icon 0</div>\n              <div className=\"shop\">Shop 0</div>\n            </div>\n            <div className=\"col\">\n              <div className=\"price\">Price</div>\n            </div>\n            <div className=\"col\">\n              <div className=\"deal-cnt\">xxx人付款</div>\n            </div>\n            <div className=\"col\">\n              <div className=\"server-icons\">Service-icons</div>\n            </div>\n          </div>\n        ))}\n      </div>\n    </div>\n  )\n}\n\nconst CartDetails = (props) => {\n  let app = props.app\n  let { cart } = app.state\n\n  return (\n    <div className=\"cart\">\n      <div className=\"cart-main\">\n        <div className=\"cart-desc\">\n          <div>\n            <div>\n              <span>Count: {cart.count}</span>{'  '}\n              <span>Price: {cart.price}</span>\n            </div>\n          </div>\n          <div className=\"th desc-check\">\n            <input type=\"checkbox\" name=\"\" id=\"\"\n              checked={cart.checked}\n              onChange={() => app.check(cart)}\n            />全选\n          </div>\n          <div className=\"th desc-info\">商品信息</div>\n          <div className=\"th desc-param\">&nbsp;</div>\n          <div className=\"th desc-price\">单价\n          </div>\n          <div className=\"th desc-quantity\">数量</div>\n          <div className=\"th desc-sum\">金额</div>\n          <div className=\"th desc-opera\">操作</div>\n        </div>\n        <div className=\"order-list\">\n          {cart.children.map((order, i) => (\n            <div key={i} className=\"order-content\">\n              <div className=\"order-shopInfo\">\n                <div className=\"checkOrder\">\n                  <input type=\"checkbox\" name=\"\" id=\"\"\n                    checked={order.checked}\n                    onChange={() => app.check(order)}/>\n                </div>\n                <span className=\"badge shopIcon\">badge</span>\n                <span>Shop Name</span>\n                <span>Count: {order.count}</span>{'  '}\n                <span>Price: {order.price}</span>\n              </div>\n              <div className=\"order-items\">\n                {order.children.map((item, i) => (\n                  <div key={i} className=\"item-content\">\n                    <div className=\"col cell-check\">\n                      <input className=\"check\" type=\"checkbox\" name=\"\" id=\"\"\n                        checked={item.checked}\n                        onChange={() => app.check(item)}/>\n                    </div>\n                    <div className=\"col cell-info\">\n                      <div className=\"col cell-image\">\n                        <img src=\"\" alt=\"\"/>\n                      </div>\n                      <div className=\"col cell-title\">{item.content.productName || '商品标题...'}</div>\n                    </div>\n                    <div className=\"col cell-param\"></div>\n                    <div className=\"col cell-price\">\n                      <div className=\"price-now\">￥{item.content.price}</div>\n                    </div>\n                    <div className=\"col cell-quantity\">\n                      <input type=\"number\" name=\"\" id=\"\" min=\"1\"\n                        value={item.amount} style={{width: '80px'}}\n                        onChange={(e) => app.updateItem(item, e.target.value || 1)} />\n                    </div>\n                    <div className=\"col cell-sum\">\n                      <div className=\"item-sum\">￥{item.price}</div>\n                    </div>\n                    <div className=\"col cell-opera\">\n                      <div>\n                        <a href=\"#\" onClick={() => app.removeItem(item)}>删除</a>\n                      </div>\n                      <div>\n                        <a href=\"#\">移动到收藏夹</a>\n                      </div>\n                    </div>\n                  </div>\n                ))}\n              </div>\n            </div>\n          ))}\n        </div>\n        <div className=\"order-footer\">\n          <div className=\"footer-check\">\n            <input type=\"checkbox\" name=\"\" id=\"\"\n              checked={cart.checked}\n              onChange={() => app.check(cart)}\n            />全选\n          </div>\n          <div className=\"footer-opera\">\n            <a className=\"footer-favSelected\">\n              移入收藏夹\n            </a>\n            <a className=\"footer-delSelected\">\n              删除\n            </a>\n          </div>\n          <div className=\"footer-right\">\n            <div className=\"amount-sum\">\n              <span className=\"text\">已选商品</span>\n              <span className=\"selectedItemCount\">{cart.count || 0}</span>\n              <span className=\"text\">件</span>\n            </div>\n            <div className=\"price-sum\">\n              <span className=\"text\">合计（不含运费）：</span>\n              <span className=\"price\">\n                <span className=\"totalSymbol\">￥</span>\n                <span className=\"total\">{cart.price || 0}</span>\n              </span>\n            </div>\n            <a className=\"checkout\">结算</a>\n          </div>\n        </div>\n      </div>\n    </div>\n  )\n}\n\nconst ConfirmOrder = (props) => {\n  let app = props.app\n  let { cart, selectedAddr } = app.state\n\n  // console.log('cart:', cart)\n\n  return (\n    <div className=\"order-confirm\">\n      <div className=\"order-address\"></div>\n      <div className=\"order-orderDesc\">\n        <div>确认订单</div>\n        <div className=\"tr desc-row\">\n          <div className=\"th desc-info\">商品信息</div>\n          <div className=\"th desc-param\">商品属性</div>\n          <div className=\"th desc-price\">单价</div>\n          <div className=\"th desc-quantity\">数量</div>\n          <div className=\"th desc-discount\">优惠</div>\n          <div className=\"th desc-sum\">小计</div>\n        </div>\n      </div>\n      <div className=\"order-list\">\n        {cart.children.map((order, i) => order.count > 0 && (\n          <div key={i} className=\"order-content\">\n            <div className=\"order-shopInfo\">\n              <span className=\"badge\">badge</span>\n              <span className=\"shop-name\">Shop Name</span>\n              <span className=\"shop-seller\">Seller</span>\n            </div>\n            <div className=\"order-items\">\n              {order.children.map((item, i) => item.checked && (\n                <div key={i} className=\"tr item-content\">\n                  <div className=\"td cell-info\">\n                    <div className=\"td cell-image\">\n                      <a className=\"image-wrapper\" href=\"\">\n                        <img src=\"\" alt=\"\"/>\n                      </a>\n                    </div>\n                    <div className=\"td info-content\">\n                      <div className=\"td cell-title\">{item.content.productName}</div>\n                      <div className=\"td cell-icons\"></div>\n                    </div>\n                  </div>\n                  <div className=\"td cell-param\"></div>\n                  <div className=\"td cell-price\">{item.content.price}</div>\n                  <div className=\"td cell-quantity\">{item.amount}</div>\n                  <div className=\"td cell-discount\">{item.discount}</div>\n                  <div className=\"td cell-sum\">{item.price}</div>\n                </div>\n              ))}\n            </div>\n            <div className=\"order-ext\">\n              <div className=\"order-message\">\n                <span className=\"message-name\">给卖家留言：</span>\n                <span className=\"message-detail\">\n                  <input type=\"text\"/>\n                </span>\n              </div>\n              <div className=\"order-delivery\">\n                <div className=\"delivery-title\">\n                  运送方式：\n                </div>\n                <div className=\"delivery-select\">\n                  <span className=\"select-info\">普通配送</span>\n                  <span className=\"select-price\">{order.shipping}</span>\n                </div>\n              </div>\n            </div>\n            <div className=\"order-total\">\n              <span>(含运费)</span>\n              <span className=\"order-sum\">￥{order.realPay}</span>\n            </div>\n          </div>\n        ))}\n      </div>\n      <div className=\"order-payInfo\">\n        <div className=\"payInfo-wrapper\">\n          <div className=\"order-realPay\">\n            <strong className=\"realPay-title\">实付款：</strong>\n            <span className=\"realPay-currency\">￥</span>\n            <span className=\"realPay-price\">{cart.realPay}</span>\n          </div>\n          <div className=\"order-confirmAddr\">\n            <div className=\"confirmAddr-addr\">\n              <strong className=\"confirmAddr-title\">寄送至：</strong>\n              <span className=\"confirmAddr-bd\">\n                {selectedAddr}\n              </span>\n            </div>\n            <div className=\"confirmAddr-user\">\n              <strong className=\"confirmAddr-title\">收货人：</strong>\n              <span className=\"confirmAddr-bd\">User Info...</span>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div className=\"order-submitOrder\">\n        <div className=\"submitOrder-wrapper\">\n          <a href=\"#\" className=\"go-back\">返回购物车</a>\n          <a href=\"\" className=\"btn btn-danger go-submit\"\n            onClick={() => this.submitOrder()}>提交订单</a>\n        </div>\n      </div>\n    </div>\n  )\n}\n",
+			"file": "src/TestCart.js",
+			"file_size": 19964,
+			"file_write_time": 131523437807060942,
+			"settings":
+			{
+				"buffer_size": 18715,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "////////////////////////////\n///\n/// Cart Detail\n///\n////////////////////////////\n\n// Layout\n\n.cart-main {\n  width: 990px;\n  font-size: 14px;\n\n  .th, .col {\n    display: inline-block;\n    vertical-align: top;\n    // outline: 1px solid silver;\n  }\n  .th {\n    position: relative;\n    line-height: 3em;\n    border: none;\n    margin: 0;\n  }\n  // desc栏的高亮下边\n  .th:after {\n    content: ' ';\n    display: block;\n    position: absolute;\n    bottom: 0;\n    left: 1px;\n    right: 1px;\n    border: 2px solid blue;\n  }\n  .col {\n    display: table-cell;\n    vertical-align: middle;\n    line-height: 1.5em;\n  }\n\n  .desc {\n    &-check { width: 45px; }\n    &-info { width: 302px; }\n    &-param { width: 192px; }\n    &-price { width: 120px; }\n    &-quantity { width: 120px; }\n    &-sum { width: 120px; }\n\n    if (!products) return null\n\n    // console.log('curr products:', products)\n\n    return (    &-opera { width: 99px; }    &-quantity { width: 120px; }\n\n  }\n  .cell {0px; height: 80px; }\n    &-param { width: 192px; }\n    &-price { width: 120px; }\n    &-sum\n    &-check { width: 45px; }\n    &-info { width: 302px; }\n    &-image { width: 8 { width: 120px; }\n    &-opera { width: 99px; }\n  }\n\n  .cell {\n    &-image { float: left; }\n    &-title { margin-left: 80px; padding: 0 10px; }\n    &-price,\n    &-sum { padding-right: 10px; text-align: right; }\n    &-check,\n    &-quantity { text-align: center; }\n    &-opera { padding-left: 10px; }\n  }\n}\n\n.cart-desc {\n  margin-bottom: 16px;\n}\n\n.order-list {\n\n  .order-content {\n    outline: 1px solid orange;\n  }\n\n  .order-shopInfo {\n    line-height: 3em;\n    outline: 1px solid blue;\n  }\n  .checkOrder {\n    display: inline-block;\n  }\n  .shopIcon {\n    margin: 0 5px;\n  }\n\n  .item-content {\n    padding: 16px 0;\n  }\n\n  .price-now {\n    font-weight: 700;\n  }\n  .item-sum {\n    font-weight: 700;\n    color: red;\n  }\n}\n\n// Auxi Outline\n.order-footer {\n  outline: 1px solid blue;\n\n  & > * {\n    outline: 1px solid red;\n  }\n\n  .footer-right {\n    & > div {\n      outline: 1px solid lime;\n    }\n  }\n\n  .price-sum {\n    & > div {\n      outline: 1px solid silver;\n    }\n  }\n}\n\n.order-footer {\n  margin-left: 5px;\n  line-height: 3.2em;\n\n  .footer-check,\n  .footer-opera {\n    display: inline-block;\n    vertical-align: top;\n  }\n  .footer-right {\n    float: right;\n  }\n\n  @at-root {\n    .footer-opera {\n      margin-left: 15px;\n\n      a {\n        display: inline-block;\n        vertical-align: top;\n        padding: 0 .5em;\n      }\n    }\n\n    // Layout\n    .footer-right {\n\n      .amount-sum,\n      .price-sum,\n      .checkout {\n        display: inline-block;\n        vertical-align: top;\n      }\n      .price-sum,\n      .amount-sum {\n        & > * {\n          display: inline-block;\n          vertical-align: top;\n        }\n      }\n      .amount-sum {\n        margin: 0 10px;\n      }\n      .selectedItemCount {\n        padding: 0 4px;\n      }\n      .totalSymol {\n        vertical-align: baseline;\n      }\n      .checkout {\n        line-height: inherit;\n        padding: 0 40px;\n      }\n    }\n\n    // Skin\n    .footer-right {\n\n      .selectedItemCount,\n      .price {\n        color: red;\n        font-weight: 700;\n      }\n      .selectedItemCount {\n        font-size: 130%;\n      }\n      .price {\n        font-size: 170%;\n\n      }\n      .totalSymbol {\n        font-size: 60%;\n        font-weight: normal;\n      }\n      .checkout {\n        color: #fff;\n        background-color: orange;\n        font-size: 20px;\n        border-radius: 5px;\n      }\n    }\n  }\n}\n\n@media (min-width: 1440px) {\n  .cart-main {\n    width: 1190px;\n\n    .desc-check,\n    .cell-check {\n      width: 50px;\n    }\n    .desc-info,\n    .cell-info {\n      width: 342px;\n    }\n    .cell-image {\n      width: 80px;\n    }\n    .cell-title {\n      width: 222px;\n    }\n    .desc-param,\n    .cell-param {\n      width: 252px;\n    }\n    .desc-price,\n    .cell-price {\n      width: 130px;\n    }\n    .desc.quantity,\n    .cell-quantity {\n      width: 120px;\n    }\n    .desc-sum,\n    .cell-sum {\n      width: 140px;\n    }\n    .desc-opera,\n    .cell-opera {\n      width: 119px;\n    }\n  }\n}\n",
+			"file": "src/scss/CartDetails.scss",
+			"file_size": 4230,
+			"file_write_time": 131523474254348678,
+			"settings":
+			{
+				"buffer_size": 4062,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/CartDetails/CartDetails.js",
+			"settings":
+			{
+				"buffer_size": 3521,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "import"
+			}
+		},
+		{
+			"file": "src/scss/TestCart.scss",
+			"settings":
+			{
+				"buffer_size": 6086,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/ItemList.js",
+			"settings":
+			{
+				"buffer_size": 12862,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": ".user-summary {\n  min-width: 80px;\n\n  li {\n    line-height: 3em;\n  }\n\n  a {\n    display: block;\n  }\n}\n\n.cart-summary {\n  width: 300px;\n\n\n}",
+			"settings":
+			{
+				"buffer_size": 138,
+				"line_ending": "Windows",
+				"name": ".user-summary {"
+			}
+		},
+		{
+			"file": "src/components/ProductShow/ProductShow.js",
+			"settings":
+			{
+				"buffer_size": 458,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "TestCart包含三部分\n\n- ProductList\n  + products 要显示的数据实体数组\n  + onAddToCart()\n- CartDetails\n  + cart 购物车数据对象\n- ConfirmOrders\n\n\nAddToCart需要在全局范围内有可以使用的引用\n\n\n<Link to=\"cart-details\" />\n\n<CartDetails cart={} />\n\n// 如果写成Route的话\n\n// 如果没登录，跳转到登录页\n// 如果登录了，跳转到CartDetails\n",
+			"settings":
+			{
+				"buffer_size": 257,
+				"line_ending": "Windows",
+				"name": "TestCart包含三部分"
+			}
+		},
+		{
+			"file": "src/DataGrid.js",
+			"settings":
+			{
+				"buffer_size": 8343,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/TopBar/TopBar.css",
+			"settings":
+			{
+				"buffer_size": 13,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "src/App.js",
 			"settings":
 			{
-				"buffer_size": 6545,
+				"buffer_size": 2908,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/SiteNav.js",
+			"file": "src/Cart.js",
 			"settings":
 			{
-				"buffer_size": 1641,
+				"buffer_size": 5560,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "node_modules/react-scripts/config/webpack.config.prod.js",
+			"contents": "import React, { Component, PropTypes } from 'react'\n\nimport { Link } from 'react-router-dom'\n\nimport './TopBar.css'\n\nlet userMenuItems = [\n  {\n    content: '我的订单',\n    to: '/usercenter/order-history',\n  },\n  {\n    content: '收藏夹',\n    to: '/usercenter/favorites',\n  },\n]\n\nconst TopBar = ({ cart }) => {\n\n  return (\n    <div className=\"topbar\">\n      <div className=\"logo\">\n      </div>\n      <div className=\"login-btn\"></div>\n      <div className=\"signup-btn\"></div>\n      <div className=\"cart-dropdown\">\n        {(hovering) && (\n          <div className=\"cart-summary\" style={{\n            width: 300\n          }}>\n            <CartSummary cart={cart} />\n          </div>\n        )}\n      </div>\n      <div className=\"user-dropdown\">\n        {(hovering) && (\n          <ul className=\"user-summary\" style={{\n            minWidth: 80\n          }}>\n            {userMenuItems.map((item, idx) => (\n              <UserMenuItem {...item} />\n            ))}\n          </ul>\n        )}\n      </div>\n    </div>\n  )\n}\n\nconst UserMenuItem = ({ to, content }) => {\n  return (\n    <li style={{ lineHeight: '3em' }}>\n      <Link to={to}>\n        {content}\n      </Link>\n    </li>\n  )\n}\n",
 			"settings":
 			{
-				"buffer_size": 16507,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "node_modules/react-scripts/config/paths.js",
-			"settings":
-			{
-				"buffer_size": 4450,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/DevIndex.js",
-			"settings":
-			{
-				"buffer_size": 2391,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/index.js",
-			"settings":
-			{
-				"buffer_size": 98,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/user.server.controller.js",
-			"settings":
-			{
-				"buffer_size": 4237,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": ".avatar\n  img\n  input onChange=this.uploadAvatar\n\n\n.form-group // username\n.form-group  // email\n\nuploadAvatar() {\n  this.loading = true\n\n  loadAvatar() {\n    // 头像加载完成时\n    this.loading = false\n  }  \n}\n\nwidth 100% x\n\n// 有哪些字段？\n\navatar\nusername\nemail\nsex\n\n地址管理\n",
-			"settings":
-			{
-				"buffer_size": 261,
-				"line_ending": "Windows",
-				"name": ".avatar"
-			}
-		},
-		{
-			"contents": ".avatar onClick\n\n// onClick打开头像上传控件\n// 选择头像图片文件\n// 可选的图片裁剪操作\n// 确认保存图片\n\n// 如果修改了头像(实际是avartar字段添加了数据)\n// 提交表单时连同头像图片一起提交\n\n// 服务端如果接收到头像图片，存储图片并返回路径\n// 保存数据实体时有一字段avatar用于保存头像路径\n\n\n// 打开页面时，有一user数据，它的avatar属性保存着图片路径\n\ninput:file name='avatar'\n\n.avatar\n  img\n  input:file\n\nlabel.avatar\n  img\ninput:file",
-			"settings":
-			{
-				"buffer_size": 299,
-				"line_ending": "Windows",
-				"name": ".avatar onClick"
-			}
-		},
-		{
-			"file": "server/server.routes.js",
-			"settings":
-			{
-				"buffer_size": 3364,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "// 临时备份\n\nimport React from 'react'\n\nimport {\n  Modal\n} from 'react-bootstrap'\n\nimport { form2json } from './helper/form2json.js'\nimport FormModal from './TestAutoMakeFold.js'\n\nclass UserCrud extends React.Component {\n  constructor(props) {\n    super(props);\n    this.state = {\n      editing: false,\n      editedEntry: undefined,\n      baseURI: '/users',\n      entries: [],\n      form: null,\n      removing: false,\n      removedEntry: undefined,\n      errorMsg: '',\n\n      showModal: false,\n      modalMode: '',\n      modalTitle: '',\n    }\n  }\n\n  componentDidMount() {\n    this.list()\n  }\n\n  list() {\n    fetch(this.state.baseURI)\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(entries => this.setState({...this.state, entries}))\n      .catch(console.error)\n  }\n\n  add({ item }) {\n    fetch(this.state.baseURI, {\n      method: 'POST',\n      headers: {'Content-Type': 'application/json'},\n      body: JSON.stringify(item)\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  update({ item, id }) {\n    id = id || item._id\n\n    fetch(this.state.baseURI + '/' + id, {\n      method: 'PUT',\n      headers: {'Content-Type': 'application/json'},\n      body: JSON.stringify(item)\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  remove({ item, id }) {\n    id = id || item._id\n    \n    fetch(this.state.baseURI + '/' + id, {\n      method: 'DELETE',\n    })\n      .then(res => {\n        if (res.ok) {\n          return res.json()\n        } else {\n          throw res.json()\n        }\n      })\n      .then(() => this.list())\n      .catch(console.error)\n  }\n\n  openEdit(entry) {\n    this.setState({\n      ...this.state,\n      editing: true,\n      editedItem: entry\n    })\n  }\n\n  closeEdit() {\n    this.setState({\n      ...this.state,\n      editing: false,\n      editedItem: undefined,\n      removing: false,\n      removedItem: undefined,\n      veriCode: '',\n      errorMsg: '',\n    })\n  }\n\n  saveEdit(entry, mode = 'update') {\n    mode === 'add'\n      ? this.add(entry)\n      : this.update(entry._id, entry)\n\n    this.closeEdit()\n  }\n\n  openModal({ mode, entry, title }) {\n    this.setState({\n      modalShow: true,\n      modalMode: mode,\n      modalTitle: title,\n      editedEntry: entry,\n    })\n  }\n\n  closeModal() {\n    this.setState({\n      modalShow: false,\n      modalMode: '',\n      modalTitle: '',\n      editedEntry: undefined,\n    })\n  }\n\n  saveModal({ mode, entry }) {\n    this[mode]({ entry })\n    this.closeModal()\n  }\n\n  confirmRemove(entry) {\n    this.setState({\n      ...this.state,\n      removing: true,\n      removedItem: entry,\n      veriCode: '123456',\n    })\n  }\n\n  verififyRemove(actual) {\n    let { veriCode, removedItem } = this.state\n    if (actual === veriCode) {\n      this.remove(removedItem._id)\n      this.closeEdit()\n    } else {\n      // 确认码不正确\n      this.setState({\n        ...this.state,\n        errorMsg: '确认码不正确！'\n      })\n    }\n  }\n\n  render() {\n    let {\n      editing,\n      editedItem,\n      removing,\n      removedItem,\n      entries,\n      errorMsg,\n    } = this.state\n\n    let inputVeriCode\n\n    return (\n      <div className=\"user-crud\">\n        <div className=\"operation\">\n          <button className=\"btn btn-primary\"\n            onClick={() => this.openEdit()}>Add</button>\n        </div>\n        <div className=\"data\">\n          <ol>\n            {entries.map((entry, i) => (\n              <li key={i}>\n                <pre>{JSON.stringify(entry, ['_id', 'username', 'email'], 2)}</pre>\n                <div>\n                  <button className=\"btn btn-success\"\n                    onClick={() => this.openEdit(entry)}>修改</button>\n                  <button className=\"btn btn-danger\"\n                    onClick={() => this.confirmRemove(entry)}>删除</button>\n                </div>\n              </li>\n            ))}\n          </ol>\n        </div>\n        <Modal\n          show={editing}>\n          <Modal.Header>\n            <Modal.Title>添加用户</Modal.Title>\n          </Modal.Header>\n          <Modal.Body>\n            <EditedForm getRef={(form) => (this.form = form)}\n              entry={editedItem} />\n          </Modal.Body>\n          <Modal.Footer>\n            <button className=\"btn btn-primary\"\n              onClick={() =>\n              this.saveEdit(form2json(this.form), editedItem ? 'update' : 'add')}\n            >添加</button>\n            <button className=\"btn btn-danger\"\n              onClick={() => this.closeEdit()}>取消</button>\n          </Modal.Footer>\n        </Modal>\n\n        <Modal\n          show={removing}\n        >\n          <Modal.Header>\n            <Modal.Title>确认删除</Modal.Title>\n          </Modal.Header>\n          <Modal.Body>\n            <div>\n              <p>\n                你正在删除下面数据：\n                <pre>{JSON.stringify(removedItem, null, 2)}</pre>\n                注意！删除后数据将不可恢复。\n              </p>\n              <p>\n                如果你知道自己正在做什么，并且依然坚持要执行删除操作，请输入以下确认码（字母区分大小写），然后点击“删除”按钮。\n              </p>\n              <p>\n                确认码：{this.state.veriCode}\n              </p>\n              <p>\n                输入确认码：<input type=\"text\" value={inputVeriCode} onChange={(e) => (inputVeriCode = e.target.value)}/>\n              </p>\n              {errorMsg && (\n                <div className=\"bg-warning\">确认码输入错误！</div>\n              )}\n            </div>\n          </Modal.Body>\n          <Modal.Footer>\n            <button className=\"btn btn-danger\"\n              onClick={() => this.verififyRemove(inputVeriCode)}>删除</button>\n            <button className=\"btn btn-default\"\n              onClick={() => this.closeEdit()}>取消</button>\n          </Modal.Footer>\n        </Modal>\n\n        <FormModal\n          showModal={showModal}\n          modalMode={modalMode}\n          modalTitle={modalTitle}\n          formConfigs={formConfigs}\n          formValues={formValue}\n          onSubmitForm={}\n          onCancelForm={}\n          onChange={}\n        />\n      </div>\n    )\n  }\n}\n\nconst EditedForm = (props) => {\n  let { entry = {}, getRef } = props\n\n  return (\n    <form ref={getRef}>\n      <div className=\"form-group\">\n        <label htmlFor=\"username\" className=\"control-label\">用户名：</label>\n        <input type=\"text\" name=\"username\" id=\"username\" defaultValue={entry.username} />\n      </div>\n      <div className=\"form-group\">\n        <label htmlFor=\"email\" className=\"control-label\">邮箱：</label>\n        <input type=\"email\" name=\"email\" id=\"email\" defaultValue={entry.email} />\n      </div>\n      <div className=\"form-group\">\n        <label htmlFor=\"password\" className=\"control-label\">密码：</label>\n        <input type=\"password\" name=\"password\" id=\"password\" defaultValue={entry.password} />\n      </div>\n      {entry._id && (\n        <input type=\"hidden\" name=\"_id\" id=\"_id\" defaultValue={entry._id} />\n      )}\n    </form>\n  )\n}\n\nexport default UserCrud\n",
-			"settings":
-			{
-				"buffer_size": 7146,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<Modal>\n  <Form>\n    <Input>Username</Input>\n    <Input>Email</Input>\n  </Form>\n</Modal>\n\n.user-admin\n  Search\n  .create-btn\n    Button\n  Table\n  FormModal\n  ",
-			"settings":
-			{
-				"buffer_size": 158,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/UserCrud.js",
-			"settings":
-			{
-				"buffer_size": 4799,
-				"encoding": "UTF-8",
+				"buffer_size": 1172,
 				"line_ending": "Windows"
 			}
 		}
@@ -733,16 +693,16 @@
 				"Set Syntax: JavaScript (Babel)"
 			],
 			[
+				"rename",
+				"File: Rename"
+			],
+			[
 				"delete",
 				"File: Delete"
 			],
 			[
 				"ssjs",
 				"Set Syntax: JavaScript (Rails)"
-			],
-			[
-				"rename",
-				"File: Rename"
 			],
 			[
 				"sass",
@@ -1053,7 +1013,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 410.0
+		"width": 484.0
 	},
 	"console":
 	{
@@ -1077,20 +1037,70 @@
 	"expanded_folders":
 	[
 		"/C/Users/Vincent/Data/Workspace/quick-react-app",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components"
 	],
 	"file_history":
 	[
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartDetails.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/test.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductList.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductShowcase.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/MyUploadAvatar/MyUploadAvatar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/page.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.css",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/react-antd-crud/src/components/FormModal.jsx",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/genIndexDisplayer.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductItem.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ModifyProfile/ModifyProfile.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Pagination.js",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/EditUserForm.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/UserCenter.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Favorites/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal/FormModal.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/FormModal.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UploadAvatar/UploadAvatar.js",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/User/children/information.vue",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/User/children/aihuishou.vue",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/utils/storage.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/paths.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/webpack.config.prod.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Signup/signup.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserAdmin.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SiteNav.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UploadAvatar/UploadAvatar.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UploadAvatar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/EditUser.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/UserCrud.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/user.server.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/node_modules/eslint-plugin-react/lib/util/Components.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/env.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/webpack.config.dev.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Search.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/FormModal/FormModal.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/user.server.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/style/themes/default.less",
@@ -1098,9 +1108,7 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/search.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/src/components/Search/Search.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserAdmin.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/src/components/Page/package.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/UserCrud.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/src/models/user.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/.roadhogrc.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/src/index.js",
@@ -1118,19 +1126,13 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/lib/index.d.ts",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/UserAdmin.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/config/paths.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SiteNav.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/config-overrides.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.old.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Search.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
 		"/C/Users/Vincent/Data/Examples/antd-admin/src/routes/login/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.js",
 		"/C/Users/Vincent/Data/Examples/react-antd-crud/src/components/App.jsx",
 		"/C/Users/Vincent/Data/Examples/react-antd-crud/src/index.js",
@@ -1139,14 +1141,10 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/DataGrid.scss",
 		"/C/Users/Vincent/Data/Examples/react-antd-crud/README.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react/lib/ReactElement.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/gulpfile.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/page.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/genIndexDisplayer.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/App.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/sass/Admin.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/test.scss",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_sidebar.pug",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_navbar.pug",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TableView.js",
@@ -1158,7 +1156,6 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/_Admin.sass",
 		"/C/Data/Examples/vali-admin/src/sass/main.sass",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/sass/3-component/_sidebar.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
 		"/C/Users/Vincent/Data/Examples/vali-admin/README.md",
 		"/C/html/includes/_navbar.html",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/html/includes/_navbar.html",
@@ -1166,50 +1163,13 @@
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/blank-page.pug",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_javascript.pug",
 		"/C/Users/Vincent/Data/Examples/vali-admin/src/pug/includes/_head.pug",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/user.server.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/order.model.test.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/OrderHistory.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/ObjectId2JSON(双向转换).js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/开发档案 - 草稿.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/OrderHistory/OrderHistory结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
-		"/C/Users/Vincent/Desktop/Everything_search_syntax.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/设计：通用Pagination插件.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/product.model.tests.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/Cart -- ItemList/CartDetail结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/dev.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/test.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/Cart -- ItemList/ConfirmOrder结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/catalog.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/mongoose.js",
-		"/C/Users/Vincent/AppData/Local/Sublime Text 3/Data/Packages/User/Node_Inspector.sublime-build",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/seed/seed.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/express.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/test_mongoose_api_again.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/saveUploadedImages.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/property.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/test_signup_api.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/seed/seed_data.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/tmp_seed_data_shells.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ItemList.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/Cart -- ItemList/ConfirmOrder结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/TestCart.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/splitArray.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/randoms.js",
-		"/C/Users/Vincent/Data/Learning Material/Web Application Development with MEAN_Code/Module 2/Chapter 10/meanshop/server/api/product/product.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/设计思考：Pagination进一步整合成层以提高使用便捷性",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SearchResult.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/Cart -- ItemList/CartDetail结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/设计genIndexDisplayer.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/ListView/设计主文档.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/开发档案/开发档案 - 草稿.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/design/ListView/listview结构大纲.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/indexShow.js"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js"
 	],
 	"find":
 	{
@@ -1250,6 +1210,65 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"\\.item-sum",
+			"top",
+			"middle",
+			"div",
+			"span",
+			"display",
+			"margin-left: 1",
+			"CartDetail",
+			"app\\.",
+			"item, value",
+			"app\\.",
+			"app.check",
+			"toggleCheck",
+			"Summary",
+			"text",
+			"Page",
+			"genIndexDisplay",
+			"splitArray",
+			"ConfirmOrder",
+			"redirect",
+			"cartdetails",
+			"Page",
+			"page",
+			"dataSource",
+			"order",
+			"Key",
+			"key",
+			"products",
+			"2.5",
+			"Login",
+			"login",
+			"Login",
+			"login",
+			"Login",
+			"login",
+			"Login",
+			"home",
+			"Home",
+			"home",
+			"Home",
+			"home",
+			"Home",
+			"page",
+			"defaultCurrent",
+			"defaultPage",
+			"upload",
+			"cropper",
+			"upimg",
+			"residences",
+			"ModifyPassword",
+			"path",
+			"修改密码",
+			"修改资料",
+			" {",
+			"OrderHistory",
+			"import",
+			"class",
+			"components",
+			"getBase64",
 			"handleSubmit",
 			"handleTableSelectionChange",
 			"showCheckbox",
@@ -1318,66 +1337,7 @@
 			"$",
 			"li",
 			"3.",
-			"3",
-			"buyer",
-			"seller",
-			"discount",
-			"create",
-			"button",
-			"a href=\"#\"",
-			"page.goto",
-			" td-0",
-			"label",
-			"Dots",
-			") ",
-			"error",
-			"pagination",
-			"idx",
-			"entry",
-			"orders",
-			"Catalog",
-			"productsIn",
-			"slug",
-			"cso",
-			"div",
-			"-amount",
-			"cell-quantity",
-			"desc-quantity",
-			"desc-",
-			"\\.desc",
-			"em",
-			"div",
-			"span",
-			"1000",
-			"products",
-			"div",
-			"content",
-			"\\.td",
-			"\\.th",
-			".th",
-			"quantity",
-			"desc-quantity",
-			"div",
-			"cell",
-			"div",
-			"cell",
-			"确认订单",
-			"opera",
-			"\"op",
-			"100",
-			"div",
-			"list",
-			"itemlist",
-			"col",
-			"\\.cart-main",
-			"item",
-			"px",
-			"col",
-			"desc",
-			"List",
-			"v",
-			"page",
-			"needle"
+			"3"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1385,6 +1345,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			"toggleCheck",
 			"$1,\\n.cell-$2",
 			"$1,\\n.cell-($2)",
 			"^\\n",
@@ -1447,23 +1408,23 @@
 			[
 				{
 					"buffer": 0,
+					"file": "src/components/Home/Home.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 750,
+						"buffer_size": 151,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								374,
-								374
+								94,
+								94
 							]
 						],
 						"settings":
 						{
-							"auto_name": "items.filter(item => {",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -1482,46 +1443,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -1532,39 +1453,76 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
 							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/components/Login/Login.js",
+					"file": "src/FormModal.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1957,
+						"buffer_size": 3151,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								78,
-								78
+								709,
+								709
 							]
 						],
 						"settings":
@@ -1574,27 +1532,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										79,
-										80
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										33,
-										34
-									]
 								},
 								"unmatched":
 								{
@@ -1602,11 +1545,115 @@
 							},
 							"bracket_highlighter.regions":
 							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 416.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/TestCart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18715,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4362,
+								4362
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										3865,
+										3866
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1627,11 +1674,6 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1642,11 +1684,21 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1664,27 +1716,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 273.0,
+						"translation.y": 3520.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/components/EditUser.js",
+					"buffer": 3,
+					"file": "src/scss/CartDetails.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1311,
+						"buffer_size": 4062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								487,
-								487
+								2097,
+								2097
 							]
 						],
 						"settings":
@@ -1696,15 +1748,15 @@
 								{
 									"1":
 									[
-										499,
-										500
+										942,
+										943
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -1712,8 +1764,8 @@
 								{
 									"1":
 									[
-										465,
-										466
+										926,
+										927
 									]
 								},
 								"unmatched":
@@ -1722,11 +1774,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -1747,11 +1794,6 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -1762,11 +1804,21 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -1778,13 +1830,15 @@
 								"bh_unmatched_close",
 								"bh_unmatched_content"
 							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2218.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1794,290 +1848,36 @@
 			"sheets":
 			[
 				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1672,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								494,
-								494
-							]
-						],
-						"settings":
-						{
-							"auto_name": "import { Menu, Icon } from 'antd';",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										501,
-										502
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										440,
-										441
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 59.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/components/Login/Login.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1957,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								186,
-								187
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										79,
-										80
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										33,
-										34
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
-					"file": "src/components/EditUserForm.js",
+					"file": "src/components/CartDetails/CartDetails.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3865,
+						"buffer_size": 3521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3744,
-								3744
+								91,
+								91
 							]
 						],
 						"settings":
 						{
+							"auto_name": "import",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
 								"close":
 								{
-									"1":
-									[
-										3782,
-										3783
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										3726,
-										3727
-									]
 								},
 								"unmatched":
 								{
@@ -2085,145 +1885,31 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1638.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "src/components/UserAdmin.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7029,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6268,
-								6273
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										6288,
-										6289
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										6235,
-										6236
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -2239,750 +1925,47 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
 							],
 							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/FormModal.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1621,
-								1621
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2480,
-										2481
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1557,
-										1558
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1116.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/App.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								712,
-								712
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 410.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "src/SiteNav.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1641,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1112,
-								1112
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1342,
-										1343
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1078,
-										1079
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 719.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "node_modules/react-scripts/config/webpack.config.prod.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16507,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3127,
-								3127
-							]
-						],
-						"settings":
-						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2083.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "node_modules/react-scripts/config/paths.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3,
-								3
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1320.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 7,
-			"sheets":
-			[
-				{
-					"buffer": 6,
-					"file": "src/FormModal.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3151,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								391,
-								391
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 567.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 25,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "src/DevIndex.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2391,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								109,
-								109
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										110,
-										111
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										65,
-										66
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/components/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 98,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								98,
-								98
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "src/components/UserAdmin.js",
+					"file": "src/scss/TestCart.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7029,
+						"buffer_size": 6086,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4123,
-								4123
-							]
-						],
-						"settings":
-						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2839.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "server/user.server.controller.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								292,
-								292
+								196,
+								196
 							]
 						],
 						"settings":
@@ -2994,8 +1977,8 @@
 								{
 									"1":
 									[
-										291,
-										292
+										200,
+										201
 									]
 								},
 								"icon":
@@ -3010,8 +1993,8 @@
 								{
 									"1":
 									[
-										250,
-										251
+										51,
+										52
 									]
 								},
 								"unmatched":
@@ -3020,11 +2003,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -3045,11 +2023,6 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -3060,11 +2033,21 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -3076,48 +2059,62 @@
 								"bh_unmatched_close",
 								"bh_unmatched_content"
 							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 242.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 3,
+					"file": "src/scss/CartDetails.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 261,
+						"buffer_size": 4062,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								97,
-								97
+								788,
+								881
 							]
 						],
 						"settings":
 						{
-							"auto_name": ".avatar",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
 								"close":
 								{
+									"1":
+									[
+										942,
+										943
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										926,
+										927
+									]
 								},
 								"unmatched":
 								{
@@ -3125,11 +2122,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
@@ -3150,11 +2142,6 @@
 								"bh_default_open",
 								"bh_default_close",
 								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
@@ -3165,114 +2152,21 @@
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 59.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/App.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6545,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2993,
-								2993
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
 								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
@@ -3284,127 +2178,24 @@
 								"bh_unmatched_close",
 								"bh_unmatched_content"
 							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2499.0,
+						"translation.y": 797.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 2,
+					"file": "src/TestCart.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 299,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								299,
-								299
-							]
-						],
-						"settings":
-						{
-							"auto_name": ".avatar onClick",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 84.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "server/server.routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3364,
+						"buffer_size": 18715,
 						"regions":
 						{
 						},
@@ -3435,46 +2226,6 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -3485,403 +2236,51 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 520.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7146,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2872,
-								2872
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2972,
-										2973
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										2871,
-										2872
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2930.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 158,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								158,
-								158
-							]
-						],
-						"settings":
-						{
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 60.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 19,
-					"file": "src/UserCrud.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4799,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4414,
-								4414
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										4766,
-										4767
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										3301,
-										3302
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4084.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "src/DevIndex.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2391,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								767,
-								767
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1243,
-										1244
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/square_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										969,
-										970
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
 								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
 								"bh_double_quote_close",
 								"bh_double_quote_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content"
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
@@ -3889,27 +2288,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 773.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "src/components/index.js",
+					"buffer": 6,
+					"file": "src/ItemList.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 98,
+						"buffer_size": 12862,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								46,
-								46
+								556,
+								556
 							]
 						],
 						"settings":
@@ -3932,26 +2331,31 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
 								"bh_double_quote",
 								"bh_double_quote_center",
 								"bh_double_quote_open",
@@ -3967,11 +2371,70 @@
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 640.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 138,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								34,
+								34
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".user-summary {",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
 								"bh_default",
 								"bh_default_center",
 								"bh_default_open",
@@ -3982,11 +2445,572 @@
 								"bh_unmatched_open",
 								"bh_unmatched_close",
 								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
 								"bh_regex_close",
-								"bh_regex_content"
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 20.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/components/ProductShow/ProductShow.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 9,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								70,
+								70
+							]
+						],
+						"settings":
+						{
+							"auto_name": "TestCart包含三部分",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/DataGrid.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								670,
+								670
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 541.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/components/TopBar/TopBar.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13,
+								13
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/components/CartDetails/CartDetails.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3521,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								78,
+								78
+							]
+						],
+						"settings":
+						{
+							"auto_name": "import",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
 							],
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
@@ -3996,13 +3020,436 @@
 					},
 					"stack_index": 13,
 					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2908,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2226,
+								2226
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1329.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/Cart.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5560,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4728.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 14,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								743,
+								743
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 633.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/ItemList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								970,
+								970
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 955.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -4040,13 +3487,13 @@
 		"cols":
 		[
 			0.0,
-			0.525233322773,
+			0.5,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.812081059005,
+			0.5,
 			1.0
 		]
 	},
@@ -4061,15 +3508,15 @@
 	},
 	"output.unsaved_changes":
 	{
-		"height": 218.0
+		"height": 29.0
 	},
 	"pinned_build_system": "Packages/User/Node.sublime-build",
 	"project": "quick-react-app.sublime-project",
 	"replace":
 	{
-		"height": 56.0
+		"height": 92.0
 	},
-	"save_all_on_build": true,
+	"save_all_on_build": false,
 	"select_file":
 	{
 		"height": 0.0,
@@ -4077,12 +3524,120 @@
 		"selected_items":
 		[
 			[
-				"login.js",
-				"quick-react-app\\src\\components\\Login\\Login.js"
+				"cartdetails.css",
+				"quick-react-app\\src\\CartDetails.css"
+			],
+			[
+				"cart.js",
+				"quick-react-app\\src\\Cart.js"
+			],
+			[
+				"testcart.scss",
+				"quick-react-app\\src\\scss\\TestCart.scss"
+			],
+			[
+				"test.scss",
+				"quick-react-app\\src\\scss\\test.scss"
+			],
+			[
+				"testcart.css",
+				"quick-react-app\\src\\TestCart.css"
+			],
+			[
+				"testcart.js",
+				"quick-react-app\\src\\TestCart.js"
+			],
+			[
+				"itemlist.js",
+				"quick-react-app\\src\\ItemList.js"
+			],
+			[
+				"cartdetails.js",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
+			],
+			[
+				"datagrid.js",
+				"quick-react-app\\src\\DataGrid.js"
+			],
+			[
+				"routes.js",
+				"quick-react-app\\src\\routes.js"
 			],
 			[
 				"app.js",
 				"quick-react-app\\src\\App.js"
+			],
+			[
+				"formmodal.js",
+				"quick-react-app\\src\\FormModal.js"
+			],
+			[
+				"sortbar.css",
+				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.css"
+			],
+			[
+				"productlist.js",
+				"quick-react-app\\src\\components\\ProductShowcase\\ProductList.js"
+			],
+			[
+				"page.js",
+				"quick-react-app\\src\\helper\\page.js"
+			],
+			[
+				"genindexdisplayer.js",
+				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
+			],
+			[
+				"devindex.css",
+				"quick-react-app\\src\\DevIndex.css"
+			],
+			[
+				"devindex.js",
+				"quick-react-app\\src\\DevIndex.js"
+			],
+			[
+				"datagrid",
+				"quick-react-app\\src\\DataGrid.js"
+			],
+			[
+				"usercenter.js",
+				"quick-react-app\\src\\components\\UserCenter\\UserCenter.js"
+			],
+			[
+				"componentformmodal",
+				"quick-react-app\\src\\components\\FormModal\\FormModal.js"
+			],
+			[
+				"modal",
+				"quick-react-app\\src\\FormModal.js"
+			],
+			[
+				"uploadavatar.js",
+				"quick-react-app\\src\\components\\UploadAvatar\\UploadAvatar.js"
+			],
+			[
+				"usereditform.js",
+				"quick-react-app\\src\\components\\EditUserForm.js"
+			],
+			[
+				"orderhsitory.js",
+				"quick-react-app\\src\\OrderHistory.js"
+			],
+			[
+				"signin.js",
+				"quick-react-app\\src\\Signin.js"
+			],
+			[
+				"login.js",
+				"quick-react-app\\src\\components\\Login\\Login.js"
+			],
+			[
+				"compnentindex",
+				"quick-react-app\\src\\components\\index.js"
+			],
+			[
+				"uploadjs",
+				"quick-react-app\\src\\components\\UploadAvatar\\UploadAvatar.js"
 			],
 			[
 				"sitenav.js",
@@ -4095,10 +3650,6 @@
 			[
 				"component.js",
 				"react-scripts\\node_modules\\eslint-plugin-react\\lib\\util\\Components.js"
-			],
-			[
-				"devindex.js",
-				"quick-react-app\\src\\DevIndex.js"
 			],
 			[
 				"sitenva.js",
@@ -4121,10 +3672,6 @@
 				"quick-react-app\\src\\components\\UserAdmin.js"
 			],
 			[
-				"formmodal.js",
-				"quick-react-app\\src\\FormModal.js"
-			],
-			[
 				"compformmodal.js",
 				"quick-react-app\\src\\components\\FormModal\\FormModal.js"
 			],
@@ -4135,14 +3682,6 @@
 			[
 				"user.model.js",
 				"quick-react-app\\server\\models\\user.server.model.js"
-			],
-			[
-				"testcart.js",
-				"quick-react-app\\src\\TestCart.js"
-			],
-			[
-				"cart.js",
-				"quick-react-app\\src\\Cart.js"
 			],
 			[
 				"site.js",
@@ -4193,10 +3732,6 @@
 				"quick-react-app\\src\\scss\\Admin.scss"
 			],
 			[
-				"page.js",
-				"quick-react-app\\src\\helper\\page.js"
-			],
-			[
 				"datagrid.scss",
 				"quick-react-app\\src\\scss\\DataGrid.scss"
 			],
@@ -4217,10 +3752,6 @@
 				"quick-react-app\\src\\ConfirmOrder.js"
 			],
 			[
-				"datagrid.js",
-				"quick-react-app\\src\\DataGrid.js"
-			],
-			[
 				"app.scss",
 				"quick-react-app\\src\\scss\\App.scss"
 			],
@@ -4235,10 +3766,6 @@
 			[
 				"test.css",
 				"quick-react-app\\src\\test.css"
-			],
-			[
-				"test.scss",
-				"quick-react-app\\src\\scss\\test.scss"
 			],
 			[
 				"admin.scss",
@@ -4445,16 +3972,8 @@
 				"quick-react-app\\src\\ConfirmOrder.js"
 			],
 			[
-				"itemlist.js",
-				"quick-react-app\\src\\ItemList.js"
-			],
-			[
 				"confirm大",
 				"quick-react-app\\scratch\\design\\Cart -- ItemList\\ConfirmOrder结构大纲.md"
-			],
-			[
-				"testcart.scss",
-				"quick-react-app\\src\\scss\\TestCart.scss"
 			],
 			[
 				"randoms.js",
@@ -4479,10 +3998,6 @@
 			[
 				"testcartjs",
 				"quick-react-app\\src\\TestCart.js"
-			],
-			[
-				"testcart.css",
-				"quick-react-app\\src\\TestCart.css"
 			],
 			[
 				"searchresult.js",
@@ -4519,74 +4034,6 @@
 			[
 				"check",
 				"quick-react-app\\src\\CheckList.js"
-			],
-			[
-				"cart",
-				"quick-react-app\\src\\Cart.old.js"
-			],
-			[
-				"configdev",
-				"react-scripts\\config\\webpack.config.dev.js"
-			],
-			[
-				"product.model.js",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"sholu",
-				"quick-react-app\\scratch\\exp-test\\should_str_match_its_re.js"
-			],
-			[
-				"product.con",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"prodtest",
-				"quick-react-app\\tests\\product.model.tests.js"
-			],
-			[
-				"produconjs",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"tests.js",
-				"quick-react-app\\tests\\product.model.tests.js"
-			],
-			[
-				"form2json.js",
-				"quick-react-app\\src\\helper\\form2json.js"
-			],
-			[
-				"productnew.js",
-				"quick-react-app\\src\\ProductNew.js"
-			],
-			[
-				"createproduct.controller.js",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"configindex",
-				"quick-react-app\\server\\config\\env\\index.js"
-			],
-			[
-				"cfgindex",
-				"quick-react-app\\server\\config\\env\\index.js"
-			],
-			[
-				"passport.js",
-				"quick-react-app\\server\\config\\passport.js"
-			],
-			[
-				"productcontro",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"server.routes.",
-				"quick-react-app\\server\\server.routes.js"
-			],
-			[
-				"productcont",
-				"quick-react-app\\server\\controllers\\product.controller.js"
 			]
 		],
 		"width": 0.0
