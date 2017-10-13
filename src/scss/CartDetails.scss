@@ -4,6 +4,20 @@
 ///
 ////////////////////////////
 
+// 模块结构
+// .cart-main
+//   .cart-desc
+//   .order-list
+//     {orders.map...
+//     .order-content
+//       .order-shopInfo
+//       .order-items
+//         {items.map...
+//         .item-content
+//         }
+//     }
+//   .order-footer
+
 // Layout
 
 .cart-main {
