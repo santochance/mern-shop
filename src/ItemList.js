@@ -1,5 +1,53 @@
 import React from 'react'
 
+/* 171014 未测试 */
+function refreshNode(node, direction = 'all') {
+
+  if (direction === 'down') {
+    return downRecur(node)
+  } else if (direction === 'up') {
+    return upRecur(node)
+  }
+  downRecur(node)
+  upRecur(node)
+
+  // 向下
+  function downRecur(node) {
+    // 如果node没有children，从node自身取值
+    if (!node.children) {
+      return { price: 10, checked: false }
+    }
+    let rst = node.reduce((state, child) => {
+      let rst = downRecur(child)
+      // 修改节点值
+      Object.assign(child, rst)
+      return fn(state, rst)
+    }, {})
+    // 修改节点值
+    Object.assign(node, downRecur(node))
+  }
+
+  // 向上
+  function upRecur(node) {
+    // 如果没有parent，直接返回
+    let _parent = node.parent
+    if (!_parent) return
+
+    let rst = _parent.children.reduce((state, child) => {
+      return fn(state, child)
+    })
+    Object.assign(_parent, rst)
+    upRecur(_parent)
+  }
+
+  function fn(state, obj) {
+    return {
+      price: state.price += obj.price,
+      checked: state.checked && obj.checked,
+    }
+  }
+}
+
 function random(min, max, base = 0, withMax = false) {
   let _min, _max
   if (arguments.length < 2) {
