@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Pagination, Row, Col } from 'antd'
+import Sortbar from '../../components/ProductShowcase/Sortbar'
 // 分页功能模块
 // import  Page from '../../helper/page.js'
 
@@ -23,68 +24,39 @@ class ProductShow extends Component {
 
   componentDidMount() {
     this.loadData()
-      .then(dataSource => {
-        this.setState({
-          dataSource,
-          total: dataSource.length,
-        }, () => {
-          console.log('dataSource set')
-          let { sortKey, sortOrder, current, pageSize } = this.state
-          this.process('filter', {
-            current,
-            pageSize,
-            sortKey,
-            sortOrder,
-          })
-        })
-      })
-      .catch(console.error)
   }
-  loadData() {
+  loadData(/* query */) {
+    // query留于search功能时使用
     return fetch('/products')
       .then(res => res.json())
+      .then(dataSource => this.process('load', { dataSource }))
       .catch(console.error)
   }
 
-  process(changeType, { sortKey, sortOrder, current, pageSize, filters }) {
-    // 由dataSource经过过滤，排序，分页得到最终的visibleData
-    // 如果触发'filter',
-    if (changeType.search(/filter|sort|page/) < 0) return
+  process(changeType, updates) {
+    if (changeType.search(/load|filter|sort|page/) < 0) return
 
-    let { dataSource } = this.state
-    if (!(dataSource && dataSource.length)) throw Error('没有可用的dataSource!')
-
-    let {
-      filteredData = dataSource,
-      sortedData = dataSource,
-    } = this.state
-    let visibleData
-    let updates = {}
+    let newState = Object.assign({}, this.state, updates)
 
     switch (changeType) {
+      case 'load':
+        newState.total = newState.dataSource.length
+        newState.filters = [] // 重置过滤
+        /* 注意这里贯穿 */
       case 'filter':
-        filteredData = this.filtering(dataSource, filters)
-        Object.assign(updates, {
-          filters, filteredData
-        })
-
-      /* 注意这里往下贯穿！！ */
+        newState.filteredData = this.filtering(newState.dataSource, newState.filters)
+        newState.sortKey = '' // 重置排序
+        /* 注意这里贯穿 */
       case 'sort':
-        sortedData = this.sorting(filteredData, sortKey, sortOrder, this.sorterFactory(sortKey))
-        Object.assign(updates, {
-          sortKey, sortOrder, sortedData
-        })
-      /* 注意这里往下贯穿！！ */
-      default:
-        visibleData = this.paginating(sortedData, current, pageSize)
-        Object.assign(updates, {
-          current, pageSize, visibleData
-        })
-    }
+        newState.sortedData = this.sorting(newState.filteredData, newState.sortKey, newState.sortOrder, this.sorterFactory(newState.sortKey))
+        newState.current = 1 // 重置current为1
+        /* 注意这里贯穿 */
+      case 'page':
+        newState.visibleData = this.paginating(newState.sortedData, newState.current, newState.pageSize)
 
-    this.setState({
-      ...updates
-    })
+        return this.setState({ ...newState })
+      default: null
+    }
   }
 
   // pure function
@@ -93,6 +65,7 @@ class ProductShow extends Component {
   }
   // pure function
   sorting(data, sortKey, sortOrder, sorter) {
+
     // sortKey和sortOrder任一为假值, 直接返回未排序数据
     if (!sortKey || !sortOrder) return data
     let sortedData = data.slice().sort(sorter)
@@ -112,7 +85,9 @@ class ProductShow extends Component {
       default: /* do nothing */
     }
   }
+  onFilterChange(filters) {
 
+  }
   onSortClick(sortKey, sortOrder) {
     this.process('sort', { sortKey, sortOrder })
   }
@@ -126,6 +101,7 @@ class ProductShow extends Component {
     // 需要获取products, addToCart回调函数
     return (
       <div>
+        <Sortbar onClick={this.onSortClick} />
         <ProductList visibleData={visibleData} addToCart={addToCart} />
         <div style={{ textAlign: 'center' }}>
           <div style={{ display: 'inline-block' }}>

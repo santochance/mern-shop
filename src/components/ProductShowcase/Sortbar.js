@@ -26,7 +26,6 @@ export default class Sortbar extends Component {
           <li className="sort-link">
             {this.renderSortLink('price', 'descend', '价格从高到低')}
           </li>
-
         </ul>
       </div>
     )
