@@ -138,7 +138,7 @@ class ProductShow extends Component {
   }
 }
 
-class ProductList = ({ visibleData, addToCart }) => {
+const ProductList = ({ visibleData, addToCart }) => {
   if (!visibleData) return null
 
   return (
@@ -177,18 +177,13 @@ const ProductItem = ({ item, addToCart }) => {
         <div className="product-desc">
           {item.description}
         </div>
-        {/*
-        {key === hovering ? (
-          <div className="product-price">
-            <span>￥ {item.price}</span>
-          </div>
-        ) : (
-          <div className="product-operation">
-            <button className="btn btn-primary"
-              onClick={() => addToCart(item, 1)}>加入购物车</button>
-          </div>
-        )}
-        */}
+        <div className="product-price">
+          <span>￥ {item.price}</span>
+        </div>
+        <div className="product-operation">
+          <button className="btn btn-primary"
+            onClick={() => addToCart(item, 1)}>放入购物车</button>
+        </div>
       </div>
     </div>
   )

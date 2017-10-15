@@ -9,14 +9,14 @@
 }
 
 .product-item:hover {
-  outline: 1px solid orange;
+  outline: 1px solid hsla(230, 100%, 50%, .7);
 }
 
 .product-pic {  }
 
 .pic-wrapper {  }
 
-.product-info {  }
+.product-info { position: relative; }
 
 .product-title {
   display: block;
@@ -31,11 +31,21 @@
   height: 3em;
   line-height: 1.5em;
   text-overflow: ellipsis;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: 90%;
 }
 
 .product-price {
   font-size: 120%;
   color: red;
+}
+
+.product-operation {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.product-item:hover .product-operation {
+  display: block;
 }
