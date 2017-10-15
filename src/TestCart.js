@@ -384,6 +384,10 @@ const CartDetails = (props) => {
   let app = props.app
   let { cart } = app.state
 
+  /* 测试获取勾选项 */
+  let checkedItems = app.getCheckedItems(cart)
+  console.log('checked items:', checkedItems)
+
   return (
     <div className="cart">
       <div className="cart-main">
@@ -422,7 +426,7 @@ const CartDetails = (props) => {
               */}
               <div className="order-items">
                 {order.children.map((item, i) => (
-                  <div key={i} className='item-content'>
+                  <div key={i} className="item-content">
                     <div className="col cell-check">
                       <input className="check" type="checkbox" name="" id=""
                         checked={item.checked}
@@ -473,7 +477,11 @@ const CartDetails = (props) => {
             <a className="footer-favSelected">
               移入收藏夹
             </a>
-            <a className="footer-delSelected">
+            <a className="footer-delSelected"
+              onClick={(e) => {
+                e.preventDefault()
+                app.batchRemoveItems(checkedItems)
+              }}>
               删除
             </a>
           </div>
@@ -491,6 +499,9 @@ const CartDetails = (props) => {
               </span>
             </div>
             <a className="checkout">结&nbsp;算</a>
+            {checkedItems.length < 1 && (
+              <div>禁用按钮中！</div>
+            )}
           </div>
         </div>
       </div>

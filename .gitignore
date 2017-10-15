@@ -22,3 +22,7 @@ yarn-error.log*
 
 
 *.sublime-*
+
+# 编译输出css
+
+/src/*.css

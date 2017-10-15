@@ -1,6 +1,11 @@
 import React from 'react'
 
-/* 171014 未测试 */
+/* 171014 未测试
+  重新写了一个包含了向上遍历和向下遍历的函数
+  把checked的修改逻辑也整合到求和对象中
+  用使用类似redux的reducer的方式，在reduce中执行指定的回调
+
+*/
 function refreshNode(node, direction = 'all') {
 
   if (direction === 'down') {
@@ -295,6 +300,30 @@ class ItemList extends React.Component {
     this.setState({...this.state})
   }
 
+  batchRemoveItems(items) {
+    items.forEach(item => {
+      // 求取index
+      let parent = item.parent
+      if (!parent) return   // 根节点，直接返回
+
+      function getIndex(target, array) {
+        for (let [idx, item] of arr.entries()) {
+          if (item === target) {
+            return idx
+          }
+        }
+        return -1
+      }
+      let arr = parent.children
+      let index = getIndex(item, arr)
+      // 如果没有找到index(通常不可能)
+      if (index < 0) throw Error('没有找到index')
+
+      // 调用removeItem删除元素
+      this.removeItem(item, index)
+    })
+  }
+
   clearItems(list) {
     list.children.splice(0)
 
@@ -359,8 +388,28 @@ class ItemList extends React.Component {
     children && recur(children)
   }
 
+  getCheckedItems(itemlist) {
+    // let checkedItems = []
+
+    // function downRecur(node) {
+    //   if (!node.children) {
+    //     // 到达叶节点
+    //     node.checked && checkedItems.push(node)
+    //   }
+    //   node.children.forEach(downRecur)
+    // }
+    // downRecur(rootNode)
+
+    // 基于确定的itemlist结构
+    return itemlist.children.reduce((rst, order) =>
+      rst.concat(order.children.filter(item => item.checked))
+    , [])
+  }
+
   render() {
     let { itemlist, products } = this.state
+
+    let checkedItems
 
     return (
       <div className="itemlist">
@@ -472,6 +521,15 @@ class ItemList extends React.Component {
           </div>
         </div>
 
+        <div>
+          <div>测试获取被勾选项(未实现)</div>
+          <div>
+            <button type="button" onClick={() => (checkedItems = this.getCheckedItems(itemlist))}>当前勾选项</button>
+            {checkedItems && (
+              <pre>{JSON.stringify(checkedItems, null, 2)}</pre>
+            )}
+          </div>
+        </div>
         <div><button type="button" onClick={() => this.outputData(itemlist)}>Submit Order</button></div>
       </div>
     )
