@@ -32,6 +32,8 @@ import EditUserForm from './components/EditUserForm.js'
 
 import ProductShowcase from './components/ProductShowcase/ProductShowcase'
 
+import ProductShow from './components/ProductShow'
+
 const routes = [
   {
     path: '/',
@@ -125,6 +127,10 @@ const routes = [
   {
     path: '/product-showcase',
     component: ProductShowcase,
+  },
+  {
+    path: '/product-show',
+    component: ProductShow,
   }
 ]
 

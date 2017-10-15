@@ -1,22 +1,25 @@
-import React, { Component, PropTypes } from 'react'
-import './CartDetails.js'
+import React from 'react'
 
-const CartDetails = ({ cart, toggleCheck, updateItem, removeItem }) => {
+/*
+  Todo: 样式文件使用scss, 目前还在src/scss中，待处理
+ */
+const CartDetails = ({ app, cart }) => {
+
+  /* 测试获取勾选项 */
+  let checkedItems = app.getCheckedItems(cart)
+  console.log('checked items:', checkedItems)
 
   return (
     <div className="cart">
       <div className="cart-main">
         <div className="cart-desc">
-          <div>
-            <div>
-              <span>Count: {cart.count}</span>{'  '}
-              <span>Price: {cart.price}</span>
-            </div>
-          </div>
           <div className="th desc-check">
-            <input type="checkbox" name="" id=""
-              checked={cart.checked}
-              onChange={() => toggleCheck(cart)}/>全选
+            <label>
+              <input type="checkbox" name="" id=""
+                checked={cart.checked}
+                onChange={() => app.check(cart)}
+              />全选
+            </label>
           </div>
           <div className="th desc-info">商品信息</div>
           <div className="th desc-param">&nbsp;</div>
@@ -29,30 +32,32 @@ const CartDetails = ({ cart, toggleCheck, updateItem, removeItem }) => {
         <div className="order-list">
           {cart.children.map((order, i) => (
             <div key={i} className="order-content">
-              <div className="order-shopInfo">
-                <div className="checkOrder">
-                  <input type="checkbox" name="" id=""
-                    checked={order.checked}
-                    onChange={() => toggleCheck(order)}/>
+              {/*
+                <div className="order-shopInfo">
+                  <div className="checkOrder">
+                    <input type="checkbox" name="" id=""
+                      checked={order.checked}
+                      onChange={() => app.check(order)}/>
+                  </div>
+                  <span className="badge shopIcon">badge</span>
+                  <span>Shop Name</span>
+                  <span>Count: {order.count}</span>{'  '}
+                  <span>Price: {order.price}</span>
                 </div>
-                <span className="badge">badge</span>
-                <span>Shop Name</span>
-                <span>Count: {order.count}</span>{'  '}
-                <span>Price: {order.price}</span>
-              </div>
+              */}
               <div className="order-items">
                 {order.children.map((item, i) => (
                   <div key={i} className="item-content">
                     <div className="col cell-check">
                       <input className="check" type="checkbox" name="" id=""
                         checked={item.checked}
-                        onChange={() => toggleCheck(item)}/>
+                        onChange={() => app.check(item)}/>
                     </div>
                     <div className="col cell-info">
                       <div className="col cell-image">
                         <img src="" alt=""/>
                       </div>
-                      <div className="col cell-title">{item.content.productName}</div>
+                      <div className="col cell-title">{item.content.productName || '商品标题...'}</div>
                     </div>
                     <div className="col cell-param"></div>
                     <div className="col cell-price">
@@ -61,17 +66,17 @@ const CartDetails = ({ cart, toggleCheck, updateItem, removeItem }) => {
                     <div className="col cell-quantity">
                       <input type="number" name="" id="" min="1"
                         value={item.amount} style={{width: '80px'}}
-                        onChange={(e) => updateItem(item, e.target.value || 1)} />
+                        onChange={(e) => app.updateItem(item, e.target.value || 1)} />
                     </div>
                     <div className="col cell-sum">
                       <div className="item-sum">￥{item.price}</div>
                     </div>
                     <div className="col cell-opera">
                       <div>
-                        <a href="#" onClick={() => removeItem(item)}>删除</a>
+                        <a href="#" onClick={() => app.removeItem(item)}>删除</a>
                       </div>
                       <div>
-                        <a href="#">移动到收藏夹</a>
+                        <a href="#">移入收藏夹</a>
                       </div>
                     </div>
                   </div>
@@ -80,13 +85,49 @@ const CartDetails = ({ cart, toggleCheck, updateItem, removeItem }) => {
             </div>
           ))}
         </div>
+        <div className="order-footer">
+          <div className="footer-check">
+            <label>
+              <input type="checkbox" name="" id=""
+                checked={cart.checked}
+                onChange={() => app.check(cart)}
+              />全选
+            </label>
+          </div>
+          <div className="footer-opera">
+            <a className="footer-favSelected">
+              移入收藏夹
+            </a>
+            <a className="footer-delSelected"
+              onClick={(e) => {
+                e.preventDefault()
+                app.batchRemoveItems(checkedItems)
+              }}>
+              删除
+            </a>
+          </div>
+          <div className="footer-right">
+            <div className="amount-sum">
+              <span className="text">已选商品</span>
+              <span className="selectedItemCount">{cart.count || 0}</span>
+              <span className="text">件</span>
+            </div>
+            <div className="price-sum">
+              <span className="text">合计（不含运费）：</span>
+              <span className="price">
+                <span className="totalSymbol">￥</span>
+                <span className="total">{cart.price || 0}</span>
+              </span>
+            </div>
+            <a className="checkout">结&nbsp;算</a>
+            {checkedItems.length < 1 && (
+              <div>禁用按钮中！</div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )
-}
-
-CartDetails.propTypes = {
-  cart: PropTypes.object
 }
 
 export default CartDetails

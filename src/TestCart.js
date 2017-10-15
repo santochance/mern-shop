@@ -3,6 +3,8 @@
 import React from 'react'
 // import Cart from './Cart.js'
 import ItemList from './ItemList.js'
+import CartDetails from './components/CartDetails'
+import ConfirmOrder from './components/ConfirmOrder'
 
 import { random } from './helper/randoms.js'
 import splitArray from './helper/splitArray.js'
@@ -26,7 +28,6 @@ export default class TestCart extends ItemList {
       ...state,
       products: null,
       user: {},
-      selectedAddr: '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102',
       // 分页初始化设置
       page: {
         size: 8
@@ -194,8 +195,8 @@ export default class TestCart extends ItemList {
           // display: 'flex',
           // flexDirection: 'column',
         }}>
-          <CartDetails app={this} />
-          <ConfirmOrder app={this} />
+          <CartDetails app={this} cart={this.state.cart} />
+          <ConfirmOrder app={this} cart={this.state.cart} />
           <ProductList app={this} products={products} indexKeys={indexKeys} index={page.index} />
 
         </div>
@@ -375,241 +376,6 @@ const List = (props) => {
             </div>
           </div>
         ))}
-      </div>
-    </div>
-  )
-}
-
-const CartDetails = (props) => {
-  let app = props.app
-  let { cart } = app.state
-
-  /* 测试获取勾选项 */
-  let checkedItems = app.getCheckedItems(cart)
-  console.log('checked items:', checkedItems)
-
-  return (
-    <div className="cart">
-      <div className="cart-main">
-        <div className="cart-desc">
-          <div className="th desc-check">
-            <label>
-              <input type="checkbox" name="" id=""
-                checked={cart.checked}
-                onChange={() => app.check(cart)}
-              />全选
-            </label>
-          </div>
-          <div className="th desc-info">商品信息</div>
-          <div className="th desc-param">&nbsp;</div>
-          <div className="th desc-price">单价
-          </div>
-          <div className="th desc-quantity">数量</div>
-          <div className="th desc-sum">金额</div>
-          <div className="th desc-opera">操作</div>
-        </div>
-        <div className="order-list">
-          {cart.children.map((order, i) => (
-            <div key={i} className="order-content">
-              {/*
-                <div className="order-shopInfo">
-                  <div className="checkOrder">
-                    <input type="checkbox" name="" id=""
-                      checked={order.checked}
-                      onChange={() => app.check(order)}/>
-                  </div>
-                  <span className="badge shopIcon">badge</span>
-                  <span>Shop Name</span>
-                  <span>Count: {order.count}</span>{'  '}
-                  <span>Price: {order.price}</span>
-                </div>
-              */}
-              <div className="order-items">
-                {order.children.map((item, i) => (
-                  <div key={i} className="item-content">
-                    <div className="col cell-check">
-                      <input className="check" type="checkbox" name="" id=""
-                        checked={item.checked}
-                        onChange={() => app.check(item)}/>
-                    </div>
-                    <div className="col cell-info">
-                      <div className="col cell-image">
-                        <img src="" alt=""/>
-                      </div>
-                      <div className="col cell-title">{item.content.productName || '商品标题...'}</div>
-                    </div>
-                    <div className="col cell-param"></div>
-                    <div className="col cell-price">
-                      <div className="price-now">￥{item.content.price}</div>
-                    </div>
-                    <div className="col cell-quantity">
-                      <input type="number" name="" id="" min="1"
-                        value={item.amount} style={{width: '80px'}}
-                        onChange={(e) => app.updateItem(item, e.target.value || 1)} />
-                    </div>
-                    <div className="col cell-sum">
-                      <div className="item-sum">￥{item.price}</div>
-                    </div>
-                    <div className="col cell-opera">
-                      <div>
-                        <a href="#" onClick={() => app.removeItem(item)}>删除</a>
-                      </div>
-                      <div>
-                        <a href="#">移入收藏夹</a>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="order-footer">
-          <div className="footer-check">
-            <label>
-              <input type="checkbox" name="" id=""
-                checked={cart.checked}
-                onChange={() => app.check(cart)}
-              />全选
-            </label>
-          </div>
-          <div className="footer-opera">
-            <a className="footer-favSelected">
-              移入收藏夹
-            </a>
-            <a className="footer-delSelected"
-              onClick={(e) => {
-                e.preventDefault()
-                app.batchRemoveItems(checkedItems)
-              }}>
-              删除
-            </a>
-          </div>
-          <div className="footer-right">
-            <div className="amount-sum">
-              <span className="text">已选商品</span>
-              <span className="selectedItemCount">{cart.count || 0}</span>
-              <span className="text">件</span>
-            </div>
-            <div className="price-sum">
-              <span className="text">合计（不含运费）：</span>
-              <span className="price">
-                <span className="totalSymbol">￥</span>
-                <span className="total">{cart.price || 0}</span>
-              </span>
-            </div>
-            <a className="checkout">结&nbsp;算</a>
-            {checkedItems.length < 1 && (
-              <div>禁用按钮中！</div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const ConfirmOrder = (props) => {
-  let app = props.app
-  let { cart, selectedAddr } = app.state
-
-  // console.log('cart:', cart)
-
-  return (
-    <div className="order-confirm">
-      <div className="order-address"></div>
-      <div className="order-orderDesc">
-        <div>确认订单</div>
-        <div className="tr desc-row">
-          <div className="th desc-info">商品信息</div>
-          <div className="th desc-param">商品属性</div>
-          <div className="th desc-price">单价</div>
-          <div className="th desc-quantity">数量</div>
-          <div className="th desc-discount">优惠</div>
-          <div className="th desc-sum">小计</div>
-        </div>
-      </div>
-      <div className="order-list">
-        {cart.children.map((order, i) => order.count > 0 && (
-          <div key={i} className="order-content">
-            <div className="order-shopInfo">
-              <span className="badge">badge</span>
-              <span className="shop-name">Shop Name</span>
-              <span className="shop-seller">Seller</span>
-            </div>
-            <div className="order-items">
-              {order.children.map((item, i) => item.checked && (
-                <div key={i} className="tr item-content">
-                  <div className="td cell-info">
-                    <div className="td cell-image">
-                      <a className="image-wrapper" href="">
-                        <img src="" alt=""/>
-                      </a>
-                    </div>
-                    <div className="td info-content">
-                      <div className="td cell-title">{item.content.productName}</div>
-                      <div className="td cell-icons"></div>
-                    </div>
-                  </div>
-                  <div className="td cell-param"></div>
-                  <div className="td cell-price">{item.content.price}</div>
-                  <div className="td cell-quantity">{item.amount}</div>
-                  <div className="td cell-discount">{item.discount}</div>
-                  <div className="td cell-sum">{item.price}</div>
-                </div>
-              ))}
-            </div>
-            <div className="order-ext">
-              <div className="order-message">
-                <span className="message-name">给卖家留言：</span>
-                <span className="message-detail">
-                  <input type="text"/>
-                </span>
-              </div>
-              <div className="order-delivery">
-                <div className="delivery-title">
-                  运送方式：
-                </div>
-                <div className="delivery-select">
-                  <span className="select-info">普通配送</span>
-                  <span className="select-price">{order.shipping}</span>
-                </div>
-              </div>
-            </div>
-            <div className="order-total">
-              <span>(含运费)</span>
-              <span className="order-sum">￥{order.realPay}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="order-payInfo">
-        <div className="payInfo-wrapper">
-          <div className="order-realPay">
-            <strong className="realPay-title">实付款：</strong>
-            <span className="realPay-currency">￥</span>
-            <span className="realPay-price">{cart.realPay}</span>
-          </div>
-          <div className="order-confirmAddr">
-            <div className="confirmAddr-addr">
-              <strong className="confirmAddr-title">寄送至：</strong>
-              <span className="confirmAddr-bd">
-                {selectedAddr}
-              </span>
-            </div>
-            <div className="confirmAddr-user">
-              <strong className="confirmAddr-title">收货人：</strong>
-              <span className="confirmAddr-bd">User Info...</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="order-submitOrder">
-        <div className="submitOrder-wrapper">
-          <a href="#" className="go-back">返回购物车</a>
-          <a href="" className="btn btn-danger go-submit"
-            onClick={() => this.submitOrder()}>提交订单</a>
-        </div>
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+import React from 'react'
 
-const ConfirmOrder = ({ cart, selectedAddr }) => {
+const ConfirmOrder = ({ app, cart, addresses, user }) => {
+  let selectedAddr = '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102'
 
   return (
     <div className="order-confirm">
@@ -100,11 +101,6 @@ const ConfirmOrder = ({ cart, selectedAddr }) => {
       </div>
     </div>
   )
-}
-
-ConfirmOrder.propTypes = {
-  cart: PropTypes.object,
-  selectedAddr: PropTypes.object,
 }
 
 export default ConfirmOrder

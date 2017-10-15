@@ -91,7 +91,7 @@ class App extends ItemList {
           <SiteNav />
           <div className="page">
             {routes.map((route, idx) => (
-              <Route {...route} />
+              <Route key={idx} {...route} />
             ))}
             <Route path="/cart-details" render={props => (
               (logined) ? (
