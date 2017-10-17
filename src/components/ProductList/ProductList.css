@@ -9,7 +9,7 @@
 }
 
 .product-item:hover {
-  outline: 1px solid hsla(230, 100%, 50%, .7);
+  outline: 1px solid hsla(120, 80%, 30%, 0.9);
 }
 
 .product-pic {  }

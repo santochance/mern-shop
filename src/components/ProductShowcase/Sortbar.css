@@ -11,7 +11,8 @@
 */
 
 .sort-filter-bar {
-  background-color: silver;
+  display: flex;
+   background-color: hsla(0, 0%, 80%, 0.5)
 }
 
 .sort-wrapper {
@@ -21,8 +22,68 @@
 
 .sort-link {
   padding: 0 15px;
-  color: hsl(0, 0, 50%);
+  box-sizing: border-box;
+  border: 1px solid hsla(0, 0%, 80%, .5);
+  border-width: 1px 0;
 }
+
 .sort-link.active {
-  color: hsl(240, 100%, 50%);
+  background-color: #fff;
+
+}
+
+.sort-link a {
+  text-decoration: none;
+  color: #666;
+}
+.sort-link.active a {
+  color: #0ba718;
+}
+
+.price-filter {
+  padding: .5em 5px;
+  margin: 0px 5px;
+}
+.price-wrapper {
+  height: 2em;
+}
+.price-min,
+.price-max {
+  box-sizing: border-box;
+  width: 50px;
+  height: 100%;
+}
+.price-sep {
+  margin: 0 5px;
+}
+
+.price-filter {
+  border: 1px solid hsla(0, 0%, 80%, .5);
+  border-width: 1px 0;
+}
+
+/* hover样式 */
+.price-filter:hover {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.price-filter:hover .price-submit,
+.price-filter:hover .price-reset {
+  display: inline-block;
+}
+
+.price-submit,
+.price-reset {
+  padding: 2px 8px;
+  margin: 0 2px;
+  border: none;
+  display: none;
+}
+.price-submit {
+  color: #fff;
+  background-color: #0ba718;
+}
+.price-reset {
+  color: #000;
+  background-color: #ddd;
 }

@@ -34,6 +34,8 @@ import ProductShowcase from './components/ProductShowcase/ProductShowcase'
 
 import ProductShow from './components/ProductShow'
 
+import Header, { CartSummary } from './components/Header.js'
+
 const routes = [
   {
     path: '/',
@@ -131,6 +133,14 @@ const routes = [
   {
     path: '/product-show',
     component: ProductShow,
+  },
+  {
+    path: '/cart-summary',
+    component: CartSummary,
+  },
+  {
+    path: '/header',
+    component: Header,
   }
 ]
 

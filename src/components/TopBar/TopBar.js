@@ -24,10 +24,24 @@ const TopBar = ({ cart }) => {
       <div className="login-btn"></div>
       <div className="signup-btn"></div>
       <div className="cart-dropdown">
-        cart
+        <div className="cart-summary" style={{
+          position: 'absolute';
+          width: 300;
+
+        }}>
+          <CartSummary cart={cart} />
+        </div>
       </div>
       <div className="user-dropdown">
-        user
+        {(hovering) && (
+          <ul className="user-summary" style={{
+            minWidth: 80
+          }}>
+            {userMenuItems.map((item, idx) => (
+              <UserMenuItem {...item} />
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   )

@@ -1,0 +1,82 @@
+@import '../assets/style/mixin';
+
+// 布局辅助线设置
+// $useAuxiOtl: true;
+
+.cart-item {
+  // @include otl;
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+
+  &:last-child {
+    border: none;
+  }
+
+  .tr {
+    display: flex;
+    align-items: center;
+  }
+  .td {
+    @include otl(blue);
+    // padding: 10px;
+  }
+  .cell-pic--top {
+    align-self: flex-start;
+  }
+  .cell-pic--bottom {
+    align-self: flex-end;
+  }
+
+  .pic-wrapper {
+    @include otl(lime);
+    @include rect(80px);
+    img {
+      @include rect(100%);
+    }
+  }
+
+  .cell-info {
+    padding: 0 10px;
+    width: 280px;
+
+    .info-title {
+      margin: 3px 0;
+      line-height: 1.5em;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .info-desc {
+      height: 3em;
+      line-height: 1.5em;
+      overflow: hidden;
+    }
+    .price-symbol {
+      color: red;
+      font-size: 0.8125em;
+    }
+    .price {
+      font-weight: 500;
+      color: red;
+    }
+    .sep-symbol {
+      margin: 0 5px;
+    }
+    .amount {
+      color: gray;
+    }
+  }
+  .cell-oper {
+    visibility: hidden;
+  }
+  .item-content:hover {
+    .cell-oper {
+      visibility: visible;
+    }
+  }
+}
+
+
+
+
+
