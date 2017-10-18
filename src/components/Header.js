@@ -3,40 +3,44 @@ import { Popover, Icon, Menu } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 // import { cart, cartAPI } from '../fakeData/mock-cart'
 
-import '../Header.css'
-import '../CartItem.css'
-import '../CartFooter.css'
+import '../scss/Header.css'
+// import '../scss/CartItem.css'
+// import '../scss/CartFooter.css'
 
 const Header = ({ logined, cart, app }) => {
 
   return (
     <header className="top-header">
-      <div className="nav-brand">
-        Brand
-      </div>
-      <div className="right-box">
-        {!logined && (
-          <div className="nav-btns">
-            <Link to="/signin" className="btn btn-primary">登&nbsp;录</Link>
-            <Link to="/signup" className="btn btn-success">注&nbsp;册</Link>
-          </div>
-        )}
-        <div className="nav-aside">
-          {logined && (
-            <div className="user">
-              <Popover placement={'bottom'} content={
-                <UserMenu logout={app.logout} />
-              }>
-                <Icon className="user-icon" type="user"/>
-              </Popover>
+      <div className="wrapper">
+        <div className="nav-brand">
+          <Link to="/">
+            <h1 style={{height: '100%'}}>Brand</h1>
+          </Link>
+        </div>
+        <div className="right-box">
+          {!logined && (
+            <div className="nav-btns">
+              <Link to="/signin" className="btn btn-primary">登&nbsp;录</Link>
+              <Link to="/signup" className="btn btn-success">注&nbsp;册</Link>
             </div>
           )}
-          <div className="cart">
-            <Popover placement={'bottomRight'} content={
-              <CartSummary cart={cart} app={app} />
-            }>
-              <Icon className="cart-icon" type="shopping-cart"/>
-            </Popover>
+          <div className="nav-aside">
+            {logined && (
+              <div className="user">
+                <Popover placement={'bottom'} content={
+                  <UserMenu logout={app.logout} />
+                }>
+                  <Icon className="user-icon" type="user"/>
+                </Popover>
+              </div>
+            )}
+            <div className="cart">
+              <Popover placement={'bottomRight'} content={
+                <CartSummary cart={cart} app={app} />
+              }>
+                <Icon className="cart-icon" type="shopping-cart"/>
+              </Popover>
+            </div>
           </div>
         </div>
       </div>
@@ -60,7 +64,7 @@ const CartSummary = ({ cart, app }) => {
       ) : (
         <div className="cart-wrapper" style={{
           width: 360,
-          margin: "-8px -16px"
+          margin: '-8px -16px'
         }}>
           <div className="cart-content">
             {cart.children.map((order, idx) => (
