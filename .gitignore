@@ -25,4 +25,4 @@ yarn-error.log*
 
 # 编译输出css
 
-/src/*.css
+/src/**/*.css

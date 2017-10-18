@@ -2,14 +2,23 @@
   "name": "quick-react-app",
   "version": "0.1.0",
   "private": true,
+  "//": "The 'react-app-rewired' is for using arrow function in class declaration in React.",
+  "//": "The 'node-sass-chokidar' is for using CSS preprocessor(Sass, Less etc.) in React. To enable importing files without using relative paths, use the `--include-path` option",
   "scripts": {
-    "start": "react-app-rewired start",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+
+    "start": "npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && npm run build-js",
+
+    "start-js": "react-app-rewired start",
+    "build-js": "react-app-rewired build",
+
     "server": "nodemon -w server ./server/server.js",
     "watch": "gulp watch",
-    "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
-    "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express,Gulp\" -c \"bgGreen.bold,bgBlue.bold,bgYellow.bold\" \"npm start\" \"npm run server\" \"npm run watch\" --allow-restart"
+    "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express\" -c \"bgGreen.bold,bgBlue\" \"npm start\" \"npm run server\" --allow-restart"
   },
   "dependencies": {
     "antd": "^2.13.3",
@@ -24,6 +33,8 @@
     "method-override": "^2.3.9",
     "mongoose-url-slugs": "^1.0.0",
     "morgan": "^1.8.2",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.1.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.2",
