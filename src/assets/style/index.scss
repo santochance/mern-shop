@@ -1,7 +1,8 @@
+// @import 'bootstrap-source/bootstrap';
 @import 'vars';
-@import 'fonts';
-@import 'bootstrap-source/bootstrap';
-@import 'skin';
+@import 'mixin';
+@import 'utilities';
+// @import 'fonts';
 @import 'structure';
-@import 'minxin';
+@import 'skin';
 

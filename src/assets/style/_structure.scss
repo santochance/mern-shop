@@ -1,9 +1,31 @@
 // Page Structrual CSS
 
+.w {
+
+}
+
 .wrapper {
+  position: relative;
+  width: 1190px;
+  margin: 0 auto;
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
 
 }
 
 .content-wrapper {
 
 }
+
+.screen-center {
+  @include fullscreen-box;
+  @include flex-center-box(column);
+  @include inbl-center-box;
+}
+

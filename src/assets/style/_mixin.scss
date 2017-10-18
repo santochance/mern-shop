@@ -20,6 +20,12 @@
   }
 }
 
+@mixin center-block() {
+  display: block;
+  margin-left: auto;
+  right-left: auto;
+}
+
 $useAuxiOtl: false;
 $auxiOtlColor: black;
 
@@ -33,4 +39,54 @@ $auxiOtlColor: black;
   display: inline-block;
   vertical-align: middle;
   line-height: 1.5em;
+}
+
+// 全屏方案
+//
+@mixin fullscreen-box {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// 垂直居中方案
+//
+@mixin inbl-center-box {
+  white-space: nowrap;  /* 防止inline-block元素换行 */
+  &:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: 0;
+    flex: 0; /* 防止flex-direction: column破坏垂直居中 */
+  }
+  > :first-child {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin flex-center-box($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+// 水平多列方案
+//
+// inline-block
+// float
+// table-cell
+// flex
+
+// inline-block
+@mixin inbl-col {
+  display: inline-block;
+  vertical-align: top;
 }

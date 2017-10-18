@@ -1,0 +1,45 @@
+// Floats
+// --------------------------
+
+.clearfix {
+  @include clearfix;
+}
+.center-block {
+  @include center-block;
+}
+.fl {
+  float: left !important;
+}
+.fr {
+  float: right !important;
+}
+
+// Flex
+// --------------------------
+
+.flex-lr {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-full {
+  display: flex;
+  > * {
+    flex: 1;
+  }
+}
+
+
+.flex-l-full {
+  display: flex;
+  > :nth-child(1) {
+    flex: 1;
+  }
+}
+
+.flex-r-full {
+  display: flex;
+  > :nth-child(2) {
+    flex: 1;
+  }
+}

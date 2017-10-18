@@ -3,12 +3,14 @@
 //-----------------------------------------------------
 
 // Primary font
-$body-font: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+$body-font: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
 //
 // Theme Colors
 //
-$white: #fff  /* Q: 这个变量的用意是什么？ */
+
+// Q: 这个变量的用意是什么
+$white: #fff;
 
 // Primary color is the main color of the applicarion which is used
 // for navbar, active links and primary button.
@@ -20,12 +22,13 @@ $white: #fff  /* Q: 这个变量的用意是什么？ */
 // Brown : #795548
 // Purple: #673AB7
 
-$primary-color: #009688
+$primary-color: #009688;
 
-/* Q: pace.js? */
+// Q: pace.js?
+
 // Complementry color is used to indecate the loading bar on the top
 // of the page with pace.js plugin
-$complementry-color: adjust_hue($primary-color, 180)
+$complementry-color: adjust_hue($primary-color, 180);
 
 
 
