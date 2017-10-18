@@ -46,10 +46,10 @@ function refreshNode(node, direction = 'all') {
   }
 
   function fn(state, obj) {
-    return {
-      price: state.price += obj.price,
+    return ({
+      price: state.price + obj.price,
       checked: state.checked && obj.checked,
-    }
+    })
   }
 }
 
@@ -67,8 +67,8 @@ function random(min, max, base = 0, withMax = false) {
 }
 
 class ItemList extends React.Component {
-  constructor(prop) {
-    super(prop)
+  constructor(props) {
+    super(props)
     this.state = {
       itemlist: {
         title: 'ItemList',
@@ -78,6 +78,7 @@ class ItemList extends React.Component {
       },
     }
     this.check = this.check.bind(this)
+    this.addToCart = this.addToCart.bind(this)
   }
 
   componentDidMount() {
@@ -143,6 +144,37 @@ class ItemList extends React.Component {
       console.log('send data:', data)
       return arr
     }, rst)
+  }
+
+  addToCart(product, amount = 1) {
+    let { cart } = this.state
+    // let { updateItem, createItem, createList, appendItem } = this
+
+    // 遍历寻找所属order
+    cart.children.some(order => {
+      // 找到所属order
+      if (order.seller === product.seller) {
+
+        // 遍历寻找所属item
+        order.children.some(item => {
+          // 找到所属item
+          if (item.content._id === product._id) {
+            this.updateItem(item, item.amount + amount)
+            return true
+          }
+        }) || (
+          // 没找到所属item
+          this.appendItem(order, this.createItem(product, amount))
+        )
+
+        return true
+      }
+    }) || (
+      // 没找到所属order
+      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount)))
+    )
+
+    console.log('cart:\n', cart)
   }
 
   createItem(content, amount) {
@@ -247,7 +279,7 @@ class ItemList extends React.Component {
       }, {})
     }
 
-    let rst =  entry.reduce((sum, child) => {
+    let rst = entry.reduce((sum, child) => {
       // 如果child有children，即不是leaf
       // 或者是leaf, checked为true
       if ('children' in child || child.checked) {
@@ -304,7 +336,7 @@ class ItemList extends React.Component {
     items.forEach(item => {
       // 求取index
       let parent = item.parent
-      if (!parent) return   // 根节点，直接返回
+      if (!parent) return // 根节点，直接返回
 
       function getIndex(target, array) {
         for (let [idx, item] of arr.entries()) {

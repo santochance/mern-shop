@@ -1,0 +1,78 @@
+@import '../assets/style/mixin';
+
+// 布局辅助线设置
+$useAuxiOtl: true;
+
+.top-header {
+  @include otl(purple);
+  @include rect(100%, 50px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8e8e8;
+
+  .nav-brand {
+    @include otl(lime);
+    @include rect(50px);
+    margin-left: 16px;
+  }
+
+  .right-box {
+    @include otl(red);
+    display: flex;
+    align-items: center;
+
+  }
+
+  .nav-btns {
+    .btn {
+      margin: 0 5px;
+    }
+  }
+  .nav-aside {
+    display: flex;
+
+    .user,
+    .cart {
+      outline: 1px solid orange;
+      @include rect(40px);
+      margin: 0 16px;
+    }
+
+    // Icon组件
+    .user-icon,
+    .cart-icon {
+      display: block;
+      height: 100%;
+      font-size: 30px;  // 控制Icon的大小
+      padding: 5px;
+      color: #999;
+      &:hover {
+        color: green;
+        // background-color: #fff;
+      }
+    }
+  }
+}
+
+.user-menu {
+  margin: -8px -16px;  /* 抵消Popover的padding */
+
+  .menu-item {
+    line-height: 3;
+    font-size: 14px;
+    padding: 0 16px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ddd;
+    }
+    .icon,
+    .text {
+      color: black;
+    }
+    .icon {
+      margin-right: 8px;
+    }
+  }
+}

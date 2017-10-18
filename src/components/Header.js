@@ -1,51 +1,79 @@
 import React from 'react'
-import { Popover, Icon } from 'antd'
+import { Popover, Icon, Menu } from 'antd'
+import { Link, withRouter } from 'react-router-dom'
+// import { cart, cartAPI } from '../fakeData/mock-cart'
 
-import { cart, cartAPI } from '../fakeData/mock-cart'
-
+import '../Header.css'
 import '../CartItem.css'
 import '../CartFooter.css'
 
-class Header extends React.Component {
+const Header = ({ logined, cart, app }) => {
 
-  render() {
-    return (
-      <header className="top-header">
-        <div className="nav-logo"></div>
-        <div className="right-box">
-          <Popover content={<CartSummary cart={cart} cartAPI={cartAPI} />} >
-            <Icon type="shopping-cart" style={{ fontSize: 20 }} />
-          }
-          </Popover>
+  return (
+    <header className="top-header">
+      <div className="nav-brand">
+        Brand
+      </div>
+      <div className="right-box">
+        {!logined && (
+          <div className="nav-btns">
+            <Link to="/signin" className="btn btn-primary">登&nbsp;录</Link>
+            <Link to="/signup" className="btn btn-success">注&nbsp;册</Link>
+          </div>
+        )}
+        <div className="nav-aside">
+          {logined && (
+            <div className="user">
+              <Popover placement={'bottom'} content={
+                <UserMenu logout={app.logout} />
+              }>
+                <Icon className="user-icon" type="user"/>
+              </Popover>
+            </div>
+          )}
+          <div className="cart">
+            <Popover placement={'bottomRight'} content={
+              <CartSummary cart={cart} app={app} />
+            }>
+              <Icon className="cart-icon" type="shopping-cart"/>
+            </Popover>
+          </div>
         </div>
-      </header>
-    )
-  }
+      </div>
+    </header>
+  )
 }
 
 /*
   暂时使用全局变量
  */
-const CartSummary = (/* { cart, cartAPI } */) => {
+const CartSummary = ({ cart, app }) => {
+
+  let isEmpty = cart.children && !cart.children.length
 
   return (
-    <div className="cart-summary" style={{ width: 360 }}>
-      <div className="cart-content">
-        {cart.children.map((order, idx) => (
-          <CartOrder>
-            {order.children.map((item, idx) => (
-              <CartItem entry={item} removeItem={cartAPI.removeItem} />
+    <div className="cart-summary">
+      {isEmpty ? (
+        <div className="cart-empty">
+          你的购物车是空的!
+        </div>
+      ) : (
+        <div className="cart-wrapper" style={{
+          width: 360,
+          margin: "-8px -16px"
+        }}>
+          <div className="cart-content">
+            {cart.children.map((order, idx) => (
+              <CartOrder>
+                {order.children.map((item, idx) => (
+                  <CartItem entry={item} removeItem={app.removeItem} />
+                ))}
+              </CartOrder>
             ))}
-          </CartOrder>
-        ))}
-        {/*
-        <CartOrder>
-          <CartItem entry={item} />
-          <CartItem entry={item} />
-        </CartOrder>
-        */}
-      </div>
-      <CartFooter price={cart.price} amount={cart.count} />
+          </div>
+          <CartFooter price={cart.price} amount={cart.count} />
+        </div>
+      )}
     </div>
   )
 }
@@ -122,6 +150,41 @@ const CartFooter = ({ price, amount }) => {
           去购物车
         </a>
       </div>
+    </div>
+  )
+}
+
+const UserMenu = ({ logout }) => {
+  let targetUrl = '/user-center'
+
+  return (
+    <div className="user-menu">
+      <ul className="menu-wrapper">
+        <li className="menu-item">
+          <Link to={`${targetUrl}/`}>
+            <Icon className="icon" type="user" />
+            <span className="text">用户中心</span>
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link to={`${targetUrl}/`}>
+            <Icon className="icon" type="gift" />
+            <span className="text">我的订单</span>
+          </Link>
+        </li>
+        <li className="menu-item">
+          <Link to={`${targetUrl}/favorites`}>
+            <Icon className="icon" type="star-o" />
+            <span className="text">我的收藏夹</span>
+          </Link>
+        </li>
+        <li className="menu-item">
+          <span onClick={logout}>
+            <Icon className="icon" type="logout" />
+            <span className="text">退出</span>
+          </span>
+        </li>
+      </ul>
     </div>
   )
 }

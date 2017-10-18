@@ -1,0 +1,34 @@
+//
+// Application Variables
+//-----------------------------------------------------
+
+// Primary font
+$body-font: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+
+//
+// Theme Colors
+//
+$white: #fff  /* Q: 这个变量的用意是什么？ */
+
+// Primary color is the main color of the applicarion which is used
+// for navbar, active links and primary button.
+
+// ------ Primary Colors from google material design color palette ------
+// Blue  : #2196F3
+// Teal  : #009688
+// Green : #4CAF50
+// Brown : #795548
+// Purple: #673AB7
+
+$primary-color: #009688
+
+/* Q: pace.js? */
+// Complementry color is used to indecate the loading bar on the top
+// of the page with pace.js plugin
+$complementry-color: adjust_hue($primary-color, 180)
+
+
+
+
+
+

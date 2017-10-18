@@ -22,7 +22,7 @@ function handleClick(e) {
   console.log('Clicked: %s', e && e.currentTarget || 'no args')
 }
 
-const SiteNav = withRouter(({ history }) => {
+const SiteNav = ({ history }) => {
   function signout() {
     console.log('going to signout')
     fetch('/signout').then(res => {
@@ -55,6 +55,6 @@ const SiteNav = withRouter(({ history }) => {
       </div>
     )
   )
-})
+}
 
-export default SiteNav
+export default withRouter(SiteNav)

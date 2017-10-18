@@ -14,7 +14,7 @@ import TestRoutes from './TestRoutes.js'
 import TestCheckbox from './TestCheckbox.js'
 
 import TestAutoMakeFold from './TestAutoMakeFold.js'
-import ConfirmOrder from './ConfirmOrder.js'
+// import ConfirmOrder from './ConfirmOrder.js'
 
 import CreateProduct from './CreateProduct.js'
 
@@ -35,6 +35,10 @@ import ProductShowcase from './components/ProductShowcase/ProductShowcase'
 import ProductShow from './components/ProductShow'
 
 import Header, { CartSummary } from './components/Header.js'
+
+import SiteNav from './SiteNav.js'
+import CartDetails from './components/CartDetails'
+import ConfirmOrder from './components/ConfirmOrder'
 
 const routes = [
   {
@@ -145,3 +149,11 @@ const routes = [
 ]
 
 export default routes
+
+export {
+  SiteNav,
+  Header,
+  Signin,
+  CartDetails,
+  ConfirmOrder,
+}

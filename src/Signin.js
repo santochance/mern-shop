@@ -22,24 +22,7 @@ export default class Signin extends React.Component {
 
     console.log('data to be submited:', data)
 
-    fetch('/api/signin', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
-    }).then(res => {
-      if (res.ok) {
-        res.json().then(user => {
-          console.log('%s signed in.', user.username)
-          window.auth = {
-            ...user,
-            isAuthed: true
-          }
-          setTimeout(() => this.props.history.push('/'), 300)
-        })
-      } else {
-        res.json().then(console.error)
-      }
-    }).catch(console.error)
+    this.props.login(data)
   }
 
   render() {

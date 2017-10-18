@@ -10,18 +10,17 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Redirect,
+  withRouter,
 } from 'react-router-dom'
 
-import routes from './routes.js'
-
-import './App.css';
-import './auxi_img_placeholder.css'
-
-import SiteNav from './SiteNav.js'
-
-import CartDetails from './components/CartDetails'
-import ConfirmOrder from './components/ConfirmOrder'
+import routes, {
+  SiteNav,
+  Header,
+  Signin,
+  CartDetails,
+  ConfirmOrder,
+} from './routes'
 
 const DevIndex = () => (
   <div>
@@ -41,81 +40,108 @@ const DevIndex = () => (
 )
 
 class App extends ItemList {
-  state = {
-    logined: false,
-    selectedAddr: '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102',
+  constructor(props) {
+    super(props)
+    this.state = {
+      ...this.state,
+      cart: this.state.itemlist,
+      logined: false,
+    }
+    this.login = this.login.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
-  addToCart = (product, amount = 1) => {
-    let { cart } = this.state
-    // let { updateItem, createItem, createList, appendItem } = this
-
-    // 遍历寻找所属order
-    cart.children.some(order => {
-      // 找到所属order
-      if (order.seller === product.seller) {
-
-        // 遍历寻找所属item
-        order.children.some(item => {
-          // 找到所属item
-          if (item.content._id === product._id) {
-            this.updateItem(item, item.amount + amount)
-            return true
+  login(data) {
+    fetch('/api/signin', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(res => {
+      if (res.ok) {
+        res.json().then(user => {
+          // 登录成功
+          console.log('%s signed in.', user.username)
+          window.auth = {
+            ...user,
+            isAuthed: true
           }
-        }) || (
-          // 没找到所属item
-          this.appendItem(order, this.createItem(product, amount))
-        )
-
-        return true
+          this.setState({ logined: true }, () => {
+            // 跳转到'/'
+            // App中有history吗？
+            this.props.history.push('/')
+          }, 0)
+        })
+      } else {
+        res.json().then(console.error)
       }
-    }) || (
-      // 没找到所属order
-      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount)))
-    )
+    }).catch(console.error)
+  }
 
-    console.log('cart:\n', cart)
+  logout() {
+    fetch('/signout').then(res => {
+      if (res.ok) {
+        // 退出成功
+        console.log('sign out successfully')
+        window.auth = {isAuthed: false}
+
+        this.setState({ logined: false }, () => {
+          this.props.history.push('/')
+        }, 0)
+      }
+    }).catch(console.error)
   }
 
   render() {
     let {
       logined,
       cart,
-      selectedAddr,
     } = this.state
-
     return (
-      <Router>
-        <div className="App">
-          <DevIndex />
-          <SiteNav />
-          <div className="page">
-            {routes.map((route, idx) => (
-              <Route key={idx} {...route} />
-            ))}
-            <Route path="/cart-details" render={props => (
-              (logined) ? (
-                <CartDetails {...props} cart={cart}
-                  toggleCheck={(...arg) => this.check(...arg)}
-                  updateItem={(...arg) => this.updateItem(...arg)}
-                  removeItem={(...arg) => this.removeItem(...arg)}
-                />
-              ) : (
-                <Redirect to={{
-                  pathname: '/signup',
-                  state: { from: props.location }
-                }}></Redirect>
-              )
-            )} />
-          <Route path="confirm-order" render={props => (
-              <ConfirmOrder {...props} cart={cart} selectedAddr={ selectedAddr} />
+      <div className="App">
+        <DevIndex />
+        <Header {...{logined, cart, app: this}}/>
+        {/*
+          <SiteNav {...{logined, logout: this.login}} />
+        */}
+        <div className="page">
+          <Route path="/signin" render={props => (
+            <Signin login={this.login} />
+          )} />
+          <Route path="/cart-details" render={props => (
+            (logined) ? (
+              <CartDetails {...props} cart={cart}
+                toggleCheck={(...arg) => this.check(...arg)}
+                updateItem={(...arg) => this.updateItem(...arg)}
+                removeItem={(...arg) => this.removeItem(...arg)}
+              />
+            ) : (
+              <Redirect to={{
+                pathname: '/signup',
+                state: { from: props.location }
+              }}></Redirect>
             )
-          } />
-          </div>
+          )} />
+          <Route path="confirm-order" render={props => (
+            <ConfirmOrder {...props} cart={cart} />
+          )} />
+          {/* Other Routes */}
+          {routes.map((route, idx) => (
+            <Route key={idx} {...route} />
+          ))}
         </div>
-      </Router>
+      </div>
     )
   }
 }
 
-export default App;
+const AppWithRouter = withRouter(App)
+
+const AddedRouterApp = () => {
+  return (
+    <Router>
+      <AppWithRouter />
+    </Router>
+  )
+}
+
+export default AddedRouterApp;

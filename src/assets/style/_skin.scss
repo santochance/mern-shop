@@ -1,0 +1,5 @@
+// 被选中文本的样式
+::selection
+  color: $white
+  background: darken($primary-color, 10%)
+
