@@ -8,15 +8,6 @@
   position: relative;
   width: 1190px;
   margin: 0 auto;
-  &:before,
-  &:after {
-    content: ' ';
-    display: table;
-  }
-  &:after {
-    clear: both;
-  }
-
 }
 
 .content-wrapper {

@@ -15,12 +15,15 @@ import {
 } from 'react-router-dom'
 
 import routes, {
-  SiteNav,
   Header,
+  SiteNav,
   Signin,
   CartDetails,
   ConfirmOrder,
 } from './routes'
+
+import './assets/style/index.css'
+import './App.css'
 
 const DevIndex = () => (
   <div>
@@ -96,14 +99,15 @@ class App extends ItemList {
       logined,
       cart,
     } = this.state
+
     return (
-      <div className="App">
+      <div className="app">
         <DevIndex />
         <Header {...{logined, cart, app: this}}/>
         {/*
           <SiteNav {...{logined, logout: this.login}} />
         */}
-        <div className="page">
+        <div className="wrapper">
           <Route path="/signin" render={props => (
             <Signin login={this.login} />
           )} />
@@ -121,7 +125,7 @@ class App extends ItemList {
               }}></Redirect>
             )
           )} />
-          <Route path="confirm-order" render={props => (
+          <Route path="/confirm-order" render={props => (
             <ConfirmOrder {...props} cart={cart} />
           )} />
           {/* Other Routes */}

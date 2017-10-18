@@ -1,15 +1,19 @@
-@import '../assets/style/mixin';
+@import 'assets/style/mixin';
+@import './CartDetails.scss';
+@import './CartFooter.scss';
 
 // 布局辅助线设置
 $useAuxiOtl: true;
 
 .top-header {
-  @include otl(purple);
-  @include rect(100%, 50px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background-color: #e8e8e8;
+
+  .wrapper {
+    // @include otl(purple);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   .nav-brand {
     @include otl(lime);
