@@ -1,0 +1,100 @@
+@import 'assets/style/mixin.scss';
+
+.product-details-page {
+  &.wrapper {
+    @include otl(blue);
+  }
+
+  .product-intro {
+    margin: 16px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #eee;
+  }
+
+  .left {
+    @include otl(orange);
+    @include rect(500px);
+  }
+  .right {
+    @include otl(lime);
+    margin-left: 20px;
+    width: 500px;
+  }
+  .product-header {
+    padding: 6px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #bbb;
+    .product-name {
+      // 18px
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .product-descrp {
+      // 14px
+      font-size: 14px;
+    }
+  }
+
+  .product-price {
+    margin: 10px 0;
+    // 16px
+    color: black;
+    .old-price {
+      text-decoration: line-through;
+      .symbol {
+        font-size: 12px;
+      }
+      .num {
+        font-size: 14px;
+      }
+    }
+    .now-price {
+      color: red;
+      .symbol {
+        // 14px
+        font-size: 20px;
+      }
+      .num {
+        // 18px
+        font-size: 24px;
+        font-weight: 700;
+      }
+    }
+  }
+  .product-data {
+    margin-bottom: 10px;
+    padding: 0 6px;
+    .comment {
+      margin-right: 10px;
+    }
+    .text {
+      font-size: 12px;
+    }
+    .num {
+      display: inline-block;
+      font-size: 16px;
+      padding: 0 5px;
+    }
+  }
+  .product-choice {
+    padding: 6px;
+    padding-top: 8px;
+    margin-bottom: 10px;
+    border-top: 1px solid #ddd;
+
+    .choice-amount {
+      padding: 10px 0;
+    }
+  }
+
+  .product-op {
+    padding: 0 6px;
+    button {
+      margin-right: 10px;
+    }
+  }
+
+
+}
