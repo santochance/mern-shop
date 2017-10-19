@@ -5,16 +5,6 @@ import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'r
 
 import { Redirect } from 'react-router-dom'
 
-function FieldGroup({ id, label, help, ...props }) {
-  return (
-    <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} />
-      {help && <HelpBlock>{help}</HelpBlock>}
-    </FormGroup>
-  );
-}
-
 function form2json(form) {
   let controls = form.elements
   let names = Object.keys(controls).filter(key => isNaN(Number(key)))
@@ -96,50 +86,87 @@ class Signup extends React.Component {
     // 由于权限保护页面引导验证过程进入到login则设置此flag
     // 可以考虑通过props传入
     if (redirectToReferrer) {
-      return <Redirect to={ from } />
+      return <Redirect to={from} />
     }
 
     return (
-      <Form action="/api/signup" method="POST" style={{
-        width: '80%',
-        margin: 'auto',
-        marginTop: '100px'
-      }}  onSubmit={this.handleSubmit}>
-        <FieldGroup
-          id="firstName"
-          type="text"
-          label="First Name"
-        />
-        <FieldGroup
-          id="lastName"
-          type="text"
-          label="Last Name"
-        />
-        <FieldGroup
-          id="username"
-          type="text"
-          label="Username"
-          placeholder="Enter username..."
-          defaultValue="test"
-        />
-        <FieldGroup
-          id="email"
-          type="email"
-          label="Email"
-          placeholder="Enter email..."
-        />
-        <FieldGroup
-          id="password"
-          type="password"
-          label="Password"
-          placeholder="Enter password..."
-          defaultValue="password"
-        />
-
-        <Button type="submit">Submit</Button>
-      </Form>
+      <div className="signup">
+        <div className="signup-box" style={{
+          width: 360,
+          minHeight: 600,
+          margin: 'auto',
+        }}>
+          <div className="signup-content" style={{
+            padding: 40,
+            border: '1px solid #ddd',
+            backgroundColor: '#fff',
+          }}>
+            <div className="title" style={{
+              width: '100%',
+              fontSize: 18,
+              marginBottom: 24,
+              textAlign: 'center',
+              borderBottom: '1px solid #d8d8d8',
+            }}>注册账号</div>
+            <Form action="/api/signup" method="POST" onSubmit={this.handleSubmit}>
+              {/*
+              <FieldGroup
+                id="firstName"
+                type="text"
+                label="First Name"
+              />
+              <FieldGroup
+                id="lastName"
+                type="text"
+                label="Last Name"
+              />
+              */}
+              <FieldGroup
+                id="username"
+                type="text"
+                label="用户名"
+                placeholder="请输入用户名"
+              />
+              <FieldGroup
+                id="email"
+                type="email"
+                label="电子邮箱"
+                placeholder="请输入电子邮箱"
+              />
+              <FieldGroup
+                id="password"
+                type="password"
+                label="密码"
+                placeholder="Enter password..."
+                defaultValue="password"
+              />
+              <FieldGroup
+                id="password"
+                type="password"
+                label="确认密码"
+                placeholder="Enter password..."
+                defaultValue="password"
+              />
+              <div className="clearfix" style={{ marginBottom: 12 }}>
+                <a className="fr">使用已有账号登录</a>
+              </div>
+              <Button className="btn btn-primary" type="submit" style={{ display: 'block', width: '100%' }}>注&nbsp;册</Button>
+            </Form>
+          </div>
+        </div>
+      </div>
     )
   }
+}
+
+function FieldGroup({ id, label, help, ...props }) {
+  return (
+    <FormGroup controlId={id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+      {help && <HelpBlock>{help}</HelpBlock>}
+    </FormGroup>
+  );
 }
 
 export default Signup
