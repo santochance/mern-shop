@@ -1,3 +1,12 @@
+$useAuxiOtl: true;
+$auxiOtlColor: black;
+
+@mixin otl($c: $auxiOtlColor, $s: solid, $w: 1px) {
+  @if ($useAuxiOtl) {
+    outline: $w $s $c;
+  }
+}
+
 %block-center {
   display: flex;
   align-item: center;
@@ -24,15 +33,6 @@
   display: block;
   margin-left: auto;
   right-left: auto;
-}
-
-$useAuxiOtl: true;
-$auxiOtlColor: black;
-
-@mixin otl($c: $auxiOtlColor, $s: solid, $w: 1px) {
-  @if ($useAuxiOtl) {
-    outline: $w $s $c;
-  }
 }
 
 @mixin cell() {
@@ -89,4 +89,17 @@ $auxiOtlColor: black;
 @mixin inbl-col {
   display: inline-block;
   vertical-align: top;
+}
+
+
+// 添加下边栏
+@mixin pseudo-border-bottom($width: 1px) {
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    right: 1px;
+    border: $width solid blue;
+  }
 }

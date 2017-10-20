@@ -1,9 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-/*
-  Todo: 样式文件使用scss, 目前还在src/scss中，待处理
- */
+import './CartDetails.css'
+
 const CartDetails = ({ app, cart }) => {
 
   /* 测试获取勾选项 */

@@ -1,3 +1,7 @@
+.order-confirm {
+  @include otl(yellow);
+}
+
 .order-confirm, .cart {
   width: 960px;
   // display: inline-block;

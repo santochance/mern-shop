@@ -21,7 +21,7 @@ import {
   // UserCrud,
   // UserCenter,
   // ProductList,
-  // ConfirmOrder,
+  ConfirmOrder,
 } from './all-index'
 
 import React from 'react'
@@ -67,10 +67,11 @@ const routes = [
     hidden: true,
   },
 
-  // {
-  //   path: '/confirm-order',
-  //   component: ConfirmOrder,
-  // },
+  {
+    path: '/confirm-order',
+    component: ConfirmOrder,
+    hidden: true,
+  },
   // {
   //   path: '/create-product',
   //   component: CreateProduct,
