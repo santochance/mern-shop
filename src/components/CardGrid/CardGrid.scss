@@ -1,0 +1,77 @@
+.card-grid {
+  .grid-hd {
+    line-height: 30px;
+    .title {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .more {
+      float: right;
+      font-size: 12px;
+      // @extend .link;
+    }
+  }
+  .col-5 {
+    width: 20%;
+    box-sizing: border-box;
+  }
+  .items {
+    // overflow: hidden;
+    border: 1px solid #e6e6e6;
+    border-bottom: none;
+    border-right: none;
+  }
+  .item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    // width: 235px;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    border-left: none;
+
+    a {
+      text-decoration: none;
+    }
+    img {
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+    }
+    .title {
+      overflow: hidden;
+      margin: 0 10px 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #000;
+    }
+    .desc {
+      overflow: hidden;
+      margin: 0 10px 6px;
+      font-size: 14px;
+      color: #999;
+      border-bottom: 1px dashed #e1e1e1;
+    }
+    .price {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #232323;
+    }
+    .old-price {
+      font-size: 14px;
+      color: #999;
+      text-decoration: line-through
+    }
+    .sales {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font-size: 14px;
+      color: #999;
+    }
+  }
+}

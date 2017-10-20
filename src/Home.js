@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 
 import { Link } from 'react-router-dom'
 
+import CardGrid from './components/CardGrid'
+
 import {
   Navbar, Nav, NavItem,
   NavDropdown, MenuItem,
@@ -14,6 +16,14 @@ import {
 } from 'react-bootstrap'
 
 // import PageTop from './PageTop.js'
+
+const item = {
+  title: '商品名称',
+  desc: '商品描述...',
+  price: 1999,
+  oldPrice: 2599,
+  sales: 241,
+}
 
 const Home = () => (
   <div>
@@ -41,6 +51,7 @@ const Home = () => (
       </form>
       <ControlledCarousel />
       <ProductGallery />
+      <CardGrid items={Array(15).fill({...item})} />
     </main>
     <Footer />
   </div>
