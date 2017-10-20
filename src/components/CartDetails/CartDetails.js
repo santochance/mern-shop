@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 /*
   Todo: 样式文件使用scss, 目前还在src/scss中，待处理
@@ -119,7 +120,10 @@ const CartDetails = ({ app, cart }) => {
                 <span className="total">{cart.price || 0}</span>
               </span>
             </div>
-            <a className="checkout">结&nbsp;算</a>
+            <Link to="/confirm-order" className="checkout" disabled={checkedItems.length < 1}>
+              结&nbsp;算
+            </Link>
+            {/* 添加disable attr是可以禁止跳转的，但需要自定义样式 */}
             {checkedItems.length < 1 && (
               <div>禁用按钮中！</div>
             )}

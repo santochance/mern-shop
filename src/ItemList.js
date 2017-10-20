@@ -79,6 +79,7 @@ class ItemList extends React.Component {
     }
     this.check = this.check.bind(this)
     this.addToCart = this.addToCart.bind(this)
+    this.outputData = this.outputData.bind(this)
   }
 
   componentDidMount() {
@@ -86,15 +87,12 @@ class ItemList extends React.Component {
       .then(res => res.json())
       // .then(products => this.setState({ ...this.state, products, prod: products, p: products  }))
       .then(products => this.setState({ ...this.state, products }))
-      // .then(() => setTimeout(() => this.makeList(), 200))
+      .then(() => setTimeout(() => this.makeList(), 200)) /* 产生模拟行为 */
       .catch(console.error)
   }
 
   makeList() {
     let { itemlist, products } = this.state
-
-    debugger
-
     // 创建一个list
     this.appendItem(itemlist, this.createList())
 
@@ -103,7 +101,7 @@ class ItemList extends React.Component {
     while (n--) {
       this.appendItem(itemlist.children[0],
         this.createItem(products[random(products.length)],
-          random(1, 6))
+          random(1, 6), true)
       )
     }
 
@@ -146,7 +144,7 @@ class ItemList extends React.Component {
     }, rst)
   }
 
-  addToCart(product, amount = 1) {
+  addToCart(product, amount = 1, checked = true/* 新增的自动勾选 */) {
     let { cart } = this.state
     // let { updateItem, createItem, createList, appendItem } = this
 
@@ -159,25 +157,25 @@ class ItemList extends React.Component {
         order.children.some(item => {
           // 找到所属item
           if (item.content._id === product._id) {
-            this.updateItem(item, item.amount + amount)
+            this.updateItem(item, item.amount + amount, checked)
             return true
           }
         }) || (
           // 没找到所属item
-          this.appendItem(order, this.createItem(product, amount))
+          this.appendItem(order, this.createItem(product, amount, checked))
         )
 
         return true
       }
     }) || (
       // 没找到所属order
-      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount)))
+      this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount, checked)))
     )
 
     console.log('cart:\n', cart)
   }
 
-  createItem(content, amount) {
+  createItem(content, amount, checked = false) {
     let { price = 0, discount = 0, shipping = 0 } = content
     return {
       content,
@@ -189,7 +187,7 @@ class ItemList extends React.Component {
       shipping: shipping * amount || 0,
       realPay: (price - discount + shipping) * amount,
       parent: null,
-      checked: false,
+      checked,
     }
   }
 
@@ -375,8 +373,9 @@ class ItemList extends React.Component {
     parent && parent.children.splice(parent.children.indexOf(item), 1)
   }
 
-  updateItem(item, amount) {
+  updateItem(item, amount, checked) {
     item.amount = amount
+    item.checked = checked
     // 更新amount后触发更新item aggregation
     item.price = item.content.price * amount
     // 同时要更新祖先的aggregation和count

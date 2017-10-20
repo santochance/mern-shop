@@ -20,6 +20,7 @@ import routes, {
   Signin,
   CartDetails,
   ConfirmOrder,
+  ProductShow,
 } from './routes'
 
 import './assets/style/index.css'
@@ -111,9 +112,12 @@ class App extends ItemList {
           <Route path="/signin" render={props => (
             <Signin login={this.login} />
           )} />
+          <Route path="/product-show" render={props => (
+            <ProductShow addToCart={this.addToCart} />
+          )} />
           <Route path="/cart-details" render={props => (
-            (logined) ? (
-              <CartDetails {...props} cart={cart}
+            (true) ? (
+              <CartDetails {...props} cart={cart} app={this}
                 toggleCheck={(...arg) => this.check(...arg)}
                 updateItem={(...arg) => this.updateItem(...arg)}
                 removeItem={(...arg) => this.removeItem(...arg)}

@@ -150,9 +150,9 @@ const CartFooter = ({ price, amount }) => {
         </div>
       </div>
       <div className="right-box">
-        <a className="btn btn-info" href="#">
+        <Link to="/cart-details" className="btn btn-info" href="#">
           去购物车
-        </a>
+        </Link>
       </div>
     </div>
   )

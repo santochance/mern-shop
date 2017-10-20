@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ConfirmOrder = ({ app, cart, addresses, user }) => {
   let selectedAddr = '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102'
@@ -94,9 +95,9 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
       </div>
       <div className="order-submitOrder">
         <div className="submitOrder-wrapper">
-          <a href="#" className="go-back">返回购物车</a>
+          <Link to="/cart-details" className="go-back">返回购物车</Link>
           <a href="" className="btn btn-danger go-submit"
-            onClick={() => this.submitOrder()}>提交订单</a>
+            onClick={() => app.outputData(cart)}>提交订单</a>
         </div>
       </div>
     </div>

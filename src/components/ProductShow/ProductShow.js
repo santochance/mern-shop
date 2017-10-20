@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Pagination, Row, Col } from 'antd'
 import Sortbar from '../../components/ProductShowcase/Sortbar'
 // 分页功能模块
@@ -157,6 +158,9 @@ class ProductShow extends Component {
   }
 }
 
+ProductShow.propTypes = {
+  addToCart: PropTypes.func
+}
 const ProductList = ({ visibleData, addToCart }) => {
   if (!visibleData) return null
 

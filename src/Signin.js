@@ -56,7 +56,7 @@ export default class Signin extends React.Component {
                 <ControlLabel className="sr-only">用户名</ControlLabel>
                 <InputGroup>
                   <InputGroup.Addon>U</InputGroup.Addon>
-                  <FormControl placeholder="用户名"></FormControl>
+                  <FormControl placeholder="用户名" defaultValue="santochance"></FormControl>
                 </InputGroup>
               </FormGroup>
               <FormGroup controlId="password">

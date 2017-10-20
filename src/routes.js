@@ -1,4 +1,5 @@
 import {
+  Playground,
   Home,
   Signin,
   Signup,
@@ -6,6 +7,7 @@ import {
   ProductDetails,
   Signup2,
   TestCart,
+  ProductShow,
   // CreateProduct,
   // DataGrid,
   // ItemList,
@@ -13,7 +15,6 @@ import {
   // OrderHistory,
   // EditUserForm,
   // ProductShowcase,
-  // ProductShow,
   // CartSummary,
   // UserAdmin,
   // Admin,
@@ -28,6 +29,10 @@ import { Link } from 'react-router-dom'
 
 
 const routes = [
+  {
+    path: '/dev/playground',
+    component: Playground,
+  },
   {
     path: '/',
     component: Home,
@@ -54,6 +59,11 @@ const routes = [
     path: '/test-cart',
     component: TestCart,
   },
+  {
+    path: '/product-show',
+    component: ProductShow,
+  },
+
   // {
   //   path: '/confirm-order',
   //   component: ConfirmOrder,
@@ -94,10 +104,7 @@ const routes = [
   //   path: '/product-showcase',
   //   component: ProductShowcase,
   // },
-  // {
-  //   path: '/product-show',
-  //   component: ProductShow,
-  // },
+
   // {
   //   path: '/cart-summary',
   //   component: CartSummary,
