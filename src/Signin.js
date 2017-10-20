@@ -30,8 +30,8 @@ export default class Signin extends React.Component {
 
   render() {
     return (
-      <div className="signin screen-center" style={{
-        backgroundColor: '#ddd',
+      <div className="signin" style={{
+        // backgroundColor: '#ddd',
       }}>
         <div className="signin-box screen-center" style={{
           width: 360,

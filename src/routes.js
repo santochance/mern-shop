@@ -3,7 +3,9 @@ import {
   Signin,
   Signup,
   Login,
-  // TestCart,
+  ProductDetails,
+  Signup2,
+  TestCart,
   // CreateProduct,
   // DataGrid,
   // ItemList,
@@ -39,11 +41,19 @@ const routes = [
     path: '/signup',
     component: Signup,
   },
+  {
+    path: '/product-details',
+    component: ProductDetails,
+  },
+  {
+    path: '/signup2',
+    component: Signup2,
+  },
 
-  // {
-  //   path: '/test-cart',
-  //   component: TestCart,
-  // },
+  {
+    path: '/test-cart',
+    component: TestCart,
+  },
   // {
   //   path: '/confirm-order',
   //   component: ConfirmOrder,

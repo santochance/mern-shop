@@ -26,7 +26,7 @@
   right-left: auto;
 }
 
-$useAuxiOtl: false;
+$useAuxiOtl: true;
 $auxiOtlColor: black;
 
 @mixin otl($c: $auxiOtlColor, $s: solid, $w: 1px) {

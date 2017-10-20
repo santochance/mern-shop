@@ -10,14 +10,35 @@ import {
   Button, FormGroup, FormControl,
   Grid, Row, Col,
   Carousel, Thumbnail,
+  Panel, Form,
 } from 'react-bootstrap'
 
-import PageTop from './PageTop.js'
+// import PageTop from './PageTop.js'
 
 const Home = () => (
   <div>
+    {/*
     <PageTop />
+    */}
     <main>
+      {/*
+      <Form style={{
+        width: 300,
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        <FormGroup>
+          <FormControl type="text" name="search" />
+        </FormGroup>
+        <Button>搜&nbsp;索</Button>
+      </Form>
+      */}
+      <form className="search-bar" action="" style={{
+        width: 400
+      }}>
+        <input type="text"/>
+        <button>搜&nbsp;索</button>
+      </form>
       <ControlledCarousel />
       <ProductGallery />
     </main>
@@ -104,7 +125,9 @@ class ControlledCarousel extends Component {
     super(props)
     this.state = {
       index: 0,
-      direction: null
+      direction: null,
+      width: 1190,
+      height: 360,
     }
     this.handleSelect = this.handleSelect.bind(this)
   }
@@ -118,11 +141,12 @@ class ControlledCarousel extends Component {
   }
 
   render() {
+    let { width, height } = this.state
     return (
-      <Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
+      <Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} style={{marginBottom: 32}}>
         {slides.map((slide, i) => (
-          <Carousel.Item key={i}>
-            <img width={slide.width} height={slide.height} src={slide.src} alt={slide.alt}/>
+          <Carousel.Item key={i} style={{...{width, height}}}>
+            <img width={width} height={height} src={slide.src} alt={slide.alt}/>
             <Carousel.Caption>
               <h3>{slide.title}</h3>
               <p>{slide.description}</p>
@@ -148,26 +172,43 @@ const slides = Array.from({length: 3}).map((s, i) => (
 //
 // Gallery
 //
+
+const titleBar = (
+  <div className="clearfix">
+    <h3 style={{
+      fontSize: 30,
+      lineHeight: '1em',
+      paddingLeft: '0.48em',
+      borderLeft: '0.2em solid',
+      color: 'blue' }}>
+      Panel title
+      <a className="fr" style={{fontSize: 16}}>查看更多...</a>
+    </h3>
+  </div>
+)
 const ProductGallery = () => (
-  <Grid>
-    <Row className="product-grid">
-      {products.map((p, i) => (
-        <Col xs={3} key={i}>
-          <Thumbnail src={p.thumbnail}>
-            <h3>{p.title + ' ' + i}</h3>
-            <p>{p.description}</p>
-            <p>
-              {/*
-              <Button bsStyle="primary">Button</Button>
-              */}
-              <span>{p.price}</span>
-              <Button bsStyle="primary" bsSize="small">Button</Button>
-            </p>
-          </Thumbnail>
-        </Col>
-      ))}
-    </Row>
-  </Grid>
+  <Panel className="product-gallery" header={titleBar}>
+    <Grid className="product-grid">
+      <Row className="product-row">
+        {products.map((p, i) => (
+          <Col xs={3} key={i} className="product-col">
+            <Thumbnail src={p.thumbnail}>
+              <h3>{p.title + ' ' + i}</h3>
+              <p>{p.description}</p>
+              <p>
+                {/*
+                <Button bsStyle="primary">Button</Button>
+                */}
+                <span>{p.price}</span>
+                <Button bsStyle="primary" bsSize="small">Button</Button>
+              </p>
+            </Thumbnail>
+          </Col>
+        ))}
+      </Row>
+    </Grid>
+  </Panel>
+
 )
 
 const products = Array(8).fill(

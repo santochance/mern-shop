@@ -1,13 +1,17 @@
-export { default as Home } from './Home.js'
-export { default as Signin } from './Signin.js'
+export { default as Home } from './Home'
+export { default as Signin } from './Signin'
 
 export { Login, Signup, UserCenter, ProductList } from './components'
-export { default as Header, CartSummary } from './components/Header.js'
+export { default as Header, CartSummary } from './components/Header'
 export { default as SiteNav } from './SiteNav.js'
 export { default as CartDetails } from './components/CartDetails'
 export { default as ConfirmOrder } from './components/ConfirmOrder'
 
-// export { default as TestCart } from './TestCart.js'
+export { default as ProductDetails } from './components/ProductDetails'
+
+export { default as Signup2 } from './Signup'
+
+export { default as TestCart } from './TestCart.js'
 // export { default as CreateProduct } from './CreateProduct.js'
 // export { default as DataGrid } from './DataGrid.js'
 // export { default as ItemList } from './ItemList.js'

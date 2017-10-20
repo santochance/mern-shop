@@ -21,6 +21,22 @@
   display: flex;
   justify-content: space-between;
 }
+.flex-lr-as {
+  @extend .flex-lr;
+  align-items: flex-start;
+}
+.flex-lr-ae {
+  @extend .flex-lr;
+  align-items: flex-end;
+}
+.flex-lr-ac {
+  @extend .flex-lr;
+  align-items: center;
+}
+.flex-lr-ab {
+  @extend .flex-lr;
+  align-items: baseline;
+}
 
 .flex-full {
   display: flex;
@@ -28,15 +44,12 @@
     flex: 1;
   }
 }
-
-
 .flex-l-full {
   display: flex;
   > :nth-child(1) {
     flex: 1;
   }
 }
-
 .flex-r-full {
   display: flex;
   > :nth-child(2) {

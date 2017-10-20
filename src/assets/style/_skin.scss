@@ -4,3 +4,66 @@
   background: darken($primary-color, 10%);
 }
 
+// Home中Carousel下面的Card
+
+.product-gallery {
+  .panel-body,
+  .product-col
+  {
+    padding: 0;  // 去除原有的15px
+  }
+  .product-grid {
+    margin-top: 6px;
+  }
+  .thumbnail {
+    border-radius: 0;
+    margin: 0;
+    border-top: none;
+    border-left: none;
+  }
+}
+
+.search-bar {
+  // 还需要reset form control的样式
+  display: flex;
+  // padding: 8px;
+  margin: 16px 0;
+
+  input[type='text'],
+  input[type='search'] {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid $primary-color;
+    border-right: none;
+    transition: border-color ease-in-out .15s;
+  }
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  button {
+    font-size: 14px;
+    padding: 0 1em;
+    white-space: nowrap;
+    color: #fff;
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    border-left: none;
+    &:hover,
+    &:focus,
+    &.focus {
+      outline: none;
+      background-color: darken($primary-color, 6%);
+    }
+    &:active {
+      background-color: darken($primary-color, 12%);
+    }
+  }
+}
