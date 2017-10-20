@@ -102,4 +102,10 @@ $auxiOtlColor: black;
     right: 1px;
     border: $width solid blue;
   }
+  &:first-child:after {
+    left: 0;
+  }
+  &:last-child:after {
+    right: 0;
+  }
 }

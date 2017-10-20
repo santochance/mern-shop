@@ -62,17 +62,18 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
                   </span>
                 </div>
                 <div className="order-delivery">
-                  <div className="delivery-title">
-                    运送方式：
+                  <div className="delivery-method">
+                    <span className="title">运送方式：</span>
+                    <span className="method-name">普通配送</span>
                   </div>
-                  <div className="delivery-select">
-                    <span className="select-info">普通配送</span>
-                    <span className="select-price">{order.shipping}</span>
+                  <div className="delivery-price">
+                    <span className="title">运费：</span>
+                    <span className="price-num">{order.shipping}</span>
                   </div>
                 </div>
               </div>
               <div className="order-total">
-                <span>(含运费)</span>
+                <span>合计：(含运费)</span>
                 <span className="order-sum">￥{order.realPay}</span>
               </div>
             </div>
@@ -103,7 +104,9 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
         </div>
         <div className="order-submitOrder">
           <div className="submitOrder-wrapper">
+            {/*
             <Link to="/cart-details" className="go-back">返回购物车</Link>
+            */}
             <a href="" className="btn btn-danger go-submit"
               onClick={() => app.outputData(cart)}>提交订单</a>
           </div>
