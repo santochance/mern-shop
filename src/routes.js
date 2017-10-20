@@ -32,11 +32,13 @@ const routes = [
   {
     path: '/dev/playground',
     component: Playground,
+    label: 'Playground',
   },
   {
     path: '/',
     component: Home,
     exact: true,
+    label: 'Home',
   },
   {
     path: '/login',
@@ -62,6 +64,7 @@ const routes = [
   {
     path: '/product-show',
     component: ProductShow,
+    hidden: true,
   },
 
   // {

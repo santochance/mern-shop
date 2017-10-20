@@ -34,11 +34,11 @@ const DevIndex = () => (
       margin: '5px 0',
       padding: 0,
     }}>
-      {routes.map((route, idx) => (
+      {routes.map((route, idx) => (route.label === 'none' ? (null) : (
         <li key={idx} style={{marginLeft: '2em'}}>
-          <Link to={route.path}>{_.camelCase(route.path)}</Link>
+          <Link to={route.path}>{route.label || _.camelCase(route.path)}</Link>
         </li>
-      ))}
+      )))}
     </ul>
   </div>
 )
@@ -133,9 +133,9 @@ class App extends ItemList {
             <ConfirmOrder {...props} cart={cart} />
           )} />
           {/* Other Routes */}
-          {routes.map((route, idx) => (
+          {routes.map((route, idx) => (route && route.hidden ? (null) : (
             <Route key={idx} {...route} />
-          ))}
+          )))}
         </div>
       </div>
     )
