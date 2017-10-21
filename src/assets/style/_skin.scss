@@ -66,4 +66,10 @@
       background-color: darken($primary-color, 12%);
     }
   }
+
+  button.icon {
+    width: 34px;
+    height: 34px;
+    text-index: -9999px;
+  }
 }

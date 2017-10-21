@@ -12,10 +12,25 @@ const Header = ({ logined, cart, app }) => {
   return (
     <header className="top-header">
       <div className="wrapper">
-        <div className="nav-brand">
-          <Link to="/">
-            <h1 style={{height: '100%'}}>Brand</h1>
-          </Link>
+        <div className="left-box">
+          <div className="nav-brand">
+            <Link to="/">
+              <h1 className="logo" style={{}}>
+                <img src="/logo.png" alt="Electronic-Shop"/>
+              </h1>
+            </Link>
+          </div>
+        </div>
+        <div className="middle-box">
+          <form className="search-bar" style={{
+            width: 400
+          }}>
+            <input type="text"/>
+            <button><Icon type="search" style={{ fontSize: 18 }} /></button>
+            {/*
+            <button className="icon">搜&nbsp;索</button>
+            */}
+          </form>
         </div>
         <div className="right-box">
           {!logined && (

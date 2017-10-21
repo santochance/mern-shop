@@ -3,7 +3,7 @@
 @import './CartFooter.scss';
 
 // 布局辅助线设置
-$useAuxiOtl: false;
+$useAuxiOtl: true;
 
 .top-header {
   background-color: #e8e8e8;
@@ -13,18 +13,28 @@ $useAuxiOtl: false;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 100px;
+  }
+  .left-box,
+  .middle-box,
+  .right-box {
+    flex: 1;
   }
 
   .nav-brand {
     @include otl(lime);
-    @include rect(50px);
+    // @include rect(100px);
     margin-left: 16px;
+  }
+  .search-bar {
+    margin: 0 auto;
   }
 
   .right-box {
     @include otl(red);
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
   }
 
