@@ -1,42 +1,131 @@
+@import 'assets/style/mixin';
+
+$useAuxiOtl: false;
+
+$orderHistory-cell-border: 1px solid #eee;
+$orderHistory-grid-hover: #aaa;
+$orderHistory-desc-bg: #eee;
+
 .order-history {
-
-  .tr {
-
+  // main-wrapper
+  // ------------
+  .wrapper {
+    width: 852px;
+    margin-top: 16px;
+    @include otl;
   }
+  // grid-layout
+  // -----------
+  & {
+    .th {
+      position: relative;
+      display: inline-block;
+      vertical-align: top;
+      line-height: 1.5em;
+      text-align: center;
+    }
+    .td {
+      display: table-cell;
+      vertical-align: middle;
+      line-height: 1.5em;
+      text-align: center;
+    }
+    .th, .td {
+      // @include otl;
+    }
+    .desc,
+    .cell {
+      &-product { width: 330px; }
+      &-price { width: 104px; }
+      &-amount { width: 104px; }
+      &-oper { width: 104px; }
+      &-realPay { width: 104px; }
+      &-status { width: 104px; }
+    }
+  }
+  // grid-border
+  // -----------
+  & {
+    .history-orderDesc {
+      border: $orderHistory-cell-border;
+    }
+    .order-content {
+      border: $orderHistory-cell-border;
 
-  .th, .td {
-    display: inline-block;
-    vertical-align: middle;
+      &:hover {
+        border-color: $orderHistory-grid-hover;
+      }
+    }
+    .thead {
+      border-bottom: $orderHistory-cell-border;
+    }
+    .item-content {
+      .cell {
+        &-product,
+        &-price,
+        &-amount,
+        &-oper {
+          border-bottom: $orderHistory-cell-border;
+        }
+        &-realPay,
+        &-status {
+          border-left: $orderHistory-cell-border;
+        }
+      }
+      &:last-child,
+      &.last {
+        .cell {
+          &-product,
+          &-price,
+          &-amount,
+          &-oper {
+            border-bottom: none;
+          }
+        }
+      }
+    }
   }
-  .th {
-    line-height: 3em;
-  }
-  .td {
+  // sections
+  // --------
+  .history-orderDesc {
+    // margin-bottom: 16px;
     padding: 8px 0;
+    background-color: $orderHistory-desc-bg;
   }
+  .nav-row {
+    padding: 16px 0;
+    text-align: right;
+    a + a {
+      margin-left: 8px;
+    }
+  }
+  .history-orders {
+    .order-content {
+      margin-bottom: 16px;
 
-  .main-content {
-    width: 990px;
-  }
-
-  .cell-product {
-    width: 130px;
-  }
-  .cell-price {
-    width: 80px;
-  }
-  .cell-amount {
-    width: 80px;
-  }
-  .cell-refund {
-    width: 60px;
-  }
-  .cell-realPay,
-  .cell-empty-0 {
-    width: 80px;
-  }
-  .cell-status,
-  .cell-empty-1 {
-    width: 120px;
+      .order-info {
+        padding: 8px;
+        background-color: $orderHistory-desc-bg;
+        .order-serial {
+          margin-left: 16px;
+        }
+      }
+    }
+    .item-content {
+      // padding: 8px 0;
+      // cell-special-style
+      .cell-product {
+        text-align: left;
+        overflow: hidden;
+      }
+      .product-image {
+        img {
+          @include otl(blue);
+          display: block;
+          @include rect(80px);
+          margin: 8px;
+        }
+      }
+    }
   }
 }

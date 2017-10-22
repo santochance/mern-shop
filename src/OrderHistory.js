@@ -2,7 +2,8 @@ import React from 'react'
 
 import Page from './helper/page.js'
 
-import './OrderHistory.css'
+// import './OrderHistory.css'
+import './scss/OrderHistory.css'
 
 class OrderHistory extends React.Component {
   constructor(props) {
@@ -70,21 +71,23 @@ class OrderHistory extends React.Component {
 
     return (
       <div className="order-history">
-        <div className="desc-header"></div>
-        <div className="nav-direction"></div>
-        {/*
-        <div className="main-content">
-          {orders.map(order => (
-            <div>{JSON.stringify(order, null, 2)}</div>
-          ))}
+        <div className="wrapper">
+          <div className="desc-header"></div>
+          <div className="nav-direction"></div>
+          {/*
+          <div className="main-content">
+            {orders.map(order => (
+              <div>{JSON.stringify(order, null, 2)}</div>
+            ))}
+          </div>
+          */}
+          <TableView page={page} orders={orders} />
+          {/*
+          <Pagination indexKeys={indexKeys} index={index}
+            gotoPage={(index) => page.goto(index)} />
+          */}
+          <Pagination page={page} />
         </div>
-        */}
-        <TableView page={page} orders={orders} />
-        {/*
-        <Pagination indexKeys={indexKeys} index={index}
-          gotoPage={(index) => page.goto(index)} />
-        */}
-        <Pagination page={page} />
       </div>
     )
   }
@@ -98,8 +101,8 @@ const Pagination = (props) => {
   let nextLabel = '\u00BB'
 
   return (
-    <div className="Page navigation">
-      <ul className="pagination">
+    <div className="Page navigation" style={{ textAlign: 'right' }}>
+      <ul className="pagination" style={{ display: 'inline-block', textAlign: 'left' }}>
         <li className={indexKeys.prev || 'disabled'}>
           <a href={'#'} aria-label="Previous" onClick={() => page.goto(index - 1)}>
             <span aria-hidden="true">{prevLabel}</span>
@@ -131,22 +134,40 @@ const TableView = (props) => {
 
   return (
     <div className="table-view">
-      <div className="main-content">
-        <div className="hsitory-orderDesc"></div>
+      <div>
+        {/* 字段标题栏*/}
+        <div className="history-orderDesc">
+          <div className="th desc-product">商品信息</div>
+          <div className="th desc-price">单价</div>
+          <div className="th desc-amount">数量</div>
+          <div className="th desc-oper">商品操作</div>
+          <div className="th desc-realPay">实付款</div>
+          <div className="th desc-status">交易状态</div>
+        </div>
         <div className="nav-row">
-          <a href="#" className="btn btn-default" onClick={() => page.prev()}>上一页</a>
-          <a href="#" className="btn btn-default" onClick={() => page.next()}>下一页</a>
+          <a href="#" className="btn btn-default btn-sm" onClick={() => page.prev()}>上一页</a>
+          <a href="#" className="btn btn-default btn-sm" onClick={() => page.next()}>下一页</a>
         </div>
         <div className="history-orders">
           {orders.map((order, i) =>
             <div key={i} className="order-content">
               <div className="thead">
-                <div className="cell-orderInfo"></div>
-                <div className="cell-seller">卖家：{order.seller}</div>
+                {/* 订单信息栏 */}
+                <div className="order-info">
+                  <span className="order-date">
+                  2017-10-21
+                  </span>
+                  <span className="order-serial">
+                  订单编号：xxxxxxxx
+                  </span>
+                </div>
+                {/*
+                <div className="order-seller">卖家：{order.seller}</div>
+                */}
               </div>
               <div className="tbody">
                 {order.items.map((item, i) =>
-                  <div key={i} className="tr">
+                  <div key={i} className="tr item-content">
                     <div className="td cell-product">
                       <div className="td product-image">
                         <img src="" alt=""/>
@@ -155,9 +176,9 @@ const TableView = (props) => {
                         {item._id}
                       </div>
                     </div>
-                    <div className="td cell-price">{item.price}</div>
+                    <div className="td cell-price">{item.price || 'xxx.xx'}</div>
                     <div className="td cell-amount">{item.amount}</div>
-                    <div className="td cell-refund">
+                    <div className="td cell-oper">
                       <a href="#">退款</a>
                     </div>
                     {i === 0 ? (
@@ -166,10 +187,17 @@ const TableView = (props) => {
                         <div key="1" className="td cell-status">{order.status || '订单状态'}</div>
                       ]
                     ) : (
+                      /*
                       Array(2).fill().map((v, i) =>
                         <div key={i} className={`td cell-empty-${i}`}>'Empty'</div>
                       )
+                       */
+                      [
+                        <div key="0" className="td cell-realPay"></div>,
+                        <div key="1" className="td cell-status"></div>
+                      ]
                     )}
+
                   </div>
                 )}
               </div>
