@@ -2,18 +2,14 @@
   "name": "quick-react-app",
   "version": "0.1.0",
   "private": true,
-  "//": "The 'react-app-rewired' is for using arrow function in class declaration in React.",
   "//": "The 'node-sass-chokidar' is for using CSS preprocessor(Sass, Less etc.) in React. To enable importing files without using relative paths, use the `--include-path` option",
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && npm run build-js",
-
     "start-js": "react-app-rewired start",
     "build-js": "react-app-rewired build",
-
     "server": "nodemon -w server ./server/server.js",
     "watch": "gulp watch",
     "test": "react-app-rewired test --env=jsdom",
@@ -71,6 +67,7 @@
     "passport-google-oauth20": "^1.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
+    "react-app-rewire-less": "^2.0.7",
     "react-app-rewired": "^1.2.9",
     "react-bootstrap": "^0.31.2",
     "should": "^11.1.1",
