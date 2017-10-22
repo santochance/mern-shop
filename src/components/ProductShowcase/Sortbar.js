@@ -9,24 +9,6 @@ export default class Sortbar extends Component {
     msgTimer: null,
   }
 
-  renderSortLink = (sortKey, sortOrder, text, titleText) => {
-
-    let isActive = sortKey === this.props.sortKey &&
-        sortOrder === this.props.sortOrder
-
-    return (
-      <li className={'sort-link ' + (isActive ? 'active' : '')}>
-        <a href="#" title={titleText}
-          onClick={e => {
-          e.preventDefault()
-          this.props.onClick(sortKey, sortOrder)
-        }}>
-          {text}
-        </a>
-      </li>
-    )
-  }
-
   handleChange = (e, key) => {
     // Todo: 问题是不能区分浮点数，即输入尾随小数点时不警告
     let value = e.target.value
@@ -79,6 +61,23 @@ export default class Sortbar extends Component {
     })
   }
 
+  renderSortLink = (sortKey, sortOrder, text, titleText) => {
+
+    let isActive = sortKey === this.props.sortKey &&
+        sortOrder === this.props.sortOrder
+
+    return (
+      <li className={'sort-link ' + (isActive ? 'active' : '')}>
+        <a href="#" title={titleText}
+          onClick={e => {
+          e.preventDefault()
+          this.props.onClick(sortKey, sortOrder)
+        }}>
+          {text}
+        </a>
+      </li>
+    )
+  }
   render() {
     let { onPriceSubmit } = this.props
     let { msg } = this.state

@@ -143,14 +143,18 @@ class ProductShow extends Component {
     let { visibleData, current, pageSize, total, sortKey, sortOrder } = this.state
     // 需要获取products, addToCart回调函数
     return (
-      <div>
-        <Sortbar onClick={this.onSortClick} onSubmit={this.onFilterChange}
-          {...{sortKey, sortOrder}} />
-        <ProductList visibleData={visibleData} addToCart={addToCart} />
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ display: 'inline-block' }}>
-            <Pagination {...{current, pageSize, total}} onChange={this.onPageChange}
-              onShowSizeChange={this.onPageChange} />
+      <div className="product-show" style={{
+        marginTop: 20
+      }}>
+        <div className="wrapper">
+          <Sortbar onClick={this.onSortClick} onSubmit={this.onFilterChange}
+            {...{sortKey, sortOrder}} />
+          <ProductList visibleData={visibleData} addToCart={addToCart} />
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ display: 'inline-block', marginBottom: 20 }}>
+              <Pagination {...{current, pageSize, total}} onChange={this.onPageChange}
+                onShowSizeChange={this.onPageChange} />
+            </div>
           </div>
         </div>
       </div>
