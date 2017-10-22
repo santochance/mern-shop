@@ -14,9 +14,8 @@
   float: right !important;
 }
 
-// Flex
-// --------------------------
-
+// Flex 左右列（排开）
+// -----------
 .flex-lr {
   display: flex;
   justify-content: space-between;
@@ -38,6 +37,7 @@
   align-items: baseline;
 }
 
+// Flex 左右列（占满）
 .flex-full {
   display: flex;
   > * {
@@ -54,5 +54,25 @@
   display: flex;
   > :nth-child(2) {
     flex: 1;
+  }
+}
+
+// heading-underline
+// -------
+
+// Margin Padding Classes
+// ----------------------
+$prop-values-map: (
+  'padding': (0, 10, 20, 40),
+  'margin': (0, 10, 20, 40)
+);
+
+@each $prop, $values in $prop-values-map {
+  @if type-of($values) == 'number' {
+    @include make-box-props($prop, $values);
+  } @else {
+  @each $value in $values {
+    @include make-box-props($prop, $value);
+  }
   }
 }

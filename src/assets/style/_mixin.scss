@@ -109,3 +109,63 @@ $auxiOtlColor: black;
     right: 0;
   }
 }
+
+@function str-replace($str, $tar, $repl) {
+  $strLen: str-length($str);
+  $tarLen: str-length($tar);
+  @if ($strLen == 0 or $tarLen == 0) {
+    @return $str;
+  }
+  $rst: '';
+  // Note that index in Sass is 1-based
+  // First searching
+  $idx: str-index($str, $tar);
+  @while $idx {
+    // 找到
+    $rst: $rst + str-slice($str, 0, $idx - 1) + $repl;
+    // 更新搜索起始位置
+    $idx: $idx + $tarLen;
+    // 更新要搜索字符串
+    // 如果溢出会$str为''
+    $str: str-slice($str, $idx);
+    @if ($idx > $strLen) {
+      // 溢出范围
+      $idx: null;
+    } @else {
+      // 执行搜索
+      $idx: str-index($str, $tar);
+    }
+  }
+  $rst: $rst + $str;
+  @return $rst;
+}
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+$box-prop-map: (
+  padding: 'p',
+  margin: 'm',
+  left: 'l',
+  right: 'r',
+  top: 't',
+  bottom: 'b'
+);
+
+@mixin make-box-props($prop, $value, $prop-map: $box-prop-map) {
+  // if value
+  //   is unitless, append 'px'
+  //   with valid unit, go on
+  //   with invalid unit, replace unit with 'px'
+  $units: 'px', '%', 'em', 'rem', 'ex', 'ch', 'vw', 'vh', 'vmax', 'vmin';
+  $currUnit: unit($value);
+  $unitlessValue: strip-unit($value);
+  $value: if(index($units, $currUnit), $value, if($unitlessValue == 0, $unitlessValue, $unitlessValue + 'px'));
+  @each $direction in null, top, right, bottom, left {
+    .#{map-get($prop-map, $prop)}#{map-get($prop-map, $direction)}-#{$unitlessValue} {
+      #{$prop}#{if($direction == null, '', '-')}#{$direction}: #{$value} !important;
+    }
+  }
+}
+
