@@ -8,20 +8,20 @@ import {
   Signup2,
   TestCart,
   ProductShow,
+  ConfirmOrder,
+  UserCenter,
+  OrderHistory,
   // CreateProduct,
   // DataGrid,
   // ItemList,
   // ProductNew,
-  // OrderHistory,
   // EditUserForm,
   // ProductShowcase,
   // CartSummary,
   // UserAdmin,
   // Admin,
   // UserCrud,
-  // UserCenter,
   // ProductList,
-  ConfirmOrder,
 } from './all-index'
 
 import React from 'react'
@@ -72,6 +72,14 @@ const routes = [
     component: ConfirmOrder,
     hidden: true,
   },
+  {
+    path: '/user-center',
+    component: UserCenter,
+  },
+  {
+    path: '/order-history',
+    component: OrderHistory,
+  },
   // {
   //   path: '/create-product',
   //   component: CreateProduct,
@@ -88,14 +96,7 @@ const routes = [
   //   path: '/product-new',
   //   component: ProductNew,
   // },
-  // {
-  //   path: '/order-history',
-  //   component: OrderHistory,
-  // },
-  // {
-  //   path: '/user-center',
-  //   component: UserCenter,
-  // },
+
   // {
   //   path: '/product-list',
   //   component: ProductList,

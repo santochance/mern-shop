@@ -21,7 +21,8 @@ yarn-debug.log*
 yarn-error.log*
 
 
-*.sublime-*
+*.sublime-project
+*.sublime-workspace
 
 # 编译输出css
 

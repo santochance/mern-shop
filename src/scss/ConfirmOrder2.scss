@@ -1,0 +1,151 @@
+////////////////////////////
+///
+/// Confirm Order
+///
+////////////////////////////
+
+// Main Layout
+//
+.order-confirm {
+  width: 990px;
+
+  // 类表格布局样式
+  .th, .td {
+    display: inline-block;
+    vertical-align: top
+  }
+  .th {
+    position: relative;
+    line-height: 2em;
+    border: none;
+    margin: 0;
+  }
+  // desc栏的高亮下边
+  .th:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 1px;
+    right: 1px;
+    border: 2px solid blue;
+  }
+  .td {
+    display: table-cell;  // 垂直居中cell内容
+    vertical-align: middle;
+    line-height: 1.5em;
+  }
+
+  // 列宽度
+  .desc,
+  .cell {
+    &-info { width: 255px; }
+    &-param { width: 180px; }
+    &-price { width: 120px; }
+    &-quantity { width: 120px; }
+    &-discount { width: 180px; }
+    &-sum { width: 130px; }
+  }
+
+  .order-shopInfo {
+    line-height: 2em;
+  }
+
+  // 每个商品项目
+  .order-list {
+    padding: 10px 0;
+
+    // item的cells定制样式
+    .cell-info {
+      white-space: nowrap;  // 防止商品标题等内容换行到商品图片之下
+    }
+    .cell-image {
+      margin-right: 10px;
+    }
+    .image-wrapper {
+      display: block;
+      width: 50px;
+      height: 50px;
+      outline: 1px solid hsla(0, 0, 90%, 0.5);
+    }
+    .cell-price,
+    .cell-quantity,
+    .cell-discount {
+      text-align: center;
+    }
+    .cell-sum {
+      text-align: right;
+      font-weight: 700;
+      color: red;
+    }
+  }
+
+  .order-message {
+    // float: left;
+    display: inline-block;
+    vertical-align: top;
+    width: 450px;
+    padding: 8px 0;
+    box-sizing: border-box;
+
+    .message-name {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .message-detail {
+      display: inline-block;
+      vertical-align: middle;
+
+      input {
+        width: 360px;
+      }
+    }
+  }
+  .order-delivery {
+    display: inline-block;
+    vertical-align: top;
+    width: 540px;
+    padding: 8px 0;
+
+    .delivery-title {
+      display: inline-block;
+      vertical-align: top;
+      width: 110px;
+      text-align: right;
+    }
+    .delivery-select {
+      display: inline-block;
+      vertical-align: top;
+      width: 430px;
+    }
+    .select-price {
+      float: right;
+      font-weight: 700;
+      color: red;
+    }
+  }
+
+  .order-total {
+    text-align: right;
+    line-height: 3em;
+
+    .order-sum {
+      font-size: 1.5em;
+      color: red;
+    }
+  }
+
+  .order-payInfo {
+    padding: 15px 8px;
+
+    .realPay-title,
+    .confrimAddr-title {
+      font-weight: 700;
+    }
+    .realPay-price {
+      color: red;
+      font-size: 2em;
+    }
+  }
+}
+
