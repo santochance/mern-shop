@@ -14,7 +14,8 @@ export { default as Signup2 } from './Signup'
 
 export { default as TestCart } from './TestCart.js'
 export { default as ProductShow } from './components/ProductShow'
-export { default as OrderHistory } from './OrderHistory.js';
+export { default as OrderHistory } from './components/OrderHistory'
+
 // export { default as CreateProduct } from './CreateProduct.js'
 // export { default as DataGrid } from './DataGrid.js'
 // export { default as ItemList } from './ItemList.js'

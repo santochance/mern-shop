@@ -5,12 +5,15 @@ import React from 'react'
 //   ModifyPassword,
 //   UserEditForm
 // } from '../../components/'
+//
 
-const OrderHistory = (props) => {
-  return (
-    <div>OrderHistory</div>
-  )
-}
+import OrderHistory from '../../components/OrderHistory'
+
+// const OrderHistory = (props) => {
+//   return (
+//     <div>OrderHistory</div>
+//   )
+// }
 const Favorites = (props) => {
   return (
     <div>Favorites</div>

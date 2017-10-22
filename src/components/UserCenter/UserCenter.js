@@ -4,10 +4,11 @@ import {
   Route,
   Link,
 } from 'react-router-dom'
-
 import routes from './routes.js'
 
-import { Menu, Icon } from 'antd';
+import { Menu, Icon, Affix } from 'antd';
+import './UserCenter.css'
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -19,8 +20,16 @@ class UserCenter extends React.Component {
     console.log('match', match)
     return (
       <Router>
-        <div className="user-center">
-          <Sider match={match} />
+        <div className="user-center wrapper flex-r-full">
+          <div className="slide" style={{ width: 200, float: 'left' }}>
+            <Affix>
+              <div className="user-panel">
+                <img className="avatar" src={require('./avatar.jpg')} alt=""/>
+                <span className="username">Vincent</span>
+              </div>
+              <Sider match={match} />
+            </Affix>
+          </div>
           <div className="main" style={{ float: 'left' }}>
             {routes.map((route, idx) => (
               <Route
@@ -47,7 +56,6 @@ class Sider extends React.Component {
     return (
       <Menu
         onClick={this.handleClick}
-        style={{ width: 240, float: 'left' }}
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
