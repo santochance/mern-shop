@@ -23,6 +23,7 @@
   padding: 0 15px;
   box-sizing: border-box; }
   .sort-link a {
+    display: block;
     text-decoration: none;
     color: #666; }
   .sort-link:hover, .sort-link.active {
