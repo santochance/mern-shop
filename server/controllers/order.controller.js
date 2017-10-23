@@ -62,12 +62,16 @@ exports.create = function(req, res) {
   let mongoose = User.base
   let orders = req.body
 
+  // 如果不是数组，转换为数组
+  if (!Array.isArray(orders)) orders = [orders]
+
   orders.map(order => {
     order.buyer = new mongoose.Types.ObjectId(order.buyer)
     order.seller = new mongoose.Types.ObjectId(order.seller)
     order.items = order.items.map(item =>
       Object.assign(item, {
-        product: new mongoose.Types.ObjectId(item.product)
+        // 测试文件中使用item.product存放_id
+        product: new mongoose.Types.ObjectId(item.content._id || item.product)
       })
     )
 
