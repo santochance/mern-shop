@@ -6,11 +6,12 @@ import {
   Login,
   ProductDetails,
   Signup2,
-  TestCart,
   ProductShow,
   ConfirmOrder,
   UserCenter,
   OrderHistory,
+  CartDetails,
+  // TestCart
   // CreateProduct,
   // DataGrid,
   // ItemList,
@@ -49,24 +50,23 @@ const routes = [
     component: Signup,
   },
   {
-    path: '/product-details',
-    component: ProductDetails,
-  },
-  {
     path: '/signup2',
     component: Signup2,
   },
-
   {
-    path: '/test-cart',
-    component: TestCart,
+    path: '/product-details',
+    component: ProductDetails,
   },
   {
     path: '/product-show',
     component: ProductShow,
     hidden: true,
   },
-
+  {
+    path: '/cart-details',
+    component: CartDetails,
+    hidden: true,
+  },
   {
     path: '/confirm-order',
     component: ConfirmOrder,
@@ -125,27 +125,6 @@ const routes = [
   // {
   //   path: '/user-admin',
   //   component: UserAdmin,
-  // },
-
-  // {
-  //   path: '/search',
-  //   component: Search,
-  // },
-  // {
-  //   path: '/search-result',
-  //   component: SearchResult,
-  // },
-  // {
-  //   path: '/cart',
-  //   component: Cart,
-  // },
-  // {
-  //   path: '/test-checkbox',
-  //   component: TestCheckbox,
-  // },
-  // {
-  //   path: '/test-auto-make-fold',
-  //   component: TestAutoMakeFold,
   // },
 ]
 

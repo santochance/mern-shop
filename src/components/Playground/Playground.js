@@ -2,7 +2,6 @@ import React from 'react'
 import { Button, FormGroup, FormControl, ControlLabel, Form, Col } from 'react-bootstrap'
 
 import EditorModal, { EditedForm } from '../EditorModal'
-import ProductNew from '../../ProductNew.js'
 
 const entry = {
   name: 'Vincent',
@@ -19,7 +18,6 @@ class Playground extends React.Component {
   render() {
     return (
       <div style={{ width: 500 }}>
-        <ProductNew />
         <EditedForm entry={entry} />
       </div>
     )

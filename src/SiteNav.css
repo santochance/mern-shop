@@ -1,8 +1,0 @@
-.site-nav {
-  padding: .5em;
-  background-color: rgba(179, 179, 179, 0.8);
-  text-align: right; }
-
-.site-nav > * {
-  display: inline-block;
-  margin-left: 10px; }

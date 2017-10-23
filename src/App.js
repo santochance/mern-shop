@@ -105,9 +105,6 @@ class App extends ItemList {
       <div className="app">
         <DevIndex />
         <Header {...{logined, cart, app: this}}/>
-        {/*
-          <SiteNav {...{logined, logout: this.login}} />
-        */}
         <div className="wrapper">
           <Route path="/signin" render={props => (
             <Signin login={this.login} />

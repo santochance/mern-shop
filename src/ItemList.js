@@ -80,6 +80,7 @@ class ItemList extends React.Component {
     this.check = this.check.bind(this)
     this.addToCart = this.addToCart.bind(this)
     this.outputData = this.outputData.bind(this)
+    this.getCheckedItems = this.getCheckedItems.bind(this)
   }
 
   componentDidMount() {
