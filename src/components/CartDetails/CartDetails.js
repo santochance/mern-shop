@@ -22,7 +22,9 @@ const CartDetails = ({ app, cart }) => {
             </label>
           </div>
           <div className="th desc-info">商品信息</div>
+          {/*
           <div className="th desc-param">&nbsp;</div>
+          */}
           <div className="th desc-price">单价
           </div>
           <div className="th desc-quantity">数量</div>
@@ -54,12 +56,16 @@ const CartDetails = ({ app, cart }) => {
                         onChange={() => app.check(item)}/>
                     </div>
                     <div className="col cell-info">
-                      <div className="col cell-image">
-                        <img src="" alt=""/>
+                      <div className="info-image">
+                        <img src={item.content.imageUrl} alt=""/>
                       </div>
-                      <div className="col cell-title">{item.content.productName || '商品标题...'}</div>
+                      <div className="info-title">
+                        <a>{item.content.title || '商品标题...'}</a>
+                      </div>
                     </div>
+                    {/*
                     <div className="col cell-param"></div>
+                    */}
                     <div className="col cell-price">
                       <div className="price-now">￥{item.content.price}</div>
                     </div>
