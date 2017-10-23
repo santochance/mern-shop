@@ -8,10 +8,14 @@ var Braintree = require('../braintree/braintree.model');
 var OrderDetailsSchema = new Schema({
   product: { type: Schema.Types.ObjectId, ref: 'Product' },
   amount: Number,
-  price: { type: Number, get: getPrice, set: setPrice },
-  discount: { type: Number, get: getPrice, set: setPrice },
-  shipping: { type: Number, get: getPrice, set: setPrice },
-  realPay: { type: Number, get: getPrice, set: setPrice },
+  // price: { type: Number, get: getPrice, set: setPrice },
+  // discount: { type: Number, get: getPrice, set: setPrice },
+  // shipping: { type: Number, get: getPrice, set: setPrice },
+  // realPay: { type: Number, get: getPrice, set: setPrice },
+  price: { type: Number },
+  discount: { type: Number },
+  shipping: { type: Number },
+  realPay: { type: Number },
 });
 
 var OrderSchema = new Schema({
@@ -34,10 +38,14 @@ var OrderSchema = new Schema({
   // seller: String,
   message: String,
   // price details
-  price: { type: Number, get: getPrice, set: setPrice },
-  discount: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
-  shipping: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
-  total: { type: Number, get: getPrice, set: setPrice },
+  // price: { type: Number, get: getPrice, set: setPrice },
+  // discount: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
+  // shipping: { type: Number, get: getPrice, set: setPrice, default: 0.0 },
+  // total: { type: Number, get: getPrice, set: setPrice },
+  price: { type: Number },
+  discount: { type: Number },
+  shipping: { type: Number },
+  total: { type: Number },
   paymentStatus: Schema.Types.Mixed,
   paymentType: { type: String, default: 'braintree' },
   nonce: String,
@@ -64,21 +72,21 @@ OrderSchema.pre('validate', function (next) {
   }.bind(this));
 });
 
-function executePayment(payment, cb){
+function executePayment(payment, cb) {
   Braintree.transaction.sale({
     amount: payment.total,
     paymentMethodNonce: payment.nonce,
   }, cb);
 }
 
-function getPrice(num){
-    return parseFloat((num/100).toFixed(2));
+function getPrice(num) {
+  return parseFloat((num / 100).toFixed(2));
 }
 
-
 // Q: `num * 100`是为了处理小数误差问题？
-function setPrice(num){
-    return num * 100;
+function setPrice(num) {
+  console.log('set price:', num)
+  return num * 100;
 }
 
 module.exports = mongoose.model('Order', OrderSchema);

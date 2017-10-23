@@ -19,6 +19,7 @@ function handleError(res, statusCode = 500) {
 
 function respondWithResult(res, statusCode = 200) {
   return function(entity) {
+    console.log('response entity:', JSON.stringify(entity, null, 2))
     if (entity) {
       res.status(statusCode).json(entity)
     }
@@ -86,7 +87,7 @@ exports.create = function(req, res) {
 }
 
 exports.list = function(req, res) {
-  Order.find().sort({_id: 1})
+  Order.find().sort({_id: -1})
     .execAsync()
     .then(respondWithResult(res))
     .catch(handleError(res))
