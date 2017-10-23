@@ -109,8 +109,8 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
             {/*
             <Link to="/cart-details" className="go-back">返回购物车</Link>
             */}
-            <a href="" className="btn btn-danger go-submit"
-              onClick={() => app.outputData(cart)}>提交订单</a>
+            <button href="" className="btn btn-danger go-submit"
+              onClick={app.submitOrders}>提交订单</button>
           </div>
         </div>
       </div>

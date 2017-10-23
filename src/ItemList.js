@@ -113,30 +113,34 @@ class ItemList extends React.Component {
   outputData(itemlist) {
     console.log('this in outputData:', this)
     let rst = []
+    let submitedItems = []
     for (let list of itemlist.children) {
       // 跳过没有选中项的list
       if (list.count < 0) continue
-      let filteredList = {...list, children: []}
+      let filteredList = {...list, items: []}
+      delete filteredList.parent
 
       for (let [index, item] of list.children.entries()) {
         if (item.checked) {
           // 发现被勾选的item
-          filteredList.children.push(item)
-          this.removeItem(item, index)
+          filteredList.items.push(item)
+          // this.removeItem(item, index)
+          submitedItems.push(item)
         }
       }
 
-      // 添加公共属性
-      Object.assign(filteredList, {
-        buyer: 'buyer from itemlist',
-        address: 'address from itemlist',
-        realPay: filteredList.total,
-      })
+      // // 添加公共属性
+      // Object.assign(filteredList, {
+      //   buyer: 'buyer from itemlist',
+      //   address: 'address from itemlist',
+      //   realPay: filteredList.total,
+      // })
 
       // 存入输出结果
       rst.push(filteredList)
     }
 
+    console.log('submited items:', submitedItems)
     // 发送数据
     return rst.reduce((arr, data) => {
       // fetch()

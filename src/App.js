@@ -50,9 +50,11 @@ class App extends ItemList {
       ...this.state,
       cart: this.state.itemlist,
       logined: false,
+
     }
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
+    this.submitOrders = this.submitOrders.bind(this)
   }
 
   login(data) {
@@ -95,6 +97,51 @@ class App extends ItemList {
     }).catch(console.error)
   }
 
+  submitOrders() {
+    let { cart } = this.state
+    let submittedOrders = []
+    let removedItems = []
+    for (let list of cart.children) {
+      // 跳过没有选中项的list
+      if (list.count < 0) continue
+      let filteredList = {...list, items: []}
+      delete filteredList.parent
+
+      for (let [index, item] of list.children.entries()) {
+        if (item.checked) {
+          // 发现被勾选的item
+          filteredList.items.push(item)
+          // this.removeItem(item, index)
+          removedItems.push(item)
+        }
+      }
+
+      // 添加公共属性
+      Object.assign(filteredList, {
+        buyer: '599a9ab2d8d1cd3200c509ab',
+        // address: 'address from itemlist',
+      })
+
+      // 存入输出结果
+      submittedOrders.push(filteredList)
+    }
+
+    // 发送数据
+    fetch('/orders', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(submittedOrders, function(key, value) {
+        if (key === 'parent') return
+        return value
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          this.batchRemoveItems(removedItems)
+        }
+      })
+  }
+
   render() {
     let {
       logined,
@@ -127,7 +174,7 @@ class App extends ItemList {
             )
           )} />
           <Route path="/confirm-order" render={props => (
-            <ConfirmOrder {...props} cart={cart} />
+            <ConfirmOrder {...props} cart={cart} app={this} />
           )} />
           {/* Other Routes */}
           {routes.map((route, idx) => (route && route.hidden ? (null) : (
