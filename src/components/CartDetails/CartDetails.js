@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Affix } from 'antd'
 
 import './CartDetails.css'
 
@@ -91,49 +92,51 @@ const CartDetails = ({ app, cart }) => {
             </div>
           ))}
         </div>
-        <div className="order-footer">
-          <div className="footer-check">
-            <label>
-              <input type="checkbox" name="" id=""
-                checked={cart.checked}
-                onChange={() => app.check(cart)}
-              />全选
-            </label>
-          </div>
-          <div className="footer-opera">
-            <a className="footer-favSelected">
-              移入收藏夹
-            </a>
-            <a className="footer-delSelected"
-              onClick={(e) => {
-                e.preventDefault()
-                app.batchRemoveItems(checkedItems)
-              }}>
-              删除
-            </a>
-          </div>
-          <div className="footer-right">
-            <div className="amount-sum">
-              <span className="text">已选商品</span>
-              <span className="selectedItemCount">{cart.count || 0}</span>
-              <span className="text">件</span>
+        <Affix offsetBottom={0}>
+          <div className="order-footer">
+            <div className="footer-check">
+              <label>
+                <input type="checkbox" name="" id=""
+                  checked={cart.checked}
+                  onChange={() => app.check(cart)}
+                />全选
+              </label>
             </div>
-            <div className="price-sum">
-              <span className="text">合计（不含运费）：</span>
-              <span className="price">
-                <span className="totalSymbol">￥</span>
-                <span className="total">{cart.price || 0}</span>
-              </span>
+            <div className="footer-opera">
+              <a className="footer-favSelected">
+                移入收藏夹
+              </a>
+              <a className="footer-delSelected"
+                onClick={(e) => {
+                  e.preventDefault()
+                  app.batchRemoveItems(checkedItems)
+                }}>
+                删除
+              </a>
             </div>
-            <Link to="/confirm-order" className="checkout" disabled={checkedItems.length < 1}>
-              结&nbsp;算
-            </Link>
-            {/* 添加disable attr是可以禁止跳转的，但需要自定义样式 */}
-            {checkedItems.length < 1 && (
-              <div>禁用按钮中！</div>
-            )}
+            <div className="footer-right">
+              <div className="amount-sum">
+                <span className="text">已选商品</span>
+                <span className="selectedItemCount">{cart.count || 0}</span>
+                <span className="text">件</span>
+              </div>
+              <div className="price-sum">
+                <span className="text">合计（不含运费）：</span>
+                <span className="price">
+                  <span className="totalSymbol">￥</span>
+                  <span className="total">{cart.price || 0}</span>
+                </span>
+              </div>
+              <Link to="/confirm-order" className="checkout" disabled={checkedItems.length < 1}>
+                结&nbsp;算
+              </Link>
+              {/* 添加disable attr是可以禁止跳转的，但需要自定义样式 */}
+              {checkedItems.length < 1 && (
+                <div>禁用按钮中！</div>
+              )}
+            </div>
           </div>
-        </div>
+        </Affix>
       </div>
     </div>
   )
