@@ -194,7 +194,7 @@ const ProductItem = ({ item, addToCart }) => {
     <div className="product-item">
       <div className="product-pic">
         <a href="" className="pic-wrapper">
-          <img style={{ width: '100%', height: '100%' }} src={'/01.jpg'} alt=""/>
+          <img style={{ width: '100%', height: '100%' }} src={item.imageUrl || '/01.jpg'} alt=""/>
         </a>
       </div>
       <div className="product-info">
