@@ -95,8 +95,8 @@ class ConfirmOrder extends React.Component {
             {order.items.map((item, index) => (
               <div key={index} className="tr order-item">
                 <div className="td cell-prodInfo">
-                  <div className="td cell-img">Something</div>
-                  <div className="td cell-title">{item.product.name}</div>
+                 <img className="td cell-img" src={item.content.imageUrl} alt="" />
+                  <div className="td cell-title">{item.content.title}</div>
                   <div className="td cell-prop">Prop</div>
                 </div>
                 <div className="td cell-price">{item.price}</div>

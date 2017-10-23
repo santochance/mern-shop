@@ -36,14 +36,16 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
                 {order.children.map((item, i) => item.checked && (
                   <div key={i} className="tr item-content">
                     <div className="td cell-info">
-                      <div className="td cell-image">
+                      <div className="info-image">
                         <a className="image-wrapper" href="">
-                          <img src="" alt=""/>
+                          <img src={item.content.imageUrl} alt=""/>
                         </a>
                       </div>
-                      <div className="td info-content">
-                        <div className="td cell-title">{item.content.productName}</div>
-                        <div className="td cell-icons"></div>
+                      <div className="info-content">
+                        <div className="info-title">
+                          <a href="">{item.content.title}</a>
+                        </div>
+                        <div className="info-icons"></div>
                       </div>
                     </div>
                     <div className="td cell-param"></div>

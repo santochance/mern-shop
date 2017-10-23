@@ -4,7 +4,7 @@ $useAuxiOtl: true;
 
 .cart-main {
   width: 990px;
-  margin: 0 auto;
+  margin: 20px auto;
   font-size: 14px;
 
   label {
@@ -87,9 +87,9 @@ $useAuxiOtl: true;
       }
     }
     .info-title {
-      overflow: hidden;
+      // overflow: hidden;
       height: 1.5em;
-      margin: 26px 0;
+      margin-top: 10px;
       margin-left: 80px;
       padding: 0 10px;
       line-height: 1.5;

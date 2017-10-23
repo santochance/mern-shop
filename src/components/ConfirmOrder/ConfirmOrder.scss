@@ -5,16 +5,17 @@ $useAuxiOtl: false;
 .confirm-order {
   & {
     .wrapper {
-      width: 990px;
+      width: 900px;
+      margin: 20px auto;
     }
     .desc,
     .cell {
-      &-info { width: 255px; }
-      &-param { width: 180px; }
-      &-price { width: 120px; }
-      &-amount { width: 120px; }
-      &-discount { width: 180px; }
-      &-sum { width: 130px; }
+      &-info { width: 400px; }
+      &-param { display: none !important; }
+      &-price { width: 150px; }
+      &-amount { width: 100px; }
+      &-discount { width: 100px; }
+      &-sum { width: 150px; }
     }
   }
   .order-orderDesc {
@@ -45,14 +46,20 @@ $useAuxiOtl: false;
     // cell的特定样式
     & {
       .cell-info {
-        white-space: nowrap; // 防止商品标题等内容换行到商品图片之下
+        // white-space: nowrap; // 防止商品标题等内容换行到商品图片之下
       }
-      .cell-image {
+      .info-image {
         margin-right: 10px;
+        float: left;
         .image-wrapper {
-          display: block;
-          @include rect(50px);
           @include otl(hsla(0, 0, 90%, 0.5));
+          display: block;
+          margin: 5px;
+          @include rect(60px)
+          ;
+          img {
+            @include rect(100%);
+          }
         }
       }
       .cell-price,
