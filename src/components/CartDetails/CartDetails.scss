@@ -1,8 +1,6 @@
-////////////////////////////
-///
-/// Cart Detail
-///
-////////////////////////////
+@import 'assets/style/mixin';
+
+$useAuxiOtl: true;
 
 .cart-main {
   width: 990px;
@@ -15,9 +13,9 @@
     font-weight: normal;
   }
 
-  .cart-desc {
-    margin-bottom: 16px;
-    white-space: nowrap;
+  // grid-layout
+  // -----------
+  & {
     .th {
       display: inline-block;
       vertical-align: top;
@@ -26,32 +24,28 @@
       border: none;
       margin: 0;
       text-align: center;
-      // desc栏的高亮下边
-      &:after {
-        content: ' ';
-        display: block;
-        position: absolute;
-        bottom: 0;
-        left: 1px;
-        right: 1px;
-        border: 2px solid blue;
-      }
-      &:first-child:after {
-        left: 0;
-      }
-      &:last-child:after {
-        right: 0;
-      }
+      @include pseudo-border-bottom(2px);
     }
-    .desc {
+    .col {
+      display: table-cell;
+      vertical-align: middle;
+      line-height: 1.5em;
+    }
+    .desc,
+    .cell {
       &-check { width: 70px; }
-      &-info { width: 330px; }
+      &-info { width: 418px; }
       // &-param { width: 192px; }
       &-price { width: 120px; }
-      &-quantity { width: 120px; }
+      &-quantity { width: 140px; }
       &-sum { width: 120px; }
       &-opera { width: 120px; }
     }
+  }
+
+  .cart-desc {
+    margin-bottom: 16px;
+    white-space: nowrap;
   }
   .order-list {
     .order-content {
@@ -72,31 +66,15 @@
   .item-content {
     padding: 16px 0;
     border-bottom: 1px solid #e7e7e7;
-
     &:last-child {
       border-bottom: none;
     }
-
-    .col {
-      display: table-cell;
-      vertical-align: middle;
-      line-height: 1.5em;
-    }
-
     .cell {
-      &-check { width: 70px; }
-      &-info { width: 350px; }
-      // &-param { width: 192px; }
-      &-price { width: 120px; }
-      &-quantity { width: 120px; }
-      &-sum {  width: 120px; }
-      &-opera { width: 120px; }
-
       &-price,
-      &-sum { padding-right: 10px; text-align: right; }
+      &-sum { padding-right: 24px; text-align: right; }
       &-check,
       &-quantity { text-align: center; }
-      &-opera { padding-left: 10px; }
+      &-opera { padding-left: 24px; }
     }
     .info-image {
       display: block;
@@ -111,6 +89,7 @@
     .info-title {
       overflow: hidden;
       height: 1.5em;
+      margin: 26px 0;
       margin-left: 80px;
       padding: 0 10px;
       line-height: 1.5;
