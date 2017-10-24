@@ -75,9 +75,6 @@ exports.create = function(req, res) {
         product: new mongoose.Types.ObjectId(item.content._id || item.product)
       })
     )
-
-    debugger
-
     return order
   })
 
@@ -88,6 +85,8 @@ exports.create = function(req, res) {
 
 exports.list = function(req, res) {
   Order.find().sort({_id: -1})
+    .populate('buyer')
+    .populate('items.product')
     .execAsync()
     .then(respondWithResult(res))
     .catch(handleError(res))
@@ -117,3 +116,5 @@ exports.delete = function(req, res) {
     .then(removeEntity(res))
     .catch(handleError(res))
 }
+
+exports.Order = Order

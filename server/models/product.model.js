@@ -4,7 +4,7 @@ const mongoose = require('bluebird').promisifyAll(require('mongoose'))
 const Schema = mongoose.Schema
 
 var ProductSchema = new Schema({
-  productName: { type: String, /* required: true, */ trim: true },
+  title: { type: String, /* required: true, */ trim: true },
   description: String,
   price: { type: Number/*, required: true */, min: 0 },
   stock: { type: Number, min: 0, default: 1 },
