@@ -1,0 +1,119 @@
+@import 'assets/style/mixin.scss';
+@import 'assets/style/vars.scss';
+
+.pay-prompt {
+  .wrapper {
+    width: 900px;
+    margin-bottom: 40px;
+  }
+  .prompt-msg {
+    padding: 80px 0;
+    text-align: center;
+    .title {
+      font-size: 24px;
+      line-height: 1.5;
+    }
+    p {
+      color: #999;
+      line-height: 1.5;
+    }
+  }
+  .order-abstract {
+    .order-addr {
+      .title {
+        font-size: 20px;
+      }
+    }
+    // grid-layout
+    // -----------
+    & {
+      .th,
+      .td {
+        // @include otl(lime);
+        display: inline-block;
+        vertical-align: top;
+        line-height: 1.5;
+      }
+      .th {
+        text-align: center;
+      }
+      .desc,
+      .cell {
+        &-info { width: 400px; }
+        &-sum { width: 200px; }
+        &-amount { width: 150px; }
+        &-price { width: 150px; }
+      }
+    }
+    .desc-wrap {
+      line-height: 2;
+      border-bottom: 1px solid #ddd;
+    }
+    .item-content {
+      border-bottom: 1px dashed #ddd;
+      &:last-child,
+      &.last {
+        border: none;
+      }
+      .cell {
+        &-info,
+        &-sum,
+        &-amount,
+        &-price {
+          text-align: center;
+        }
+      }
+    }
+    .order-summary {
+      text-align: right;
+    }
+  }
+  .pay-type {
+    // @include clearfix;
+    border-top: 1px solid #ddd;
+    .title {
+      font-size: 22px;
+      line-height: 1.5;
+      padding: 10px 0;
+      margin-top: 10px;
+
+    }
+    .type-item {
+      display: inline-block;
+      vertical-align: top;
+      line-height: 40px;
+      margin-right: 20px;
+      padding: 2px 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      &:hover,
+      &.active {
+        border-color: lime;
+      }
+      img {
+        width: 144px;
+      }
+    }
+  }
+  .pay-footer {
+    margin-bottom: 20px;
+    line-height: 40px;
+    .pay-amount {
+      margin-right: 20px;
+      .title {
+        font-size: 14px;
+      }
+      .price {
+        font-size: 16px;
+        font-weight: 700;
+        color: red;
+      }
+      .num {
+        font-size: 28px;
+      }
+    }
+    .btn {
+      margin-bottom: 8px;
+    }
+  }
+}

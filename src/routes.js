@@ -11,6 +11,7 @@ import {
   UserCenter,
   OrderHistory,
   CartDetails,
+  PayPrompt,
   // TestCart
   // CreateProduct,
   // DataGrid,
@@ -28,7 +29,6 @@ import {
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-
 const routes = [
   {
     path: '/dev/playground',
@@ -44,6 +44,10 @@ const routes = [
   {
     path: '/login',
     component: Login,
+  },
+  {
+    path: '/signin',
+    component: Signin,
   },
   {
     path: '/signup',
@@ -79,6 +83,10 @@ const routes = [
   {
     path: '/order-history',
     component: OrderHistory,
+  },
+  {
+    path: '/pay-prompt',
+    component: PayPrompt,
   },
   // {
   //   path: '/create-product',
