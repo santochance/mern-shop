@@ -17,11 +17,19 @@ import {
 
 // import PageTop from './PageTop.js'
 
+// const item = {
+//   title: '商品名称',
+//   desc: '商品描述...',
+//   price: 1999,
+//   oldPrice: 2599,
+//   sales: 241,
+// }
+
 const item = {
-  title: '商品名称',
-  desc: '商品描述...',
-  price: 1999,
-  oldPrice: 2599,
+  title: '华硕(ASUS) 灵耀S4000UA 14英寸超窄边框超轻薄笔记本电脑(i5-7200U 8G 256GSSD FHD IPS)金属蓝灰',
+  desc: '【一款适合务实低调、追求细节品质、乐观生活轻奢人士的轻薄本！】不等11月！华硕爆款每满千减百！指定商品下单立减！款款惊喜》》',
+  price: '4799',
+  oldPrice: '5599',
   sales: 241,
 }
 
