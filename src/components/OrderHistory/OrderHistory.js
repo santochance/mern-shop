@@ -154,10 +154,10 @@ const TableView = (props) => {
                 {/* 订单信息栏 */}
                 <div className="order-info">
                   <span className="order-date">
-                  2017-10-21
+                    {<order className="created">{new Date(order.created).toISOString().slice(0, 10)}</order>}
                   </span>
                   <span className="order-serial">
-                  订单编号：xxxxxxxx
+                  订单编号：{order._id}
                   </span>
                 </div>
                 {/*
@@ -169,13 +169,15 @@ const TableView = (props) => {
                   <div key={i} className="tr item-content">
                     <div className="td cell-product">
                       <div className="td product-image">
-                        <img src="" alt=""/>
+                        <a href="">
+                          <img src={item.product.imageUrl} alt=""/>
+                        </a>
                       </div>
                       <div className="td product-info">
-                        {item._id}
+                        <a href="">{item.product.title}</a>
                       </div>
                     </div>
-                    <div className="td cell-price">{item.price || 'xxx.xx'}</div>
+                    <div className="td cell-price">{item.product.price || 'xxx.xx'}</div>
                     <div className="td cell-amount">{item.amount}</div>
                     <div className="td cell-oper">
                       <a href="#">退款</a>
