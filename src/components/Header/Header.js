@@ -21,7 +21,9 @@ const Header = ({ logined, cart, app }) => {
         </div>
         <div className="middle-box">
           <form className="search-bar" style={{
-            width: 400
+            width: 400,
+            position: 'relative',
+            zIndex: '9999',
           }}>
             <input type="text"/>
             <button><Icon type="search" style={{ fontSize: 18 }} /></button>

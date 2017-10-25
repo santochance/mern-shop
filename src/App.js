@@ -29,6 +29,8 @@ import './App.css'
 const DevIndex = () => (
   <div>
     <ul className="route-nav" style={{
+      position: 'relative',
+      zIndex: '1000',
       display: 'flex',
       flexWrap: 'wrap',
       margin: '5px 0',

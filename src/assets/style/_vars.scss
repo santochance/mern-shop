@@ -24,11 +24,17 @@ $white: #fff;
 
 $primary-color: #673AB7;
 
+// Global textual link color
+$link-color: #a8a8a8;
+// Link hover color
+$link-hover-color: $primary-color;
+
 // Q: pace.js?
 
 // Complementry color is used to indecate the loading bar on the top
 // of the page with pace.js plugin
 $complementry-color: adjust_hue($primary-color, 180);
+
 
 
 // Responsive Breakpoint
