@@ -4,6 +4,8 @@ import {
   InputGroup, Button, Checkbox } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
+import './Signin.css'
+
 function form2json(form) {
   let controls = form.elements
   let names = Object.keys(controls).filter(key => isNaN(Number(key)))
@@ -68,12 +70,12 @@ export default class Signin extends React.Component {
               </FormGroup>
               <FormGroup controllId="staied" className="flex-lr">
                 <Checkbox inline>记住我的登录</Checkbox>
-                <div>
+                <div className="links">
                   <a style={{paddingRight: 16}}>忘记密码</a>
                   <Link to="/signup">现在注册</Link>
                 </div>
               </FormGroup>
-              <Button className="btn btn-primary" type="submit" style={{ display: 'block', width: '100%' }}>登录</Button>
+              <Button className="btn btn-primary" type="submit" style={{ display: 'block', width: '100%' }}>登&nbsp;录</Button>
             </Form>
           </div>
         </div>
