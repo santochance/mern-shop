@@ -1,0 +1,95 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+/*
+.sort-filter-bar
+  .sort-wrapper
+    .sort-link
+    .sort-link
+  .price-range
+    input.price-from
+    span{-}
+    input.price-to
+    button.price-submit
+*/
+
+.sort-filter-bar {
+  display: flex;
+  background-color: hsla(0, 0%, 80%, 0.5);
+  border: 1px solid #ddd;
+}
+
+.sort-wrapper {
+  display: flex;
+  line-height: 3em;
+}
+.sort-link {
+  padding: 0 15px;
+  box-sizing: border-box;
+  a {
+    display: block;
+    text-decoration: none;
+  }
+}
+
+.price-filter {
+  padding: .5em 5px;
+  margin: 0px 5px;
+}
+.price-wrapper {
+  height: 2em;
+}
+.price-min,
+.price-max {
+  box-sizing: border-box;
+  width: 50px;
+  height: 100%;
+}
+.price-sep {
+  margin: 0 5px;
+}
+
+
+/* hover样式 */
+.price-filter:hover {
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.price-filter:hover .price-submit,
+.price-filter:hover .price-reset {
+  display: inline-block;
+}
+
+.price-submit,
+.price-reset {
+  padding: 2px 8px;
+  margin: 0 2px;
+  border: none;
+  display: none;
+}
+
+// Theme Color Style
+// -----------------
+//
+.sort-link {
+  a {
+    color: #666;
+  }
+  &:hover,
+  &:active,
+  &.active {
+    background-color: #fff;
+    a {
+      // color: #0ba718;
+      color: $primary-color;
+    }
+  }
+}
+.price-submit {
+  color: #fff;
+  // background-color: #0ba718;
+  background-color: $primary-color;
+}
+.price-reset {
+  color: #000;
+  background-color: #ddd;
+}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Pagination, Row, Col } from 'antd'
-import Sortbar from '../../components/ProductShowcase/Sortbar'
+import Sortbar from './Sortbar'
 // 分页功能模块
 // import  Page from '../../helper/page.js'
 
-import '../ProductList/ProductList.css'
+import './ProductShow.css'
 
 class ProductShow extends Component {
   constructor(props) {

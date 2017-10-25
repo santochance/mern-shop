@@ -2,7 +2,7 @@ export { default as Playground } from './components/Playground'
 export { default as Home } from './Home'
 export { default as Signin } from './components/Signin'
 
-export { Login, Signup, UserCenter, ProductList } from './components'
+export { Login, Signup, UserCenter } from './components'
 export { default as Header, CartSummary } from './components/Header'
 export { default as CartDetails } from './components/CartDetails'
 export { default as ConfirmOrder } from './components/ConfirmOrder'

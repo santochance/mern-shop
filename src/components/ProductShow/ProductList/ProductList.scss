@@ -1,26 +1,33 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+
 .product-list {
-  padding-top: 20px; }
+  padding-top: 20px;
+}
 
 .product-item {
   margin-bottom: 30px;
   font-size: 14px;
   padding: 10px;
-  border: 1px solid #ddd; }
+  border: 1px solid #ddd;
+}
 
 .pic-wrapper {
   display: block;
   width: 215px;
-  height: 215px; }
-
+  height: 215px;
+}
 .product-info {
-  position: relative; }
+ position: relative;
+}
 
 .product-title {
   display: block;
   overflow: hidden;
   height: 3em;
   line-height: 3em;
-  text-overflow: ellipsis; }
+  text-overflow: ellipsis;
+}
 
 .product-desc {
   overflow: hidden;
@@ -28,23 +35,30 @@
   line-height: 1.5em;
   text-overflow: ellipsis;
   margin-bottom: 15px;
-  font-size: 90%; }
+  font-size: 90%;
+}
 
 .product-price {
   font-size: 120%;
-  color: red; }
+  color: red;
+}
 
 .product-operation {
   display: none;
   position: absolute;
   right: 0;
-  bottom: 0; }
-
+  bottom: 0;
+}
 .product-item:hover .product-operation {
-  display: block; }
+  display: block;
+}
 
+// Theme Color Style
+// -----------------
 .product-item:hover {
-  border-color: #673AB7; }
-
+  // border-color: hsla(120, 80%, 30%, 0.9);
+  border-color: $primary-color;
+}
 .product-desc {
-  color: #333; }
+  color: #777;
+}
