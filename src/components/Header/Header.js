@@ -3,9 +3,7 @@ import { Popover, Icon, Menu } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 // import { cart, cartAPI } from '../fakeData/mock-cart'
 
-import '../scss/Header.css'
-// import '../scss/CartItem.css'
-// import '../scss/CartFooter.css'
+import './Header.css'
 
 const Header = ({ logined, cart, app }) => {
 

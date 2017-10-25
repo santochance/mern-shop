@@ -520,53 +520,64 @@
 	"buffers":
 	[
 		{
-			"contents": "import React from 'react'\nimport {\n  BrowserRouter as Router,\n  Route,\n  Link,\n} from 'react-router-dom'\n\nimport routes from './routes.js'\n\nimport { Menu, Icon } from 'antd';\nimport './UserCenter.css'\n\nconst SubMenu = Menu.SubMenu;\nconst MenuItemGroup = Menu.ItemGroup;\n\nclass UserCenter extends React.Component {\n  state = {}\n\n  render() {\n    const { match } = this.props\n    console.log('match', match)\n    return (\n      <Router>\n        <div className=\"user-center\">\n          <Sider match={match} />\n          <div className=\"main\" style={{ float: 'left' }}>\n            {routes.map((route, idx) => (\n              <Route\n                key={idx}\n                path={match.url + route.path}\n                component={route.component}\n                exact={route.exact}\n              />\n            ))}\n          </div>\n        </div>\n      </Router>\n    )\n  }\n}\n\nclass Sider extends React.Component {\n  handleClick = (e) => {\n    console.log('click ', e);\n  }\n  render() {\n    const { match } = this.props\n\n    return (\n      <Menu\n        onClick={this.handleClick}\n        style={{ width: 240, float: 'left' }}\n        defaultSelectedKeys={['1']}\n        defaultOpenKeys={['sub1']}\n        mode=\"inline\"\n      >\n        <Menu.Item key=\"1\">\n          <Link to={`${match.url}/`}>\n            <Icon type=\"gift\" />\n            <span>我的订单</span>\n          </Link>\n        </Menu.Item>\n        <Menu.Item key=\"2\">\n          <Link to={`${match.url}/favorites`}>\n            <Icon type=\"star-o\" />\n            <span>我的收藏夹</span>\n          </Link>\n        </Menu.Item>\n        <SubMenu key=\"sub1\" title={<span><Icon type=\"user\" /><span>用户管理</span></span>}>\n          <Menu.Item key=\"3\">\n            <Link to={`${match.url}/addresses`}>收货地址</Link>\n          </Menu.Item>\n          <Menu.Item key=\"4\">\n            <Link to={`${match.url}/modify-profile`}>修改资料</Link>\n          </Menu.Item>\n          <Menu.Item key=\"5\">\n            <Link to={`${match.url}/modify-password`}>修改密码</Link>\n          </Menu.Item>\n        </SubMenu>\n      </Menu>\n    );\n  }\n}\n\nexport default UserCenter\n",
-			"file": "src/components/UserCenter/UserCenter.js",
-			"file_size": 2219,
-			"file_write_time": 131531183535424986,
+			"file": "src/App.js",
 			"settings":
 			{
-				"buffer_size": 2084,
+				"buffer_size": 4739,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/OrderHistory.js",
+			"file": "src/components/CardGrid/CardGrid.js",
 			"settings":
 			{
-				"buffer_size": 6335,
+				"buffer_size": 1959,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "// Override antd style\n// -------------------\n.user-center{\n  .ant-menu-sub {\n    .ant-menu-item {\n      padding-left: 56px !important;\n    }\n  }\n}\n",
-			"file": "src/components/UserCenter/UserCenter.scss",
-			"file_size": 153,
-			"file_write_time": 131531185161162693,
+			"file": "src/components/CardGrid/CardGrid.scss",
 			"settings":
 			{
-				"buffer_size": 148,
+				"buffer_size": 3937,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "config-overrides.js",
+			"file": "src/assets/style/_vars.scss",
 			"settings":
 			{
-				"buffer_size": 466,
+				"buffer_size": 810,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/components/UserCenter/UserCenter.css",
+			"file": "src/Home.js",
 			"settings":
 			{
-				"buffer_size": 79,
+				"buffer_size": 5671,
 				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/TopBar/TopBar.js",
+			"settings":
+			{
+				"buffer_size": 1160,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/CardGrid/CardGrid.css",
+			"settings":
+			{
+				"buffer_size": 3303,
 				"line_ending": "Unix"
 			}
 		},
@@ -574,7 +585,7 @@
 			"file": "src/all-index.js",
 			"settings":
 			{
-				"buffer_size": 1616,
+				"buffer_size": 1638,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -583,36 +594,36 @@
 			"file": "src/routes.js",
 			"settings":
 			{
-				"buffer_size": 2450,
+				"buffer_size": 2243,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "container\n  wrapper\n    header\n    content items\n      main-wrapper\n        item-wrap\n          header\n          content\n          footer\n        item-wrap\n    footer\n  wrapper\n\ncontainer\n  wrapper\n    content group items\n      item item-wrap\n        header\n        content\n        footer\n      item\n      item\n\ncontainer\n  groups\n    group-wrap\n      group-header\n      group-content\n        items\n          item-wrap\n            item-header\n            item-content\n            item-footer\n      group-footer\n    group-wrap\n\n\ncontainer\n  wrapper\n    header\n    content/container\n    footer\n      wrapper\n        content/container\n\n{\n  content items\n    header\n    content cells\n\n}\n\n{\n  wrap\n}\n\ncontainer\n  main-wrapper\n    sub-wrapper\n      header  \n      content \n        main-wrapper\n          sub-wrapper\n      footer\n\ncontainer\n  container\n      {Hello}\n    container\n  container\n\n",
+			"file": "src/scss/Header.scss",
 			"settings":
 			{
-				"buffer_size": 887,
-				"line_ending": "Windows",
-				"name": "container"
+				"buffer_size": 1389,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": ".clearfix\n  .fr .child-mg-8 .lh-1.5 .fz-16\n    span\n    span\n    span\n\nspan\n\n330 87 44 104 104 95 104\n\n\n商品 330\n单价 \n数量\n商品操作\n实付款\n交易状态",
+			"contents": "{\n        \"_id\" : \"599846b6dc7fa139e04a7f43\",\n        \"imageUrl\" : \"/product_images/599846b6dc7fa139e04a7f43/01.jpg\",\n        \"title\" : \"Apple/苹果 12 英寸 MacBook 256GB/512G\",\n        \"description\" : \"福利社10年老店， 诚信经营， 有着悠久历史的苹果福利社。 双皇冠 100% 全好 评的店在淘宝上几乎没有了。您的满意是我们的追求 / 信用卡付款有1%手续 费\",\n        \"price\" : 10899,\n        \"color\" : \"金\",\n        \"brand\" : \"Apple/苹果\",\n        \"model\" : \"MacBook 256G\",\n        \"name\" : \"Apple/苹果 12 英寸 MacBook 256GB\",\n        \"size\" : \"12英寸\",\n        \"ram\" : \"\",\n        \"cpu\" : \"Intel Core i5\",\n        \"ccc_serial_number\" : \"2015010902759212\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 1\n}\n{\n        \"_id\" : \"599846b6dc7fa139e04a7f44\",\n        \"imageUrl\" : \"/product_images/599846b6dc7fa139e04a7f44/01.jpg\",\n        \"title\" : \"Apple/苹果 MacBook Air MQD32CH/A 国行13英寸MQD42笔记本电脑\",\n        \"description\" : \"\",\n        \"price\" : 5899,\n        \"color\" : \"D32\",\n        \"brand\" : \"Apple/苹果\",\n        \"model\" : \"MacBook Air  MQD32CH/A\",\n        \"name\" : \"Apple/苹果 MacBook Air MQD32CH/A\",\n        \"size\" : \"13.3英寸\",\n        \"ram\" : \"8GB\",\n        \"cpu\" : \"Inter 酷睿i5 5350U\",\n        \"ccc_serial_number\" : \"2015010902759212\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 1\n}\n{\n        \"_id\" : \"599846b6dc7fa139e04a7f45\",\n        \"imageUrl\" : \"/product_images/599846b6dc7fa139e04a7f45/01.jpg\",\n        \"title\" : \"Asus/华硕 R RX310UA7100超薄13手提游戏轻薄便携学生笔记本电脑\",\n        \"description\" : \"13.3英寸IPS高分屏 全金属超极本\",\n        \"price\" : 4199,\n        \"color\" : \"石英灰\",\n        \"brand\" : \"Asus/华硕\",\n        \"model\" : \"RX310UA7100\",\n        \"name\" : \"Asus/华硕 RX310UA7100\",\n        \"size\" : \"13.3英寸\",\n        \"ram\" : \"4GB\",\n        \"cpu\" : \"英特尔 酷睿 i3-7100U\",\n        \"ccc_serial_number\" : \"\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 1\n}\n{\n        \"_id\" : \"599846b6dc7fa139e04a7f46\",\n        \"imageUrl\" : \"/product_images/599846b6dc7fa139e04a7f46/01.jpg\",\n        \"title\" : \"HP/惠普 Spectre x360 13-w021TU超薄13.3英寸触屏旋转笔记本电脑\",\n        \"description\" : \"七代i5 窄边框 CNC工艺\",\n        \"price\" : 7999,\n        \"color\" : \"星光银\",\n        \"brand\" : \"HP/惠普\",\n        \"model\" : \"13-w021TU\",\n        \"name\" : \"HP/惠普 Spectre x360 13-w021TU\",\n        \"size\" : \"13.3英寸\",\n        \"ram\" : \"8GB\",\n        \"cpu\" : \"英特尔 酷睿 i5-7200U\",\n        \"ccc_serial_number\" : \"2016010902892080\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 1\n}\n{\n        \"_id\" : \"599846b6dc7fa139e04a7f47\",\n        \"imageUrl\" : \"/product_images/599846b6dc7fa139e04a7f47/01.jpg\",\n        \"title\" : \"HP/惠普 spectre13 v115tu 超薄笔记本电脑商务游戏超极本\",\n        \"description\" : \"7代新品上市 商务超极本 游戏笔记本\",\n        \"price\" : 7999,\n        \"color\" : \"土豪金\",\n        \"brand\" : \"HP/惠普\",\n        \"model\" : \"v115tu\",\n        \"name\" : \"HP/惠普 spectre13 v115tu\",\n        \"size\" : \"13.3英寸\",\n        \"ram\" : \"8GB\",\n        \"cpu\" : \"英特尔 酷睿 i5-7200U\",\n        \"ccc_serial_number\" : \"2016010902845330\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 1\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c1849f\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c1849f/01.jpg\",\n        \"title\" : \"联想（ThinkPad） E470c（20H3A013CD）14英寸笔记本电脑（i5-6200U 8G 500G Win10）黑色\",\n        \"description\" : \"180度屏幕开合，轻至1.9KG，便携爆款，石墨经典触感，商务轻薄新领域\",\n        \"price\" : 3999,\n        \"brand\" : \"联想 ThinkPad\",\n        \"model\" : \"E470\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c184a0\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c184a0/01.jpg\",\n        \"title\" : \"惠普（HP）暗影精灵III代 15.6英寸游戏笔记本电脑（i7-7700HQ 8G 128GSSD+1T GTX1050Ti 4G独显 IPS FHD）\",\n        \"description\" : \"外观全新升级！碳纤维纹理搭配金属拉丝！做工精良！采用4通道NvME PCIe3.0接口固态硬盘！反应快！采用3热管散热！就是好很多！还有搭载26键无冲键盘！》》》第八代四核处理器新品上市！更好的颜值，更好的外观材质，请点击此处！\",\n        \"price\" : 7699,\n        \"brand\" : \"惠普\",\n        \"model\" : \"暗影精灵III代\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c184a1\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c184a1/01.jpg\",\n        \"title\" : \"联想(Lenovo)拯救者R720 GTX1060 MaxQ 15.6英寸游戏笔记本电脑(i7-7700HQ 8G 1T+128G SSD 6G IPS 黑)\",\n        \"description\" : \"【吃鸡利器GTX1060Max-Q 性能超越GTX980M！】流畅支持各种游戏大作 超强散热劲爆性能 分享有礼得京豆，更有专属优惠券等待你的好友认领\",\n        \"price\" : 8499,\n        \"brand\" : \"Lenovo/联想\",\n        \"model\" : \"拯救者R720\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c184a2\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c184a2/01.jpg\",\n        \"title\" : \"华硕(ASUS) 灵耀S4000UA 14英寸超窄边框超轻薄笔记本电脑(i5-7200U 8G 256GSSD FHD IPS)金属蓝灰\",\n        \"description\" : \"一款适合追求细节品质、乐观生活轻奢人士的轻薄本！\",\n        \"price\" : 4799,\n        \"brand\" : \"Asus/华硕\",\n        \"model\" : \"灵耀S4000UA\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c184a3\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c184a3/01.jpg\",\n        \"title\" : \"微星（MSI）GL62M 7RD-223CN 15.6英寸游戏笔记本电脑(i7-7700HQ 8G 1T+128GSSD GTX1050 WIN10)黑\",\n        \"description\" : \"128G固态快速开机，Nahimic2体验“看得见”的声音\",\n        \"price\" : 5799,\n        \"brand\" : \"MSI/微星\",\n        \"model\" : \"GL62M 7RD-223CN\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}\n{\n        \"_id\" : \"59ed37b7dfa249c408c184a4\",\n        \"imageUrl\" : \"/product_images/59ed37b7dfa249c408c184a4/01.jpg\",\n        \"title\" : \"戴尔DELL灵越飞匣14ER-3725B 14英寸便携笔记本电脑(i7-7500U 4G 1T M315 2G独显 Win10)黑\",\n        \"description\" : \"【飞匣独显、出色展现】Inter第七代CPU 、2G独显影音娱乐本、6+续航时间强悍出色自在随身、懂你的需求更懂你的担心！\",\n        \"price\" : 4499,\n        \"brand\" : \"Dell/戴尔\",\n        \"model\" : \"戴尔飞匣14ER-3725B\",\n        \"categories\" : [ ],\n        \"album\" : [ ],\n        \"discount\" : 0,\n        \"shipping\" : 0,\n        \"stock\" : 100\n}",
 			"settings":
 			{
-				"buffer_size": 131,
+				"buffer_size": 6239,
 				"line_ending": "Windows",
-				"name": ".clearfix"
+				"name": "{"
 			}
 		},
 		{
-			"contents": "ContainerComp\n  <AddressSelector />\n  <ConfirmOrder />\n\n\nAddressSelector\n  entries\n  value\nConfirmOrder\n  selectedAddr\n  cart\n  \n\naddress数据源\n数据源的crud\nFormModal\n\n",
+			"file": "src/ItemList.js",
 			"settings":
 			{
-				"buffer_size": 161,
-				"line_ending": "Windows",
-				"name": "ContainerComp"
+				"buffer_size": 16502,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -625,57 +636,55 @@
 			}
 		},
 		{
-			"file": "src/assets/style/_mixin.scss",
+			"contents": "1180\n\nimg\nwidth: 100%;\npadding: 20px;\n",
 			"settings":
 			{
-				"buffer_size": 3124,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/ConfirmOrder/ConfirmOrder.scss",
-			"settings":
-			{
-				"buffer_size": 3729,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/_structure.scss",
-			"settings":
-			{
-				"buffer_size": 263,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/_skin.scss",
-			"settings":
-			{
-				"buffer_size": 1342,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/_utilities.scss",
-			"settings":
-			{
-				"buffer_size": 1131,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": ".p, .pt, .pr, .pd, .pl\n.m,\n\n\n.pos-a .pos-r\n\n.po-a, .po-r\n\n\n@mixin make-box-props($prop, $value) {\n  // padding: p\n  // margin: m\n  // left: l, right: r, bottom: b, right: r\n\n  $prefix\n  ${prefix}-${acronym} {\n    #{$prop}-#{$acroynm} {}\n  }\n  #{$prefix}-#{$vavlue} {\n    #{$prop}: $value !important\n  }\n\n  #{$prop}\n  #{$prop-top}\n  #{$prop-right}\n  #{$prop-bottom}\n  #{$prop-left}\n\n  // pt\n  // pr\n}",
-			"settings":
-			{
-				"buffer_size": 399,
+				"buffer_size": 38,
 				"line_ending": "Windows",
-				"name": ".p, .pt, .pr, .pd, .pl"
+				"name": "1180"
+			}
+		},
+		{
+			"file": "src/assets/style/index.scss",
+			"settings":
+			{
+				"buffer_size": 170,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\nitems {\n  margin-left: -$gutter;\n  margin-right: -$gutter;\n}\n\nitem {\n  width: 20%;\n  box-sizing: border-box;\n  padding: $gutter\n}",
+			"settings":
+			{
+				"buffer_size": 130,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "\n.payment {\n  .message\n  .order-abstract\n  .pay-type\n  .footer\n    .pay-amonut\n    .pay-btn\n}\n.order {\n  .order-addr\n    .title\n      .name\n      .phone\n      .address\n  .order-desc\n    .info\n    .subtotal\n    .amount\n    .price\n      .\n  .order-info\n\n}",
+			"settings":
+			{
+				"buffer_size": 253,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "var xhr = new XMLHttpRequest()\nxhr.onreadystatechange = function () {\n  if (xhr.readyState === 4) {\n    if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {\n      console.log('successful')\n      console.log(JSON.parse(xhr.response, null, 2))\n    } else {\n      console.waring('fail')\n    }\n  }\n}\nxhr.open('GET', '/products')\nxhr.send()",
+			"settings":
+			{
+				"buffer_size": 349,
+				"line_ending": "Windows",
+				"name": "var xhr = new XMLHttpRequest()"
+			}
+		},
+		{
+			"contents": "展开查看订单信息\n  订单摘要\n    收货信息\n    表格标题栏(商品信息，单价，数量，小计)\n    订单内容\n      items...\n    订单总结\n      商品总计\n      运费\n      实际付款\n\n\n",
+			"settings":
+			{
+				"buffer_size": 116,
+				"line_ending": "Windows",
+				"name": "展开查看订单信息"
 			}
 		}
 	],
@@ -702,25 +711,29 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 319.0,
-		"last_filter": "",
+		"height": 49.0,
+		"last_filter": "ssjsb",
 		"selected_items":
 		[
-			[
-				"sssc",
-				"Set Syntax: SCSS"
-			],
 			[
 				"ssjsb",
 				"Set Syntax: JavaScript (Babel)"
 			],
 			[
-				"ssscss",
+				"sssass",
+				"Set Syntax: Sass"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"sssc",
 				"Set Syntax: SCSS"
 			],
 			[
-				"sssass",
-				"Set Syntax: Sass"
+				"ssscss",
+				"Set Syntax: SCSS"
 			],
 			[
 				"sshtml",
@@ -733,10 +746,6 @@
 			[
 				"ssas",
 				"Set Syntax: AppleScript"
-			],
-			[
-				"rename",
-				"File: Rename"
 			],
 			[
 				"ssgfm",
@@ -1043,7 +1052,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 461.0
+		"width": 426.0
 	},
 	"console":
 	{
@@ -1066,61 +1075,129 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/Vincent/Data/Workspace/quick-react-app",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app"
 	],
 	"file_history":
 	[
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/config-overrides.js",
-		"/D/Setups/Applications/Optional/Adobe/CCFamily_Illustrator_CC_2018_SP_rr20171019.sha",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
-		"/C/Users/Vincent/Data/010 Workspace/custom_antd/antd-init/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.css",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Checkout/checkout.vue",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/_bootstrap.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_skin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_basic.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ItemList.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Playground/Playground.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_mixin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/mongoose.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/order.model.test.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
+		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/products数据备份.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartItem.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartFooter.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartSummary.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Search.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductDetail.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/FadeAuth.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.test.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/mixin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/index.scss",
+		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/stash/pagetop.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/new.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/style.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/test.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/PageTop.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/PriSignup.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCheckbox.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestRoutes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/all-index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/OrderHistory.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/sass/main.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/CartDetails.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/.gitignore",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/template/gitignore",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductShow.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/products数据备份.json",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/E-commerce/README.md",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductList.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductItem.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/join_arr.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/tmp_seed_data_shells.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/dev.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/test_models/test.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/TestCart.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/config-overrides.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_structure.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_utilities.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/UserCenter.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/UserCenter.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/auxi_img_placeholder.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SearchResult.css.tmp.bak.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/auxi_img_placeholder.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/auxi_img_placeholder.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/TestCart.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/ConfirmOrder.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/UserCenter.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/package.json",
+		"/D/Setups/Applications/Optional/Adobe/CCFamily_Illustrator_CC_2018_SP_rr20171019.sha",
+		"/C/Users/Vincent/Data/010 Workspace/custom_antd/antd-init/package.json",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/assets/style/common.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/assets/style/theme.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/assets/style/index.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/assets/style/mixin.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_helpers.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/ConfirmOrder.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_mixin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_skin.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/Header.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/FormModal.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ItemList.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/ConfirmOrder2.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/ConfirmOrder2.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Playground/Playground.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductShow.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/mixin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/ConfirmOrder.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductNew.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartDetails.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/public/index.html",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/EditorModal/EditorModal.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserAdmin.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/EditorModal/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/build/index.html",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Playground/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductDetails/ProductDetails.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/PageTop.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductDetails/ProductDetails.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductDetails/ProductDetails.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_vars.scss",
@@ -1129,76 +1206,7 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/开发档案/design/ProductDetails/View-ProductList_outline.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/ProductDetail(View)_structure.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_layout.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_skin.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/4-pages/_user-profile.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_structure.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/3-component/_toggle-button.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/3-component/_sidebar.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/3-component/_button-spinner.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/3-component/_dropdown.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_utilities.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/_fonts.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/index.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_basic.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/all-index.js",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_structure.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/bootstrap-source/bootstrap/_buttons.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/bootstrap-source/bootstrap/_variables.scss",
-		"/C/Users/Vincent/.gitconfig",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/.git/config",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/mixin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_fonts.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/dev-index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/App.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/auxi_img_placeholder.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/assets/style/reset.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/es/affix/style/index.js",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/_animate.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/main.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/fakeData/mock-cart.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartSummary.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/SiteNav.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/UserCenter/UserCenter.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartItem.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/es/style/css.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/es/style/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/es/style/index.less",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/antd/es/affix/index.js",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/_vars.sass",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/bootstrap-source/_bootstrap.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/package.json",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/_notify.sass",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Header.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.css",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/common/header.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartItem.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/fakeData/fakeData-Order.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartFooter.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/fakeData/    at Function.Module._load (module.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartDetails.css",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/YButton.vue",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/product.vue",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/popup.vue",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Checkout/checkout.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductShowcase.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DataGrid.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/TestCart.scss",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/page.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductList.js",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Cart/cart.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/gulpfile.js"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.scss"
 	],
 	"find":
 	{
@@ -1239,6 +1247,57 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"h3",
+			"span",
+			"th",
+			"div",
+			"cell-",
+			"desc-",
+			"cell",
+			"div",
+			"span",
+			"h2",
+			"div",
+			"border",
+			"red",
+			"$grid-gutter",
+			"content",
+			"(\"_id\": )(\"\\w+\")",
+			"\"_id\": (\"\\w+\")",
+			"...",
+			"product",
+			"outputData",
+			"cart",
+			"removedItems",
+			"outputData",
+			"output",
+			"outputdata",
+			"no-wrap",
+			"div",
+			"pseudo-border-bottom",
+			"CartDetails.css",
+			"checkedItem",
+			"ProductNew",
+			"sitenav",
+			"text-align",
+			"/public/",
+			"products",
+			"respon",
+			"products",
+			"dataSource",
+			"([a-zA-Z\\d]+)",
+			"\"([a-zA-Z\\d]+)\",",
+			"\"[a-zA-Z\\d]\",",
+			"([a-zA-Z\\d]+)",
+			"[^\"]",
+			"        ",
+			"        \"",
+			"removeEntity",
+			"pagination",
+			"border:",
+			"border",
+			"img",
+			"img\\[src=\"\"\\]",
 			"\"",
 			"+   ",
 			"pagina",
@@ -1315,58 +1374,7 @@
 			"dataSource",
 			"cart",
 			"Cart",
-			"cart",
-			"'",
-			"item",
-			"div",
-			"Sortbar",
-			"sortBar",
-			"data",
-			"onFilterChange",
-			"isRemoving",
-			"filter",
-			"filters",
-			"filter",
-			"tpmValue",
-			"div",
-			"newState.",
-			"ds",
-			"page",
-			"debugger",
-			"current",
-			"filtering",
-			",",
-			" =",
-			"pageSize",
-			"constructor",
-			"div",
-			"popup",
-			"popup3",
-			"popup",
-			"update",
-			"addressUpdate",
-			"update\\(",
-			"update\\(item",
-			"vars",
-			"state",
-			"item",
-			"operation-section",
-			"Option",
-			"option",
-			"Option",
-			"option",
-			"Option",
-			"option",
-			"item",
-			"target",
-			"mouseoutedOption",
-			"clickedOption",
-			"checkedItems",
-			"recur",
-			"node.parent",
-			"'",
-			"全选",
-			"cartdetail"
+			"cart"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1374,6 +1382,9 @@
 		"regex": true,
 		"replace_history":
 		[
+			"$1ObjectId($2)",
+			"/products/$1/01.jpg",
+			"$1",
 			"export { default as $1 }",
 			"import { default as $1 }",
 			"{ default as $1 }",
@@ -1436,24 +1447,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "src/components/UserCenter/UserCenter.js",
+					"file": "src/App.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2084,
+						"buffer_size": 4739,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								56,
-								56
+								925,
+								925
 							]
 						],
 						"settings":
@@ -1465,8 +1476,8 @@
 								{
 									"1":
 									[
-										79,
-										80
+										3118,
+										3119
 									]
 								},
 								"icon":
@@ -1481,8 +1492,128 @@
 								{
 									"1":
 									[
-										33,
-										34
+										2903,
+										2904
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 798.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/CardGrid/CardGrid.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1959,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								239,
+								239
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										810,
+										811
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										130,
+										131
 									]
 								},
 								"unmatched":
@@ -1556,24 +1687,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "src/OrderHistory.js",
+					"buffer": 2,
+					"file": "src/components/CardGrid/CardGrid.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6335,
+						"buffer_size": 3937,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								85,
+								85
 							]
 						],
 						"settings":
@@ -1583,12 +1714,27 @@
 							{
 								"close":
 								{
+									"1":
+									[
+										366,
+										367
+									]
 								},
 								"icon":
 								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
 								},
 								"open":
 								{
+									"1":
+									[
+										84,
+										85
+									]
 								},
 								"unmatched":
 								{
@@ -1652,7 +1798,7 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -1660,55 +1806,39 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/components/UserCenter/UserCenter.scss",
+					"buffer": 3,
+					"file": "src/assets/style/_vars.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 148,
+						"buffer_size": 810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								87,
-								87
+								431,
+								431
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
 								"close":
 								{
-									"1":
-									[
-										144,
-										145
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										76,
-										77
-									]
 								},
 								"unmatched":
 								{
@@ -1775,33 +1905,27 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 17.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 3,
-					"file": "config-overrides.js",
+					"buffer": 4,
+					"file": "src/Home.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 466,
+						"buffer_size": 5671,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								222,
-								222
+								718,
+								718
 							]
 						],
 						"settings":
@@ -1813,8 +1937,8 @@
 								{
 									"1":
 									[
-										463,
-										464
+										717,
+										718
 									]
 								},
 								"icon":
@@ -1829,351 +1953,8 @@
 								{
 									"1":
 									[
-										221,
-										222
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "src/components/UserCenter/UserCenter.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 79,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								79,
-								79
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/LESS/LESS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 4,
-			"sheets":
-			[
-				{
-					"buffer": 5,
-					"file": "src/all-index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1616,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								767,
-								767
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										771,
-										772
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										753,
-										754
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "src/routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2450,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1209,
-								1209
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2397,
-										2398
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/square_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										454,
-										455
+										509,
+										510
 									]
 								},
 								"unmatched":
@@ -2243,31 +2024,608 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 169.0,
+						"translation.y": 323.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 5,
+					"file": "src/components/TopBar/TopBar.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 887,
+						"buffer_size": 1160,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								219,
-								219
+								503,
+								503
 							]
 						],
 						"settings":
 						{
-							"auto_name": "container",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										992,
+										993
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										312,
+										313
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 6,
+					"file": "src/components/CardGrid/CardGrid.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3303,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3303,
+								3303
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/LESS/LESS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1178.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "src/all-index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								649,
+								649
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 190.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								812,
+								812
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										810,
+										811
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										762,
+										763
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 766.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/scss/Header.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1389,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								162,
+								162
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1078,
+										1079
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										131,
+										132
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 62.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6239,
+								6239
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -2344,230 +2702,138 @@
 							],
 							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
 							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 8,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3190.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/ItemList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1163,
+								1163
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1166,
+										1167
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1130,
+										1131
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								114,
-								114
-							]
-						],
-						"settings":
-						{
-							"auto_name": ".clearfix",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 16.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 161,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13,
-								13
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ContainerComp",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 5,
-			"sheets":
-			[
-				{
-					"buffer": 10,
+					"buffer": 12,
 					"semi_transient": false,
 					"settings":
 					{
@@ -2578,8 +2844,8 @@
 						"selection":
 						[
 							[
-								138,
-								138
+								59,
+								59
 							]
 						],
 						"settings":
@@ -2666,596 +2932,28 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "src/assets/style/_mixin.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3124,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2336,
-								2336
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2335,
-										2336
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										2294,
-										2295
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1972.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/components/ConfirmOrder/ConfirmOrder.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3729,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 630.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "src/assets/style/_structure.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 263,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								125,
-								125
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										126,
-										127
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										42,
-										43
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 48.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "src/assets/style/_skin.scss",
+					"buffer": 13,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1342,
+						"buffer_size": 38,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								427,
-								427
+								5,
+								5
 							]
 						],
 						"settings":
 						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1340,
-										1341
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										360,
-										361
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 35.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "src/assets/style/_utilities.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1131,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1131,
-								1131
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 321.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 399,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								198,
-								205
-							]
-						],
-						"settings":
-						{
-							"auto_name": ".p, .pt, .pr, .pd, .pl",
+							"auto_name": "1180",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -3334,10 +3032,889 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 15.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "src/assets/style/index.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 170,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								170,
+								170
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 130,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								61,
+								61
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								62,
+								62
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 20.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 349,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								95,
+								95
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var xhr = new XMLHttpRequest()",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3117,
+								3118
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3118,
+										3119
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										2903,
+										2904
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3546.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "src/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								762,
+								763
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										810,
+										811
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										762,
+										763
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 865.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "src/ItemList.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16502,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1463,
+								1463
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1166,
+										1167
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1130,
+										1131
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1128.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"auto_name": "展开查看订单信息",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -3345,7 +3922,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 26.0
 	},
 	"input":
 	{
@@ -3383,13 +3960,13 @@
 		"cols":
 		[
 			0.0,
-			0.569115467043,
+			0.622854701495,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.927431059507,
+			0.812772133527,
 			1.0
 		]
 	},
@@ -3404,13 +3981,13 @@
 	},
 	"output.unsaved_changes":
 	{
-		"height": 53.0
+		"height": 115.0
 	},
 	"pinned_build_system": "Packages/User/Node.sublime-build",
 	"project": "quick-react-app.sublime-project",
 	"replace":
 	{
-		"height": 116.0
+		"height": 92.0
 	},
 	"save_all_on_build": false,
 	"select_file":
@@ -3420,24 +3997,320 @@
 		"selected_items":
 		[
 			[
+				"topbar.css",
+				"quick-react-app\\src\\components\\TopBar\\TopBar.css"
+			],
+			[
+				"topbar.js",
+				"quick-react-app\\src\\components\\TopBar\\TopBar.js"
+			],
+			[
+				"home.js",
+				"quick-react-app\\src\\Home.js"
+			],
+			[
+				"cardgrid.css",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.css"
+			],
+			[
+				"cardgrid.scss",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.scss"
+			],
+			[
+				"cardgrid",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.js"
+			],
+			[
+				"payprompt",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
+			],
+			[
+				"all-index.js",
+				"quick-react-app\\src\\all-index.js"
+			],
+			[
+				"routes.js",
+				"quick-react-app\\src\\routes.js"
+			],
+			[
+				"confirmorder.js",
+				"quick-react-app\\src\\ConfirmOrder.js"
+			],
+			[
+				"orderhs.scss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
+				"styleindex.scss",
+				"quick-react-app\\src\\assets\\style\\index.scss"
+			],
+			[
+				"stylescss",
+				"quick-react-app\\src\\assets\\style\\_basic.scss"
+			],
+			[
+				"cardscss",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.scss"
+			],
+			[
+				"cardgrid.js",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.js"
+			],
+			[
+				"orderhistory.scss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
+				"package.json",
+				"quick-react-app\\package.json"
+			],
+			[
+				"compordhisjs",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
+			],
+			[
+				"product.model.js",
+				"quick-react-app\\server\\models\\product.model.js"
+			],
+			[
+				"json",
+				"quick-react-app\\package.json"
+			],
+			[
+				"server.js",
+				"quick-react-app\\server\\server.js"
+			],
+			[
+				"mongoose.js",
+				"quick-react-app\\server\\config\\mongoose.js"
+			],
+			[
+				"ordermodel",
+				"quick-react-app\\server\\models\\order.model.js"
+			],
+			[
+				"order.controller.js",
+				"quick-react-app\\server\\controllers\\order.controller.js"
+			],
+			[
+				"app.js",
+				"quick-react-app\\src\\App.js"
+			],
+			[
+				"",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
+			],
+			[
+				"itemlist.js",
+				"quick-react-app\\src\\ItemList.js"
+			],
+			[
+				"compconfirmorder.js",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
+			],
+			[
+				"comporderjs",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
+			],
+			[
+				"orderhis.js",
+				"quick-react-app\\src\\OrderHistory.js"
+			],
+			[
+				"orderhis.scss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
+				"compcartdscs",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
+			],
+			[
+				"cartdetails.js",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
+			],
+			[
+				"compconorder.scss",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
+			],
+			[
+				"compconfir.js",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
+			],
+			[
+				"cartdetil.js",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
+			],
+			[
+				"skin",
+				"quick-react-app\\src\\assets\\style\\_skin.scss"
+			],
+			[
+				"confirmorder.scss",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
+			],
+			[
+				"orderhiscss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
 				"orderhistory.js",
 				"quick-react-app\\src\\OrderHistory.js"
 			],
 			[
-				"usercenter.css",
-				"quick-react-app\\src\\components\\UserCenter\\UserCenter.css"
+				"cartdetails.scss",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
+			],
+			[
+				"cartfooter.scss",
+				"quick-react-app\\src\\scss\\CartFooter.scss"
+			],
+			[
+				"cartitem.scss",
+				"quick-react-app\\src\\scss\\CartItem.scss"
+			],
+			[
+				"header.js",
+				"quick-react-app\\src\\components\\Header.js"
+			],
+			[
+				"cartsummary.js",
+				"quick-react-app\\src\\CartSummary.js"
+			],
+			[
+				"header.scss",
+				"quick-react-app\\src\\scss\\Header.scss"
+			],
+			[
+				"playground.js",
+				"quick-react-app\\src\\components\\Playground\\Playground.js"
+			],
+			[
+				"compindex.js",
+				"quick-react-app\\src\\components\\index.js"
+			],
+			[
+				"allindex.js",
+				"quick-react-app\\src\\all-index.js"
+			],
+			[
+				"compcart.css",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.css"
+			],
+			[
+				"cartdetails/scss",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
+			],
+			[
+				"cartsumm",
+				"quick-react-app\\src\\CartSummary.js"
+			],
+			[
+				"git",
+				"quick-react-app\\.gitignore"
+			],
+			[
+				"/git",
+				"react-scripts\\template\\gitignore"
+			],
+			[
+				"productlist.scss",
+				"quick-react-app\\src\\components\\ProductList\\ProductList.scss"
+			],
+			[
+				"productshow.js",
+				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
+			],
+			[
+				"productcontroller.js",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"join",
+				"quick-react-app\\scratch\\join_arr.js"
+			],
+			[
+				"product.controller.js",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"productmodel.js",
+				"quick-react-app\\server\\models\\product.model.js"
+			],
+			[
+				"productitem.js",
+				"quick-react-app\\src\\components\\ProductShowcase\\ProductItem.js"
+			],
+			[
+				"productlist.js",
+				"quick-react-app\\src\\components\\ProductShowcase\\ProductList.js"
+			],
+			[
+				"sortbar.css",
+				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.css"
+			],
+			[
+				"sortbar.js",
+				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.js"
+			],
+			[
+				"productlist.css",
+				"quick-react-app\\src\\components\\ProductList\\ProductList.css"
+			],
+			[
+				"producshow.js",
+				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
 			],
 			[
 				"usercenter.js",
 				"quick-react-app\\src\\components\\UserCenter\\UserCenter.js"
 			],
 			[
-				"over",
-				"quick-react-app\\config-overrides.js"
+				"basic.scss",
+				"quick-react-app\\src\\assets\\style\\_basic.scss"
 			],
 			[
-				"package.json",
-				"quick-react-app\\package.json"
+				"comporderhisscss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
+				"orderhisscss",
+				"quick-react-app\\src\\scss\\OrderHistory.scss"
+			],
+			[
+				"compconfirscss",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
+			],
+			[
+				"confirmscss",
+				"quick-react-app\\scratch\\@trash\\ConfirmOrder.scss"
+			],
+			[
+				"usecentscss",
+				"quick-react-app\\src\\components\\UserCenter\\UserCenter.scss"
+			],
+			[
+				"compoindex.js",
+				"quick-react-app\\src\\components\\index.js"
+			],
+			[
+				"compusercroutes",
+				"quick-react-app\\src\\components\\UserCenter\\routes.js"
+			],
+			[
+				"componentorder",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
+			],
+			[
+				"componentsindex",
+				"quick-react-app\\src\\components\\index.js"
+			],
+			[
+				"usercenter.css",
+				"quick-react-app\\src\\components\\UserCenter\\UserCenter.css"
+			],
+			[
+				"over",
+				"quick-react-app\\config-overrides.js"
 			],
 			[
 				"/.gi",
@@ -3448,10 +4321,6 @@
 				"react-scripts\\template\\gitignore"
 			],
 			[
-				"orderhistory.scss",
-				"quick-react-app\\src\\scss\\OrderHistory.scss"
-			],
-			[
 				"style",
 				"quick-react-app\\src\\assets\\style\\_utilities.scss"
 			],
@@ -3460,24 +4329,8 @@
 				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
 			],
 			[
-				"confirmorder.js",
-				"quick-react-app\\src\\ConfirmOrder.js"
-			],
-			[
-				"confirmorder.scss",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
-			],
-			[
 				"skin.scss",
 				"quick-react-app\\src\\assets\\style\\_skin.scss"
-			],
-			[
-				"header.scss",
-				"quick-react-app\\src\\scss\\Header.scss"
-			],
-			[
-				"home.js",
-				"quick-react-app\\src\\Home.js"
 			],
 			[
 				"mixin",
@@ -3496,32 +4349,16 @@
 				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
 			],
 			[
-				"header.js",
-				"quick-react-app\\src\\components\\Header.js"
-			],
-			[
 				"confirmord2scss",
 				"quick-react-app\\src\\scss\\ConfirmOrder2.scss"
-			],
-			[
-				"cartdetails.scss",
-				"quick-react-app\\src\\scss\\CartDetails.scss"
 			],
 			[
 				"productlist.sc",
 				"quick-react-app\\src\\components\\ProductList\\ProductList.css"
 			],
 			[
-				"itemlist.js",
-				"quick-react-app\\src\\ItemList.js"
-			],
-			[
 				"compconfirm",
 				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
-			],
-			[
-				"cartdetails.js",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
 			],
 			[
 				"signin.js",
@@ -3534,10 +4371,6 @@
 			[
 				"itemlsit.js",
 				"quick-react-app\\src\\ItemList.js"
-			],
-			[
-				"productshow.js",
-				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
 			],
 			[
 				"formmodal",
@@ -3588,24 +4421,12 @@
 				"quick-react-app\\src\\components\\ProductDetails\\ProductDetails.css"
 			],
 			[
-				"app.js",
-				"quick-react-app\\src\\App.js"
-			],
-			[
-				"routes.js",
-				"quick-react-app\\src\\routes.js"
-			],
-			[
 				"allindex",
 				"quick-react-app\\src\\all-index.js"
 			],
 			[
 				"styleut",
 				"quick-react-app\\src\\assets\\style\\_utilities.scss"
-			],
-			[
-				"skin",
-				"quick-react-app\\src\\assets\\style\\_skin.scss"
 			],
 			[
 				"pagetop.js",
@@ -3648,16 +4469,8 @@
 				"quick-react-app\\src\\scss\\mixin.scss"
 			],
 			[
-				"",
-				"quick-react-app\\src\\assets\\style\\_vars.scss"
-			],
-			[
 				"signin",
 				"quick-react-app\\src\\Signin.js"
-			],
-			[
-				"styleindex.scss",
-				"quick-react-app\\src\\assets\\style\\index.scss"
 			],
 			[
 				"index.scss",
@@ -3670,10 +4483,6 @@
 			[
 				"ignore",
 				"react-scripts\\template\\gitignore"
-			],
-			[
-				"all-index.js",
-				"quick-react-app\\src\\all-index.js"
 			],
 			[
 				"app.csss",
@@ -3698,238 +4507,6 @@
 			[
 				"compindex",
 				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"index.",
-				"quick-react-app\\src\\index.js"
-			],
-			[
-				"app.scss",
-				"quick-react-app\\src\\scss\\App.scss"
-			],
-			[
-				"auxi_img_placeholder.scss",
-				"quick-react-app\\src\\scss\\auxi_img_placeholder.scss"
-			],
-			[
-				"componenindex",
-				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"cartitem.scss",
-				"quick-react-app\\src\\scss\\CartItem.scss"
-			],
-			[
-				"sitenav.js",
-				"quick-react-app\\src\\SiteNav.js"
-			],
-			[
-				"router.js",
-				"quick-react-app\\src\\router.js"
-			],
-			[
-				"head.css",
-				"quick-react-app\\src\\Header.css"
-			],
-			[
-				"header.css",
-				"quick-react-app\\src\\Header.css"
-			],
-			[
-				"cartsummary.js",
-				"quick-react-app\\src\\CartSummary.js"
-			],
-			[
-				"topbar.css",
-				"quick-react-app\\src\\components\\TopBar\\TopBar.css"
-			],
-			[
-				"cartsu",
-				"quick-react-app\\src\\CartSummary.js"
-			],
-			[
-				"item",
-				"quick-react-app\\src\\ItemList.js"
-			],
-			[
-				"fakedata",
-				"quick-react-app\\src\\fakeData\\fakeData-Order.js"
-			],
-			[
-				"cartde.scss",
-				"quick-react-app\\src\\scss\\CartDetails.scss"
-			],
-			[
-				"cartdetail.css",
-				"quick-react-app\\src\\CartDetails.css"
-			],
-			[
-				"cartitem",
-				"quick-react-app\\src\\CartItem.css"
-			],
-			[
-				"cartitem.css",
-				"quick-react-app\\src\\CartItem.css"
-			],
-			[
-				"cartdetails.css",
-				"quick-react-app\\src\\CartDetails.css"
-			],
-			[
-				"fakedata-order.js",
-				"quick-react-app\\src\\fakeData\\fakeData-Order.js"
-			],
-			[
-				"product.model",
-				"quick-react-app\\server\\models\\product.model.js"
-			],
-			[
-				"topbar.js",
-				"quick-react-app\\src\\components\\TopBar\\TopBar.js"
-			],
-			[
-				"productlist.css",
-				"quick-react-app\\src\\components\\ProductList\\ProductList.css"
-			],
-			[
-				"sortbar.css",
-				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.css"
-			],
-			[
-				"sortbar.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.js"
-			],
-			[
-				"gulpfile.js",
-				"quick-react-app\\gulpfile.js"
-			],
-			[
-				"producshowcase.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\ProductShowcase.js"
-			],
-			[
-				"productlist.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\ProductList.js"
-			],
-			[
-				"testcart.scss",
-				"quick-react-app\\src\\scss\\TestCart.scss"
-			],
-			[
-				"page.js",
-				"quick-react-app\\src\\helper\\page.js"
-			],
-			[
-				"pagination.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\Pagination.js"
-			],
-			[
-				"datagrid.js",
-				"quick-react-app\\src\\DataGrid.js"
-			],
-			[
-				"productshowcase.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\ProductShowcase.js"
-			],
-			[
-				"conf",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
-			],
-			[
-				".gitignore",
-				"quick-react-app\\.gitignore"
-			],
-			[
-				"formmodal.js",
-				"quick-react-app\\src\\FormModal.js"
-			],
-			[
-				"cart.js",
-				"quick-react-app\\src\\Cart.js"
-			],
-			[
-				"test.scss",
-				"quick-react-app\\src\\scss\\test.scss"
-			],
-			[
-				"testcart.css",
-				"quick-react-app\\src\\TestCart.css"
-			],
-			[
-				"genindexdisplayer.js",
-				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
-			],
-			[
-				"devindex.css",
-				"quick-react-app\\src\\DevIndex.css"
-			],
-			[
-				"devindex.js",
-				"quick-react-app\\src\\DevIndex.js"
-			],
-			[
-				"datagrid",
-				"quick-react-app\\src\\DataGrid.js"
-			],
-			[
-				"componentformmodal",
-				"quick-react-app\\src\\components\\FormModal\\FormModal.js"
-			],
-			[
-				"modal",
-				"quick-react-app\\src\\FormModal.js"
-			],
-			[
-				"uploadavatar.js",
-				"quick-react-app\\src\\components\\UploadAvatar\\UploadAvatar.js"
-			],
-			[
-				"usereditform.js",
-				"quick-react-app\\src\\components\\EditUserForm.js"
-			],
-			[
-				"orderhsitory.js",
-				"quick-react-app\\src\\OrderHistory.js"
-			],
-			[
-				"login.js",
-				"quick-react-app\\src\\components\\Login\\Login.js"
-			],
-			[
-				"compnentindex",
-				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"uploadjs",
-				"quick-react-app\\src\\components\\UploadAvatar\\UploadAvatar.js"
-			],
-			[
-				"componentindex",
-				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"component.js",
-				"react-scripts\\node_modules\\eslint-plugin-react\\lib\\util\\Components.js"
-			],
-			[
-				"sitenva.js",
-				"quick-react-app\\src\\SiteNav.js"
-			],
-			[
-				"serverroutes.js",
-				"quick-react-app\\server\\server.routes.js"
-			],
-			[
-				"usercontroller.js",
-				"quick-react-app\\server\\user.server.controller.js"
-			],
-			[
-				"usercrud.js",
-				"quick-react-app\\src\\UserCrud.js"
-			],
-			[
-				"useradmin.js",
-				"quick-react-app\\src\\components\\UserAdmin.js"
 			]
 		],
 		"width": 0.0
@@ -3972,7 +4549,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": false,
-	"side_bar_width": 119.0,
+	"side_bar_width": 306.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
