@@ -70,17 +70,12 @@ $useAuxiOtl: false;
   margin: -8px -16px;  /* 抵消Popover的padding */
 
   .menu-item {
-    line-height: 3;
-    font-size: 14px;
-    padding: 0 16px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #ddd;
-    }
-    .icon,
-    .text {
-      color: #fff;
+    .link {
+      display: block;
+      line-height: 3;
+      font-size: 14px;
+      padding: 0 16px;
+      cursor: pointer;
     }
     .icon {
       margin-right: 8px;
@@ -97,13 +92,11 @@ $useAuxiOtl: false;
 //   }
 //   .user-menu {
 //     .menu-item {
-//       &:hover {
-//         background-color: #ddd;
+//       .link {
+//         &:hover {
+//           background-color: #eee;
+//         }
 //       }
-//     }
-//     .icon,
-//     .text {
-//       color: #000;
 //     }
 //   }
 // }

@@ -6,6 +6,14 @@ img[src=""] {
   background: 100% 100%;
 }
 
+.link {
+  color: $link-color;
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+  }
+}
+
 // Home中Carousel下面的Card
 
 .product-gallery {

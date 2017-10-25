@@ -180,25 +180,25 @@ const UserMenu = ({ logout }) => {
     <div className="user-menu">
       <ul className="menu-wrapper">
         <li className="menu-item">
-          <Link to={`${targetUrl}/`}>
+          <Link className="link" to={`${targetUrl}/`}>
             <Icon className="icon" type="user" />
             <span className="text">用户中心</span>
           </Link>
         </li>
         <li className="menu-item">
-          <Link to={`${targetUrl}/`}>
+          <Link className="link" to={`${targetUrl}/`}>
             <Icon className="icon" type="gift" />
             <span className="text">我的订单</span>
           </Link>
         </li>
         <li className="menu-item">
-          <Link to={`${targetUrl}/favorites`}>
+          <Link className="link" to={`${targetUrl}/favorites`}>
             <Icon className="icon" type="star-o" />
             <span className="text">我的收藏夹</span>
           </Link>
         </li>
         <li className="menu-item">
-          <span onClick={logout}>
+          <span className="link" onClick={logout}>
             <Icon className="icon" type="logout" />
             <span className="text">退出</span>
           </span>

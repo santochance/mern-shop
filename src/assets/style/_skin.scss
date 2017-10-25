@@ -34,13 +34,11 @@
   }
   .user-menu {
     .menu-item {
-      &:hover {
-        background-color: #ddd;
+      .link {
+        &:hover {
+          background-color: #eee;
+        }
       }
-    }
-    .icon,
-    .text {
-      color: #000;
     }
   }
 }
