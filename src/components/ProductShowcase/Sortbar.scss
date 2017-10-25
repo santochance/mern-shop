@@ -1,3 +1,5 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
 /*
 .sort-filter-bar
   .sort-wrapper
@@ -20,21 +22,12 @@
   display: flex;
   line-height: 3em;
 }
-
 .sort-link {
   padding: 0 15px;
   box-sizing: border-box;
   a {
     display: block;
     text-decoration: none;
-    color: #666;
-  }
-  &:hover,
-  &.active {
-    background-color: #fff;
-    a {
-      color: #0ba718;
-    }
   }
 }
 
@@ -73,9 +66,28 @@
   border: none;
   display: none;
 }
+
+// Theme Color Style
+// -----------------
+//
+.sort-link {
+  a {
+    color: #666;
+  }
+  &:hover,
+  &:active,
+  &.active {
+    background-color: #fff;
+    a {
+      // color: #0ba718;
+      color: $primary-color;
+    }
+  }
+}
 .price-submit {
   color: #fff;
-  background-color: #0ba718;
+  // background-color: #0ba718;
+  background-color: $primary-color;
 }
 .price-reset {
   color: #000;

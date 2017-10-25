@@ -198,7 +198,7 @@ const ProductItem = ({ item, addToCart }) => {
         </a>
       </div>
       <div className="product-info">
-        <a href="" className="product-title">
+        <a href="" className="product-title link">
           {item.title || item.productName}
         </a>
         <div className="product-desc">

@@ -1,3 +1,6 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+
 .product-list {
   padding-top: 20px;
 }
@@ -6,11 +9,7 @@
   margin-bottom: 30px;
   font-size: 14px;
   padding: 10px;
-  outline: 1px solid #ddd;
-}
-
-.product-item:hover {
-  outline: 1px solid hsla(120, 80%, 30%, 0.9);
+  border: 1px solid #ddd;
 }
 
 .pic-wrapper {
@@ -52,4 +51,14 @@
 }
 .product-item:hover .product-operation {
   display: block;
+}
+
+// Theme Color Style
+// -----------------
+.product-item:hover {
+  // border-color: hsla(120, 80%, 30%, 0.9);
+  border-color: $primary-color;
+}
+.product-desc {
+  color: #333;
 }

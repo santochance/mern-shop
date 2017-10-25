@@ -24,12 +24,7 @@
   box-sizing: border-box; }
   .sort-link a {
     display: block;
-    text-decoration: none;
-    color: #666; }
-  .sort-link:hover, .sort-link.active {
-    background-color: #fff; }
-    .sort-link:hover a, .sort-link.active a {
-      color: #0ba718; }
+    text-decoration: none; }
 
 .price-filter {
   padding: .5em 5px;
@@ -63,9 +58,17 @@
   border: none;
   display: none; }
 
+.sort-link a {
+  color: #666; }
+
+.sort-link:hover, .sort-link:active, .sort-link.active {
+  background-color: #fff; }
+  .sort-link:hover a, .sort-link:active a, .sort-link.active a {
+    color: #673AB7; }
+
 .price-submit {
   color: #fff;
-  background-color: #0ba718; }
+  background-color: #673AB7; }
 
 .price-reset {
   color: #000;

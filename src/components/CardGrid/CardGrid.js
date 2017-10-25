@@ -7,8 +7,8 @@ const CartGrid = ({ items }) => {
   return (
     <div className="card-grid">
       <header className="grid-hd">
-        <h1 className="title">Title</h1>
-        <a className="more" href="">查看更多</a>
+        <h1 className="title">热销商品</h1>
+        <a className="more" href="">查看更多 ></a>
       </header>
       <div className="grid-bd-2">
         <div className="items">

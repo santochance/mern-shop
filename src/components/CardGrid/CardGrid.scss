@@ -5,17 +5,24 @@
   .grid-hd {
     padding: 10px;
     border: 1px solid #ddd;
+    background-color: #eee;
     .title {
       display: inline-block;
       vertical-align: top;
-      font-size: 24px;
-      line-height: 1.5;
+      font-size: 22px;
+      line-height: 40px;
       font-weight: 700;
     }
     .more {
       float: right;
-      font-size: 12px;
+      font-size: 14px;
+      line-height: 40px;
       // @extend .link;
+      color: #666;
+      &:hover,
+      &:focus {
+        color: $link-hover-color;
+      }
     }
   }
   .col-4,
@@ -108,7 +115,7 @@
 
 // Another Style
 // -------------
-$primary-color: #cf112c;
+// $primary-color: #cf112c;
 $grid-gutter: 15px;
 .card-grid {
   .grid-bd-2 {

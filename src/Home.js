@@ -38,7 +38,7 @@ const Home = () => (
     {/*
     <PageTop />
     */}
-    <main>
+    <main className="wrapper pt-20">
       {/*
       <Form style={{
         width: 300,
@@ -51,12 +51,14 @@ const Home = () => (
         <Button>搜&nbsp;索</Button>
       </Form>
       */}
+     {/*
       <form className="search-bar" action="" style={{
         width: 400
       }}>
         <input type="text"/>
         <button>搜&nbsp;索</button>
       </form>
+     */}
       <ControlledCarousel />
       <ProductGallery />
       <CardGrid items={Array(15).fill({...item})} />

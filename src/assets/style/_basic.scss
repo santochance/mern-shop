@@ -9,10 +9,13 @@ img[src=""] {
 .link {
   color: $link-color;
   &:hover,
-  &:focus {
+  &:focus,
+  &.focues {
     color: $link-hover-color;
+    text-decoration: underline;
   }
 }
+
 
 // Home中Carousel下面的Card
 

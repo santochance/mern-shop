@@ -1,9 +1,9 @@
 // @import 'bootstrap-source/bootstrap';
-@import 'vars';
-@import 'mixin';
-@import 'utilities';
+@import 'vars';  // 全局变量
+@import 'mixin'; // mixin
+@import 'utilities'; // 工具类
 // @import 'fonts';
-@import 'basic';
-@import 'structure';
-@import 'skin';
+@import 'basic';  // 全局通用样式类
+@import 'structure';  // 全局布局类
+@import 'skin';  // 颜色定义
 

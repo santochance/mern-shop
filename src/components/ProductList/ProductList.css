@@ -5,10 +5,7 @@
   margin-bottom: 30px;
   font-size: 14px;
   padding: 10px;
-  outline: 1px solid #ddd; }
-
-.product-item:hover {
-  outline: 1px solid rgba(15, 138, 15, 0.9); }
+  border: 1px solid #ddd; }
 
 .pic-wrapper {
   display: block;
@@ -45,3 +42,9 @@
 
 .product-item:hover .product-operation {
   display: block; }
+
+.product-item:hover {
+  border-color: #673AB7; }
+
+.product-desc {
+  color: #333; }
