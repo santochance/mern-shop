@@ -48,6 +48,7 @@ const routes = [
   {
     path: '/signin',
     component: Signin,
+    hidden: true,
   },
   {
     path: '/signup',

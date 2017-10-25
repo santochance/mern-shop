@@ -156,7 +156,7 @@ class App extends ItemList {
         <Header {...{logined, cart, app: this}}/>
         <div className="wrapper">
           <Route path="/signin" render={props => (
-            <Signin login={this.login} />
+            <Signin {...props} login={this.login} />
           )} />
           <Route path="/product-show" render={props => (
             <ProductShow addToCart={this.addToCart} />
