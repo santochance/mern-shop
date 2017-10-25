@@ -1,4 +1,5 @@
 @import 'assets/style/mixin';
+@import 'assets/style/vars';
 
 $useAuxiOtl: true;
 
@@ -130,7 +131,7 @@ $useAuxiOtl: true;
 
     .amount-sum,
     .price-sum,
-    .checkout,
+    .checkout-btn,
     .price-sum > *,
     .amount-sum > * {
       display: inline-block;
@@ -156,13 +157,19 @@ $useAuxiOtl: true;
       font-size: 60%;
       font-weight: normal;
     }
-    .checkout {
+    .checkout-btn {
       padding: 0 40px;
       line-height: inherit;
       color: #fff;
       background-color: orange;
       font-size: 20px;
       border-radius: 5px;
+      text-decoration: none;
+      &[disabled] {
+        cursor: not-allowed;
+        pointer-events: auto;
+        background-color: #bbb;
+      }
     }
   }
 }

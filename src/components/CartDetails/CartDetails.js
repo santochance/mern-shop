@@ -9,6 +9,7 @@ const CartDetails = ({ app, cart }) => {
   /* 测试获取勾选项 */
   let checkedItems = app.getCheckedItems(cart)
   console.log('checked items:', checkedItems)
+  let submitDisabled = checkedItems.length < 1
 
   return (
     <div className="cart">
@@ -58,10 +59,12 @@ const CartDetails = ({ app, cart }) => {
                     </div>
                     <div className="col cell-info">
                       <div className="info-image">
-                        <img src={item.content.imageUrl} alt=""/>
+                        <a href="">
+                          <img src={item.content.imageUrl} alt=""/>
+                        </a>
                       </div>
                       <div className="info-title">
-                        <a>{item.content.title || '商品标题...'}</a>
+                        <a href="" className="link">{item.content.title || '商品标题...'}</a>
                       </div>
                     </div>
                     {/*
@@ -80,10 +83,10 @@ const CartDetails = ({ app, cart }) => {
                     </div>
                     <div className="col cell-opera">
                       <div>
-                        <a href="#" onClick={() => app.removeItem(item)}>删除</a>
+                        <a href="#" className="link" onClick={() => app.removeItem(item)}>删除</a>
                       </div>
                       <div>
-                        <a href="#">移入收藏夹</a>
+                        <a href="#" className="link">移入收藏夹</a>
                       </div>
                     </div>
                   </div>
@@ -103,10 +106,10 @@ const CartDetails = ({ app, cart }) => {
               </label>
             </div>
             <div className="footer-opera">
-              <a className="footer-favSelected">
+              <a className="footer-favSelected link">
                 移入收藏夹
               </a>
-              <a className="footer-delSelected"
+              <a className="footer-delSelected link"
                 onClick={(e) => {
                   e.preventDefault()
                   app.batchRemoveItems(checkedItems)
@@ -127,13 +130,9 @@ const CartDetails = ({ app, cart }) => {
                   <span className="total">{cart.price || 0}</span>
                 </span>
               </div>
-              <Link to="/confirm-order" className="checkout" disabled={checkedItems.length < 1}>
+              <Link to="/confirm-order" className="checkout-btn" disabled={submitDisabled} onClick={submitDisabled ? (e) => e.preventDefault(e) : null}>
                 结&nbsp;算
               </Link>
-              {/* 添加disable attr是可以禁止跳转的，但需要自定义样式 */}
-              {checkedItems.length < 1 && (
-                <div>禁用按钮中！</div>
-              )}
             </div>
           </div>
         </Affix>
