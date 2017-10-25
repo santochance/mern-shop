@@ -1,4 +1,5 @@
 @import 'assets/style/mixin';
+@import 'assets/style/vars';
 
 // 布局辅助线设置
 $useAuxiOtl: false;
@@ -20,6 +21,10 @@ $useAuxiOtl: false;
   .td {
     @include otl(blue);
     // padding: 10px;
+  }
+  .item-content {
+    // width: 100%;
+    // overflow: hidden;
   }
   .cell-pic--top {
     align-self: flex-start;
@@ -44,7 +49,8 @@ $useAuxiOtl: false;
       margin: 3px 0;
       line-height: 1.5em;
       overflow: hidden;
-      white-space: nowrap;
+      height: 3em;
+      // white-space: nowrap;
     }
     .info-desc {
       height: 3em;
@@ -68,6 +74,15 @@ $useAuxiOtl: false;
   }
   .cell-oper {
     visibility: hidden;
+    .icon {
+      color: #3c3c3c;
+      &:hover {
+        color: #fff;
+        background-color: $primary-color;
+        border: 1px solid $primary-color;
+        border-radius: 50%;
+      }
+    }
   }
   .item-content:hover {
     .cell-oper {

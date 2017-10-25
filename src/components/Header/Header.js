@@ -119,16 +119,17 @@ const CartItem = ({ entry, removeItem, key }) => {
       <div className="item-content tr">
         <div className="cell-pic td">
           <div className="pic-wrapper">
-            <img src={entry.content.imageUrl} alt=""/>
+            <a href="">
+              <img src={entry.content.imageUrl} alt=""/>
+            </a>
           </div>
         </div>
         <div className="cell-info td">
           <div className="info-title">
-            <a href="">
-              {entry.content.productName}
+            <a href="" className="link">
+              {entry.content.title}
             </a>
           </div>
-          <div className="info-desc">{entry.content.description}</div>
           <div>
             <span className="price-symbol">￥</span>
             <span className="price">{entry.content.price}</span>
@@ -138,7 +139,7 @@ const CartItem = ({ entry, removeItem, key }) => {
         </div>
         <div className="cell-oper td">
           <span className="delete-btn" title="删除商品" onClick={() => removeItem(entry, key)}>
-            <Icon type={'close-circle-o'} />
+            <Icon className="icon" type={'close-circle-o'} />
           </span>
         </div>
       </div>
