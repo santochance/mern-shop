@@ -81,6 +81,7 @@ class ItemList extends React.Component {
     this.addToCart = this.addToCart.bind(this)
     this.outputData = this.outputData.bind(this)
     this.getCheckedItems = this.getCheckedItems.bind(this)
+    this.removeItem = this.removeItem.bind(this)
   }
 
   componentDidMount() {

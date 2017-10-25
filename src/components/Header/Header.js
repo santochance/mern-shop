@@ -112,7 +112,7 @@ const CartOrder = ({ children, content }) => {
   )
 }
 
-const CartItem = ({ entry, removeItem }) => {
+const CartItem = ({ entry, removeItem, key }) => {
 
   return (
     <div className="cart-item">
@@ -137,7 +137,7 @@ const CartItem = ({ entry, removeItem }) => {
           </div>
         </div>
         <div className="cell-oper td">
-          <span className="delete-btn" title="删除商品" onClick={removeItem}>
+          <span className="delete-btn" title="删除商品" onClick={() => removeItem(entry, key)}>
             <Icon type={'close-circle-o'} />
           </span>
         </div>
