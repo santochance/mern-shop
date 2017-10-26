@@ -18,9 +18,10 @@ import routes, {
   Header,
   SiteNav,
   Signin,
+  ProductShow,
   CartDetails,
   ConfirmOrder,
-  ProductShow,
+  PayPrompt,
 } from './routes'
 
 import './assets/style/index.css'
@@ -120,8 +121,11 @@ class App extends ItemList {
 
       // 添加公共属性
       Object.assign(filteredList, {
+        // 添加购买者id
         buyer: '599a9ab2d8d1cd3200c509ab',
         // address: 'address from itemlist',
+        // 更改订单状态为'created'
+        status: 'created',
       })
 
       // 存入输出结果
@@ -139,7 +143,12 @@ class App extends ItemList {
     })
       .then(res => {
         if (res.ok) {
-          this.batchRemoveItems(removedItems)
+          res.json().then(orders => {
+            // 删除已经提交的item
+            this.batchRemoveItems(removedItems)
+            // 跳转到PayPrompt，并传入返回的orders数据
+            this.props.history.push('/pay-prompt', { orders })
+          })
         }
       })
   }
@@ -178,6 +187,7 @@ class App extends ItemList {
           <Route path="/confirm-order" render={props => (
             <ConfirmOrder {...props} cart={cart} app={this} />
           )} />
+          <Route path="/pay-prompt" component={PayPrompt} />
           {/* Other Routes */}
           {routes.map((route, idx) => (route && route.hidden ? (null) : (
             <Route key={idx} {...route} />

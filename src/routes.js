@@ -88,6 +88,7 @@ const routes = [
   {
     path: '/pay-prompt',
     component: PayPrompt,
+    hidden: true,
   },
   // {
   //   path: '/create-product',

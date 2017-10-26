@@ -19,6 +19,9 @@
     }
   }
   .order-abstract {
+    p {
+      line-height: 1.5;
+    }
     .order-addr {
       .title {
         font-size: 20px;
@@ -39,10 +42,10 @@
       }
       .desc,
       .cell {
-        &-info { width: 400px; }
-        &-sum { width: 200px; }
+        &-info { width: 416px; }
         &-amount { width: 150px; }
         &-price { width: 150px; }
+        &-sum { width: 150px; }
       }
     }
     .desc-wrap {
@@ -50,6 +53,7 @@
       border-bottom: 1px solid #ddd;
     }
     .item-content {
+      padding: 5px 0;
       border-bottom: 1px dashed #ddd;
       &:last-child,
       &.last {

@@ -2,7 +2,17 @@ import React from 'react'
 import { Collapse } from 'antd'
 import './PayPrompt.css'
 
-const PayPrompt = ({ order }) => {
+const PayPrompt = (props) => {
+  let orders = props.location.state.orders
+  if (orders && orders.length) {
+    // 重写向到首页
+    // props.history.push('/')
+  }
+
+  // 暂时只处理一个订单
+  let order = orders[0]
+  let payType = null
+
   return (
     <div className="pay-prompt">
       <div className="wrapper">
@@ -39,14 +49,14 @@ const PayPrompt = ({ order }) => {
             <span className="pay-amount">
               <span className="title">应付金额：</span>
               <span className="price">
-                ￥<span className="num">33433</span>
+                ￥<span className="num">{order.realPay}</span>
               </span>
             </span>
             <span className="btn btn-primary">立即付款</span>
           </div>
         </div>
         <Collapse>
-          <Collapse.Panel header={<div>订单编号：xxx</div>}>
+          <Collapse.Panel header={<div>订单编号：{order._id}</div>}>
             {/*
             <div className="clearfix mb-10">
               <span className="order-serial fl">订单编号: xxxxx</span>
@@ -66,29 +76,31 @@ const PayPrompt = ({ order }) => {
                 <div className="order-items">
                   <div className="tr desc-wrap mb-10">
                     <span className="th desc-info">商品信息</span>
-                    <span className="th desc-sum">
-                      小计
+                    <span className="th desc-price">
+                      单价
                     </span>
                     <span className="th desc-amount">
                       数量
                     </span>
-                    <span className="th desc-price">
-                      单价
+                    <span className="th desc-sum">
+                      小计
                     </span>
                   </div>
                   <div className="items-wrap mb-20">
-                    <div className="tr item-content">
-                      <div className="td cell-info">商品信息......</div>
-                      <div className="td cell-sum">￥33568</div>
-                      <div className="td cell-amount">16</div>
-                      <div className="td cell-price">￥2098</div>
-                    </div>
+                    {order.items.map((item, idx) => (
+                      <div key={idx} className="tr item-content">
+                        <div className="td cell-info">{item.product.title}</div>
+                        <div className="td cell-price">￥{item.product.price}</div>
+                        <div className="td cell-amount">{item.amount}</div>
+                        <div className="td cell-sum">￥{item.realPay}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="order-summary fr">
-                  <p>商品总计：￥33568</p>
-                  <p>+ 运费：￥0.00</p>
-                  <p>实际付款：￥33568</p>
+                  <p>商品总计：￥{order.price}</p>
+                  <p>+ 运费：￥{order.shipping}</p>
+                  <p>实际付款：￥{order.realPay}</p>
                 </div>
               </div>
             </div>
