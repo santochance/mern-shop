@@ -9,14 +9,19 @@ class PayPrompt extends React.Component {
       payType: '',
       msg: '',
       msgTimer: null,
-      orders: this.props.location.state.orders
+      orders: props.location && props.location.state && props.location.state.orders
+    }
+  }
+  componentWillMount() {
+    if (!this.state.orders) {
+      this.props.history.replace('/')
     }
   }
 
   validate() {
     let { payType } = this.state
     if (payType === '') {
-      return this.sendMsg('请选择一种支付方式', 20000)
+      return this.sendMsg('请选择一种支付方式')
     }
     return this.toPay(this.state.orders, this.state.payType, Date.now())
   }
@@ -44,7 +49,6 @@ class PayPrompt extends React.Component {
       paymentType: payType,
       paymentDate: payDate,
     }))
-    this.sendMsg('发起请求...')
 
     fetch('/orders/pay', {
       method: 'POST',
@@ -69,11 +73,7 @@ class PayPrompt extends React.Component {
 
   render() {
     let { orders, msg } = this.state
-    if (orders && orders.length) {
-      // 重写向到首页
-      // props.history.push('/')
-    }
-
+    if (!(order && order.length)) return null
     // 暂时只处理一个订单
     let order = orders[0]
 
