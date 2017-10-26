@@ -39,11 +39,13 @@ function handleEntityNotFound(res) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    var updated = Object.assign({}, entity, updates)
+    var updated = Object.assign(entity, updates)
     return updated.saveAsync()
-      .spread(function(updated) {
-        return updated
-      })
+    /* 下面代码有bug, 目前还没解决，详见product.controller.js */
+    // return updated.saveAsync()
+    //   .spread(function(updated) {
+    //     return updated
+    //   })
   }
 }
 
@@ -57,6 +59,9 @@ function removeEntity(res) {
     }
   }
 }
+
+// api
+// ---
 
 exports.create = function(req, res) {
   // req.body是一个orders数组
@@ -125,4 +130,16 @@ exports.delete = function(req, res) {
     .catch(handleError(res))
 }
 
-exports.Order = Order
+// 订单支付api
+exports.pay = function(req, res) {
+  console.log('paying...')
+  let payments = req.body
+  Promise.all(payments.map(p => (
+    Order.findByIdAsync(p._id)
+      // 此外save()返回Promise
+      .then(order => Object.assign(order, p, { status: 'paid' }).save())
+      .then(order => { console.log(order); return order })
+  )))
+    .then(respondWithResult(res))
+    .catch(handleError(res))
+}

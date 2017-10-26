@@ -48,6 +48,7 @@ var OrderSchema = new Schema({
   realPay: { type: Number },
   paymentStatus: Schema.Types.Mixed,
   paymentType: { type: String, default: 'braintree' },
+  paymentDate: { type: Number },
   nonce: String,
   status: {
     type: String,

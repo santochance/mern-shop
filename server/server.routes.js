@@ -95,6 +95,8 @@ module.exports = function(app) {
     .put(orders.update)
     .patch(orders.update)
     .delete(orders.delete)
+  app.route('/orders/pay')
+    .post(orders.pay)
 
   function registerRoutes(app, model, controller) {
     app.route(`/${model}`)

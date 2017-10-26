@@ -41,27 +41,30 @@ class PayPrompt extends React.Component {
     // }
     let payedOrders = orders.map(order => ({
       _id: order._id,
-      payType,
-      payDate,
+      paymentType: payType,
+      paymentDate: payDate,
     }))
-    // fetch('/orders/pay', {
-    //   method: 'POST',
-    //   headers: 'application/json',
-    //   body: JSON.stringify(payedOrders)
-    // })
-    //   .then(res => {
-    //     if (res.ok) {
-    //       // 跳转到支付完成页面
-    //       // this.props.history.push('/pay-completed')
-    //     } else {
-    //       // 提示支付失败
-    //     }
-    //   })
-    //   // 提示请求失败
-    //   .catch(console.error)
-    setTimeout(() => {
-      this.sendMsg('支付完成！')
-    }, 500)
+    this.sendMsg('发起请求...')
+
+    fetch('/orders/pay', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(payedOrders)
+    })
+      .then(res => {
+        if (res.ok) {
+          // 跳转到支付完成页面
+          // this.props.history.push('/pay-completed')
+          res.json().then(console.log)
+        } else {
+          // 提示支付失败
+        }
+      })
+      // 提示请求失败
+      .catch(console.error)
+    // setTimeout(() => {
+    //   this.sendMsg('支付完成！')
+    // }, 500)
   }
 
   render() {
@@ -96,11 +99,11 @@ class PayPrompt extends React.Component {
                 </div>
               */}
               {[
-                { url: '/alipay@2x.png' },
-                { url: '/weixinpay@2x.png' },
+                { url: '/alipay@2x.png', value: 'alipay' },
+                { url: '/weixinpay@2x.png', value: 'weixinpay' },
               ].map((opt, idx) => (
-                <div key={idx} className={'type-item ' + (this.state.payType === idx ? 'active' : '')}
-                  onClick={() => this.setState({ payType: idx })}>
+                <div key={opt.value} className={'type-item ' + (this.state.payType === opt.value ? 'active' : '')}
+                  onClick={() => this.setState({ payType: opt.value })}>
                   <img src={opt.url} alt="" />
                 </div>
               ))}
