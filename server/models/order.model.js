@@ -45,15 +45,15 @@ var OrderSchema = new Schema({
   price: { type: Number },
   discount: { type: Number },
   shipping: { type: Number },
-  total: { type: Number },
+  realPay: { type: Number },
   paymentStatus: Schema.Types.Mixed,
   paymentType: { type: String, default: 'braintree' },
   nonce: String,
   status: {
     type: String,
     default: 'pending',
-    enum: ['pending', 'paid', 'delivered', 'finish', 'canceled', 'refunded']
-  }, // pending, paid/failed, delivered, canceled, refunded.
+    enum: ['pending', 'created', 'paid', 'delivered', 'finish', 'canceled', 'refunded']
+  }, // pending, created, paid/failed, delivered, canceled, refunded.
   created: { type: Number, default: Date.now }
 });
 
