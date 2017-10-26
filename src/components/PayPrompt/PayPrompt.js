@@ -9,23 +9,15 @@ class PayPrompt extends React.Component {
       payType: '',
       msg: '',
       msgTimer: null,
-      orders: props.location && props.location.state && props.location.state.orders
     }
   }
-  componentWillMount() {
-    if (!this.state.orders) {
-      this.props.history.replace('/')
-    }
-  }
-
   validate() {
     let { payType } = this.state
     if (payType === '') {
       return this.sendMsg('请选择一种支付方式')
     }
-    return this.toPay(this.state.orders, this.state.payType, Date.now())
+    return this.toPay()
   }
-
   sendMsg(msg, wait = 3000) {
     let { msgTimer } = this.state
     this.setState({
@@ -35,19 +27,20 @@ class PayPrompt extends React.Component {
       }, wait)
     })
   }
-
-  toPay(orders, payType, payDate) {
-    // 调用后端api 'orders/pay/:id',
+  toPay() {
+    // 调用后端api 'orders/pay',
     // 调用数据组成
     // {
     //   _id: String,
     //   payType: String,
     //   payDate: Number,
     // }
+    let orders = this.props.location.state.orders
+
     let payedOrders = orders.map(order => ({
       _id: order._id,
-      paymentType: payType,
-      paymentDate: payDate,
+      paymentType: this.state.payType,
+      paymentDate: Date.now(),
     }))
 
     fetch('/orders/pay', {
@@ -58,8 +51,10 @@ class PayPrompt extends React.Component {
       .then(res => {
         if (res.ok) {
           // 跳转到支付完成页面
-          // this.props.history.push('/pay-completed')
-          res.json().then(console.log)
+          let paymentTotal = orders.reduce((sum, order) => (sum += order.realPay), 0)
+          this.setState({ orders: null })
+          this.props.history.push('/pay-completed', { paymentTotal })
+          // res.json().then(console.log)
         } else {
           // 提示支付失败
         }
@@ -72,10 +67,15 @@ class PayPrompt extends React.Component {
   }
 
   render() {
-    let { orders, msg } = this.state
-    if (!(order && order.length)) return null
+    let { location } = this.props
+    let orders = location && location.state && location.state.orders
+    if (!(orders && orders.length)) {
+      this.props.history.replace('/')
+      return null
+    }
+    let { msg } = this.state    
     // 暂时只处理一个订单
-    let order = orders[0]
+    let order = orders && orders[0]
 
     return (
       <div className="pay-prompt">
