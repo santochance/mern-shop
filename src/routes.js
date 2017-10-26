@@ -12,6 +12,7 @@ import {
   OrderHistory,
   CartDetails,
   PayPrompt,
+  PayCompleted,
   // TestCart
   // CreateProduct,
   // DataGrid,
@@ -90,6 +91,10 @@ const routes = [
     component: PayPrompt,
     hidden: true,
   },
+  {
+    path: '/pay-completed',
+    component: PayCompleted,
+  }
   // {
   //   path: '/create-product',
   //   component: CreateProduct,

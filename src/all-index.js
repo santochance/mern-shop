@@ -13,6 +13,7 @@ export { default as Signup2 } from './Signup'
 export { default as ProductShow } from './components/ProductShow'
 export { default as OrderHistory } from './components/OrderHistory'
 export { default as PayPrompt } from './components/PayPrompt'
+export { default as PayCompleted } from './components/PayCompleted'
 
 // export { default as TestCart } from './TestCart.js'
 // export { default as CreateProduct } from './CreateProduct.js'

@@ -1,0 +1,30 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+
+.pay-completed {
+
+  .main-msg {
+    padding: 80px 0;
+    text-align: center;
+    font-size: 40px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    .pay-num {
+      color: red;
+      font-weight: 700;
+    }
+  }
+  .nav-links {
+    text-align: center;
+    .btn {
+      display: inline-block;
+      vertical-align: top;
+      margin-right: 20px;
+      font-size: 18px;
+      color: #fff;
+      background-color: $primary-color;
+    }
+
+  }
+}
+
