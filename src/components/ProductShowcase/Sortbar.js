@@ -29,7 +29,7 @@ export default class Sortbar extends Component {
     this.setState({
       msg,
       msgTimer: setTimeout(() => {
-        this.setState({ msg: ''})
+        this.setState({ msg: '' })
       }, wait)
     })
   }

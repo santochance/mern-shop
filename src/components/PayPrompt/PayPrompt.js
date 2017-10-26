@@ -2,113 +2,180 @@ import React from 'react'
 import { Collapse } from 'antd'
 import './PayPrompt.css'
 
-const PayPrompt = (props) => {
-  let orders = props.location.state.orders
-  if (orders && orders.length) {
-    // 重写向到首页
-    // props.history.push('/')
+class PayPrompt extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      payType: '',
+      msg: '',
+      msgTimer: null,
+      orders: this.props.location.state.orders
+    }
   }
 
-  // 暂时只处理一个订单
-  let order = orders[0]
-  let payType = null
+  validate() {
+    let { payType } = this.state
+    if (payType === '') {
+      return this.sendMsg('请选择一种支付方式', 20000)
+    }
+    return this.toPay(this.state.orders, this.state.payType, Date.now())
+  }
 
-  return (
-    <div className="pay-prompt">
-      <div className="wrapper">
-        <div className="prompt-msg">
-          <h3 className="title">
-            提交订单成功
-          </h3>
-          <p>请在24小时内完成支付, 超时订单将自动取消。</p>
-          <p>我们将在您完成支付后的72小时内发货。</p>
-        </div>
-        <div className="pay-type">
-          <h3 className="title">支付方式</h3>
-          <div className="types">
-            {/*
-            <span>
-              <span className="icon"></span>
-              <span className="text">支付宝</span>
-            </span>
-            <span>
-              <span className="icon"></span>
-              <span className="text">微信支付</span>
-            </span>
-            */}
-            <div className="type-item">
-              <img src={'/alipay@2x.png'} alt=""/>
-            </div>
-            <div className="type-item">
-              <img src={'/weixinpay@2x.png'} alt=""/>
+  sendMsg(msg, wait = 3000) {
+    let { msgTimer } = this.state
+    this.setState({
+      msg,
+      msgTimer: setTimeout(() => {
+        this.setState({ msg: '' })
+      }, wait)
+    })
+  }
+
+  toPay(orders, payType, payDate) {
+    // 调用后端api 'orders/pay/:id',
+    // 调用数据组成
+    // {
+    //   _id: String,
+    //   payType: String,
+    //   payDate: Number,
+    // }
+    let payedOrders = orders.map(order => ({
+      _id: order._id,
+      payType,
+      payDate,
+    }))
+    // fetch('/orders/pay', {
+    //   method: 'POST',
+    //   headers: 'application/json',
+    //   body: JSON.stringify(payedOrders)
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       // 跳转到支付完成页面
+    //       // this.props.history.push('/pay-completed')
+    //     } else {
+    //       // 提示支付失败
+    //     }
+    //   })
+    //   // 提示请求失败
+    //   .catch(console.error)
+    setTimeout(() => {
+      this.sendMsg('支付完成！')
+    }, 500)
+  }
+
+  render() {
+    let { orders, msg } = this.state
+    if (orders && orders.length) {
+      // 重写向到首页
+      // props.history.push('/')
+    }
+
+    // 暂时只处理一个订单
+    let order = orders[0]
+
+    return (
+      <div className="pay-prompt">
+        <div className="wrapper">
+          <div className="prompt-msg">
+            <h3 className="title">
+              提交订单成功
+            </h3>
+            <p>请在24小时内完成支付, 超时订单将自动取消。</p>
+            <p>我们将在您完成支付后的72小时内发货。</p>
+          </div>
+          <div className="pay-type">
+            <h3 className="title">支付方式</h3>
+            <div className="types">
+              {/*
+                <div key="1" className={'type-item ' + (this.state.payType === 1) ? } onClick={this.setState({payType: '1'})} >
+                  <img src={'/alipay@2x.png'} alt=""/>
+                </div>
+                <div key="2" className={'type-item ' + (this.state.payType === 2)} onClick={this.setState({payType: '2'})} >
+                  <img src={'/weixinpay@2x.png'} alt=""/>
+                </div>
+              */}
+              {[
+                { url: '/alipay@2x.png' },
+                { url: '/weixinpay@2x.png' },
+              ].map((opt, idx) => (
+                <div key={idx} className={'type-item ' + (this.state.payType === idx ? 'active' : '')}
+                  onClick={() => this.setState({ payType: idx })}>
+                  <img src={opt.url} alt="" />
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-        <div className="pay-footer clearfix">
-          <div className="footer-wrap fr">
-            <span className="pay-amount">
-              <span className="title">应付金额：</span>
-              <span className="price">
-                ￥<span className="num">{order.realPay}</span>
+          <div className="pay-footer clearfix">
+            <div className="footer-wrap fr">
+              <span className="pay-amount">
+                <span className="title">应付金额：</span>
+                <span className="price">
+                  ￥<span className="num">{order.realPay}</span>
+                </span>
               </span>
-            </span>
-            <span className="btn btn-primary">立即付款</span>
-          </div>
-        </div>
-        <Collapse>
-          <Collapse.Panel header={<div>订单编号：{order._id}</div>}>
-            {/*
-            <div className="clearfix mb-10">
-              <span className="order-serial fl">订单编号: xxxxx</span>
-              <a className="toggle fr">展开订单信息</a>
+              <span className="btn btn-primary" onClick={() => this.validate()}>立即付款</span>
+              {msg && (<p className="feedback">{msg}</p>)}
+              {/*
+                {true && (<p className="feedback">{msg || '提示信息'}</p>)}
+              */}
             </div>
-            */}
-            <div className="order-abstract">
-              <div className="abstract-wrap clearfix mb-20">
-                <div className="order-addr mb-20">
-                  <div className="title mb-10">
-                    收货信息
+          </div>
+          <Collapse defaultActiveKey={['1']}>
+            <Collapse.Panel key="1" header={<div>订单编号：{order._id}</div>}>
+              {/*
+              <div className="clearfix mb-10">
+                <span className="order-serial fl">订单编号: xxxxx</span>
+                <a className="toggle fr">展开订单信息</a>
+              </div>
+              */}
+              <div className="order-abstract">
+                <div className="abstract-wrap clearfix mb-20">
+                  <div className="order-addr mb-20">
+                    <div className="title mb-10">
+                      收货信息
+                    </div>
+                    <p className="detail">姓名：</p>
+                    <p className="detail">联系电话：</p>
+                    <p className="detail">详细信息: </p>
                   </div>
-                  <p className="detail">姓名：</p>
-                  <p className="detail">联系电话：</p>
-                  <p className="detail">详细信息: </p>
-                </div>
-                <div className="order-items">
-                  <div className="tr desc-wrap mb-10">
-                    <span className="th desc-info">商品信息</span>
-                    <span className="th desc-price">
-                      单价
-                    </span>
-                    <span className="th desc-amount">
-                      数量
-                    </span>
-                    <span className="th desc-sum">
-                      小计
-                    </span>
+                  <div className="order-items">
+                    <div className="tr desc-wrap mb-10">
+                      <span className="th desc-info">商品信息</span>
+                      <span className="th desc-price">
+                        单价
+                      </span>
+                      <span className="th desc-amount">
+                        数量
+                      </span>
+                      <span className="th desc-sum">
+                        小计
+                      </span>
+                    </div>
+                    <div className="items-wrap mb-20">
+                      {order.items.map((item, idx) => (
+                        <div key={idx} className="tr item-content">
+                          <div className="td cell-info">{item.product.title}</div>
+                          <div className="td cell-price">￥{item.product.price}</div>
+                          <div className="td cell-amount">{item.amount}</div>
+                          <div className="td cell-sum">￥{item.realPay}</div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div className="items-wrap mb-20">
-                    {order.items.map((item, idx) => (
-                      <div key={idx} className="tr item-content">
-                        <div className="td cell-info">{item.product.title}</div>
-                        <div className="td cell-price">￥{item.product.price}</div>
-                        <div className="td cell-amount">{item.amount}</div>
-                        <div className="td cell-sum">￥{item.realPay}</div>
-                      </div>
-                    ))}
+                  <div className="order-summary fr">
+                    <p>商品总计：￥{order.price}</p>
+                    <p>+ 运费：￥{order.shipping}</p>
+                    <p>实际付款：￥{order.realPay}</p>
                   </div>
-                </div>
-                <div className="order-summary fr">
-                  <p>商品总计：￥{order.price}</p>
-                  <p>+ 运费：￥{order.shipping}</p>
-                  <p>实际付款：￥{order.realPay}</p>
                 </div>
               </div>
-            </div>
-          </Collapse.Panel>
-        </Collapse>
+            </Collapse.Panel>
+          </Collapse>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default PayPrompt

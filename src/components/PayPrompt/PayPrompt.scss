@@ -92,7 +92,7 @@
       border-radius: 5px;
       &:hover,
       &.active {
-        border-color: lime;
+        border-color: $primary-color;
       }
       img {
         width: 144px;
@@ -100,6 +100,7 @@
     }
   }
   .pay-footer {
+    position: relative;
     margin-bottom: 20px;
     line-height: 40px;
     .pay-amount {
@@ -118,6 +119,17 @@
     }
     .btn {
       margin-bottom: 8px;
+    }
+    .feedback {
+      position: absolute;
+      right: 0;
+      bottom: 50px;
+      padding: 0 10px;
+      line-height: 32px;
+      background-color: #f7ea64;
+      border: 1px solid #d8c821;
+      border-radius: 5px;
+
     }
   }
 }
