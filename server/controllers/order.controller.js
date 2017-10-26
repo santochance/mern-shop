@@ -77,8 +77,16 @@ exports.create = function(req, res) {
     )
     return order
   })
-
   Order.createAsync(orders)
+    .then(orders => orders.map(order => order._id))
+    .then(ids =>
+      // 创建后立即查询
+      // 注意不能直接把数组作为find()的参数
+      // 要使用`{_id: []}`的格式构造传入参数
+      Order.find({ _id: ids })
+        .populate('buyer')
+        .populate('items.product')
+    )
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
 }
