@@ -15,6 +15,7 @@ const Product = require('../models/product.model')
 const Catalog = require('../models/catalog.model')
 const uploadDir = path.resolve(__dirname, '../../public/uploads/products')
 const saveImgs = require('../../src/helper/saveUploadedImages.js')
+const homeData = require('../homeData')
 
 function handleError(res, statusCode = 500) {
   return function(err) {
@@ -226,4 +227,17 @@ function splitArray(arr, size) {
   }
 
   return rst
+}
+
+// 模拟获取首页数据api
+exports.getHomeData = function(req, res) {
+  console.log('hit: GET /products/homeData')
+  // 替换floors内items数组的product_id字符串为数据实体
+  Promise.all(homeData.floors.map(floor =>
+    Product.find({ _id: floor.items })
+      .then(products => (floor.items = products))
+  ))
+    .then(() => homeData)
+    .then(respondWithResult(res))
+    .catch(handleError(res))
 }

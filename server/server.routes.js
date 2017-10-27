@@ -61,6 +61,8 @@ module.exports = function(app) {
     .post(multiparty(uploadOptions), products.create)
     .get(products.list)
 
+  app.get('/products/homeData', products.getHomeData)
+
   app.route('/products/:id')
     .get(products.read)
     .put(multiparty(uploadOptions), products.update)
