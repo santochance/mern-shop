@@ -41,6 +41,7 @@ const routes = [
     component: Home,
     exact: true,
     label: 'Home',
+    hidden: true,
   },
   {
     path: '/login',

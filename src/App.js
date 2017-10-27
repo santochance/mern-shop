@@ -15,6 +15,7 @@ import {
 } from 'react-router-dom'
 
 import routes, {
+  Home,
   Header,
   SiteNav,
   Signin,
@@ -59,7 +60,10 @@ class App extends ItemList {
     this.logout = this.logout.bind(this)
     this.submitOrders = this.submitOrders.bind(this)
   }
-
+  componentDidMount() {
+    this.getHomeData()
+      .then(home => this.setState({ home }))
+  }
   login(data) {
     fetch('/api/signin', {
       method: 'POST',
@@ -153,17 +157,34 @@ class App extends ItemList {
       })
   }
 
+  getHomeData() {
+    return fetch('/products/homeData')
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res.json()
+        }
+      })
+      .catch(console.error)
+  }
+
   render() {
     let {
       logined,
       cart,
+      home,
     } = this.state
+    if (!home) return null
 
     return (
       <div className="app">
         <DevIndex />
         <Header {...{logined, cart, app: this}}/>
         <div className="wrapper">
+          <Route path='/' exact render={props => (
+            <Home {...props} data={home} app={this} />
+          )} />
           <Route path="/signin" render={props => (
             <Signin {...props} login={this.login} />
           )} />

@@ -33,39 +33,53 @@ const item = {
   sales: 241,
 }
 
-const Home = () => (
-  <div>
-    {/*
-    <PageTop />
-    */}
-    <main className="wrapper pt-20">
+// const slides = Array.from({length: 3}).map((s, i) => (
+//   {
+//     src: require(`./assets/p_1280x_800 (${i + 1}).jpg`),
+//     alt: `product ${i + 1}`,
+//     title: 'Title for slide',
+//     description: 'Description for slide',
+//     width: 960,
+//     height: 600
+//   }
+// ))
+//
+const Home = ({ data, app }) => {
+
+  return (
+    <div>
       {/*
-      <Form style={{
-        width: 300,
-        display: 'flex',
-        justifyContent: 'center',
-      }}>
-        <FormGroup>
-          <FormControl type="text" name="search" />
-        </FormGroup>
-        <Button>搜&nbsp;索</Button>
-      </Form>
+      <PageTop />
       */}
-     {/*
-      <form className="search-bar" action="" style={{
-        width: 400
-      }}>
-        <input type="text"/>
-        <button>搜&nbsp;索</button>
-      </form>
-     */}
-      <ControlledCarousel />
-      <ProductGallery />
-      <CardGrid items={Array(15).fill({...item})} />
-    </main>
-    <Footer />
-  </div>
-)
+      <main className="wrapper pt-20">
+        {/*
+        <Form style={{
+          width: 300,
+          display: 'flex',
+          justifyContent: 'center',
+        }}>
+          <FormGroup>
+            <FormControl type="text" name="search" />
+          </FormGroup>
+          <Button>搜&nbsp;索</Button>
+        </Form>
+        */}
+       {/*
+        <form className="search-bar" action="" style={{
+          width: 400
+        }}>
+          <input type="text"/>
+          <button>搜&nbsp;索</button>
+        </form>
+       */}
+        <ControlledCarousel slides={data.banner} />
+        <ProductGallery />
+        <CardGrid items={Array(15).fill({...item})} />
+      </main>
+      <Footer />
+    </div>
+  )
+}
 
 // const Header = (props) => {
 //   return (
@@ -145,10 +159,7 @@ class ControlledCarousel extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      index: 0,
-      direction: null,
       width: 1190,
-      height: 360,
     }
     this.handleSelect = this.handleSelect.bind(this)
   }
@@ -163,32 +174,19 @@ class ControlledCarousel extends Component {
 
   render() {
     let { width, height } = this.state
+    let { slides } = this.props
+    let srcWidth = 1500
     return (
-      <Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect} style={{marginBottom: 32}}>
+      <Carousel interval={2500} onSelect={this.handleSelect} style={{marginBottom: 32, width}}>
         {slides.map((slide, i) => (
-          <Carousel.Item key={i} style={{...{width, height}}}>
-            <img width={width} height={height} src={slide.src} alt={slide.alt}/>
-            <Carousel.Caption>
-              <h3>{slide.title}</h3>
-              <p>{slide.description}</p>
-            </Carousel.Caption>
+          <Carousel.Item key={i} style={{ overflow: 'hidden' }}>
+            <img width={1500} height={300} src={slide} alt="" style={{ position: 'relative', maxWidth: 'none', minWidth: '100%', left: (width - srcWidth) < 0 ? (width - srcWidth) / 2 : 0 }}/>
           </Carousel.Item>
         ))}
       </Carousel>
     );
   }
 }
-
-const slides = Array.from({length: 3}).map((s, i) => (
-  {
-    src: require(`./assets/p_1280x_800 (${i + 1}).jpg`),
-    alt: `product ${i + 1}`,
-    title: 'Title for slide',
-    description: 'Description for slide',
-    width: 960,
-    height: 600
-  }
-))
 
 //
 // Gallery
