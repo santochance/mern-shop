@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import './CardGrid.css'
 
-const CartGrid = ({ items }) => {
+const CartGrid = ({ header, items }) => {
   return (
     <div className="card-grid">
       <header className="grid-hd">
-        <h1 className="title">热销商品</h1>
+        <h1 className="title">{header}</h1>
         <a className="more" href="">查看更多 ></a>
       </header>
       <div className="grid-bd-2">
@@ -17,6 +17,7 @@ const CartGrid = ({ items }) => {
           ))}
         </div>
       </div>
+      {/*
       <div className="grid-bd" style={{ display: 'none' }}>
         <div className="items">
           {items.map((item, idx) => (
@@ -24,6 +25,7 @@ const CartGrid = ({ items }) => {
           ))}
         </div>
       </div>
+      */}
       <footer className="grid-ft"></footer>
     </div>
   )
@@ -56,11 +58,11 @@ const CardB = ({item, className}) => {
       <div className="wrap">
         <div className="content">
           <a href="#" className="top">
-            <img src={'/02.jpg'} alt=""/>
+            <img src={item.imageUrl} alt=""/>
             <div className="price">￥{item.price}</div>
-            <div className="desc" title={item.desc}>
+            <div className="desc" title={item.description || item.desc}>
               <a href="#">
-                {item.desc}
+                {item.description || item.desc}
               </a>
             </div>
           </a>

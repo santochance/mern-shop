@@ -74,7 +74,9 @@ const Home = ({ data, app }) => {
        */}
         <ControlledCarousel slides={data.banner} />
         <ProductGallery />
-        <CardGrid items={Array(15).fill({...item})} />
+        {data.floors.map((floor, idx) => (
+          <CardGrid key={idx} header={floor.title} items={floor.items} />
+        ))}
       </main>
       <Footer />
     </div>
