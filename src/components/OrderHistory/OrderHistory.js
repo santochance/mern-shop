@@ -4,6 +4,12 @@ import Page from '../../helper/page.js'
 
 import './OrderHistory.css'
 
+let statusMap = {
+  'pending': '准备中',
+  'created': '未付款',
+  'paid': '已付款',
+}
+
 class OrderHistory extends React.Component {
   constructor(props) {
     super(props);
@@ -174,18 +180,18 @@ const TableView = (props) => {
                         </a>
                       </div>
                       <div className="td product-info">
-                        <a href="">{item.product.title}</a>
+                        <a className="link-tn" href="">{item.product.title}</a>
                       </div>
                     </div>
-                    <div className="td cell-price">{item.product.price || 'xxx.xx'}</div>
+                    <div className="td cell-price">￥{item.product.price || 'xxx.xx'}</div>
                     <div className="td cell-amount">{item.amount}</div>
                     <div className="td cell-oper">
-                      <a href="#">退款</a>
+                      {['paid'].indexOf(order.status) >= 0 && (<a href="#">退款</a>)}
                     </div>
                     {i === 0 ? (
                       [
-                        <div key="0" className="td cell-realPay">{order.realPay}</div>,
-                        <div key="1" className="td cell-status">{order.status || '订单状态'}</div>
+                        <div key="0" className="td cell-realPay">￥{order.realPay}</div>,
+                        <div key="1" className="td cell-status">{order.status ? statusMap[order.status] : '订单状态'}</div>
                       ]
                     ) : (
                       /*

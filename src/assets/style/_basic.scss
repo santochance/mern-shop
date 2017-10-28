@@ -16,6 +16,16 @@ img[src=""] {
   }
 }
 
+.link-tn {
+  color: $link-color;
+  &:hover,
+  &:focus,
+  &.focues {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+}
+
 
 // Home中Carousel下面的Card
 

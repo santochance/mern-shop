@@ -55,6 +55,9 @@ $orderHistory-desc-bg: #eee;
       &:hover {
         border-color: $orderHistory-grid-hover;
       }
+      .order-date {
+        font-weight: 700;
+      }
     }
     .thead {
       border-bottom: $orderHistory-cell-border;
@@ -125,6 +128,9 @@ $orderHistory-desc-bg: #eee;
           @include rect(80px);
           margin: 8px;
         }
+      }
+      .cell-realPay {
+        font-weight: 700;
       }
     }
   }
