@@ -120,6 +120,7 @@ $grid-gutter: 15px;
 .card-grid {
   .grid-bd-2 {
     margin-top: 20px;
+    margin-bottom: 40px;
     .items {
       // @include otl(#333);
       margin-left: -$grid-gutter/2;
@@ -142,7 +143,7 @@ $grid-gutter: 15px;
       // margin: 0 10px 10px 0;
       .content {
         // @include otl(lime);
-        padding-bottom: 12px;
+        padding-bottom: 3px;
         border: 5px solid #fff;
         background-color: #fff;
         outline: 1px solid #ddd;
@@ -159,7 +160,7 @@ $grid-gutter: 15px;
       }
       .top {
         display: block;
-        margin-bottom: 3px;
+        margin-bottom: 6px;
         background-color: #fff;
         border-bottom: 2px solid $primary-color;
       }
