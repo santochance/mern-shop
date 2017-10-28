@@ -1,8 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import Selector from '../Selector'
 import './ConfirmOrder.css'
 // import './ConfirmOrder2.css'
+
+let mockAddresses = [
+  {
+    name: 'Vincent',
+    addr: '广东省 深圳市 龙华新区 xxxx',
+    phone: '138xxxx7697'
+  },
+  {
+    name: 'Santochance',
+    addr: '广东省 江门市 蓬江区 xxxx',
+    phone: '138xxxx7697'
+  }
+]
 
 const ConfirmOrder = ({ app, cart, addresses, user }) => {
   let selectedAddr = '广东省 深圳市 龙华新区 民治街道 塘水围新村三区3幢1102'
@@ -10,7 +23,9 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
   return (
     <section className="confirm-order">
       <div className="wrapper">
-        <div className="order-address"></div>
+        <div className="order-address">
+          <Selector options={mockAddresses} />
+        </div>
         <div className="order-orderDesc">
           <div className="title">确认订单信息</div>
           <div className="tr desc-row">

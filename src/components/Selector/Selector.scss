@@ -1,0 +1,135 @@
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+
+.selector {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+  }
+  .option-wrapper {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+    padding: 10px;
+    height: 126px;
+    width: 240px;
+    border: 1px solid #c8c8c8;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eee;
+      border-color: $primary-color;
+    }
+    &.active {
+      position: relative;
+      border-color: $primary-color;
+      // 打勾图标
+      // --------
+      &:after {
+        content: '\2713';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 24px;
+        font-weight: 700;
+        color: $primary-color;
+      }
+      // 填充反色圆形打勾样式
+      &:after {
+        font-size: 16px;
+        border-radius: 50%;
+        color: #fff;
+        background-color: $primary-color;
+      }
+    }
+
+    .add-option {
+      position: relative;
+    }
+    // 添加新地址
+    .add-text {
+      position: relative;
+      padding: 4px 0;
+      margin: 1em auto;
+      margin-top: 46px;
+      text-align: center;
+
+      // .add-icon
+      &:before {
+        content: '+';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        text-align: center;
+        border: 1px solid black;
+        box-sizing: content-box;
+        font-size: 16px;
+        line-height: .8;
+      }
+    }
+  }
+  .option {
+    padding: 10px 0;
+    p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .opera {
+    // visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    transform: translate(0, 100%);
+    transition: all .3s ease;
+
+    text-align: center;
+    border-top: 1px solid silver;
+
+    .opera-btn {
+      border: none;
+      padding: 0 14px;
+      font-size: 14px;
+      background-color: #f8f8f8;
+      border-right: 1px solid #c8c8c8;
+      width: 50%;
+      box-sizing: border-box;
+      &.last {
+        border: none;
+      }
+      &:hover {
+        background-color: #ccc;
+      }
+      &:active {
+        background-color: grey;
+      }
+    }
+  }
+  .option-wrapper {
+    &:hover {
+      .opera {
+        // visibility: visible;
+        transform: translate(0, 0);
+        background-color: white;
+      }
+    }
+  }
+}

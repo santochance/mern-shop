@@ -1,3 +1,7 @@
+import React from 'react'
+
+import './Selector.css'
+
 class Selector extends React.Component {
   constructor(props) {
     super(props)
@@ -16,6 +20,7 @@ class Selector extends React.Component {
     return function(e) {
       console.log('exec in preventE with\nfn:%s\nargs:', fn.name, ...args)
       e.preventDefault()
+      e.stopPropagation()
       fn.call(_this, ...args)
     }
   }
@@ -35,7 +40,7 @@ class Selector extends React.Component {
   handleOptionMouseOut (e, option) {
     let mouseoutedOpt = option
     let mouseoveredOpt = null
-    this.setState({ mouseoveredOpt, mouseoutedOpt})
+    this.setState({ mouseoveredOpt, mouseoutedOpt })
   }
 
   editOption (e, option, index) {
@@ -52,21 +57,11 @@ class Selector extends React.Component {
     let { children, options } = this.props
     let { clickedOpt, mouseoveredOpt, mouseoutedOpt } = this.state
 
-    const print = (state) => {
-      return Object.entries(state).map(([key, value]) => (
-        <p>{key}: {JSON.stringify(this.state[key], value, 2)}</p>
-      ))
-    }
-
-    // 获取address数据    的crud apis
-    const { add, update, remove, open, close, save } = this.props
+    // 获取address数据的crud apis
+    // const { add, update, remove, open, close, save } = this.props
 
     return (
       <div className="selector">
-        <p>Selector</p>
-        <p>clickedOpt: {JSON.stringify(clickedOpt, null, 2)}</p>
-        <p>mouseoveredOpt: {JSON.stringify(mouseoveredOpt, null, 2)}</p>
-        <p>mouseoutedOpt: {JSON.stringify(mouseoutedOpt, null, 2)}</p>
         <ul>
           {options.map((opt, idx) => (
             <li key={idx} className={'option-wrapper' + ' ' + (opt === clickedOpt ? 'active' : '')}
@@ -74,11 +69,9 @@ class Selector extends React.Component {
               onMouseOver={(e) => this.handleOptionMouseOver(e, opt)}
               onMouseOut={(e) => this.handleOptionMouseOut(e, opt)}>
               <div className="option">
-                {children || (
-                  <div>Option: {
-                    <pre>{JSON.stringify(opt, null, 2)}</pre>
-                  }</div>
-                )}
+                <p>姓名：{opt.name}</p>
+                <p>地址：{opt.addr}</p>
+                <p>联系电话：{opt.phone}</p>
               </div>
               {/* opt === mouseoveredOpt */true && (<div className="opera">
                 <button className="opera-btn" onClick={this.preventE(open, 'update', opt)}>修&nbsp;改</button>
@@ -144,11 +137,9 @@ function save(mode, entry) {
   // 实际情况通常是异步操作
   if (mode === 'add') {
     add(entry)
-  }
-  else if (mode === 'update') {
+  } else if (mode === 'update') {
     update(entry.id, entry)
-  }
-  else if (mode === 'remove') {
+  } else if (mode === 'remove') {
     remove(entry.id)
   } else {
     console.warn('Unknown mode for Modal!')
@@ -175,21 +166,22 @@ let data = [
 const crud = { add, update, remove }
 const opModal = { open, close, save }
 
-const printVars = (vars) => {
-  return Object.entries(vars).map(([key, value]) => (
-  <p>{key}: {JSON.stringify(value, null, 2)}</p>))
-}
+// const printVars = (vars) => {
+//   return Object.entries(vars).map(([key, value]) => (
+//     <p>{key}: {JSON.stringify(value, null, 2)}</p>))
+// }
 
-const RootComponent = (props) => {
-  return (
-    <div>
-      {printVars({ showModal, editedEntry, loading })}
-      <Selector options={data} {...props} />
-    </div>
-  )
-}
+// const RootComponent = (props) => {
+//   return (
+//     <div>
+//       {printVars({ showModal, editedEntry, loading })}
+//       <Selector options={data} {...props} />
+//     </div>
+//   )
+// }
 
-ReactDOM.render(
- <RootComponent {...{...crud, ...opModal}} />,
-  document.getElementById('root')
-)
+// ReactDOM.render(
+//  <RootComponent {...{...crud, ...opModal}} />,
+//   document.getElementById('root')
+// )
+export default Selector
