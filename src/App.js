@@ -55,7 +55,6 @@ class App extends ItemList {
       ...this.state,
       cart: this.state.itemlist,
       logined: false,
-
     }
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)

@@ -6,10 +6,9 @@ class Selector extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      options: [],
       value: undefined,
       defaultValue: undefined,
-      clickedOpt: null,
+      clickedOpt: this.props.options[0] || null,
       mouseoveredOpt: null,
       mouseoutedOpt: null,
     }
@@ -26,9 +25,13 @@ class Selector extends React.Component {
   }
 
   handleOptionClick (e, option) {
-    let clickedOpt = option
-    let value = option
-    this.setState({ clickedOpt, value })
+    this.setState({
+      clickedOpt: option,
+      value: option
+    })
+    if (this.props.onClick) {
+      this.props.onClick(option)
+    }
   }
 
   handleOptionMouseOver (e, option) {
