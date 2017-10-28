@@ -1,0 +1,33 @@
+.main-footer {
+  width: 100%;
+  background-color: #eee;
+  .wrapper {
+    padding: 30px 0;
+    background-color: #eee;
+  }
+  .menu {
+
+  }
+  .submenu {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .col-in-3 {
+    width: 33.3%;
+  }
+  .col-in-4 {
+    width: 25%;
+  }
+  .col-in-5 {
+    width: 20%;
+  }
+  .submenu-title {
+    padding-bottom: 10px;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .menu-item {
+    font-size: 12px;
+    line-height: 2;
+  }
+}

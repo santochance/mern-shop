@@ -17,6 +17,7 @@ import {
 import routes, {
   Home,
   Header,
+  Footer,
   SiteNav,
   Signin,
   ProductShow,
@@ -214,6 +215,7 @@ class App extends ItemList {
             <Route key={idx} {...route} />
           )))}
         </div>
+        <Footer />
       </div>
     )
   }
