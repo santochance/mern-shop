@@ -16,6 +16,7 @@ const Catalog = require('../models/catalog.model')
 const uploadDir = path.resolve(__dirname, '../../public/uploads/products')
 const saveImgs = require('../../src/helper/saveUploadedImages.js')
 const homeData = require('../homeData')
+const _ = require('lodash')
 
 function handleError(res, statusCode = 500) {
   return function(err) {
@@ -235,7 +236,7 @@ exports.getHomeData = function(req, res) {
   // 替换floors内items数组的product_id字符串为数据实体
   Promise.all(homeData.floors.map(floor =>
     Product.find({ _id: floor.items })
-      .then(products => (floor.items = products))
+      .then(products => (floor.items = _.shuffle(products)))
   ))
     .then(() => homeData)
     .then(respondWithResult(res))

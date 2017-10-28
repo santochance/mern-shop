@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"comp",
+				"componentWillUpdate\t Life Cycle"
+			],
+			[
 				"$or",
 				"$orderHistory-grid-hover"
 			],
@@ -94,10 +98,6 @@
 			[
 				"pla",
 				"placehoder_600x600.png\tw:600 h:600"
-			],
-			[
-				"comp",
-				"Component\tReact"
 			],
 			[
 				"somasu",
@@ -520,29 +520,28 @@
 	"buffers":
 	[
 		{
-			"contents": "/products/homeHot\n/products/homeBanner\n\n\nfloor {\n  title: '热销商品',\n  banner: ''，\n  \n}",
+			"contents": "/products/homeHot\n/products/homeBanner\n\n\nfloor {\n  title: '热销商品',\n  banner: ''，\n  \n}\n\n\n.pay-completed {\n  .main-msg {付款成功！总共花费xxx元}\n  .nav-links\n    Link{查看订单}\n    Link{继续购物}\n      返回哪里？\n      返回referrer\n      返回首页\n}\n\n\n",
 			"settings":
 			{
-				"buffer_size": 84,
+				"buffer_size": 219,
 				"line_ending": "Windows",
 				"name": "/products/homeHot"
 			}
 		},
 		{
-			"file": "server/server.routes.js",
+			"file": "src/components/PayCompleted/PayCompleted.scss",
 			"settings":
 			{
-				"buffer_size": 3364,
+				"buffer_size": 513,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/App.js",
+			"file": "src/components/PayPrompt/PayPrompt.scss",
 			"settings":
 			{
-				"buffer_size": 5060,
-				"encoding": "UTF-8",
+				"buffer_size": 2418,
 				"line_ending": "Windows"
 			}
 		},
@@ -556,19 +555,10 @@
 			}
 		},
 		{
-			"file": "src/components/CartDetails/CartDetails.scss",
-			"settings":
-			{
-				"buffer_size": 3228,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "server/controllers/order.controller.js",
 			"settings":
 			{
-				"buffer_size": 2870,
+				"buffer_size": 3347,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -577,42 +567,8 @@
 			"file": "exp/repl_test_db.js",
 			"settings":
 			{
-				"buffer_size": 1097,
+				"buffer_size": 1111,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/models/order.model.js",
-			"settings":
-			{
-				"buffer_size": 2633,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/user.server.controller.js",
-			"settings":
-			{
-				"buffer_size": 4237,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/PayPrompt/PayPrompt.js",
-			"settings":
-			{
-				"buffer_size": 3455,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/public.js",
-			"settings":
-			{
-				"buffer_size": 590,
 				"line_ending": "Windows"
 			}
 		},
@@ -626,10 +582,36 @@
 			}
 		},
 		{
-			"file": "src/components/Header/CartItem.scss",
+			"file": "src/components/PayCompleted/PayCompleted.js",
 			"settings":
 			{
-				"buffer_size": 1469,
+				"buffer_size": 739,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/config/express.js",
+			"settings":
+			{
+				"buffer_size": 1779,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/static/js/awesome.js",
+			"settings":
+			{
+				"buffer_size": 14095,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/PayPrompt/PayPrompt.js",
+			"settings":
+			{
+				"buffer_size": 6175,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -641,6 +623,33 @@
 				"buffer_size": 163,
 				"line_ending": "Windows",
 				"name": "// 编写ConfirmOrder的想法"
+			}
+		},
+		{
+			"file": "src/App.js",
+			"settings":
+			{
+				"buffer_size": 5134,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/homeData.js",
+			"settings":
+			{
+				"buffer_size": 956,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "server/server.routes.js",
+			"settings":
+			{
+				"buffer_size": 3468,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -662,19 +671,37 @@
 			}
 		},
 		{
-			"contents": "// order创建数据实体后\n// 马上进行查询\n// 返回查询结果\n\n// 客户端接收到刚刚提交的订单数据\n// 显示PayPrompt\n// 用户支付订单\n// 客户端调用'order/pay'\n\norder/pay\n\n{\n  payType: '',\n  status : 'paied',\n\n}\n\n",
+			"contents": "// order创建数据实体后\n// 马上进行查询\n// 返回查询结果\n\n// 客户端接收到刚刚提交的订单数据\n// 显示PayPrompt\n// 用户支付订单\n// 客户端调用'order/pay'\n\norder/pay\n\n{\n  payType: '',\n  status : 'paied',\n\n}\n\n订单状态\n  []\n\n\n// 表单验证\n// 提示信息\n\nmsg\n\nvalidate(e)\n  e.preventDefault()\n  if (!payType) {\n    return sendMsg('请选择一个支付方式')\n  }\n  return toPay()\n\nvalidate()\nsendMsg\ntoPay()\n\n\n\n\n",
 			"settings":
 			{
-				"buffer_size": 154,
+				"buffer_size": 324,
 				"line_ending": "Windows",
 				"name": "// order创建数据实体后"
+			}
+		},
+		{
+			"contents": "合并支付页面\n\n当前已经是合并支付页面\n\n",
+			"settings":
+			{
+				"buffer_size": 21,
+				"line_ending": "Windows",
+				"name": "合并支付页面"
 			}
 		},
 		{
 			"file": "src/routes.js",
 			"settings":
 			{
-				"buffer_size": 2279,
+				"buffer_size": 2360,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/all-index.js",
+			"settings":
+			{
+				"buffer_size": 1704,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -706,15 +733,6 @@
 			}
 		},
 		{
-			"file": "src/all-index.js",
-			"settings":
-			{
-				"buffer_size": 1636,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "src/assets/style/bootstrap-source/bootstrap/_variables.scss",
 			"settings":
 			{
@@ -724,19 +742,47 @@
 			}
 		},
 		{
-			"file": "src/assets/style/bootstrap-source/_bootstrap.scss",
+			"contents": "banner {\n  \n}\n\nhome\n\nfirstScreen\n\n\n一个hot\n两个floor\n\n{\n  hot: [\n    {},\n    {},\n    {},\n    {},\n  ],\n  floors: [\n    // 每组10个商品\n    [],\n    [],\n  ]\n}\n\n",
 			"settings":
 			{
-				"buffer_size": 1508,
+				"buffer_size": 148,
+				"line_ending": "Windows",
+				"name": "banner {"
+			}
+		},
+		{
+			"contents": "// gallery\n\nsrc=\"(?:http[s]?:)?(?://)?(.*?\\.(?:jpg|jpeg|png))\"\n\n// particulars\n\nurl\\(['\"]?(?:http[s]?:)?(?://)?(.*?\\.(?:jpg|jpeg|png))\n\n\n",
+			"settings":
+			{
+				"buffer_size": 137,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/assets/style/bootstrap-source/bootstrap/_buttons.scss",
+			"contents": "<ul class=\"lh\" style=\"position: absolute; width: 608px; height: 58px; top: 0px; left: 0px;\">                                        <l class=\"img-hover\"><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\" data-url=\"jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\" data-url=\"jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\" data-url=\"jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\" data-url=\"jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\" data-url=\"jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\" data-url=\"jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\" data-url=\"jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\" data-url=\"jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                                            </ul>",
 			"settings":
 			{
-				"buffer_size": 3819,
-				"line_ending": "Unix"
+				"buffer_size": 3152,
+				"line_ending": "Windows",
+				"name": "<ul class=\"lh\" style=\"position: absolute; width: 6"
+			}
+		},
+		{
+			"contents": "// gallery\n\nimg13.360buyimg.com/n5/s54x54_jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\n\n// paticulars\n\nimg30.360buyimg.com/sku/jfs/t6052/344/8309590706/302614/e4c330da/5987ec04Nd89748b4.jpg\nimg30.360buyimg.com/sku/jfs/t6079/13/8271900227/290027/ca623087/5987ec02N7bd84509.jpg\nimg30.360buyimg.com/sku/jfs/t4939/86/1138865972/306938/307b41f2/58eda301N42191f68.jpg\nimg30.360buyimg.com/sku/jfs/t4891/288/1172067058/294356/1bf6783e/58eda32fNd385bb90.jpg\nimg30.360buyimg.com/sku/jfs/t4417/150/3514543231/328051/6d9594c6/58ff0e78N311ed9b4.jpg\nimg30.360buyimg.com/sku/jfs/t4477/104/2320438821/307233/5e49ff5b/58eda353Ndfcb8936.jpg\nimg30.360buyimg.com/sku/jfs/t5236/209/400314023/304582/6c15b4fe/58ff0e7dNbca93ce8.jpg\nimg30.360buyimg.com/sku/jfs/t4651/343/2268651965/298442/d4fa7146/58eda37cNe7516136.jpg\nimg30.360buyimg.com/sku/jfs/t4402/344/2271257155/302716/37767693/58eda390Nf40e0ca6.jpg\nimg30.360buyimg.com/sku/jfs/t4555/3/3529138738/209496/7eb3093a/58ff0e7cN94523da9.jpg\nimg30.360buyimg.com/sku/jfs/t8200/28/463902234/262675/4829614/59a8fbb5N6d4f743d.jpg\nimg30.360buyimg.com/sku/jfs/t6907/83/1996899890/81463/a7c217b2/5987ec03Nfc5b4061.jpg\nimg30.360buyimg.com/sku/jfs/t4963/14/1161379495/301980/f5cebd2f/58eda4a7N19db9db5.jpg\nimg30.360buyimg.com/sku/jfs/t4609/194/2990933444/65799/15a60a5c/58f81f86Ne35a8b12.jpg\n\n",
+			"settings":
+			{
+				"buffer_size": 1972,
+				"line_ending": "Windows",
+				"name": "// gallery"
+			}
+		},
+		{
+			"contents": "/*C-B*/\n\n.ssd-module-wrap {width: 750px; margin: 0 auto; position: relative; text-align: left; background-color: #ffffff; }\n.ssd-module-wrap .ssd-module,.ssd-module-wrap .ssd-module-heading{ width: 750px; position:relative; overflow: hidden;  }\n.ssd-module{background-repeat:no-repeat; background-position:left center; background-size:100% 100%;}\n.ssd-module .ssd-widget-pic,.ssd-module .ssd-widget-text,.ssd-module .ssd-widget-line,.ssd-module-wrap .ssd-widget-rectangle,.ssd-module-wrap .ssd-widget-circle,.ssd-module-wrap .ssd-widget-triangle,.ssd-module-wrap .ssd-widget-table{ position: absolute; overflow: hidden; }\n.ssd-module-wrap .ssd-widget-table th,.ssd-module-wrap .ssd-widget-table td{position:relative;}\n.ssd-module .ssd-widget-pic img{display: block; width:100%; height:100% }\n.ssd-module .ssd-widget-text{ position: absolute; overflow: hidden;}\n.ssd-module .ssd-widget-text span{display:block;overflow:hidden; width:100%;  height:100%; padding:0; margin: 0; word-break:break-all; word-wrap:break-word; white-space:normal;}\n.ssd-module .ssd-widget-link{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: transparent;z-index:100 }\n.ssd-module-wrap .ssd-widget-text{ line-height: 1.5; }\n.ssd-module-wrap .ssd-cell-text{position:absolute;top:0;left:0;right:0;width: 100%;height: 100%;overflow: auto;}\n.ssd-module-heading{background-repeat:no-repeat; background-position:left center; background-size:100% 100%; }\n.ssd-module-heading .ssd-module-heading-layout{display:inline-block;}\n.ssd-module-heading .ssd-widget-heading-ch{float: left;display: inline-block;margin-left: 15px; margin-right:6px; height: 100%;}\n.ssd-module-heading .ssd-widget-heading-en{float: left;display: inline-block;margin-left: 6px; margin-right:15px; height: 100%;}\n.ssd-module-wrap .ssd-widget-rectangle{box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}\n/*C-E*/.ssd-module-wrap .M14933705251261{height:828px; width:750px; background-color:#fbdcd1; background-image:url(https://img30.360buyimg.com/sku/jfs/t6052/344/8309590706/302614/e4c330da/5987ec04Nd89748b4.jpg)}\n.ssd-module-wrap .M14933705252622{height:987px; width:750px; background-color:#e3ddee; background-image:url(https://img30.360buyimg.com/sku/jfs/t6079/13/8271900227/290027/ca623087/5987ec02N7bd84509.jpg)}\n.ssd-module-wrap .M14933705253423{height:942px; width:750px; background-color:#fef2e1; background-image:url(//img30.360buyimg.com/sku/jfs/t4939/86/1138865972/306938/307b41f2/58eda301N42191f68.jpg)}\n.ssd-module-wrap .M14933705254154{height:664px; width:750px; background-color:#e3ddee; background-image:url(//img30.360buyimg.com/sku/jfs/t4891/288/1172067058/294356/1bf6783e/58eda32fNd385bb90.jpg)}\n.ssd-module-wrap .M14933705255055{height:801px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4417/150/3514543231/328051/6d9594c6/58ff0e78N311ed9b4.jpg)}\n.ssd-module-wrap .M14933705255846{height:560px; width:750px; background-color:#ceb8d9; background-image:url(//img30.360buyimg.com/sku/jfs/t4477/104/2320438821/307233/5e49ff5b/58eda353Ndfcb8936.jpg)}\n.ssd-module-wrap .M14933705256647{height:807px; width:750px; background-color:#f9e2b1; background-image:url(//img30.360buyimg.com/sku/jfs/t5236/209/400314023/304582/6c15b4fe/58ff0e7dNbca93ce8.jpg)}\n.ssd-module-wrap .M14933705257558{height:834px; width:750px; background-color:#ceb8d9; background-image:url(//img30.360buyimg.com/sku/jfs/t4651/343/2268651965/298442/d4fa7146/58eda37cNe7516136.jpg)}\n.ssd-module-wrap .M14933705258569{height:851px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4402/344/2271257155/302716/37767693/58eda390Nf40e0ca6.jpg)}\n.ssd-module-wrap .M149337052596110{height:556px; width:750px; background-color:#f9e2b1; background-image:url(//img30.360buyimg.com/sku/jfs/t4555/3/3529138738/209496/7eb3093a/58ff0e7cN94523da9.jpg)}\n.ssd-module-wrap .M149337052606011{height:804px; width:750px; background-color:#a7d7e8; background-image:url(https://img30.360buyimg.com/sku/jfs/t8200/28/463902234/262675/4829614/59a8fbb5N6d4f743d.jpg)}\n.ssd-module-wrap .M149337052618712{height:788px; width:750px; background-color:#c9e4d9; background-image:url(https://img30.360buyimg.com/sku/jfs/t6907/83/1996899890/81463/a7c217b2/5987ec03Nfc5b4061.jpg)}\n.ssd-module-wrap .M149337052634013{height:737px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4963/14/1161379495/301980/f5cebd2f/58eda4a7N19db9db5.jpg)}\n.ssd-module-wrap .M149337052645314{height:208px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4609/194/2990933444/65799/15a60a5c/58f81f86Ne35a8b12.jpg)}\n",
+			"settings":
+			{
+				"buffer_size": 4711,
+				"line_ending": "Windows",
+				"name": "/*C-B*/"
 			}
 		}
 	],
@@ -763,13 +809,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 298.0,
-		"last_filter": "",
+		"height": 94.0,
+		"last_filter": "ssjsb",
 		"selected_items":
 		[
 			[
 				"ssjsb",
 				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"ssjs",
+				"Set Syntax: JavaScript (Rails)"
 			],
 			[
 				"sssass",
@@ -810,10 +860,6 @@
 			[
 				"delete",
 				"File: Delete"
-			],
-			[
-				"ssjs",
-				"Set Syntax: JavaScript (Rails)"
 			],
 			[
 				"sass",
@@ -1104,7 +1150,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 528.0
+		"width": 487.0
 	},
 	"console":
 	{
@@ -1131,6 +1177,26 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/_bootstrap.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/bootstrap/_buttons.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/braintree/braintree.controller.js",
+		"/C/Users/Vincent/Desktop/products/New folder/5005885.md",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/CartItem.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayCompleted/PayCompleted.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/public.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/user.server.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/repl_test_db.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/repl_test_db.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/mongoose.js",
@@ -1155,13 +1221,10 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductShow.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/Header.js",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/public.js",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/CartItem.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartSummary.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/App.vue",
@@ -1175,7 +1238,6 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/all-index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/public/index.html",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/registerServiceWorker.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/build/index.html",
@@ -1188,7 +1250,6 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_vars.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/bootstrap/_buttons.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/Header.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_skin.sass",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/package.json",
@@ -1199,24 +1260,17 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.css",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Checkout/checkout.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/_bootstrap.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_basic.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Playground/Playground.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_mixin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/order.model.test.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/products数据备份.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartItem.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartFooter.scss",
@@ -1246,19 +1300,11 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/sass/main.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/CartDetails.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/products数据备份.json",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/E-commerce/README.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductList.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductItem.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/join_arr.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/tmp_seed_data_shells.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/test_models/test.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCart.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/TestCart.scss"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductItem.js"
 	],
 	"find":
 	{
@@ -1300,6 +1346,22 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"(\\w+)",
+			"//",
+			"https:",
+			"(?<=url\\().*(?=\\))",
+			"//img30.360buyimg.com/sku/jfs/t4786/242/2514449105/93057/8427dc26/59019e99N5a0700a2.jpg",
+			"//img30.360buyimg.com/sku/jfs/t5152/273/522940990/186156/264e2fb4/59019e9cNf3e4c9fe.jpg",
+			"(?<=url\\().*(?=\\))",
+			"https:.*(?=\\))",
+			"props.location",
+			"props",
+			"paymentTotal",
+			"'",
+			"orders",
+			"payType",
+			"\"type-item\"",
+			"Option",
 			"required",
 			"this.props",
 			"this.history",
@@ -1411,30 +1473,16 @@
 			"ControlLabel",
 			"'",
 			"devindex",
-			"Form",
-			"span",
-			"100px",
-			"align-item",
-			"div",
-			"Link",
-			"slide.src",
-			"clearfix",
-			"fl",
-			".\\fl",
-			"include",
-			"+    ",
-			"    \"",
-			"+    ",
-			"import (\\w+)",
-			"import",
-			"import (\\w+)"
+			"Form"
 		],
 		"highlight": true,
-		"in_selection": false,
+		"in_selection": true,
 		"preserve_case": false,
 		"regex": true,
 		"replace_history":
 		[
+			"'$1',",
+			"'$1'",
 			"$1ObjectId($2)",
 			"/products/$1/01.jpg",
 			"$1",
@@ -1500,7 +1548,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1508,15 +1556,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 84,
+						"buffer_size": 219,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								84,
-								84
+								144,
+								144
 							]
 						],
 						"settings":
@@ -1603,24 +1651,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "server/server.routes.js",
+					"file": "src/components/PayCompleted/PayCompleted.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3364,
+						"buffer_size": 513,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2802,
-								2802
+								58,
+								58
 							]
 						],
 						"settings":
@@ -1630,27 +1678,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										2809,
-										2810
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/round_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										2797,
-										2798
-									]
 								},
 								"unmatched":
 								{
@@ -1714,32 +1747,32 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2360.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "src/App.js",
+					"file": "src/components/PayPrompt/PayPrompt.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5060,
+						"buffer_size": 2418,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3167,
-								3167
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1749,27 +1782,12 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										3174,
-										3175
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										3108,
-										3109
-									]
 								},
 								"unmatched":
 								{
@@ -1834,21 +1852,21 @@
 								"bh_default_content"
 							],
 							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2728.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 20,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
@@ -1949,131 +1967,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 629.0,
+						"translation.y": 269.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "src/components/CartDetails/CartDetails.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3228,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3228,
-								3228
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3317.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "server/controllers/order.controller.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2870,
+						"buffer_size": 3347,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1963,
-								1963
+								3206,
+								3206
 							]
 						],
 						"settings":
@@ -2085,8 +1999,8 @@
 								{
 									"1":
 									[
-										2031,
-										2032
+										563,
+										564
 									]
 								},
 								"icon":
@@ -2101,8 +2015,8 @@
 								{
 									"1":
 									[
-										1175,
-										1176
+										424,
+										425
 									]
 								},
 								"unmatched":
@@ -2167,32 +2081,151 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
+							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1340.0,
+						"translation.y": 1226.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "exp/repl_test_db.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1097,
+						"buffer_size": 1111,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51,
-								51
+								381,
+								381
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										405,
+										406
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										370,
+										371
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 138.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 27,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
 							]
 						],
 						"settings":
@@ -2208,6 +2241,125 @@
 								},
 								"open":
 								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/components/PayCompleted/PayCompleted.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								451,
+								451
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										706,
+										707
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										310,
+										311
+									]
 								},
 								"unmatched":
 								{
@@ -2277,135 +2429,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "server/models/order.model.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2633,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								156,
-								156
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										182,
-										183
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										153,
-										154
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "server/user.server.controller.js",
+					"file": "server/config/express.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4237,
+						"buffer_size": 1779,
 						"regions":
 						{
 						},
@@ -2512,27 +2545,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 800.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "src/components/PayPrompt/PayPrompt.js",
+					"file": "/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/static/js/awesome.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3455,
+						"buffer_size": 14095,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								120,
-								120
+								2333,
+								2333
 							]
 						],
 						"settings":
@@ -2544,8 +2577,8 @@
 								{
 									"1":
 									[
-										3427,
-										3428
+										2332,
+										2333
 									]
 								},
 								"icon":
@@ -2560,12 +2593,121 @@
 								{
 									"1":
 									[
-										118,
-										119
+										2276,
+										2277
 									]
 								},
 								"unmatched":
 								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1516.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/components/PayPrompt/PayPrompt.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1680,
+								1680
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										1576,
+										1577
+									]
 								}
 							},
 							"bracket_highlighter.regions":
@@ -2632,347 +2774,20 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 622.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/public.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 590,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3608,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "src/components/Header/CartItem.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1469,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								405,
-								405
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										413,
-										414
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										364,
-										365
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
+					"stack_index": 17,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 4,
+			"selected": 2,
 			"sheets":
 			[
 				{
-					"buffer": 13,
+					"buffer": 11,
 					"semi_transient": false,
 					"settings":
 					{
@@ -3071,24 +2886,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 32,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 12,
 					"file": "src/App.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5060,
+						"buffer_size": 5134,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4683,
-								4683
+								5044,
+								5044
 							]
 						],
 						"settings":
@@ -3100,15 +2915,15 @@
 								{
 									"1":
 									[
-										3174,
-										3175
+										5098,
+										5099
 									]
 								},
 								"icon":
 								{
 									"1":
 									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"Packages/BracketHighlighter/icons/round_bracket.png",
 										"brackethighlighter.default"
 									]
 								},
@@ -3116,8 +2931,8 @@
 								{
 									"1":
 									[
-										3108,
-										3109
+										5043,
+										5044
 									]
 								},
 								"unmatched":
@@ -3188,14 +3003,250 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 68520.0,
+						"translation.y": 3766.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "server/homeData.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 956,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								90,
+								90
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										93,
+										94
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										88,
+										89
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 17.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 14,
+					"file": "server/server.routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1894,
+								1894
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3466,
+										3467
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										672,
+										673
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"file": "src/assets/style/_basic.scss",
 					"semi_transient": false,
 					"settings":
@@ -3311,11 +3362,11 @@
 						"translation.y": 123.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 16,
 					"file": "src/components/index.js",
 					"semi_transient": false,
 					"settings":
@@ -3413,23 +3464,23 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 17,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 154,
+						"buffer_size": 324,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								35,
-								35
+								292,
+								292
 							]
 						],
 						"settings":
@@ -3513,27 +3564,167 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 383.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "src/components/PayPrompt/PayPrompt.js",
+					"buffer": 18,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3455,
+						"buffer_size": 21,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								120,
-								120
+								21,
+								21
+							]
+						],
+						"settings":
+						{
+							"auto_name": "合并支付页面",
+							"bracket_highlighter.busy": false,
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/components/PayPrompt/PayPrompt.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6175,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6149,
+								6149
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+									"1":
+									[
+										1576,
+										1577
+									]
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "src/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2360,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1486,
+								1486
 							]
 						],
 						"settings":
@@ -3545,8 +3736,8 @@
 								{
 									"1":
 									[
-										3427,
-										3428
+										1489,
+										1490
 									]
 								},
 								"icon":
@@ -3561,8 +3752,8 @@
 								{
 									"1":
 									[
-										118,
-										119
+										1428,
+										1429
 									]
 								},
 								"unmatched":
@@ -3633,27 +3824,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1485.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 21,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "src/routes.js",
+					"buffer": 20,
+					"file": "src/all-index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2279,
+						"buffer_size": 1704,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1404,
-								1404
+								861,
+								861
 							]
 						],
 						"settings":
@@ -3665,8 +3856,8 @@
 								{
 									"1":
 									[
-										1407,
-										1408
+										89,
+										90
 									]
 								},
 								"icon":
@@ -3681,8 +3872,8 @@
 								{
 									"1":
 									[
-										1334,
-										1335
+										71,
+										72
 									]
 								},
 								"unmatched":
@@ -3747,19 +3938,18 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1500.0,
+						"translation.y": 206.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 21,
 					"file": "src/components/CardGrid/CardGrid.scss",
 					"semi_transient": false,
 					"settings":
@@ -3860,11 +4050,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 22,
 					"file": "src/assets/style/index.scss",
 					"semi_transient": false,
 					"settings":
@@ -3962,17 +4152,17 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 31,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 5,
+			"selected": 7,
 			"sheets":
 			[
 				{
-					"buffer": 20,
+					"buffer": 23,
 					"file": "src/assets/style/_vars.scss",
 					"semi_transient": false,
 					"settings":
@@ -4068,14 +4258,14 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 588.0,
+						"translation.y": 102.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 22,
 					"file": "src/assets/style/index.scss",
 					"semi_transient": false,
 					"settings":
@@ -4173,16 +4363,16 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 20,
 					"file": "src/all-index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1636,
+						"buffer_size": 1704,
 						"regions":
 						{
 						},
@@ -4291,11 +4481,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 24,
 					"file": "src/assets/style/bootstrap-source/bootstrap/_variables.scss",
 					"semi_transient": false,
 					"settings":
@@ -4390,27 +4580,129 @@
 							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 4791.0,
+						"translation.y": 598.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
-					"file": "src/assets/style/bootstrap-source/_bootstrap.scss",
+					"buffer": 25,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1508,
+						"buffer_size": 148,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								248,
-								248
+								32,
+								32
+							]
+						],
+						"settings":
+						{
+							"auto_name": "banner {",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 26,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 137,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10,
+								10
 							]
 						],
 						"settings":
@@ -4489,61 +4781,45 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"syntax": "Packages/Regular Expressions/RegExp.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 140.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
-					"file": "src/assets/style/bootstrap-source/bootstrap/_buttons.scss",
+					"buffer": 27,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3819,
+						"buffer_size": 3152,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2339,
-								2345
+								527,
+								527
 							]
 						],
 						"settings":
 						{
+							"auto_name": "<ul class=\"lh\" style=\"position: absolute; width: 6",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
 								"close":
 								{
-									"1":
-									[
-										2347,
-										2348
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/square_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										2338,
-										2339
-									]
 								},
 								"unmatched":
 								{
@@ -4607,15 +4883,217 @@
 								"bh_default_close",
 								"bh_default_content"
 							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 597.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1972,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								966,
+								966
+							]
+						],
+						"settings":
+						{
+							"auto_name": "// gallery",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 624.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4711,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2001,
+								2001
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/*C-B*/",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 526.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -4623,7 +5101,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 30.0
 	},
 	"input":
 	{
@@ -4661,13 +5139,13 @@
 		"cols":
 		[
 			0.0,
-			0.473645798371,
+			0.35,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.927431059507,
+			0.133435582822,
 			1.0
 		]
 	},
@@ -4688,7 +5166,7 @@
 	"project": "quick-react-app.sublime-project",
 	"replace":
 	{
-		"height": 96.0
+		"height": 92.0
 	},
 	"save_all_on_build": false,
 	"select_file":
@@ -4697,6 +5175,90 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"server.routes.js",
+				"quick-react-app\\server\\server.routes.js"
+			],
+			[
+				"server.js",
+				"quick-react-app\\server\\server.js"
+			],
+			[
+				"product.controller.js",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"controller.js",
+				"quick-react-app\\server\\braintree\\braintree.controller.js"
+			],
+			[
+				"exrp",
+				"quick-react-app\\server\\config\\express.js"
+			],
+			[
+				"paypro",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
+			],
+			[
+				"payc",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.scss"
+			],
+			[
+				"allindex.js",
+				"quick-react-app\\src\\all-index.js"
+			],
+			[
+				"prompt.",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
+			],
+			[
+				"order.model.js",
+				"quick-react-app\\server\\models\\order.model.js"
+			],
+			[
+				"ordercontroller.js",
+				"quick-react-app\\server\\controllers\\order.controller.js"
+			],
+			[
+				"productcontroll.js",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"routes.js",
+				"quick-react-app\\src\\routes.js"
+			],
+			[
+				"repl",
+				"quick-react-app\\exp\\repl_test_db.js"
+			],
+			[
+				"product.con",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"order.controller.js",
+				"quick-react-app\\server\\controllers\\order.controller.js"
+			],
+			[
+				"",
+				"quick-react-app\\server\\models\\order.model.js"
+			],
+			[
+				"payprompt.scss",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.scss"
+			],
+			[
+				"sortbar.js",
+				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.js"
+			],
+			[
+				"app.js",
+				"quick-react-app\\src\\App.js"
+			],
+			[
+				"payprompt.js",
+				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
+			],
 			[
 				"productmodel.js",
 				"quick-react-app\\server\\models\\product.model.js"
@@ -4718,14 +5280,6 @@
 				"quick-react-app\\server\\config\\mongoose.js"
 			],
 			[
-				"",
-				"quick-react-app\\src\\App.js"
-			],
-			[
-				"order.model.js",
-				"quick-react-app\\server\\models\\order.model.js"
-			],
-			[
 				"payp.js",
 				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
 			],
@@ -4740,14 +5294,6 @@
 			[
 				"payprompt",
 				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
-			],
-			[
-				"routes.js",
-				"quick-react-app\\src\\routes.js"
-			],
-			[
-				"app.js",
-				"quick-react-app\\src\\App.js"
 			],
 			[
 				"orde.controller.js",
@@ -4986,20 +5532,12 @@
 				"quick-react-app\\package.json"
 			],
 			[
-				"server.js",
-				"quick-react-app\\server\\server.js"
-			],
-			[
 				"mongoose.js",
 				"quick-react-app\\server\\config\\mongoose.js"
 			],
 			[
 				"ordermodel",
 				"quick-react-app\\server\\models\\order.model.js"
-			],
-			[
-				"order.controller.js",
-				"quick-react-app\\server\\controllers\\order.controller.js"
 			],
 			[
 				"compconfirmorder.js",
@@ -5062,10 +5600,6 @@
 				"quick-react-app\\src\\components\\Playground\\Playground.js"
 			],
 			[
-				"allindex.js",
-				"quick-react-app\\src\\all-index.js"
-			],
-			[
 				"compcart.css",
 				"quick-react-app\\src\\components\\CartDetails\\CartDetails.css"
 			],
@@ -5094,10 +5628,6 @@
 				"quick-react-app\\scratch\\join_arr.js"
 			],
 			[
-				"product.controller.js",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
 				"productitem.js",
 				"quick-react-app\\src\\components\\ProductShowcase\\ProductItem.js"
 			],
@@ -5108,10 +5638,6 @@
 			[
 				"sortbar.css",
 				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.css"
-			],
-			[
-				"sortbar.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.js"
 			],
 			[
 				"productlist.css",
@@ -5160,54 +5686,6 @@
 			[
 				"componentorder",
 				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
-			],
-			[
-				"componentsindex",
-				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"usercenter.css",
-				"quick-react-app\\src\\components\\UserCenter\\UserCenter.css"
-			],
-			[
-				"over",
-				"quick-react-app\\config-overrides.js"
-			],
-			[
-				"/.gi",
-				"quick-react-app\\.gitignore"
-			],
-			[
-				"style",
-				"quick-react-app\\src\\assets\\style\\_utilities.scss"
-			],
-			[
-				"compconfirmscss",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
-			],
-			[
-				"skin.scss",
-				"quick-react-app\\src\\assets\\style\\_skin.scss"
-			],
-			[
-				"mixin",
-				"quick-react-app\\src\\assets\\style\\_mixin.scss"
-			],
-			[
-				"compconrior.js",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
-			],
-			[
-				"confirmorder2.scss",
-				"quick-react-app\\scratch\\@trash\\ConfirmOrder2.scss"
-			],
-			[
-				"compconfirorscss",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
-			],
-			[
-				"confirmord2scss",
-				"quick-react-app\\src\\scss\\ConfirmOrder2.scss"
 			]
 		],
 		"width": 0.0
@@ -5242,7 +5720,7 @@
 		],
 		"width": 392.0
 	},
-	"selected_group": 1,
+	"selected_group": 3,
 	"settings":
 	{
 	},
