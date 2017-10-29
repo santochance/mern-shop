@@ -163,7 +163,7 @@ class ItemList extends React.Component {
         order.children.some(item => {
           // 找到所属item
           if (item.content._id === product._id) {
-            this.updateItem(item, item.amount + amount, checked)
+            this.updateItem(item, parseInt(item.amount) + parseInt(amount), checked)
             return true
           }
         }) || (

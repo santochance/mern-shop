@@ -43,7 +43,8 @@ class ProductDetails extends React.Component {
     }
   }
   render() {
-    let { product } = this.state
+    let { app } = this.props
+    let { product, selected: { amount } } = this.state
     return (
       <div className="product-details-page wrapper">
         <div className="product-intro">
@@ -66,7 +67,7 @@ class ProductDetails extends React.Component {
                 <span className="symbol">￥</span>
                 <span className="num">{product.price}</span>
               </span>
-              <span className="old-price">
+              <span className="old-price" style={{ marginLeft: 5 }}>
                 <span className="symbol">￥</span>
                 <span className="num">{product.oldPrice}</span>
               </span>
@@ -84,12 +85,15 @@ class ProductDetails extends React.Component {
             <div className="product-choice">
               <div className="choice-amount">
                 数量：
-                <input type="number" name="" id="" value="30" />
+                <input type="number" name="" id="" value={amount} onChange={(e) => this.setState({selected: {...this.state.selected, amount: e.target.value}})} />
               </div>
             </div>
             <div className="product-op">
               <button className="btn btn-default">现在购买</button>
-              <button className="btn btn-primary">加入购物车</button>
+              <button className="btn btn-primary" onClick={() => {
+                app.addToCart(product, this.state.selected.amount)
+                this.setState({selected: {...this.state.selected, amount: 1}})
+              }}>加入购物车</button>
             </div>
           </div>
         </div>
