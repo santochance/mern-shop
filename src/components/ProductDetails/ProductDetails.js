@@ -1,5 +1,19 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './ProductDetails.css'
+
+let mockSmUrls = [
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cffN1895dfb7.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cfeN2c6e1503.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70d07N107d1a33.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cccNb4839a6e.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN5f8ed177.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN1968739b.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccaN22997367.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cc7N85cd9b4d.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cbdN10574a08.jpg',
+]
+let mockMdUrls = mockSmUrls.map(url => url.replace('list', 'preview'))
 
 class ProductDetails extends React.Component {
   constructor(props) {
@@ -45,11 +59,12 @@ class ProductDetails extends React.Component {
   render() {
     let { app } = this.props
     let { product, selected: { amount } } = this.state
+
     return (
       <div className="product-details-page wrapper">
         <div className="product-intro">
-          <div className="left">
-            图片预览
+          <div className="product-preview left">
+            <Gallery smUrls={mockSmUrls} mdUrls={mockMdUrls} />
           </div>
           <div className="right">
             <div className="product-header">
@@ -128,36 +143,52 @@ const DetailContent = ({ content }) => {
     </div>
   )
 }
+DetailContent.propTypes = {
+  content: PropTypes.array
+}
 
-// class Gallery extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {}
-//   }
-//   render() {
-//     let imgPath = '/product_images/:size/:id/:base'
-//     let picList = []
-//     return (
-//       <div className="gallery">
-//         <div className="gallery-wrap">
-//           <div className="pic-preview">
-//             <img src="" alt=""/>
-//           </div>
-//           <div className="pic-list">
-//             <a href="" className="pic-prev">>&lt;</a>
-//             <a href="" className="pic-next">&gt;</a>
-//             <ul className="pic-items">
-//               {picList.map((pic, idx) => (
-//                 <li key={idx} className="pic-item">
-//                   <img src={replacePath(imgPath, {size: 'list'})} alt=""/>
-//                 </li>
-//              ))}
-//             </ul>
-//           </div>
-//         </div>
-//       </div>
-//     )
-//   }
-// }
+class Gallery extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeKey: '0',
+    }
+  }
+  render() {
+    let { smUrls, mdUrls } = this.props
+    let { activeKey } = this.state
+
+    if (!(smUrls && smUrls.length)) {
+      return (<p>此商品还没有添加图片！</p>)
+    }
+    return (
+      <div className="gallery">
+        <div className="gallery-wrap">
+          <div className="pic-preview">
+            <img src={mdUrls[activeKey]} alt=""/>
+          </div>
+          <div className="pic-list">
+            <a href="javascript:0;" className="pic-prev"></a>
+            <a href="javascript:0;" className="pic-next"></a>
+            <div className="pic-items">
+              <ul className="items-wrap">
+                {smUrls.map((url, idx) => (
+                  <li key={idx} className="pic-item" onMouseEnter={() => { this.setState({ activeKey: idx }) }}>
+                    <img src={url} alt=""/>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div>ActiveKey: {activeKey}</div>
+        </div>
+      </div>
+    )
+  }
+}
+Gallery.propTypes = {
+  smUrls: PropTypes.array,
+  mdUrls: PropTypes.array,
+}
 
 export default ProductDetails
