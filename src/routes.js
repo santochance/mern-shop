@@ -63,6 +63,7 @@ const routes = [
   {
     path: '/product-details',
     component: ProductDetails,
+    hidden: true,
   },
   {
     path: '/product-show',

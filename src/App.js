@@ -20,6 +20,7 @@ import routes, {
   Footer,
   SiteNav,
   Signin,
+  ProductDetails,
   ProductShow,
   CartDetails,
   ConfirmOrder,
@@ -204,6 +205,9 @@ class App extends ItemList {
                 state: { from: props.location }
               }}></Redirect>
             )
+          )} />
+          <Route path="/product-details" render={props => (
+            <ProductDetails {...props} app={this} />
           )} />
           <Route path="/confirm-order" render={props => (
             <ConfirmOrder {...props} cart={cart} app={this} />
