@@ -1,7 +1,7 @@
 @import 'assets/style/mixin';
 @import 'assets/style/vars';
 
-// $useAuxiOtl: false;
+$useAuxiOtl: false;
 
 .product-details-page {
   &.wrapper {
@@ -12,7 +12,7 @@
     margin: 16px;
     display: flex;
     justify-content: space-around;
-    border: 1px solid #eee;
+    // border: 1px solid #eee;
   }
 
   .left {
@@ -29,10 +29,10 @@
   .product-header {
     padding: 6px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #bbb;
+    border-bottom: 1px solid #ddd;
     .product-name {
       // 18px
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 700;
       margin-bottom: 10px;
     }
@@ -151,7 +151,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transition: all .3s ease-in;
+    transition: all .3s ease-in-out;
     white-space: nowrap;
   }
   .pic-item {
@@ -161,7 +161,8 @@
     @include rect(58px);
     margin: 0 9px;
     border: 2px solid transparent;
-    &:hover {
+    &:hover,
+    &.active {
       border-color: $primary-color;
     }
   }

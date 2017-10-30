@@ -4,6 +4,15 @@ import './ProductDetails.css'
 
 import createManager from '../../helper/createManager'
 
+const replacePath = function (path, params) {
+  let rst = path.match(/:([^/]+)/g)
+  if (!rst) return path
+  return rst.reduce((p, token) => {
+    let key = token.slice(1)
+    return key in params ? p.replace(token, params[key]) : p
+  }, path + '')
+}
+
 let mockSmUrls = [
   '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cc7N85cd9b4d.jpg',
   '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN5f8ed177.jpg',
@@ -24,7 +33,6 @@ class ProductDetails extends React.Component {
       product: {
         title: '商品名称',
         description: 'orem ipsum dolor sit amet, consectetur adipisicing elit. Ratione aut, architecto sit nesciunt, optio ut molestias eaque deleniti molestiae...',
-        imgPath: '/product_images/:size/:id/59e70cc7N85cd9b4d.jpg',
         price: 1999,
         oldPrice: 2599,
         stocks: 130,
@@ -41,10 +49,12 @@ class ProductDetails extends React.Component {
       selected: {
         amount: 1,
       },
+      loaded: false,
     }
   }
   componentDidMount() {
-    let id = this.props.match.params['_id'] || '59f3b8913b3bf5f5c28dada2'
+    let id = this.props.match.params['id']
+    console.log('product details for:', id)
     if (id) {
       fetch(`/products/${id}`)
         .then(res => {
@@ -54,19 +64,37 @@ class ProductDetails extends React.Component {
             throw res.json()
           }
         })
-        .then(product => this.setState({ product: Object.assign({}, this.state.product, product) }))
+        .then(product => {
+          var smUrls, mdUrls
+
+          // 如果imgUrls为非空数组
+          if (product.imgUrls && product.imgUrls.length) {
+            smUrls = (product.imgUrls).map(base =>
+              replacePath(product.imgPath, { id: product._id, size: 'list', base }))
+            mdUrls = smUrls.map(url => url.replace('list', 'preview'))
+          }
+          this.setState({
+            product: Object.assign({}, this.state.product, product),
+            smUrls,
+            mdUrls,
+            loaded: true,
+          })
+        })
         .catch(console.error)
     }
   }
+
   render() {
     let { app } = this.props
     let { product, selected: { amount } } = this.state
+
+    if (!this.state.loaded) return null
 
     return (
       <div className="product-details-page wrapper">
         <div className="product-intro">
           <div className="product-preview left">
-            <Gallery smUrls={mockSmUrls} mdUrls={mockMdUrls} />
+            <Gallery smUrls={this.state.smUrls} mdUrls={this.state.mdUrls} />
           </div>
           <div className="right">
             <div className="product-header">
@@ -138,7 +166,7 @@ const DetailContent = ({ content }) => {
   return (
     <div className="detail-content">
       {content.map((pic, idx) => (
-        <div className="item">
+        <div key={idx} className="item">
           <img src={pic} alt="" style={{ width: '100%' }} />
         </div>
       ))}
@@ -153,16 +181,21 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeKey: '0',
+      activeKey: 0,
       listTransX: 0,
       step: 76, /* 每个item的width + gutter, 此处是58, 18 */
       debug: false,
     }
-    // 添加Gallery的list index管理器
-    this.mgr = createManager({
-      total: this.props.smUrls.length, /* 图片list的items数量 */
-      size: 5
-    })
+
+  }
+  componentWillReceiveProps(nextProps) {
+    if (!this.mgr && nextProps.smUrls) {
+      // 添加Gallery的list index管理器
+      this.mgr = createManager({
+        total: nextProps.smUrls.length, /* 图片list的items数量 */
+        size: 5
+      })
+    }
   }
 
   changeListIndex(mode) {
@@ -191,7 +224,7 @@ class Gallery extends React.Component {
             <div className="pic-items">
               <ul className="items-wrap" style={{ transform: `translateX(${listTransX}px)` }}>
                 {smUrls.map((url, idx) => (
-                  <li key={idx} className="pic-item" onMouseEnter={() => { this.setState({ activeKey: idx }) }}>
+                  <li key={idx} className={'pic-item' + (activeKey === idx ? ' active' : '')} onMouseEnter={() => { this.setState({ activeKey: idx }) }}>
                     <img src={url} alt=""/>
                   </li>
                 ))}
