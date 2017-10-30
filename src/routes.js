@@ -44,24 +44,24 @@ const routes = [
     hidden: true,
   },
   {
-    path: '/login',
-    component: Login,
-  },
-  {
     path: '/signin',
     component: Signin,
     hidden: true,
+  },
+  {
+    path: '/signup_0',
+    component: Signup2,
+  },
+  {
+    path: '/login',
+    component: Login,
   },
   {
     path: '/signup',
     component: Signup,
   },
   {
-    path: '/signup2',
-    component: Signup2,
-  },
-  {
-    path: '/product-details/dev',
+    path: '/product-details',
     component: ProductDetails,
     hidden: true,
   },

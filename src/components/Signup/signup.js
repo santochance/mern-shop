@@ -1,5 +1,11 @@
+/*
+  Ant Design 版本
+ */
+
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox } from 'antd'
+import { Link } from 'react-router-dom'
+
 const FormItem = Form.Item
 
 class NormalSignupForm extends React.Component {
@@ -49,7 +55,7 @@ class NormalSignupForm extends React.Component {
             注册
           </Button>
           <div style={{ float: 'right', lineHeight: '28px' }}>
-            我已有账号, <a href="">前往登录</a>
+            我已有账号, <Link to="/login">前往登录</Link>
           </div>
         </div>
       </Form>
@@ -62,7 +68,7 @@ const WrappedNormalSignForm = Form.create()(NormalSignupForm)
 const Signup = (props) => {
 
   return (
-    <div style={{ width: 360, margin: 'auto', marginTop: 150 }}>
+    <div style={{ width: 340, margin: 'auto', marginTop: 150 }}>
       <WrappedNormalSignForm />
     </div>
   )

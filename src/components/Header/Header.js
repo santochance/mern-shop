@@ -12,11 +12,11 @@ const Header = ({ logined, cart, app }) => {
       <div className="wrapper">
         <div className="left-box">
           <div className="nav-brand">
-            <Link to="/">
-              <h1 className="logo" style={{}}>
+            <h1 className="logo">
+              <Link to="/">
                 <img src="/logo.png" alt="Electronic-Shop"/>
-              </h1>
-            </Link>
+              </Link>
+            </h1>
           </div>
         </div>
         <div className="middle-box">
@@ -36,7 +36,7 @@ const Header = ({ logined, cart, app }) => {
           {!logined && (
             <div className="nav-btns">
               <Link to="/signin" className="btn btn-primary">登&nbsp;录</Link>
-              <Link to="/signup" className="btn btn-success">注&nbsp;册</Link>
+              <Link to="/signup_0" className="btn btn-success">注&nbsp;册</Link>
             </div>
           )}
           <div className="nav-aside">
@@ -78,7 +78,7 @@ const CartSummary = ({ cart, app }) => {
       }}>
         {isEmpty ? (
           <div className="cart-empty" style={{ textAlign: 'center', padding: '40px 0' }}>
-            <span>购物车空空的，去看看心仪的商品吧~</span>
+            <span>购物车是空空的，去看看心仪的商品吧~</span>
           </div>
         ) : (
           <div className="cart-content">

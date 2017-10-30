@@ -1,5 +1,8 @@
 /* global fetch */
 
+/*
+  Bootstrap 版本
+*/
 import React from 'react'
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
 
@@ -22,7 +25,7 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      redirectToReferrer: false
+      redirectToReferrer: false,
     }
 
     this.createUser = this.createUser.bind(this)
@@ -94,7 +97,8 @@ class Signup extends React.Component {
         <div className="signup-box" style={{
           width: 360,
           minHeight: 600,
-          margin: 'auto',
+          margin: '0 auto',
+          marginTop: 20,
         }}>
           <div className="signup-content" style={{
             padding: 40,
@@ -109,23 +113,23 @@ class Signup extends React.Component {
               borderBottom: '1px solid #d8d8d8',
             }}>注册账号</div>
             <Form action="/api/signup" method="POST" onSubmit={this.handleSubmit}>
-              {/*
-              <FieldGroup
-                id="firstName"
-                type="text"
-                label="First Name"
-              />
-              <FieldGroup
-                id="lastName"
-                type="text"
-                label="Last Name"
-              />
-              */}
               <FieldGroup
                 id="username"
                 type="text"
                 label="用户名"
-                placeholder="请输入用户名"
+                placeholder="您的账户名和登录名"
+              />
+              <FieldGroup
+                id="password"
+                type="password"
+                label="设置密码"
+                placeholder="建议至少使用两种字符组合"
+              />
+              <FieldGroup
+                id="password"
+                type="password"
+                label="确认密码"
+                placeholder="请再次输入密码"
               />
               <FieldGroup
                 id="email"
@@ -133,24 +137,10 @@ class Signup extends React.Component {
                 label="电子邮箱"
                 placeholder="请输入电子邮箱"
               />
-              <FieldGroup
-                id="password"
-                type="password"
-                label="密码"
-                placeholder="Enter password..."
-                defaultValue="password"
-              />
-              <FieldGroup
-                id="password"
-                type="password"
-                label="确认密码"
-                placeholder="Enter password..."
-                defaultValue="password"
-              />
-              <div className="clearfix" style={{ marginBottom: 12 }}>
+              <div className="clearfix links" style={{ marginBottom: 12 }}>
                 <a className="fr">使用已有账号登录</a>
               </div>
-              <Button className="btn btn-primary" type="submit" style={{ display: 'block', width: '100%' }}>注&nbsp;册</Button>
+              <Button className="btn btn-primary register-btn" type="submit" style={{ display: 'block', width: '100%' }}>注&nbsp;册</Button>
             </Form>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox, Avatar } from 'antd';
+import { Link } from 'react-router-dom'
 const FormItem = Form.Item;
 
 class NormalLoginForm extends React.Component {
@@ -43,7 +44,7 @@ class NormalLoginForm extends React.Component {
             登录
           </Button>
           <div style={{ float: 'right', lineHeight: '28px' }}>
-            还没有账号？<a href="">现在注册！</a>
+            还没有账号？<Link to="/signup">现在注册！</Link>
           </div>
         </div>
       </Form>
@@ -56,7 +57,7 @@ const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 const Login = (props) => {
 
   return (
-    <div style={{ width: 360, margin: 'auto', marginTop: 150, }}>
+    <div style={{ width: 340, margin: 'auto', marginTop: 150, }}>
       <WrappedNormalLoginForm />
     </div>
   )

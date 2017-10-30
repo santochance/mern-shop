@@ -43,30 +43,28 @@
   }
 }
 
-// Signin Comp
+// Signin, Signup Comp
 // -----------
-.signin {
-  .signin-box {
-    .links {
-      a {
-        color: $link-color;
-        &:hover,
-        &:focus {
-          color: $link-hover-color;
-        }
-      }
-    }
-    .btn {
-      background-color: $primary-color;
+.signin .signin-box,
+.signup .signup-box {
+  .links {
+    a {
+      color: #7c7c7c;
       &:hover,
-      &:focus,
-      &.focus {
-        background-color: darken($primary-color, 6%);
-      }
-      &:active {
-        background-color: darken($primary-color, 12%);
+      &:focus {
+        color: $link-hover-color;
       }
     }
   }
+  .btn-primary {
+    background-color: $primary-color;
+    &:hover,
+    &:focus,
+    &.focus {
+      background-color: darken($primary-color, 6%);
+    }
+    &:active {
+      background-color: darken($primary-color, 12%);
+    }
+  }
 }
-

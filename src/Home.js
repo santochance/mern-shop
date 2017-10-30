@@ -52,28 +52,10 @@ const Home = ({ data, app }) => {
       <PageTop />
       */}
       <main className="wrapper pt-20">
-        {/*
-        <Form style={{
-          width: 300,
-          display: 'flex',
-          justifyContent: 'center',
-        }}>
-          <FormGroup>
-            <FormControl type="text" name="search" />
-          </FormGroup>
-          <Button>搜&nbsp;索</Button>
-        </Form>
-        */}
-       {/*
-        <form className="search-bar" action="" style={{
-          width: 400
-        }}>
-          <input type="text"/>
-          <button>搜&nbsp;索</button>
-        </form>
-       */}
         <ControlledCarousel slides={data.banner} />
-        <ProductGallery />
+        {/*
+          <ProductGallery />
+        */}
         {data.floors.map((floor, idx) => (
           <CardGrid key={idx} header={floor.title} items={floor.items} />
         ))}

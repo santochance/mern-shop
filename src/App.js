@@ -56,6 +56,7 @@ class App extends ItemList {
       ...this.state,
       cart: this.state.itemlist,
       logined: false,
+      debug: false,
     }
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
@@ -180,9 +181,9 @@ class App extends ItemList {
 
     return (
       <div className="app">
-        <DevIndex />
+        {this.state.debug && <DevIndex />}
         <Header {...{logined, cart, app: this}}/>
-        <div className="wrapper">
+        <div className="wrapper" style={{ minHeight: 420 }}>
           <Route path='/' exact render={props => (
             <Home {...props} data={home} app={this} />
           )} />
