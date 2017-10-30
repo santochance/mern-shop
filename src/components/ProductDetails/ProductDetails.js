@@ -2,16 +2,18 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './ProductDetails.css'
 
+import createManager from '../../helper/createManager'
+
 let mockSmUrls = [
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cc7N85cd9b4d.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN5f8ed177.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN1968739b.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cccNb4839a6e.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccaN22997367.jpg',
+  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cbdN10574a08.jpg',
   '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cffN1895dfb7.jpg',
   '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cfeN2c6e1503.jpg',
   '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70d07N107d1a33.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cccNb4839a6e.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN5f8ed177.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccbN1968739b.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70ccaN22997367.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cc7N85cd9b4d.jpg',
-  '/product_images/59f3b8913b3bf5f5c28dada2/list/59e70cbdN10574a08.jpg',
 ]
 let mockMdUrls = mockSmUrls.map(url => url.replace('list', 'preview'))
 
@@ -152,11 +154,27 @@ class Gallery extends React.Component {
     super(props);
     this.state = {
       activeKey: '0',
+      listTransX: 0,
+      step: 76, /* 每个item的width + gutter, 此处是58, 18 */
+      debug: false,
     }
+    // 添加Gallery的list index管理器
+    this.mgr = createManager({
+      total: this.props.smUrls.length, /* 图片list的items数量 */
+      size: 5
+    })
   }
+
+  changeListIndex(mode) {
+    // start是当前list显示区的最左边item的index
+    this.mgr[mode](({ start }) => this.setState({
+      listTransX: start * -this.state.step
+    }))
+  }
+
   render() {
     let { smUrls, mdUrls } = this.props
-    let { activeKey } = this.state
+    let { activeKey, listTransX } = this.state
 
     if (!(smUrls && smUrls.length)) {
       return (<p>此商品还没有添加图片！</p>)
@@ -168,10 +186,10 @@ class Gallery extends React.Component {
             <img src={mdUrls[activeKey]} alt=""/>
           </div>
           <div className="pic-list">
-            <a href="javascript:0;" className="pic-prev"></a>
-            <a href="javascript:0;" className="pic-next"></a>
+            <a href="javascript:0;" className="pic-prev" onClick={() => this.changeListIndex('prev')}></a>
+            <a href="javascript:0;" className="pic-next" onClick={() => this.changeListIndex('next')}></a>
             <div className="pic-items">
-              <ul className="items-wrap">
+              <ul className="items-wrap" style={{ transform: `translateX(${listTransX}px)` }}>
                 {smUrls.map((url, idx) => (
                   <li key={idx} className="pic-item" onMouseEnter={() => { this.setState({ activeKey: idx }) }}>
                     <img src={url} alt=""/>
@@ -180,7 +198,14 @@ class Gallery extends React.Component {
               </ul>
             </div>
           </div>
-          <div>ActiveKey: {activeKey}</div>
+          {this.state.debug && (
+            <div>
+              <div >ActiveKey: {activeKey}</div>
+              <div>listTransX: {listTransX}
+                <p><input type="range" value={-listTransX / 5} onChange={(e) => this.setState({listTransX: -e.target.value * 5})}/></p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )

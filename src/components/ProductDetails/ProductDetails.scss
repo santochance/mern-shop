@@ -1,8 +1,11 @@
-@import 'assets/style/mixin.scss';
+@import 'assets/style/mixin';
+@import 'assets/style/vars';
+
+// $useAuxiOtl: false;
 
 .product-details-page {
   &.wrapper {
-    @include otl(blue);
+    // @include otl(blue);
   }
 
   .product-intro {
@@ -13,8 +16,10 @@
   }
 
   .left {
-    @include otl(orange);
-    @include rect(500px);
+    // @include otl(orange);
+    // @include rect(500px);
+    min-height: 500px;
+    padding-left: 20px;
   }
   .right {
     @include otl(lime);
@@ -95,6 +100,69 @@
       margin-right: 10px;
     }
   }
+}
 
-
+.gallery {
+  .pic-preview {
+    @include rect(452px);
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+  }
+  .pic-list {
+    position: relative;
+    > a {
+      @include otl(green);
+      position: absolute;
+      top: 0;
+      width: 22px;
+      height: 32px;
+      margin: 13px;
+    }
+    .pic-prev {
+      left: 0;
+      background: url("/__sprite.png") 0 -54px;
+      &:hover {
+        background: url("/hover-prev.png");
+      }
+      &.disabled {
+        background: url("/disabled-prev.png");
+      }
+    }
+    .pic-next {
+      right: 0;
+      background: url("/__sprite.png") -78px 0;
+      &:hover {
+        background: url("/hover-next.png");
+      }
+      &.disabled {
+        background: url("/disabled-next.png");
+      }
+    }
+  }
+  .pic-items {
+    @include otl(orange);
+    position: relative;
+    width: 380px;
+    margin: 0 36px;
+    height: 58px;
+    overflow: hidden;
+  }
+  .items-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all .3s ease-in;
+    white-space: nowrap;
+  }
+  .pic-item {
+    // @include otl(purple);
+    display: inline-block;
+    vertical-align: top;
+    @include rect(58px);
+    margin: 0 9px;
+    border: 2px solid transparent;
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
 }
