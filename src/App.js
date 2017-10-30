@@ -206,7 +206,7 @@ class App extends ItemList {
               }}></Redirect>
             )
           )} />
-          <Route path="/product-details" render={props => (
+          <Route path="/product-details/:id" render={props => (
             <ProductDetails {...props} app={this} />
           )} />
           <Route path="/confirm-order" render={props => (

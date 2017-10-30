@@ -61,7 +61,7 @@ const routes = [
     component: Signup2,
   },
   {
-    path: '/product-details',
+    path: '/product-details/dev',
     component: ProductDetails,
     hidden: true,
   },
