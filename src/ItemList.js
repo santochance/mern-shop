@@ -81,6 +81,7 @@ class ItemList extends React.Component {
     this.addToCart = this.addToCart.bind(this)
     this.outputData = this.outputData.bind(this)
     this.getCheckedItems = this.getCheckedItems.bind(this)
+    this.getAllItems = this.getAllItems.bind(this)
     this.removeItem = this.removeItem.bind(this)
   }
 
@@ -437,10 +438,15 @@ class ItemList extends React.Component {
     // }
     // downRecur(rootNode)
 
-    // 基于确定的itemlist结构
+    // 简化为基于确定的itemlist结构
     return itemlist.children.reduce((rst, order) =>
-      rst.concat(order.children.filter(item => item.checked))
-    , [])
+      rst.concat(order.children.filter(item => item.checked)),
+    [])
+  }
+  getAllItems(itemlist) {
+    return itemlist.children.reduce((rst, order) =>
+      rst.concat(order.children),
+    [])
   }
 
   render() {

@@ -193,7 +193,7 @@ class App extends ItemList {
             <ProductShow addToCart={this.addToCart} />
           )} />
           <Route path="/cart-details" render={props => (
-            (true) ? (
+            (logined) ? (
               <CartDetails {...props} cart={cart} app={this}
                 toggleCheck={(...arg) => this.check(...arg)}
                 updateItem={(...arg) => this.updateItem(...arg)}
@@ -201,7 +201,7 @@ class App extends ItemList {
               />
             ) : (
               <Redirect to={{
-                pathname: '/signup',
+                pathname: '/signin',
                 state: { from: props.location }
               }}></Redirect>
             )

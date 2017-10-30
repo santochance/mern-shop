@@ -72,15 +72,15 @@ const CartSummary = ({ cart, app }) => {
 
   return (
     <div className="cart-summary">
-      {isEmpty ? (
-        <div className="cart-empty">
-          你的购物车是空的!
-        </div>
-      ) : (
-        <div className="cart-wrapper" style={{
-          width: 360,
-          margin: '-8px -16px'
-        }}>
+      <div className="cart-wrapper" style={{
+        width: 360,
+        margin: '-8px -16px'
+      }}>
+        {isEmpty ? (
+          <div className="cart-empty" style={{ textAlign: 'center', padding: '40px 0' }}>
+            <span>购物车空空的，去看看心仪的商品吧~</span>
+          </div>
+        ) : (
           <div className="cart-content">
             {cart.children.map((order, idx) => (
               <CartOrder>
@@ -90,9 +90,9 @@ const CartSummary = ({ cart, app }) => {
               </CartOrder>
             ))}
           </div>
-          <CartFooter price={cart.price} amount={cart.count} />
-        </div>
-      )}
+        )}
+        <CartFooter price={cart.price} amount={cart.count} />
+      </div>
     </div>
   )
 }
@@ -154,14 +154,14 @@ const CartFooter = ({ price, amount }) => {
       <div className="left-box">
         <div className="amount-sum">
           <span className="text">共</span>
-          <span className="itemCount">{amount}</span>
+          <span className="itemCount">{amount || 0}</span>
           <span className="text">项商品</span>
         </div>
         <div className="price-sum">
           <span className="text">合计：</span>
           <span className="price">
             <span className="totalSymbol">￥</span>
-            <span className="total">{price}</span>
+            <span className="total">{price || 0}</span>
           </span>
         </div>
       </div>

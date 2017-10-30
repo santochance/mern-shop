@@ -6,6 +6,24 @@ import './CartDetails.css'
 
 const CartDetails = ({ app, cart }) => {
 
+  let allItems = app.getAllItems(cart)
+  if (!allItems.length) {
+    return (
+      <div className="cart-details">
+        <div className="wrapper">
+          <div className="cart-empty" style={{ textAlign: 'center', padding: '200px 0', fontSize: 16 }}>
+            <div style={{ display: 'inline-block', textAlign: 'left' }}>
+              <p>购物车空空的，去看看心仪的商品吧~</p>
+              <p><Link to="/" >去购物</Link></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  // cart.count已经是勾选商品的总计数，但是获得勾选商品的引用
+  // checkedItems的作用是获取勾选商品
   /* 测试获取勾选项 */
   let checkedItems = app.getCheckedItems(cart)
   console.log('checked items:', checkedItems)
