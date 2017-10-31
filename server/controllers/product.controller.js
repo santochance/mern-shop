@@ -183,10 +183,10 @@ exports.search = function(req, res) {
   Product.find({ $text: { $search: req.params.term } })
     .populate('categories')
     .execAsync()
-    .then(handleSearchResult({
-      ...req.query,
-      term: req.params.term,
-    }))
+    // .then(handleSearchResult({
+    //   ...req.query,
+    //   term: req.params.term,
+    // }))
     .then(respondWithResult(res))
     .catch(handleError(res))
 }

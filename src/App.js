@@ -12,6 +12,7 @@ import {
   Link,
   Redirect,
   withRouter,
+  matchPath,
 } from 'react-router-dom'
 
 import routes, {
@@ -56,7 +57,8 @@ class App extends ItemList {
       ...this.state,
       cart: this.state.itemlist,
       logined: false,
-      debug: false,
+      inputedTerm: '',
+      debug: true,
     }
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
@@ -66,6 +68,24 @@ class App extends ItemList {
     this.getHomeData()
       .then(home => this.setState({ home }))
   }
+  componentWillReceiveProps(nextProps) {
+    // 如果Route跳转目标
+    //    不是'/product-show'，就清空搜索关键字
+    //    是'/produt-show', 使用location.state.term更新关键字
+    let matched = matchPath(nextProps.location.pathname, {path: '/product-show'})
+    this.setState({inputedTerm: (matched && nextProps.location.state && nextProps.location.state.term) || ''})
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('App ask should update')
+    return true
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('App will update')
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('App updated')
+  }
+
   login(data) {
     fetch('/api/signin', {
       method: 'POST',
@@ -182,16 +202,16 @@ class App extends ItemList {
     return (
       <div className="app">
         {this.state.debug && <DevIndex />}
-        <Header {...{logined, cart, app: this}}/>
+        <Header {...{logined, cart, app: this, term: this.state.inputedTerm}}/>
         <div className="wrapper" style={{ minHeight: 420 }}>
-          <Route path='/' exact render={props => (
+          <Route path="/" exact render={props => (
             <Home {...props} data={home} app={this} />
           )} />
           <Route path="/signin" render={props => (
             <Signin {...props} login={this.login} />
           )} />
           <Route path="/product-show" render={props => (
-            <ProductShow addToCart={this.addToCart} />
+            <ProductShow {...props} addToCart={this.addToCart} app={this} />
           )} />
           <Route path="/cart-details" render={props => (
             (logined) ? (

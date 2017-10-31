@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Pagination, Row, Col } from 'antd'
 import Sortbar from './Sortbar'
+import _ from 'lodash'
 // 分页功能模块
 // import  Page from '../../helper/page.js'
 
@@ -26,11 +27,27 @@ class ProductShow extends Component {
   }
 
   componentDidMount() {
+    // 目前搜索栏显示的关键词是由绑定到App.state.inputedTerm
+    // ProductShow使用搜索关键词是由Header页面通过location.state传入
+    // 于是，通过history的POP动作返回的ProductShow的关键词不会影响Header显示的关键词
     this.loadData()
+    console.log('ProductShow mounted')
   }
-  loadData(/* query */) {
+
+  componentWillReceiveProps(nextProps) {
+    console.log('ProductShow will receive props')
+    let term = _.get(nextProps, 'location.state.term', '')
+    this.loadData(term)
+  }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('ProductShow will update')
+  }
+
+  loadData(term) {
     // query留于search功能时使用
-    return fetch('/products')
+    let url = '/products' + (term ? `/${term}/search` : '')
+    console.log('load products from url:', url)
+    return fetch(url)
       .then(res => res.json())
       .then(dataSource => this.process('load', { dataSource }))
       .catch(console.error)
@@ -41,7 +58,7 @@ class ProductShow extends Component {
 
     let newState = Object.assign({}, this.state, updates)
 
-    console.log('filtes:', newState.filters)
+    // console.log('filtes:', newState.filters)
 
     switch (changeType) {
       case 'load':
@@ -140,23 +157,36 @@ class ProductShow extends Component {
 
   render() {
     let { addToCart } = this.props
-    let { visibleData, current, pageSize, total, sortKey, sortOrder } = this.state
+    let { visibleData, dataSource, current, pageSize, total, sortKey, sortOrder } = this.state
     // 需要获取products, addToCart回调函数
+    if (!visibleData) return null
+
     return (
       <div className="product-show" style={{
         marginTop: 20
       }}>
-        <div className="wrapper">
-          <Sortbar onClick={this.onSortClick} onSubmit={this.onFilterChange}
-            {...{sortKey, sortOrder}} />
-          <ProductList visibleData={visibleData} addToCart={addToCart} />
-          <div style={{ textAlign: 'center' }}>
-            <div style={{ display: 'inline-block', marginBottom: 20 }}>
-              <Pagination {...{current, pageSize, total}} onChange={this.onPageChange}
-                onShowSizeChange={this.onPageChange} />
+        <p>找到 {this.state.dataSource.length} 件商品</p>
+        {dataSource.length > 0 ? (
+          <div className="wrapper">
+            <p>搜索关键词：{_.get(this.props, 'location.state.term') || '无关键词'}</p>
+            <Sortbar onClick={this.onSortClick} onSubmit={this.onFilterChange}
+              {...{sortKey, sortOrder}} />
+            <ProductList visibleData={visibleData} addToCart={addToCart} />
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ display: 'inline-block', marginBottom: 20 }}>
+                <Pagination {...{current, pageSize, total}} onChange={this.onPageChange}
+                  onShowSizeChange={this.onPageChange} />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="wrapper">
+            <p style={{ margin: '0 20' }}>使用的关键词：
+              <span style={{ fontWeight: 700, fontSize: 16 }}>{_.get(this.props, 'location.state.term')}</span>
+            </p>
+            <p style={{ margin: 20 }}>没有找到合适的结果，换个关键词试试？</p>
+          </div>
+        )}
       </div>
     )
   }

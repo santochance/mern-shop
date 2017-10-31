@@ -5,8 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 
 import './Header.css'
 
-const Header = ({ logined, cart, app }) => {
-
+const Header = ({ logined, cart, app, term }) => {
+  console.log('Header update')
   return (
     <header className="top-header">
       <div className="wrapper">
@@ -20,17 +20,7 @@ const Header = ({ logined, cart, app }) => {
           </div>
         </div>
         <div className="middle-box">
-          <form className="search-bar" style={{
-            width: 400,
-            position: 'relative',
-            zIndex: '9999',
-          }}>
-            <input type="text"/>
-            <button><Icon type="search" style={{ fontSize: 18 }} /></button>
-            {/*
-            <button className="icon">搜&nbsp;索</button>
-            */}
-          </form>
+          <SearchBar term={term} history={app.props.history} />
         </div>
         <div className="right-box">
           {!logined && (
@@ -61,6 +51,42 @@ const Header = ({ logined, cart, app }) => {
       </div>
     </header>
   )
+}
+
+class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      term: ''
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({ term: nextProps.term })
+  }
+  render() {
+    let { term } = this.state
+    return (
+      <form className="search-bar" style={{
+        width: 400,
+        position: 'relative',
+        zIndex: '9999',
+      }}>
+        {/*
+          <input type="text" value={app.state.inputedTerm} onChange={(e) => { app.setState({ inputedTerm: e.target.value }) }} />
+          <input type="text" defaultValue={_term} value={term} onChange={(e) => { term = e.target.value }} />
+        */}
+        <input type="text" value={term} onChange={(e) => { this.setState({ term: e.target.value }) }}/>
+        <button onClick={(e) => {
+          e.preventDefault()
+          let url = '/product-show' + (term ? '/search?keyword=' + encodeURI(term) : '')
+          this.props.history.push(url, { term: term })
+        }}><Icon type="search" style={{ fontSize: 18 }} /></button>
+        {/*
+        <button className="icon">搜&nbsp;索</button>
+        */}
+      </form>
+    )
+  }
 }
 
 /*
