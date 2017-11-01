@@ -151,8 +151,8 @@ const TableView = (props) => {
           <div className="th desc-status">交易状态</div>
         </div>
         <div className="nav-row">
-          <a href="#" className="btn btn-default btn-sm" onClick={() => page.prev()}>上一页</a>
-          <a href="#" className="btn btn-default btn-sm" onClick={() => page.next()}>下一页</a>
+          <a href="#" className={'btn btn-default btn-sm' + (!page.indexKeys.prev ? ' disabled' : '')} onClick={() => page.prev()}>上一页</a>
+          <a href="#" className={'btn btn-default btn-sm' + (!page.indexKeys.next ? ' disabled' : '')} onClick={() => page.next()}>下一页</a>
         </div>
         <div className="history-orders">
           {orders.map((order, i) =>
