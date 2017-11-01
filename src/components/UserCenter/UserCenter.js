@@ -16,15 +16,15 @@ class UserCenter extends React.Component {
   state = {}
 
   render() {
-    const { match } = this.props
+    const { match, user } = this.props
     console.log('match', match)
     return (
       <div className="user-center wrapper flex-r-full">
         <div className="slide" style={{ width: 200, float: 'left' }}>
           <Affix>
             <div className="user-panel">
-              <img className="avatar" src={require('./avatar.jpg')} alt=""/>
-              <span className="username">Vincent</span>
+              <img className="avatar" src={user.avatar || '/avatar.jpg'} alt=""/>
+              <span className="username">{user.nickname || user.username}</span>
             </div>
             <Sider match={match} />
           </Affix>
