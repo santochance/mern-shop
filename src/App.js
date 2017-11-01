@@ -204,9 +204,6 @@ class App extends ItemList {
           <Route path="/cart-details" render={props => (
             (logined) ? (
               <CartDetails {...props} cart={cart} app={this}
-                toggleCheck={(...arg) => this.check(...arg)}
-                updateItem={(...arg) => this.updateItem(...arg)}
-                removeItem={(...arg) => this.removeItem(...arg)}
               />
             ) : (
               <Redirect to={{

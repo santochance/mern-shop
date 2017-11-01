@@ -96,7 +96,7 @@ const CartDetails = ({ app, cart }) => {
                     <div className="col cell-quantity">
                       <input type="number" name="" id="" min="1"
                         value={item.amount} style={{width: '80px'}}
-                        onChange={(e) => app.updateItem(item, e.target.value || 1)} />
+                        onChange={(e) => app.updateItem(item, e.target.value)} />
                     </div>
                     <div className="col cell-sum">
                       <div className="item-sum">￥{item.price}</div>

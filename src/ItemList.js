@@ -151,7 +151,8 @@ class ItemList extends React.Component {
     }, rst)
   }
 
-  addToCart(product, amount = 1, checked = true/* 新增的自动勾选 */) {
+  // 通过"加入购物车"触发updateItem时，自动勾选item
+  addToCart(product, amount = 1, checked = true) {
     let { cart } = this.state
     // let { updateItem, createItem, createList, appendItem } = this
 
@@ -382,7 +383,9 @@ class ItemList extends React.Component {
 
   updateItem(item, amount, checked) {
     item.amount = amount
-    item.checked = checked
+    if (checked !== undefined) {
+      item.checked = checked
+    }
     // 更新amount后触发更新item aggregation
     item.price = item.content.price * amount
     // 同时要更新祖先的aggregation和count
