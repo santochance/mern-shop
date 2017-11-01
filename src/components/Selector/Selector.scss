@@ -99,7 +99,7 @@
     z-index: 1;
     width: 100%;
     background-color: #bbb;
-    // transform: translate(0, 100%);
+    transform: translate(0, 100%);
     transition: all .3s ease;
 
     text-align: center;
@@ -109,8 +109,7 @@
       border: none;
       padding: 0 14px;
       font-size: 14px;
-      background-color: #fff;
-      background-color: hsla(0, 0%, 50%, .6)
+      background-color: #f8f8f8;
       border-right: 1px solid #c8c8c8;
       width: 50%;
       box-sizing: border-box;
@@ -132,5 +131,6 @@
         transform: translate(0, 0);
         background-color: white;
       }
+    }
   }
 }
