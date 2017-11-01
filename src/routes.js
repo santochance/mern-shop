@@ -83,6 +83,7 @@ const routes = [
   {
     path: '/user-center',
     component: UserCenter,
+    hidden: true,
   },
   {
     path: '/order-history',

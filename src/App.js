@@ -1,7 +1,6 @@
 /* eslint no-unused-vars: 0 */
 
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import ItemList from './ItemList'
 
 import _ from 'lodash'
@@ -26,6 +25,7 @@ import routes, {
   CartDetails,
   ConfirmOrder,
   PayPrompt,
+  UserCenter,
 } from './routes'
 
 import ScrollToTop from './components/ScrollToTop'
@@ -201,17 +201,12 @@ class App extends ItemList {
           <Route path="/product-show" render={props => (
             <ProductShow {...props} addToCart={this.addToCart} app={this} />
           )} />
-          <Route path="/cart-details" render={props => (
-            (logined) ? (
-              <CartDetails {...props} cart={cart} app={this}
-              />
-            ) : (
-              <Redirect to={{
-                pathname: '/signin',
-                state: { from: props.location }
-              }}></Redirect>
-            )
-          )} />
+
+          <PrivateRoute path="/cart-details" component={CartDetails}
+            isAuthed={logined} cart={cart} app={this} />
+          <PrivateRoute path="/user-center" component={UserCenter}
+            isAuthed={logined} />
+
           <Route path="/product-details/:id" render={props => (
             <ProductDetails {...props} app={this} />
           )} />
@@ -229,6 +224,19 @@ class App extends ItemList {
     )
   }
 }
+
+const PrivateRoute = ({ component: Component, isAuthed, ...rest }) => (
+  <Route {...rest} render={props => (
+    isAuthed ? (
+      <Component {...props} {...rest}/>
+    ) : (
+      <Redirect to={{
+        pathname: '/signin',
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
 
 const AppWithRouter = withRouter(App)
 
