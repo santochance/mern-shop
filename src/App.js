@@ -28,6 +28,8 @@ import routes, {
   PayPrompt,
 } from './routes'
 
+import ScrollToTop from './components/ScrollToTop'
+
 import './assets/style/index.css'
 import './App.css'
 
@@ -250,7 +252,9 @@ const AppWithRouter = withRouter(App)
 const AddedRouterApp = () => {
   return (
     <Router>
-      <AppWithRouter />
+      <ScrollToTop>
+        <AppWithRouter />
+      </ScrollToTop>
     </Router>
   )
 }
