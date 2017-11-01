@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Page from '../../helper/page.js'
 
@@ -175,12 +176,12 @@ const TableView = (props) => {
                   <div key={i} className="tr item-content">
                     <div className="td cell-product">
                       <div className="td product-image">
-                        <a href="">
+                        <Link to={`/product-details/${item.product._id}`}>
                           <img src={item.product.imageUrl} alt=""/>
-                        </a>
+                        </Link>
                       </div>
                       <div className="td product-info">
-                        <a className="link-tn" href="">{item.product.title}</a>
+                        <Link to={`/product-details/${item.product._id}`} className="link-tn" href="">{item.product.title}</Link>
                       </div>
                     </div>
                     <div className="td cell-price">￥{item.product.price || 'xxx.xx'}</div>

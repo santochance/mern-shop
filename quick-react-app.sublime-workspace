@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"mock",
+				"mockSmUrls"
+			],
+			[
+				"replaceP",
+				"replacePath"
+			],
+			[
 				"comp",
 				"componentWillUpdate\t Life Cycle"
 			],
@@ -506,42 +514,71 @@
 			[
 				"intera",
 				"interaction_clone"
-			],
-			[
-				"All",
-				"allAnimEnd"
-			],
-			[
-				"al",
-				"allAnimEnd\t(loading.html)"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"contents": "/products/homeHot\n/products/homeBanner\n\n\nfloor {\n  title: '热销商品',\n  banner: ''，\n  \n}\n\n\n.pay-completed {\n  .main-msg {付款成功！总共花费xxx元}\n  .nav-links\n    Link{查看订单}\n    Link{继续购物}\n      返回哪里？\n      返回referrer\n      返回首页\n}\n\n\n",
+			"file": "src/App.js",
 			"settings":
 			{
-				"buffer_size": 219,
-				"line_ending": "Windows",
-				"name": "/products/homeHot"
-			}
-		},
-		{
-			"file": "src/components/PayCompleted/PayCompleted.scss",
-			"settings":
-			{
-				"buffer_size": 513,
+				"buffer_size": 6583,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/components/PayPrompt/PayPrompt.scss",
+			"file": "src/components/ProductShow/ProductShow.js",
 			"settings":
 			{
-				"buffer_size": 2418,
+				"buffer_size": 7657,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/Header/Header.js",
+			"settings":
+			{
+				"buffer_size": 6926,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/Signin/Signin.js",
+			"settings":
+			{
+				"buffer_size": 3068,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Signup.js",
+			"settings":
+			{
+				"buffer_size": 4409,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/components/CartDetails/CartDetails.js",
+			"settings":
+			{
+				"buffer_size": 6011,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Home.js",
+			"settings":
+			{
+				"buffer_size": 5399,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
@@ -550,24 +587,6 @@
 			"settings":
 			{
 				"buffer_size": 5932,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "server/controllers/order.controller.js",
-			"settings":
-			{
-				"buffer_size": 3347,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "exp/repl_test_db.js",
-			"settings":
-			{
-				"buffer_size": 1111,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -582,36 +601,55 @@
 			}
 		},
 		{
-			"file": "src/components/PayCompleted/PayCompleted.js",
+			"file": "src/components/Login/Login.js",
 			"settings":
 			{
-				"buffer_size": 739,
+				"buffer_size": 2024,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "server/config/express.js",
+			"file": "src/components/Signup/signup.js",
 			"settings":
 			{
-				"buffer_size": 1779,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/static/js/awesome.js",
-			"settings":
-			{
-				"buffer_size": 14095,
+				"buffer_size": 2186,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/components/PayPrompt/PayPrompt.js",
+			"contents": "从非product-show页面点击搜索按钮，会跳转到ProductShow页面\n从ProductShow页面离开，清空搜索栏\n\nhttps://search.jd.com/Search?keyword=%E6%89%8B%E6%9C%BA&enc=utf-8&wq=%E6%89%8B%E6%9C%BA&pvid=30c9ff520c3a4f79af587323aee3ff40\n\nproduct-show/:item\n\nsearch/:item\n\n:item作为搜索栏的默认值\n\n\nLink to 'search/:item'\n\nonClick\n\n            <Link to={`/search/${term && ''}`} className=\"search-submit-btn\"><Icon type=\"search\" style={{ fontSize: 18 }} /></Link>\n",
 			"settings":
 			{
-				"buffer_size": 6175,
+				"buffer_size": 408,
+				"line_ending": "Windows",
+				"name": "从非product-show页面点击搜索按钮，会跳转到ProductShow页面"
+			}
+		},
+		{
+			"contents": "App有个term，传入Header供搜索栏使用\n\n当点击搜索跳转时，使用这个term\n\n当route发生改变，检查location\n  如果是之前是非搜索页，现在是搜索页，term不变\n  如果之前是搜索页，现在是非搜索页，term清空\n\n\n例如在Home输入\"联想\"，点击搜索按钮\n\n跳转到搜索页\n使用term查询后端\n使用返回数据显示搜索页\n\n在搜索页中点击搜索按钮\n不会跳转，只会查询，更新搜索页\n搜索页目前是函数组件，更新是App触发\n\n然后当history发生pop, push, replace, 即任何route变化都检查location\n\n\n点击搜索按钮 -> 调用app.search() -> App把更新传入ProductShow的props数据\n\n\n",
+			"settings":
+			{
+				"buffer_size": 338,
+				"line_ending": "Windows",
+				"name": "App有个term，传入Header供搜索栏使用"
+			}
+		},
+		{
+			"file": "src/routes.js",
+			"settings":
+			{
+				"buffer_size": 2397,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/all-index.js",
+			"settings":
+			{
+				"buffer_size": 1760,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -626,29 +664,72 @@
 			}
 		},
 		{
-			"file": "src/App.js",
+			"contents": "['1.jpg', '2.jpg', '3.jpg', '4.jpg', ]\n\n{\n  size:\n  base:\n}\n\n\n\n\nlet regex, str, rst, key\nwhlie (rst = str.match(regex)) {\n  key = rst[1]\n  if (key in params) {\n    str.replace(key, params[key])\n  }\n}\n\n/* \n  带有参数的路径path使用params属性值替换参数标识符\n*/\nfunction replacePath(path, params) {\n  let regex, str, rst, key\n  str = path\n  regex = /:([^/])+/\n  // 使用exec()而不是match()\n  // 如果使用match()需要自行跟踪index\n  while (rst = regex.exec(str) {\n    key = rst[1]\n    if (key in params) {\n      str.replace(key, params[key])\n    }\n  return str\n}\n\nreplacePath('/product_images/:size/:id/:base', {\n  size: 's54_54',\n  id: '285fda4',\n  base: '3485.jpg'\n})",
 			"settings":
 			{
-				"buffer_size": 5134,
+				"buffer_size": 628,
+				"line_ending": "Windows",
+				"name": "['1.jpg', '2.jpg', '3.jpg', '4.jpg', ]"
+			}
+		},
+		{
+			"file": "exp/replacePath.js",
+			"settings":
+			{
+				"buffer_size": 1482,
 				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "/*"
+			}
+		},
+		{
+			"contents": "## Gallery的props定义\n\nbase: array[] // 图片url的base部分数组\npath: string  // 路径匹配模式字符串\nsizeParams: { // 路径模式字符串的size参数值\n  sm: '',\n  md: '',\n  lg: '',\n}\n\nurls = {\n  sm: [],\n  md: [],\n  lg: []\n}\n\n每次方向导航移动指定距离\nstep = 360\n1080\n\n每个60px, 间距20px, 总可视区域(60 + 20) * 5 - 20 = 380\n\n移动单位是width+gutter 60 + 20\nitem显示个数\n最大移动距离 = item显示个数 * 移动单位\n最小距离 = 移动单位 \n",
+			"settings":
+			{
+				"buffer_size": 336,
+				"line_ending": "Windows",
+				"name": "## Gallery的props定义"
+			}
+		},
+		{
+			"contents": "1, 2, 3, 4, 5, 6, 7\n\n[1, 2, 3]\n[4, 5, 6]\n[5, 6, 7]\n\nsize = 3\n\nstart\nend\n\nif (total <= size) {\n  start = 0\n  end = total - 1\n  hasPrev = false,\n  hasNext = false\n} else {\n  \n}\n\ndirection\nstart = prevStart + direction * size\nif (start <= 0) {\n  start = 0\n  havePrev = false\n} else {\n  have = true\n}\n\nend = start + size\n// 检查end值\nif (end >= length - 1) {\n  end = length - 1 // 约束end值\n  haveNext = false // 到达边界\n  start = end - size\n} else {\n  haveNext = true\n}\n\ndirection > 0 // 往右\n  // 优先设置end\n  end = prevEnd + size\n  // 检查end\n  // 设置start\ndirection < 0 // 往左\n  // 优先设置start\n  start = prevStart - size\n  // 检查start\n  // 设置end\n\n  end = start + step\n\n  if (end >= total - 1) {\n    end = total - 1\n    hasNext = false\n  } else {\n    hasNext = true\n  }\n\n  start = end - step\n\n  if (start <= 0) {\n    start = 0\n    hasPrev = false\n  } else {\n    hasPrev = true\n  }\n\nsetStart()\nsetEnd()\n\nfunction setStart() {\n  start = end - step\n  if (start <= 0) {\n    start = 0\n    hasPrev = false\n  } else {\n    hasPrev = true\n  }\n}\n\nfunction setEnd() {\n  end = start + step\n  if (end >= total - 1) {\n    end = total - 1\n    hasNext = false\n  } else {\n    hasNext = true\n  }\n}\n\ntotal\nstart = 0\nend = total - 1\n\nfunction update(direction) {\n  if (direction > 0) {\n    setEnd()\n    setStart()\n  } else {\n    setStart()\n    setEnd()\n  }\n}\n\nsize\ntotal\nstart = 0\nend = total - 1\n\n// 初始化\nstart = \nend = \nhasPrev = \nhasNext = \n\nupdate(1)\n// 设置end\n// 检查end\n// 设置start\n// 检查start\n\nfunction output() {\n  \n}\n\n\nupdate(1, callback)\nupdate(-1, callback)\n\napi.next()\napi.prev()\napi.update()\n\nfunction manager(total) {\n  \n  return {\n    update(mode, cb),\n    next(cb),\n    prev(cb),\n  }\n}\n\n\nindex.next()\n\nthis.next()\nthis.prev()\nthis.update()\nthis.init()\n\n(function (total) {\n  \n}(total)\n\ntotal改变时\nsize改变时\n\nthis.init(total, size)\nthis.update()\nthis.next()\nthis.prev()\n\nindexManager = Manager.init()\n\nclass Manager(total, size) {\n  constructor() {\n    total,\n    size,\n    start\n    end\n    hasNext,\n    hasPrev,\n  }\n  init() {\n\n  }\n  update()\n\n}\n\n\ncreateManager(total, size) {\n  let start, end, hasNext, hasPrev\n\n  function init(total, size) {\n\n  }\n  function update() {}\n\n  function _setStart() {}\n  function _setEnd() {}\n}\n\nupdate(-1)\n\nobj.start\nobj.end\nobj.size\nobj.total\nobj.hasNext\nobj.hasPrev\nobj.init()\nobj.update()\nobj.next()\nobj.prev()\n\n\n\n\n\nlet mgr = createManager(10, 4)\nmgr.start\nmgr.end\n\n\n\n\n\ndirection > 0\n  // 设置end\n  end = end + size\n  // 检查end\n  // 根据end设置start\n  start = end - size\n  // 检查start\n\ndirection < 0\n  // 设置start\n  start = start - size\n  // 检查start\n  // 根据start设置end\n  end = start + size\n  // 检查end\n  \n   ",
+			"settings":
+			{
+				"buffer_size": 2596,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "server/homeData.js",
+			"contents": "",
 			"settings":
 			{
-				"buffer_size": 956,
-				"encoding": "UTF-8",
+				"buffer_size": 0,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "server/server.routes.js",
+			"contents": "只要不触碰边界\n就不可能会发生调整\n\n而且除非触碰到对面边界\n否则也不可能发生调整\n\n整除，永远不会被调整\n不整除，触碰到对面边界时，需要调整\n而且状态只有两种\n[0, 1, 2], [3, 4, 5], [6](不出现)\n[0], [1, 2, 3], [4, 5, 6]\n\nstatus: 1或-1 正向态，负向态\nindex = 0, 1, 2\nif (next到达右边界，转为负向态)\nif (next到达左边界，转为正向态)\n\nsetPosState\n\nsetNegState\n\nchangeIndex()\n\nif (direction > 0) {\n}\n\nindex += direction\ncheckIndex() {\n  if (index <= 0) {\n    index = 0\n    // 转为正向态\n    if (state < 0) setPosState()\n  } else if (index >= total - 1) {\n    index = total - 1\n    // 转为负向态\n    if (state > 0) setNegState()\n  }\n}\n\nchunk = [\n  [],\n  [],\n  [],\n]\n\n如果只有一页呢？\n\nstart = min\nend = max\n\nvar posChunk = \nvar negChunk = \nisPos = true\nchunk = isPos ? posChunk : negChunk\n\nvar index\nvar range = chunk[index]\n\nupdate(direction) {\n  index += (direction > 0 ? 1 : -1)\n  hasPrev = true\n  hasNext = true\n  if (index >= min) {\n    index = min\n    hasPrev = false\n    // 转为正向态\n    !isPos && chunk = posChunk \n  } else if (index <= max) {\n    index = max\n    hasNext = false\n    // 转为负向态\n    isPos && chunk = negChunk\n  }\n}\n\n\n1,2,3 \n\n[0], [4, 5, 6], [7, 8, 9]\n\n[0, 1, 2], [3, 4, 5], [6, 7, 8]\n\nvar rst = []\nvar chunk = []\nvar count = 0\nfor (let i = 0; i < total; i++)\n  chunk.push(i)\n  if (++count >= 3 ) {\n    count = 0\n    rst.push(chunk)\n    chunk = []\n}\n// 如果total不被size整除，这时chunk不为空\nif (chunk.length) {\n  rst.push(chunk)\n}\n\nvar mod = total % size\nvar rst = []\nvar chunk = []\nvar count = 0\n// 初始的chunk\n\nrst.push(arr.slice(0, mod))\n \ncount = 0\n\n",
 			"settings":
 			{
-				"buffer_size": 3468,
-				"encoding": "UTF-8",
+				"buffer_size": 1421,
+				"line_ending": "Windows",
+				"name": "只要不触碰边界"
+			}
+		},
+		{
+			"contents": "db.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dad9e\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dad9f\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada0\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada1\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada2\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada3\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada4\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada5\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada6\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})\ndb.products.update({ \"_id\" : ObjectId(\"59f3b8913b3bf5f5c28dada7\") }, {$set: {imgPath: '/product_images/:id/:size/:base'}})",
+			"settings":
+			{
+				"buffer_size": 1229,
+				"line_ending": "Windows",
+				"name": "db.products.update({ \"_id\" : ObjectId(\"59f3b8913b3"
+			}
+		},
+		{
+			"contents": "'// 商品的详细内容部分应该是由运营或内容管理员负责编辑，修改，也就是说这部分是基于用户提供的内容生成的文档',\n\n{\n  detailDoc: {}\n}\n<div className=\"detail-content\">\n  {detailDoc}\n<'/div>',\n\n\n'59e70d07N107d1a33.jpg',\n'59e70cffN1895dfb7.jpg',\n'59e70cfeN2c6e1503.jpg',\n'59e70cccNb4839a6e.jpg',\n'59e70ccbN5f8ed177.jpg',\n'59e70ccbN1968739b.jpg',\n'59e70ccaN22997367.jpg',\n'59e70cc7N85cd9b4d.jpg',\n'59e70cbdN10574a08.jpg',\n\n00 59dddcceN36033125.jpg\n01 59dddcd6Nc9cc8e99.jpg\n02 59dddceeNb86393d9.jpg\n03 59dddcf5N4558db86.jpg\n04 59dddccdN99ea4f12.jpg\n05 59dddcf9N8a5172c2.jpg\n06 59dddcf7Nee12b636.jpg\n\n\n'59f048a0Nc76765f3.jpg',\n'59f048a1N06612982.jpg',\n'59f048a2N7fb5eeed.jpg',\n'59f0489eNdcca7f09.jpg',\n'59f0489fNbffa3101.jpg',\n'59eeadfcNe2f0f803.jpg',\n'59eeadfcNc0506c2c.jpg',\n'59eeadfdNa2c3fc85.jpg',\n\n\n'59e85585N394a2768.jpg',\n'59e85589N66d5e90d.jpg',\n'59e8558dNe04de725.jpg',\n'59e85592Nd85e26b6.jpg',\n'59e85596N0e89c5f6.jpg',\n'59e855a0N7eb495cf.jpg',\n'59e855a4N77af8e8c.jpg',\n'59e85599Ne1b9768a.jpg',\n\n'59e9935cN0d4a5570.jpg',\n'59e99377Nec14bada.jpg',\n'59e9937bN8de6a1b5.jpg',\n'59e99385N75b91da5.jpg',\n'59e9937fN97882143.jpg',\n'59e9936bN847fbde1.jpg',\n'59e9937fN6adfacfd.jpg',\n'59e99379Ne96dca4b.jpg',\n\n'59e70cc7N85cd9b4d.jpg',\n'59e70ccbN5f8ed177.jpg',\n'59e70ccbN1968739b.jpg',\n'59e70cccNb4839a6e.jpg',\n'59e70ccaN22997367.jpg',\n'59e70cbdN10574a08.jpg',\n'59e70cffN1895dfb7.jpg',\n'59e70cfeN2c6e1503.jpg',\n'59e70d07N107d1a33.jpg',\n\n'59eeab4fN18f2dd16.jpg',\n'59eeab53Nb5f24f17.jpg',\n'59eeab56Na55bef1d.jpg',\n'59eeab60N57126dc4.jpg',\n'59eeab65N17a83e70.jpg',\n'59eeab6eNaca2ef6e.jpg',\n'59eeab83N6a42042e.jpg',\n'59eeab91Na4bd3de1.jpg',\n\n'59e860efNd7301389.jpg',\n'59e860ebNdaddad4e.jpg',\n'59e860ddNce487ba1.jpg',\n'59e860e9N86cbd138.jpg',\n'59e860f2N13cefa3e.jpg',\n'59e860f3N2fd4f094.jpg',\n'59e86210Nf027a73a.jpg',\n'59e9685dN5f1a1609.jpg',\n'59e8628eNd44c794d.jpg',\n\n'59eea8e5Nfd0855d9.jpg',\n'59eea8ebN9799ec43.jpg',\n'59eea8f1N3230e670.jpg',\n'59eea8f6Nf22f4347.jpg',\n'59eea8fbN605d47c8.jpg',\n'59eea918N6bdadaff.jpg',\n'59eea91eNeda791d1.jpg',\n\n '59ed6038Nd46dbd74.jpg',\n '59ed6038Nce8eac92.jpg',\n '59ed6039N129bbcce.jpg',\n '59ed6039N86ac7851.jpg',\n '59ed6039Nd8c095d0.jpg',\n '59ed6034N1b22bd47.jpg',\n '59ed6039N60a1332f.jpg',\n '59ed603aN84728c39.jpg',",
+			"settings":
+			{
+				"buffer_size": 2181,
 				"line_ending": "Windows"
 			}
 		},
@@ -656,133 +737,9 @@
 			"file": "src/assets/style/_basic.scss",
 			"settings":
 			{
-				"buffer_size": 1527,
+				"buffer_size": 1659,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/index.js",
-			"settings":
-			{
-				"buffer_size": 310,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "// order创建数据实体后\n// 马上进行查询\n// 返回查询结果\n\n// 客户端接收到刚刚提交的订单数据\n// 显示PayPrompt\n// 用户支付订单\n// 客户端调用'order/pay'\n\norder/pay\n\n{\n  payType: '',\n  status : 'paied',\n\n}\n\n订单状态\n  []\n\n\n// 表单验证\n// 提示信息\n\nmsg\n\nvalidate(e)\n  e.preventDefault()\n  if (!payType) {\n    return sendMsg('请选择一个支付方式')\n  }\n  return toPay()\n\nvalidate()\nsendMsg\ntoPay()\n\n\n\n\n",
-			"settings":
-			{
-				"buffer_size": 324,
-				"line_ending": "Windows",
-				"name": "// order创建数据实体后"
-			}
-		},
-		{
-			"contents": "合并支付页面\n\n当前已经是合并支付页面\n\n",
-			"settings":
-			{
-				"buffer_size": 21,
-				"line_ending": "Windows",
-				"name": "合并支付页面"
-			}
-		},
-		{
-			"file": "src/routes.js",
-			"settings":
-			{
-				"buffer_size": 2360,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/all-index.js",
-			"settings":
-			{
-				"buffer_size": 1704,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/components/CardGrid/CardGrid.scss",
-			"settings":
-			{
-				"buffer_size": 4086,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/index.scss",
-			"settings":
-			{
-				"buffer_size": 226,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/_vars.scss",
-			"settings":
-			{
-				"buffer_size": 918,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "src/assets/style/bootstrap-source/bootstrap/_variables.scss",
-			"settings":
-			{
-				"buffer_size": 31290,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "banner {\n  \n}\n\nhome\n\nfirstScreen\n\n\n一个hot\n两个floor\n\n{\n  hot: [\n    {},\n    {},\n    {},\n    {},\n  ],\n  floors: [\n    // 每组10个商品\n    [],\n    [],\n  ]\n}\n\n",
-			"settings":
-			{
-				"buffer_size": 148,
-				"line_ending": "Windows",
-				"name": "banner {"
-			}
-		},
-		{
-			"contents": "// gallery\n\nsrc=\"(?:http[s]?:)?(?://)?(.*?\\.(?:jpg|jpeg|png))\"\n\n// particulars\n\nurl\\(['\"]?(?:http[s]?:)?(?://)?(.*?\\.(?:jpg|jpeg|png))\n\n\n",
-			"settings":
-			{
-				"buffer_size": 137,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<ul class=\"lh\" style=\"position: absolute; width: 608px; height: 58px; top: 0px; left: 0px;\">                                        <l class=\"img-hover\"><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\" data-url=\"jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\" data-url=\"jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\" data-url=\"jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\" data-url=\"jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\" data-url=\"jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\" data-url=\"jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\" data-url=\"jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                <li><img alt=\"联想(Lenovo)拯救者R720 15.6英寸游戏笔记本电脑(i5-7300HQ 8G 1T+128G SSD GTX1050Ti 4G IPS 黑)\" src=\"//img13.360buyimg.com/n5/s54x54_jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\" data-url=\"jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\" data-img=\"1\" width=\"54\" height=\"54\"></li>\n                                                                                            </ul>",
-			"settings":
-			{
-				"buffer_size": 3152,
-				"line_ending": "Windows",
-				"name": "<ul class=\"lh\" style=\"position: absolute; width: 6"
-			}
-		},
-		{
-			"contents": "// gallery\n\nimg13.360buyimg.com/n5/s54x54_jfs/t11998/346/352163247/101499/d2a5e8ce/59ed88fcN5d2d0e5e.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5428/70/1520969931/274676/b644dd0d/591128e7Nd2f70da0.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5566/365/1519564203/36911/620c750c/591128eaN54ac3363.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4636/338/4612161128/181673/4838f0e1/591128f1Ndcd71fcb.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4435/282/4563260745/360368/2c6c9fe8/591128f8Nd01fc6b3.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5092/20/1473295315/81615/6f2ff390/591128feN8da49ee8.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t4426/264/4613848204/82994/670a8c8/59112903N6ece208a.jpg\nimg13.360buyimg.com/n5/s54x54_jfs/t5512/16/1486187838/154137/ce59d722/59112908N2525c997.jpg\n\n// paticulars\n\nimg30.360buyimg.com/sku/jfs/t6052/344/8309590706/302614/e4c330da/5987ec04Nd89748b4.jpg\nimg30.360buyimg.com/sku/jfs/t6079/13/8271900227/290027/ca623087/5987ec02N7bd84509.jpg\nimg30.360buyimg.com/sku/jfs/t4939/86/1138865972/306938/307b41f2/58eda301N42191f68.jpg\nimg30.360buyimg.com/sku/jfs/t4891/288/1172067058/294356/1bf6783e/58eda32fNd385bb90.jpg\nimg30.360buyimg.com/sku/jfs/t4417/150/3514543231/328051/6d9594c6/58ff0e78N311ed9b4.jpg\nimg30.360buyimg.com/sku/jfs/t4477/104/2320438821/307233/5e49ff5b/58eda353Ndfcb8936.jpg\nimg30.360buyimg.com/sku/jfs/t5236/209/400314023/304582/6c15b4fe/58ff0e7dNbca93ce8.jpg\nimg30.360buyimg.com/sku/jfs/t4651/343/2268651965/298442/d4fa7146/58eda37cNe7516136.jpg\nimg30.360buyimg.com/sku/jfs/t4402/344/2271257155/302716/37767693/58eda390Nf40e0ca6.jpg\nimg30.360buyimg.com/sku/jfs/t4555/3/3529138738/209496/7eb3093a/58ff0e7cN94523da9.jpg\nimg30.360buyimg.com/sku/jfs/t8200/28/463902234/262675/4829614/59a8fbb5N6d4f743d.jpg\nimg30.360buyimg.com/sku/jfs/t6907/83/1996899890/81463/a7c217b2/5987ec03Nfc5b4061.jpg\nimg30.360buyimg.com/sku/jfs/t4963/14/1161379495/301980/f5cebd2f/58eda4a7N19db9db5.jpg\nimg30.360buyimg.com/sku/jfs/t4609/194/2990933444/65799/15a60a5c/58f81f86Ne35a8b12.jpg\n\n",
-			"settings":
-			{
-				"buffer_size": 1972,
-				"line_ending": "Windows",
-				"name": "// gallery"
-			}
-		},
-		{
-			"contents": "/*C-B*/\n\n.ssd-module-wrap {width: 750px; margin: 0 auto; position: relative; text-align: left; background-color: #ffffff; }\n.ssd-module-wrap .ssd-module,.ssd-module-wrap .ssd-module-heading{ width: 750px; position:relative; overflow: hidden;  }\n.ssd-module{background-repeat:no-repeat; background-position:left center; background-size:100% 100%;}\n.ssd-module .ssd-widget-pic,.ssd-module .ssd-widget-text,.ssd-module .ssd-widget-line,.ssd-module-wrap .ssd-widget-rectangle,.ssd-module-wrap .ssd-widget-circle,.ssd-module-wrap .ssd-widget-triangle,.ssd-module-wrap .ssd-widget-table{ position: absolute; overflow: hidden; }\n.ssd-module-wrap .ssd-widget-table th,.ssd-module-wrap .ssd-widget-table td{position:relative;}\n.ssd-module .ssd-widget-pic img{display: block; width:100%; height:100% }\n.ssd-module .ssd-widget-text{ position: absolute; overflow: hidden;}\n.ssd-module .ssd-widget-text span{display:block;overflow:hidden; width:100%;  height:100%; padding:0; margin: 0; word-break:break-all; word-wrap:break-word; white-space:normal;}\n.ssd-module .ssd-widget-link{ position: absolute; left: 0; top: 0; width: 100%; height: 100%; background: transparent;z-index:100 }\n.ssd-module-wrap .ssd-widget-text{ line-height: 1.5; }\n.ssd-module-wrap .ssd-cell-text{position:absolute;top:0;left:0;right:0;width: 100%;height: 100%;overflow: auto;}\n.ssd-module-heading{background-repeat:no-repeat; background-position:left center; background-size:100% 100%; }\n.ssd-module-heading .ssd-module-heading-layout{display:inline-block;}\n.ssd-module-heading .ssd-widget-heading-ch{float: left;display: inline-block;margin-left: 15px; margin-right:6px; height: 100%;}\n.ssd-module-heading .ssd-widget-heading-en{float: left;display: inline-block;margin-left: 6px; margin-right:15px; height: 100%;}\n.ssd-module-wrap .ssd-widget-rectangle{box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}\n/*C-E*/.ssd-module-wrap .M14933705251261{height:828px; width:750px; background-color:#fbdcd1; background-image:url(https://img30.360buyimg.com/sku/jfs/t6052/344/8309590706/302614/e4c330da/5987ec04Nd89748b4.jpg)}\n.ssd-module-wrap .M14933705252622{height:987px; width:750px; background-color:#e3ddee; background-image:url(https://img30.360buyimg.com/sku/jfs/t6079/13/8271900227/290027/ca623087/5987ec02N7bd84509.jpg)}\n.ssd-module-wrap .M14933705253423{height:942px; width:750px; background-color:#fef2e1; background-image:url(//img30.360buyimg.com/sku/jfs/t4939/86/1138865972/306938/307b41f2/58eda301N42191f68.jpg)}\n.ssd-module-wrap .M14933705254154{height:664px; width:750px; background-color:#e3ddee; background-image:url(//img30.360buyimg.com/sku/jfs/t4891/288/1172067058/294356/1bf6783e/58eda32fNd385bb90.jpg)}\n.ssd-module-wrap .M14933705255055{height:801px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4417/150/3514543231/328051/6d9594c6/58ff0e78N311ed9b4.jpg)}\n.ssd-module-wrap .M14933705255846{height:560px; width:750px; background-color:#ceb8d9; background-image:url(//img30.360buyimg.com/sku/jfs/t4477/104/2320438821/307233/5e49ff5b/58eda353Ndfcb8936.jpg)}\n.ssd-module-wrap .M14933705256647{height:807px; width:750px; background-color:#f9e2b1; background-image:url(//img30.360buyimg.com/sku/jfs/t5236/209/400314023/304582/6c15b4fe/58ff0e7dNbca93ce8.jpg)}\n.ssd-module-wrap .M14933705257558{height:834px; width:750px; background-color:#ceb8d9; background-image:url(//img30.360buyimg.com/sku/jfs/t4651/343/2268651965/298442/d4fa7146/58eda37cNe7516136.jpg)}\n.ssd-module-wrap .M14933705258569{height:851px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4402/344/2271257155/302716/37767693/58eda390Nf40e0ca6.jpg)}\n.ssd-module-wrap .M149337052596110{height:556px; width:750px; background-color:#f9e2b1; background-image:url(//img30.360buyimg.com/sku/jfs/t4555/3/3529138738/209496/7eb3093a/58ff0e7cN94523da9.jpg)}\n.ssd-module-wrap .M149337052606011{height:804px; width:750px; background-color:#a7d7e8; background-image:url(https://img30.360buyimg.com/sku/jfs/t8200/28/463902234/262675/4829614/59a8fbb5N6d4f743d.jpg)}\n.ssd-module-wrap .M149337052618712{height:788px; width:750px; background-color:#c9e4d9; background-image:url(https://img30.360buyimg.com/sku/jfs/t6907/83/1996899890/81463/a7c217b2/5987ec03Nfc5b4061.jpg)}\n.ssd-module-wrap .M149337052634013{height:737px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4963/14/1161379495/301980/f5cebd2f/58eda4a7N19db9db5.jpg)}\n.ssd-module-wrap .M149337052645314{height:208px; width:750px; background-color:#a7d7e8; background-image:url(//img30.360buyimg.com/sku/jfs/t4609/194/2990933444/65799/15a60a5c/58f81f86Ne35a8b12.jpg)}\n",
-			"settings":
-			{
-				"buffer_size": 4711,
-				"line_ending": "Windows",
-				"name": "/*C-B*/"
 			}
 		}
 	],
@@ -1150,7 +1107,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 487.0
+		"width": 528.0
 	},
 	"console":
 	{
@@ -1177,28 +1134,75 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
+		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/数据备份/mern.products_bak_171031.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductDetails/ProductDetails.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ItemList.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_skin.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Signin/Signin.scss",
+		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/003 京东商品图片url/填充imgUrls.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Signup/signup.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartSummary.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/createManager.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductDetails/ProductDetails.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/createManager2.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/replacePath.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/helper/genIndexDisplayer.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/createManager.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/intervalChange.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Footer/Footer.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/Header.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Selector/Selector.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_basic.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/bootstrap/_variables.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/all-index.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_vars.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Selector/Selector.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Selector/Selector.css",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/repl_test_db.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Footer/Footer.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.scss",
+		"/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/static/js/awesome.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/express.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayCompleted/PayCompleted.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/AddrSelector/AddrSelector.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/AddrSelector/AddrSelector.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/node_modules/eslint-plugin-react/lib/rules/jsx-space-before-closing.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/E-commerce/README.md",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/homeData.js",
+		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/E-commerce/package.json",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.js",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/.gitignore",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.scss",
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayCompleted/PayCompleted.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/_bootstrap.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/bootstrap/_buttons.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/product.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/braintree/braintree.controller.js",
 		"/C/Users/Vincent/Desktop/products/New folder/5005885.md",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/CartItem.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayCompleted/PayCompleted.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/controllers/order.controller.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/server.routes.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/order.model.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/PayPrompt/PayPrompt.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/routes.js",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/public.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/user.server.controller.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/exp/repl_test_db.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/repl_test_db.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/models/product.model.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/mongoose.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/server/config/env/dev.js",
@@ -1208,36 +1212,23 @@
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/tmp-server-test.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/test_repl.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/exp-node_fs.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/.gitignore",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/api/index.js",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/1-tools/bootstrap-source/bootstrap/_buttons.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/bootstrap-source/bootstrap/mixins/_buttons.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/node_modules/react-scripts/template/gitignore",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartDetails.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductShow.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductList/ProductList.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/ProductShow.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShow/package.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/Header.js",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/CartSummary.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/Sortbar.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Home.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/App.vue",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/store/mutations.js",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/store/action.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ItemList.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/Header.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Signin/Signin.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Signin/Signin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_skin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/index.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/all-index.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/index.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/public/index.html",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/registerServiceWorker.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/build/index.html",
@@ -1246,10 +1237,8 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin/Signin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Signin/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Login/Login.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_vars.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/Header.scss",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vali-admin/src/sass/2-basics/_skin.sass",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Header/package.json",
@@ -1260,17 +1249,11 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CardGrid/CardGrid.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/TopBar/TopBar.css",
 		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Checkout/checkout.vue",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ConfirmOrder.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_basic.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/OrderHistory/OrderHistory.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/package.json",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Playground/Playground.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/assets/style/_mixin.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/tests/order.model.test.js",
 		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/products数据备份.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/OrderHistory.js",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ConfirmOrder/ConfirmOrder.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartItem.scss",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/CartFooter.scss",
@@ -1278,37 +1261,11 @@
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/index.css",
 		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/Search.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductDetail.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/FadeAuth.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/DevIndex.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Cart.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/App.test.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/Admin.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/mixin.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/index.scss",
-		"/C/Users/Vincent/Data/010 Workspace/电子商城项目/scratch/stash/pagetop.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/new.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/style.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/test.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/PageTop.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/PriSignup.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestCheckbox.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/TestRoutes.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/router.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/CartDetails.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/scss/OrderHistory.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/sass/main.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/CartDetails/package.json",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/@trash/CartDetails.scss",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductList/ProductList.css",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/scratch/products数据备份.json",
-		"/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/E-commerce/README.md",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductList.js",
-		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/components/ProductShowcase/ProductItem.js"
+		"/C/Users/Vincent/Data/Workspace/quick-react-app/src/ProductDetail.js"
 	],
 	"find":
 	{
-		"height": 48.0
+		"height": 7495.0
 	},
 	"find_in_files":
 	{
@@ -1343,9 +1300,75 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"this.state.term",
+			" _",
+			"+  ",
+			"+    ",
+			"product",
+			"productshow",
+			"prop",
+			"'",
+			"a",
+			"button",
+			"',\n",
+			"button",
+			"debug",
+			"getAllItems",
+			"border",
+			"/:size/:id/",
+			"59f3b8913b3bf5f5c28dada2/list/",
+			"/product_images/",
+			"C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app\\public\\product_images\\59f3b8913b3bf5f5c28dad9e\\list\\",
+			"orange",
+			"jpg",
+			"picture",
+			"n--",
+			"n",
+			"step",
+			"preve",
+			"gallery",
+			"(/.+)",
+			"\\\\",
+			"C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app\\public",
+			"prop-type",
+			"price",
+			"productdetails",
+			"details",
+			"(/.+)",
+			"jpg",
+			"\\\\",
+			"C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app\\public\\",
+			"str",
+			"(product[s]?\\.[\\w]+)",
+			"product[s]?\\.[\\w]+",
+			"-  ",
+			"hover",
+			"status",
+			"realPay",
+			"submenu",
+			"div",
+			"<>",
+			"securer",
+			"from",
+			"pos",
+			"products",
+			"(.*)",
+			"products",
+			"\\\\",
+			"\\\\product.*",
+			"        ",
+			"\"(.+)\",?",
+			"\"(.+)\"",
+			"        ",
+			"\\(\"(.+)\"\\)",
+			"\\((\".+\")\\)",
+			"home",
+			"(.*)",
+			"\\\\",
+			"C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app\\public",
 			"(\\w+)",
 			"//",
 			"https:",
@@ -1407,80 +1430,26 @@
 			"outputData",
 			"cart",
 			"removedItems",
-			"outputData",
-			"output",
-			"outputdata",
-			"no-wrap",
-			"div",
-			"pseudo-border-bottom",
-			"CartDetails.css",
-			"checkedItem",
-			"ProductNew",
-			"sitenav",
-			"text-align",
-			"/public/",
-			"products",
-			"respon",
-			"products",
-			"dataSource",
-			"([a-zA-Z\\d]+)",
-			"\"([a-zA-Z\\d]+)\",",
-			"\"[a-zA-Z\\d]\",",
-			"([a-zA-Z\\d]+)",
-			"[^\"]",
-			"        ",
-			"        \"",
-			"removeEntity",
-			"pagination",
-			"border:",
-			"border",
-			"img",
-			"img\\[src=\"\"\\]",
-			"\"",
-			"+   ",
-			"pagina",
-			"orderhistory",
-			"$cell-$border",
-			"item-content",
-			"refund",
-			"usercenter",
-			"div",
-			"title",
-			"quantity",
-			"order-confirm",
-			"div",
-			"outputData",
-			"outputdata",
-			"outputData",
-			"a",
-			"'",
-			"productshow",
-			"FormControl",
-			"= o",
-			"=",
-			"entry.id || entry.name",
-			"/>",
-			"import {\\s*FormModal\\s*}",
-			"import.+Header",
-			"FormModal",
-			"EditedFrom",
-			"EditedForm",
-			"<Col",
-			"<FormControl />",
-			"12",
-			"'",
-			"<Col",
-			"ControlLabel",
-			"'",
-			"devindex",
-			"Form"
+			"outputData"
 		],
 		"highlight": true,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": true,
 		"replace_history":
 		[
+			"'$1',",
+			"/",
+			"'$1',",
+			"/",
+			"{$1}",
+			"'$1',",
+			"'$1'",
+			"product_images",
+			"/",
+			"$1",
+			"'$1'",
+			"/",
 			"'$1',",
 			"'$1'",
 			"$1ObjectId($2)",
@@ -1548,446 +1517,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "src/App.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 219,
+						"buffer_size": 6583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								144,
-								144
-							]
-						],
-						"settings":
-						{
-							"auto_name": "/products/homeHot",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "src/components/PayCompleted/PayCompleted.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 513,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								58,
-								58
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/components/PayPrompt/PayPrompt.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2418,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
-				{
-					"buffer": 3,
-					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Home/home.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5932,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								474,
-								474
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 269.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 25,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "server/controllers/order.controller.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3347,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3206,
-								3206
+								1317,
+								1317
 							]
 						],
 						"settings":
@@ -1999,8 +1546,8 @@
 								{
 									"1":
 									[
-										563,
-										564
+										1316,
+										1317
 									]
 								},
 								"icon":
@@ -2015,8 +1562,8 @@
 								{
 									"1":
 									[
-										424,
-										425
+										1019,
+										1020
 									]
 								},
 								"unmatched":
@@ -2025,21 +1572,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2050,26 +1592,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2079,7 +1611,22 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
@@ -2087,27 +1634,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1226.0,
+						"translation.y": 1523.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "exp/repl_test_db.js",
+					"buffer": 1,
+					"file": "src/components/ProductShow/ProductShow.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1111,
+						"buffer_size": 7657,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								381,
-								381
+								4342,
+								4342
 							]
 						],
 						"settings":
@@ -2119,230 +1666,8 @@
 								{
 									"1":
 									[
-										405,
-										406
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										370,
-										371
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 138.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 27,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3608,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "src/components/PayCompleted/PayCompleted.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 739,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								451,
-								451
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										706,
-										707
+										4341,
+										4342
 									]
 								},
 								"icon":
@@ -2357,8 +1682,8 @@
 								{
 									"1":
 									[
-										310,
-										311
+										4317,
+										4318
 									]
 								},
 								"unmatched":
@@ -2367,21 +1692,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2392,143 +1712,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "server/config/express.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1779,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										11,
-										12
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										0,
-										1
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2538,34 +1731,50 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
+							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5464.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "/D/Data/Data.old/data_from_e1-571G/!MyData/awesome-python3-webapp/www/static/js/awesome.js",
+					"buffer": 2,
+					"file": "src/components/Header/Header.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14095,
+						"buffer_size": 6926,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2333,
-								2333
+								2552,
+								2552
 							]
 						],
 						"settings":
@@ -2577,8 +1786,8 @@
 								{
 									"1":
 									[
-										2332,
-										2333
+										2710,
+										2711
 									]
 								},
 								"icon":
@@ -2593,8 +1802,8 @@
 								{
 									"1":
 									[
-										2276,
-										2277
+										2527,
+										2528
 									]
 								},
 								"unmatched":
@@ -2603,21 +1812,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2628,26 +1832,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2657,34 +1851,274 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 4,
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1516.0,
+						"translation.y": 1336.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/components/PayPrompt/PayPrompt.js",
+					"buffer": 3,
+					"file": "src/components/Signin/Signin.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6175,
+						"buffer_size": 3068,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1680,
-								1680
+								2793,
+								2793
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										3060,
+										3061
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										887,
+										888
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1358.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/Signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								163
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 328.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/CartDetails/CartDetails.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6011,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								164,
+								164
 							]
 						],
 						"settings":
@@ -2705,28 +2139,23 @@
 								{
 									"1":
 									[
-										1576,
-										1577
+										163,
+										164
 									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2737,26 +2166,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2766,7 +2185,22 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
@@ -2774,20 +2208,1274 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 622.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/Home.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5399,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1423,
+								1423
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1422,
+										1423
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										1041,
+										1042
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1264.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
+					"buffer": 1,
+					"file": "src/components/ProductShow/ProductShow.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7657,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								869,
+								869
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										4341,
+										4342
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										4317,
+										4318
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 8440.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/page/Home/home.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								147,
+								147
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										161,
+										162
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										145,
+										146
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 62.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/C/Users/Vincent/Data/020 Legacy = 历史遗留/Examples = 网站后台开发的参考项目/vue-mall/src/components/mallGoods.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								696,
+								696
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 241.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 4,
+					"file": "src/Signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4409,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22,
+								22
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "src/components/Login/Login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2024,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1754,
+								1754
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										1773,
+										1774
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/round_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										486,
+										487
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2296.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "src/components/Signup/signup.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								138,
+								138
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										147,
+										148
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/single_quote.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										130,
+										131
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
 					"buffer": 11,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								240,
+								240
+							]
+						],
+						"settings":
+						{
+							"auto_name": "从非product-show页面点击搜索按钮，会跳转到ProductShow页面",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 178.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 338,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"auto_name": "App有个term，传入Header供搜索栏使用",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "src/routes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2397,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								666,
+								666
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										395,
+										396
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										7,
+										8
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"history_list_is_closing": true,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 904.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "src/all-index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1760,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								522,
+								522
+							]
+						],
+						"settings":
+						{
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+									"1":
+									[
+										523,
+										524
+									]
+								},
+								"icon":
+								{
+									"1":
+									[
+										"Packages/BracketHighlighter/icons/curly_bracket.png",
+										"brackethighlighter.default"
+									]
+								},
+								"open":
+								{
+									"1":
+									[
+										502,
+										503
+									]
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
 					"semi_transient": false,
 					"settings":
 					{
@@ -2886,28 +3574,132 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 32,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "src/App.js",
+					"buffer": 16,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5134,
+						"buffer_size": 628,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5044,
-								5044
+								62,
+								62
 							]
 						],
 						"settings":
 						{
+							"auto_name": "['1.jpg', '2.jpg', '3.jpg', '4.jpg', ]",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 193.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "exp/replacePath.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1482,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/*",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -2915,8 +3707,8 @@
 								{
 									"1":
 									[
-										5098,
-										5099
+										473,
+										474
 									]
 								},
 								"icon":
@@ -2931,8 +3723,8 @@
 								{
 									"1":
 									[
-										5043,
-										5044
+										469,
+										470
 									]
 								},
 								"unmatched":
@@ -2941,21 +3733,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -2966,26 +3753,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -2995,7 +3772,22 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
 							"history_list_is_closing": true,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
@@ -3003,571 +3795,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3766.0,
+						"translation.y": 322.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "server/homeData.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 956,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								90,
-								90
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										93,
-										94
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/single_quote.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										88,
-										89
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 17.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "server/server.routes.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3468,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1894,
-								1894
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										3466,
-										3467
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										672,
-										673
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "src/assets/style/_basic.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1527,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								203,
-								203
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										268,
-										269
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										202,
-										203
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 123.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "src/components/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 310,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								310,
-								310
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 29,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 324,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								292,
-								292
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// order创建数据实体后",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 383.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 28,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
@@ -3575,21 +3806,94 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21,
+						"buffer_size": 336,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21,
-								21
+								131,
+								131
 							]
 						],
 						"settings":
 						{
-							"auto_name": "合并支付页面",
+							"auto_name": "## Gallery的props定义",
 							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
 							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
@@ -3601,130 +3905,19 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "src/components/PayPrompt/PayPrompt.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6175,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6149,
-								6149
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-									"1":
-									[
-										1576,
-										1577
-									]
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
 					"buffer": 19,
-					"file": "src/routes.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2360,
+						"buffer_size": 2596,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1486,
-								1486
+								2539,
+								2539
 							]
 						],
 						"settings":
@@ -3734,49 +3927,34 @@
 							{
 								"close":
 								{
-									"1":
-									[
-										1489,
-										1490
-									]
 								},
 								"icon":
 								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
 								},
 								"open":
 								{
-									"1":
-									[
-										1428,
-										1429
-									]
 								},
 								"unmatched":
 								{
+									"1":
+									[
+										1721,
+										1722
+									]
 								}
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -3787,146 +3965,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1485.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "src/all-index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1704,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								861,
-								861
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										89,
-										90
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"brackethighlighter.default"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										71,
-										72
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -3936,130 +3984,39 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"history_list_is_closing": true,
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 206.0,
+						"translation.y": 5243.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
-					"file": "src/components/CardGrid/CardGrid.scss",
+					"buffer": 20,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4086,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								58,
-								0
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 30,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "src/assets/style/index.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 226,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -4072,6 +4029,37 @@
 						],
 						"settings":
 						{
+							"auto_name": "",
+							"bracket_highlighter.busy": false,
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1421,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"auto_name": "只要不触碰边界",
 							"bracket_highlighter.busy": false,
 							"bracket_highlighter.locations":
 							{
@@ -4090,21 +4078,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -4115,26 +4098,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -4144,38 +4117,156 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 31,
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1229,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1229
+							]
+						],
+						"settings":
+						{
+							"auto_name": "db.products.update({ \"_id\" : ObjectId(\"59f3b8913b3",
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
+							],
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 7,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 23,
-					"file": "src/assets/style/_vars.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 918,
+						"buffer_size": 2181,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								631,
-								631
+								2043,
+								2043
 							]
 						],
 						"settings":
@@ -4198,21 +4289,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -4223,129 +4309,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 102.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "src/assets/style/index.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								47,
-								47
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -4355,32 +4328,50 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
+								"bh_default_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content"
 							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2259.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
-					"file": "src/all-index.js",
+					"buffer": 24,
+					"file": "src/assets/style/_basic.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1704,
+						"buffer_size": 1659,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								81,
-								81
+								1443,
+								1443
 							]
 						],
 						"settings":
@@ -4392,8 +4383,8 @@
 								{
 									"1":
 									[
-										89,
-										90
+										1496,
+										1497
 									]
 								},
 								"icon":
@@ -4408,8 +4399,8 @@
 								{
 									"1":
 									[
-										71,
-										72
+										1417,
+										1418
 									]
 								},
 								"unmatched":
@@ -4418,21 +4409,16 @@
 							},
 							"bracket_highlighter.regions":
 							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
 								"bh_curly",
 								"bh_curly_center",
 								"bh_curly_open",
 								"bh_curly_close",
 								"bh_curly_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
 								"bh_regex",
 								"bh_regex_center",
 								"bh_regex_open",
@@ -4443,129 +4429,16 @@
 								"bh_square_open",
 								"bh_square_close",
 								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"history_list_is_closing": true,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "src/assets/style/bootstrap-source/bootstrap/_variables.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 31290,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8961,
-								8967
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
 								"bh_angle",
 								"bh_angle_center",
 								"bh_angle_open",
 								"bh_angle_close",
 								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
 								"bh_single_quote",
 								"bh_single_quote_center",
 								"bh_single_quote_open",
 								"bh_single_quote_close",
 								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
 								"bh_unmatched",
 								"bh_unmatched_center",
 								"bh_unmatched_open",
@@ -4575,525 +4448,32 @@
 								"bh_default_center",
 								"bh_default_open",
 								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 598.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 148,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								32,
-								32
-							]
-						],
-						"settings":
-						{
-							"auto_name": "banner {",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
+								"bh_default_content",
 								"bh_round",
 								"bh_round_center",
 								"bh_round_open",
 								"bh_round_close",
 								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"default_dir": "C:\\Users\\Vincent\\Data\\Workspace\\quick-react-app",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 137,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10,
-								10
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
 								"bh_c_define",
 								"bh_c_define_center",
 								"bh_c_define_open",
 								"bh_c_define_close",
 								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
 								"bh_tag",
 								"bh_tag_center",
 								"bh_tag_open",
 								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
+								"bh_tag_content"
 							],
-							"syntax": "Packages/Regular Expressions/RegExp.tmLanguage"
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6088.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 27,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3152,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								527,
-								527
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<ul class=\"lh\" style=\"position: absolute; width: 6",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 28,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1972,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								966,
-								966
-							]
-						],
-						"settings":
-						{
-							"auto_name": "// gallery",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 624.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 29,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4711,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2001,
-								2001
-							]
-						],
-						"settings":
-						{
-							"auto_name": "/*C-B*/",
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 526.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -5101,7 +4481,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 30.0
+		"height": 48.0
 	},
 	"input":
 	{
@@ -5139,20 +4519,20 @@
 		"cols":
 		[
 			0.0,
-			0.35,
+			0.886169386169,
 			1.0
 		],
 		"rows":
 		[
 			0.0,
-			0.133435582822,
+			0.886153846154,
 			1.0
 		]
 	},
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 197.0
+		"height": 47.0
 	},
 	"output.find_results":
 	{
@@ -5166,7 +4546,7 @@
 	"project": "quick-react-app.sublime-project",
 	"replace":
 	{
-		"height": 92.0
+		"height": 14986.0
 	},
 	"save_all_on_build": false,
 	"select_file":
@@ -5175,6 +4555,206 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"product.model.js",
+				"quick-react-app\\server\\models\\product.model.js"
+			],
+			[
+				"productcontroller.js",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"productshow.js",
+				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
+			],
+			[
+				"produc",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"productcont",
+				"quick-react-app\\server\\controllers\\product.controller.js"
+			],
+			[
+				"basic",
+				"quick-react-app\\src\\assets\\style\\_basic.scss"
+			],
+			[
+				"_skin.scss",
+				"quick-react-app\\src\\assets\\style\\_skin.scss"
+			],
+			[
+				"home.js",
+				"quick-react-app\\src\\Home.js"
+			],
+			[
+				"header.js",
+				"quick-react-app\\src\\components\\Header\\Header.js"
+			],
+			[
+				"compsignup",
+				"quick-react-app\\src\\components\\Signup\\signup.js"
+			],
+			[
+				"login.js",
+				"quick-react-app\\src\\components\\Login\\Login.js"
+			],
+			[
+				"complogin.js",
+				"quick-react-app\\src\\components\\Login\\Login.js"
+			],
+			[
+				"app.js",
+				"quick-react-app\\src\\App.js"
+			],
+			[
+				"allindex.js",
+				"quick-react-app\\src\\all-index.js"
+			],
+			[
+				"routes.js",
+				"quick-react-app\\src\\routes.js"
+			],
+			[
+				"skin.scss",
+				"quick-react-app\\src\\assets\\style\\_skin.scss"
+			],
+			[
+				"signup.js",
+				"quick-react-app\\src\\Signup.js"
+			],
+			[
+				"signin.scss",
+				"quick-react-app\\src\\components\\Signin\\Signin.scss"
+			],
+			[
+				"signin.js",
+				"quick-react-app\\src\\components\\Signin\\Signin.js"
+			],
+			[
+				"cartdetail.js",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
+			],
+			[
+				"cartsummary.js",
+				"quick-react-app\\src\\CartSummary.js"
+			],
+			[
+				"itemlist.js",
+				"quick-react-app\\src\\ItemList.js"
+			],
+			[
+				"cartdetails.js",
+				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
+			],
+			[
+				"createman",
+				"quick-react-app\\src\\helper\\createManager.js"
+			],
+			[
+				"productdetail.js",
+				"quick-react-app\\src\\components\\ProductDetails\\ProductDetails.js"
+			],
+			[
+				"replacepath.js",
+				"quick-react-app\\exp\\replacePath.js"
+			],
+			[
+				"",
+				"quick-react-app\\src\\components\\ProductDetails\\ProductDetails.js"
+			],
+			[
+				"productdetails.scss",
+				"quick-react-app\\src\\components\\ProductDetails\\ProductDetails.scss"
+			],
+			[
+				"cret",
+				"quick-react-app\\src\\helper\\createManager.js"
+			],
+			[
+				"genin",
+				"quick-react-app\\src\\helper\\genIndexDisplayer.js"
+			],
+			[
+				"confirmorder",
+				"quick-react-app\\src\\ConfirmOrder.js"
+			],
+			[
+				"compconfirmorder.js",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
+			],
+			[
+				"selector.scss",
+				"quick-react-app\\src\\components\\Selector\\Selector.scss"
+			],
+			[
+				"selector.js",
+				"quick-react-app\\src\\components\\Selector\\Selector.js"
+			],
+			[
+				"confirmorder.js",
+				"quick-react-app\\src\\ConfirmOrder.js"
+			],
+			[
+				"productdetails.js",
+				"quick-react-app\\src\\components\\ProductDetails\\ProductDetails.js"
+			],
+			[
+				"selector.css",
+				"quick-react-app\\src\\components\\Selector\\Selector.css"
+			],
+			[
+				"compconfri",
+				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
+			],
+			[
+				"confirmo",
+				"quick-react-app\\src\\ConfirmOrder.js"
+			],
+			[
+				"addressscss",
+				"quick-react-app\\src\\components\\ConfirmOrder\\AddrSelector\\AddrSelector.scss"
+			],
+			[
+				"ssjsb",
+				"react-scripts\\node_modules\\eslint-plugin-react\\lib\\rules\\jsx-space-before-closing.js"
+			],
+			[
+				"orderhistory.scss",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
+			],
+			[
+				"comporderhis.js",
+				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
+			],
+			[
+				"orderhistory.js",
+				"quick-react-app\\src\\OrderHistory.js"
+			],
+			[
+				"basic.scss",
+				"quick-react-app\\src\\assets\\style\\_basic.scss"
+			],
+			[
+				"all-index.js",
+				"quick-react-app\\src\\all-index.js"
+			],
+			[
+				"cardgrid.scss",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.scss"
+			],
+			[
+				"git",
+				"quick-react-app\\.gitignore"
+			],
+			[
+				"homedata.js",
+				"quick-react-app\\server\\homeData.js"
+			],
+			[
+				"cardgrid.js",
+				"quick-react-app\\src\\components\\CardGrid\\CardGrid.js"
+			],
 			[
 				"server.routes.js",
 				"quick-react-app\\server\\server.routes.js"
@@ -5204,10 +4784,6 @@
 				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.scss"
 			],
 			[
-				"allindex.js",
-				"quick-react-app\\src\\all-index.js"
-			],
-			[
 				"prompt.",
 				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.js"
 			],
@@ -5224,10 +4800,6 @@
 				"quick-react-app\\server\\controllers\\product.controller.js"
 			],
 			[
-				"routes.js",
-				"quick-react-app\\src\\routes.js"
-			],
-			[
 				"repl",
 				"quick-react-app\\exp\\repl_test_db.js"
 			],
@@ -5240,20 +4812,12 @@
 				"quick-react-app\\server\\controllers\\order.controller.js"
 			],
 			[
-				"",
-				"quick-react-app\\server\\models\\order.model.js"
-			],
-			[
 				"payprompt.scss",
 				"quick-react-app\\src\\components\\PayPrompt\\PayPrompt.scss"
 			],
 			[
 				"sortbar.js",
 				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.js"
-			],
-			[
-				"app.js",
-				"quick-react-app\\src\\App.js"
 			],
 			[
 				"payprompt.js",
@@ -5316,14 +4880,6 @@
 				"quick-react-app\\src\\CartDetails.css"
 			],
 			[
-				"cartdetail.js",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
-			],
-			[
-				"all-index.js",
-				"quick-react-app\\src\\all-index.js"
-			],
-			[
 				"compindex.js",
 				"quick-react-app\\src\\components\\index.js"
 			],
@@ -5332,16 +4888,8 @@
 				"quick-react-app\\src\\components\\ProductShow\\ProductList\\ProductList.scss"
 			],
 			[
-				"productshow.js",
-				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
-			],
-			[
 				"cartitem.scss",
 				"quick-react-app\\src\\components\\Header\\CartItem.scss"
-			],
-			[
-				"header.js",
-				"quick-react-app\\src\\components\\Header\\Header.js"
 			],
 			[
 				"cartsummary",
@@ -5372,26 +4920,6 @@
 				"quick-react-app\\src\\index.js"
 			],
 			[
-				"cardgrid.js",
-				"quick-react-app\\src\\components\\CardGrid\\CardGrid.js"
-			],
-			[
-				"cardgrid.scss",
-				"quick-react-app\\src\\components\\CardGrid\\CardGrid.scss"
-			],
-			[
-				"home.js",
-				"quick-react-app\\src\\Home.js"
-			],
-			[
-				"itemlist.js",
-				"quick-react-app\\src\\ItemList.js"
-			],
-			[
-				"cartsummary.js",
-				"quick-react-app\\src\\CartSummary.js"
-			],
-			[
 				"header.scss",
 				"quick-react-app\\src\\components\\Header\\Header.scss"
 			],
@@ -5412,20 +4940,8 @@
 				"quick-react-app\\build\\index.html"
 			],
 			[
-				"basic",
-				"quick-react-app\\src\\assets\\style\\_basic.scss"
-			],
-			[
 				"nav",
 				"quick-react-app\\src\\assets\\style\\bootstrap-source\\bootstrap\\_navs.scss"
-			],
-			[
-				"signin.scss",
-				"quick-react-app\\src\\components\\Signin\\Signin.scss"
-			],
-			[
-				"signin.js",
-				"quick-react-app\\src\\components\\Signin\\Signin.js"
 			],
 			[
 				"all",
@@ -5434,10 +4950,6 @@
 			[
 				"al",
 				"quick-react-app\\src\\all-index.js"
-			],
-			[
-				"login.js",
-				"quick-react-app\\src\\components\\Login\\Login.js"
 			],
 			[
 				"btns.scss",
@@ -5496,10 +5008,6 @@
 				"quick-react-app\\src\\components\\CardGrid\\CardGrid.js"
 			],
 			[
-				"confirmorder.js",
-				"quick-react-app\\src\\ConfirmOrder.js"
-			],
-			[
 				"orderhs.scss",
 				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
 			],
@@ -5512,20 +5020,12 @@
 				"quick-react-app\\src\\components\\CardGrid\\CardGrid.scss"
 			],
 			[
-				"orderhistory.scss",
-				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
-			],
-			[
 				"package.json",
 				"quick-react-app\\package.json"
 			],
 			[
 				"compordhisjs",
 				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
-			],
-			[
-				"product.model.js",
-				"quick-react-app\\server\\models\\product.model.js"
 			],
 			[
 				"json",
@@ -5538,10 +5038,6 @@
 			[
 				"ordermodel",
 				"quick-react-app\\server\\models\\order.model.js"
-			],
-			[
-				"compconfirmorder.js",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.js"
 			],
 			[
 				"comporderjs",
@@ -5560,10 +5056,6 @@
 				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
 			],
 			[
-				"cartdetails.js",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
-			],
-			[
 				"compconorder.scss",
 				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
 			],
@@ -5574,118 +5066,6 @@
 			[
 				"cartdetil.js",
 				"quick-react-app\\src\\components\\CartDetails\\CartDetails.js"
-			],
-			[
-				"skin",
-				"quick-react-app\\src\\assets\\style\\_skin.scss"
-			],
-			[
-				"confirmorder.scss",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
-			],
-			[
-				"orderhiscss",
-				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
-			],
-			[
-				"orderhistory.js",
-				"quick-react-app\\src\\OrderHistory.js"
-			],
-			[
-				"cartdetails.scss",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
-			],
-			[
-				"playground.js",
-				"quick-react-app\\src\\components\\Playground\\Playground.js"
-			],
-			[
-				"compcart.css",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.css"
-			],
-			[
-				"cartdetails/scss",
-				"quick-react-app\\src\\components\\CartDetails\\CartDetails.scss"
-			],
-			[
-				"cartsumm",
-				"quick-react-app\\src\\CartSummary.js"
-			],
-			[
-				"git",
-				"quick-react-app\\.gitignore"
-			],
-			[
-				"/git",
-				"react-scripts\\template\\gitignore"
-			],
-			[
-				"productcontroller.js",
-				"quick-react-app\\server\\controllers\\product.controller.js"
-			],
-			[
-				"join",
-				"quick-react-app\\scratch\\join_arr.js"
-			],
-			[
-				"productitem.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\ProductItem.js"
-			],
-			[
-				"productlist.js",
-				"quick-react-app\\src\\components\\ProductShowcase\\ProductList.js"
-			],
-			[
-				"sortbar.css",
-				"quick-react-app\\src\\components\\ProductShowcase\\Sortbar.css"
-			],
-			[
-				"productlist.css",
-				"quick-react-app\\src\\components\\ProductList\\ProductList.css"
-			],
-			[
-				"producshow.js",
-				"quick-react-app\\src\\components\\ProductShow\\ProductShow.js"
-			],
-			[
-				"usercenter.js",
-				"quick-react-app\\src\\components\\UserCenter\\UserCenter.js"
-			],
-			[
-				"basic.scss",
-				"quick-react-app\\src\\assets\\style\\_basic.scss"
-			],
-			[
-				"comporderhisscss",
-				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.scss"
-			],
-			[
-				"orderhisscss",
-				"quick-react-app\\src\\scss\\OrderHistory.scss"
-			],
-			[
-				"compconfirscss",
-				"quick-react-app\\src\\components\\ConfirmOrder\\ConfirmOrder.scss"
-			],
-			[
-				"confirmscss",
-				"quick-react-app\\scratch\\@trash\\ConfirmOrder.scss"
-			],
-			[
-				"usecentscss",
-				"quick-react-app\\src\\components\\UserCenter\\UserCenter.scss"
-			],
-			[
-				"compoindex.js",
-				"quick-react-app\\src\\components\\index.js"
-			],
-			[
-				"compusercroutes",
-				"quick-react-app\\src\\components\\UserCenter\\routes.js"
-			],
-			[
-				"componentorder",
-				"quick-react-app\\src\\components\\OrderHistory\\OrderHistory.js"
 			]
 		],
 		"width": 0.0
@@ -5720,7 +5100,7 @@
 		],
 		"width": 392.0
 	},
-	"selected_group": 3,
+	"selected_group": 0,
 	"settings":
 	{
 	},

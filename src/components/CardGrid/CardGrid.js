@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 import './CardGrid.css'
 
@@ -57,15 +58,17 @@ const CardB = ({item, className}) => {
     <div className={className}>
       <div className="wrap">
         <div className="content">
-          <a href="#" className="top">
-            <img src={item.imageUrl} alt=""/>
+          <div className="top">
+            <Link to={`/product-details/${item._id}`}>
+              <img src={item.imageUrl} alt=""/>
+            </Link>
             <div className="price">￥{item.price}</div>
             <div className="desc" title={item.description || item.desc}>
-              <a href="#">
+              <Link to={`/product-details/${item._id}`}>
                 {item.description || item.desc}
-              </a>
+              </Link>
             </div>
-          </a>
+          </div>
           <div className="title" title={item.title}>
             {item.title}
           </div>

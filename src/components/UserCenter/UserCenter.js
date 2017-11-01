@@ -19,29 +19,27 @@ class UserCenter extends React.Component {
     const { match } = this.props
     console.log('match', match)
     return (
-      <Router>
-        <div className="user-center wrapper flex-r-full">
-          <div className="slide" style={{ width: 200, float: 'left' }}>
-            <Affix>
-              <div className="user-panel">
-                <img className="avatar" src={require('./avatar.jpg')} alt=""/>
-                <span className="username">Vincent</span>
-              </div>
-              <Sider match={match} />
-            </Affix>
-          </div>
-          <div className="main" style={{ float: 'left' }}>
-            {routes.map((route, idx) => (
-              <Route
-                key={idx}
-                path={match.url + route.path}
-                component={route.component}
-                exact={route.exact}
-              />
-            ))}
-          </div>
+      <div className="user-center wrapper flex-r-full">
+        <div className="slide" style={{ width: 200, float: 'left' }}>
+          <Affix>
+            <div className="user-panel">
+              <img className="avatar" src={require('./avatar.jpg')} alt=""/>
+              <span className="username">Vincent</span>
+            </div>
+            <Sider match={match} />
+          </Affix>
         </div>
-      </Router>
+        <div className="main" style={{ float: 'left' }}>
+          {routes.map((route, idx) => (
+            <Route
+              key={idx}
+              path={match.url + route.path}
+              component={route.component}
+              exact={route.exact}
+            />
+          ))}
+        </div>
+      </div>
     )
   }
 }

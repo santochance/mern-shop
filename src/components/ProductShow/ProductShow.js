@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { Pagination, Row, Col } from 'antd'
 import Sortbar from './Sortbar'
 import _ from 'lodash'
@@ -223,14 +224,14 @@ const ProductItem = ({ item, addToCart }) => {
   return (
     <div className="product-item">
       <div className="product-pic">
-        <a href="" className="pic-wrapper">
+        <Link to={`/product-details/${item._id}`} className="pic-wrapper">
           <img style={{ width: '100%', height: '100%' }} src={item.imageUrl || '/01.jpg'} alt=""/>
-        </a>
+        </Link>
       </div>
       <div className="product-info">
-        <a href="" className="product-title link">
+        <Link to={`/product-details/${item._id}`} className="product-title link">
           {item.title || item.productName}
-        </a>
+        </Link>
         <div className="product-desc">
           {item.description}
         </div>

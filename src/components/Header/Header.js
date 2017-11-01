@@ -111,7 +111,7 @@ const CartSummary = ({ cart, app }) => {
             {cart.children.map((order, idx) => (
               <CartOrder>
                 {order.children.map((item, idx) => (
-                  <CartItem key={idx} entry={item} removeItem={app.removeItem} />
+                  <CartItem key={idx} item={item} removeItem={app.removeItem} />
                 ))}
               </CartOrder>
             ))}
@@ -138,33 +138,33 @@ const CartOrder = ({ children, content }) => {
   )
 }
 
-const CartItem = ({ entry, removeItem, key }) => {
+const CartItem = ({ item, removeItem, key }) => {
 
   return (
     <div className="cart-item">
       <div className="item-content tr">
         <div className="cell-pic td">
           <div className="pic-wrapper">
-            <a href="">
-              <img src={entry.content.imageUrl} alt=""/>
-            </a>
+            <Link to={`/product-details/${item.content._id}`}>
+              <img src={item.content.imageUrl} alt=""/>
+            </Link>
           </div>
         </div>
         <div className="cell-info td">
           <div className="info-title">
-            <a href="" className="link">
-              {entry.content.title}
-            </a>
+            <Link to={`/product-details/${item.content._id}`} className="link">
+              {item.content.title}
+            </Link>
           </div>
           <div>
             <span className="price-symbol">￥</span>
-            <span className="price">{entry.content.price}</span>
+            <span className="price">{item.content.price}</span>
             <span className="sep-symbol">x</span>
-            <span className="amount">{entry.amount}</span>
+            <span className="amount">{item.amount}</span>
           </div>
         </div>
         <div className="cell-oper td">
-          <span className="delete-btn" title="删除商品" onClick={() => removeItem(entry, key)}>
+          <span className="delete-btn" title="删除商品" onClick={() => removeItem(item, key)}>
             <Icon className="icon" type={'close-circle-o'} />
           </span>
         </div>
