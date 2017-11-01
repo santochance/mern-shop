@@ -3,7 +3,7 @@ import {
   Form, FormGroup, FormControl, ControlLabel,
   InputGroup, Button, Checkbox } from 'react-bootstrap'
 import { Icon } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import './Signin.css'
 
@@ -15,7 +15,7 @@ function form2json(form) {
   return rst
 }
 
-export default class Signin extends React.Component {
+class Signin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {}
@@ -32,6 +32,15 @@ export default class Signin extends React.Component {
   }
 
   render() {
+    let { isLogined } = this.props
+    let { from } = this.props.location.state || { from: {pathname: '/'} }
+    console.log('isLogined:', true)
+    console.log('from:', from)
+    if (isLogined) {
+      return (
+        <Redirect to={from} />
+      )
+    }
     return (
       <div className="signin" style={{
         // backgroundColor: '#ddd',
@@ -87,3 +96,5 @@ export default class Signin extends React.Component {
     )
   }
 }
+
+export default Signin

@@ -77,16 +77,16 @@ class App extends ItemList {
     let matched = matchPath(nextProps.location.pathname, {path: '/product-show'})
     this.setState({inputedTerm: (matched && nextProps.location.state && nextProps.location.state.term) || ''})
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('App ask should update')
-    return true
-  }
-  componentWillUpdate(nextProps, nextState) {
-    console.log('App will update')
-  }
-  componentDidUpdate(prevProps, prevState) {
-    console.log('App updated')
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('App ask should update')
+  //   return true
+  // }
+  // componentWillUpdate(nextProps, nextState) {
+  //   console.log('App will update')
+  // }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('App updated')
+  // }
 
   login(data) {
     fetch('/api/signin', {
@@ -97,16 +97,7 @@ class App extends ItemList {
       if (res.ok) {
         res.json().then(user => {
           // 登录成功
-          console.log('%s signed in.', user.username)
-          window.auth = {
-            ...user,
-            isAuthed: true
-          }
-          this.setState({ logined: true }, () => {
-            // 跳转到'/'
-            // App中有history吗？
-            this.props.history.push('/')
-          }, 0)
+          this.setState({ logined: true })
         })
       } else {
         res.json().then(console.error)
@@ -118,12 +109,7 @@ class App extends ItemList {
     fetch('/signout').then(res => {
       if (res.ok) {
         // 退出成功
-        console.log('sign out successfully')
-        window.auth = {isAuthed: false}
-
-        this.setState({ logined: false }, () => {
-          this.props.history.push('/')
-        }, 0)
+        this.setState({ logined: false })
       }
     }).catch(console.error)
   }
@@ -210,7 +196,7 @@ class App extends ItemList {
             <Home {...props} data={home} app={this} />
           )} />
           <Route path="/signin" render={props => (
-            <Signin {...props} login={this.login} />
+            <Signin {...props} login={this.login} isLogined={this.state.logined} />
           )} />
           <Route path="/product-show" render={props => (
             <ProductShow {...props} addToCart={this.addToCart} app={this} />

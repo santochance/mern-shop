@@ -25,7 +25,10 @@ const Header = ({ logined, cart, app, term }) => {
         <div className="right-box">
           {!logined && (
             <div className="nav-btns">
-              <Link to="/signin" className="btn btn-primary">登&nbsp;录</Link>
+              <Link to={{
+                pathname: '/signin',
+                state: { from: app.props.location }
+              }} className="btn btn-primary">登&nbsp;录</Link>
               <Link to="/signup_0" className="btn btn-success">注&nbsp;册</Link>
             </div>
           )}
