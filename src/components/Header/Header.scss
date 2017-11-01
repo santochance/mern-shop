@@ -70,6 +70,8 @@ $useAuxiOtl: false;
   margin: -8px -16px;  /* 抵消Popover的padding */
 
   .menu-item {
+    white-space: nowrap;
+
     .link {
       display: block;
       line-height: 3;
