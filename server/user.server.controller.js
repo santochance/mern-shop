@@ -156,6 +156,7 @@ exports.signup = function(req, res, next) {
   }
 };
 
+/* 这个signin函数好像目前是没有使用的？ */
 exports.signin = function() {
   passport.authenticate('local', {
     successRedirect: '/',
@@ -171,5 +172,6 @@ exports.signout = function(req, res) {
   req.logout();
 
   // Redirect the user back to the main application page
-  res.redirect('/');
+  // res.redirect('/');
+  res.json('signout successfully!')
 };

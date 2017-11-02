@@ -49,9 +49,16 @@ module.exports = function(app) {
       failureRedirect: '/signin',
       failureFlash: true
     }), function(req, res) {
-      var rst
-      res.json(rst = { id: req.user._id, username: req.user.username })
-      console.log(rst)
+      // 这里的user是一个mongoose的Model实例
+      var rst = Object.assign({}, req.user._doc)
+      delete rst.password
+      delete rst.salt
+      console.log('send login responese:', rst)
+
+      // 返回整个user对象
+      // 去掉password和salt字段
+      res.json(rst)
+      // res.json(rst = { id: req.user._id, username: req.user.username })
     })
 
   app.get('/signout', users.signout)
