@@ -194,7 +194,7 @@ exports.getLogined = function(req, res) {
     } else {
       // 客户端没有发来id或者两个id不相同
       console.log('user get')
-      user = req.user
+      user = Object.assign({}, req.user)
     }
   }
   res.json({ user })

@@ -18,7 +18,9 @@ function form2json(form) {
 class Signin extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {
+      reserved: true
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
@@ -34,8 +36,6 @@ class Signin extends React.Component {
   render() {
     let { isLogined } = this.props
     let { from } = this.props.location.state || { from: {pathname: '/'} }
-    console.log('isLogined:', true)
-    console.log('from:', from)
     if (isLogined) {
       return (
         <Redirect to={from} />
@@ -75,14 +75,14 @@ class Signin extends React.Component {
               <FormGroup controlId="password">
                 <ControlLabel className="sr-only">用户密码</ControlLabel>
                 <InputGroup>
-                  <InputGroup.Addon  style={{ padding: '6px 8px' }}>
+                  <InputGroup.Addon style={{ padding: '6px 8px' }}>
                     <Icon type="lock" style={{fontSize: 20}}/>
                   </InputGroup.Addon>
                   <FormControl type="password" placeholder="登录密码" defaultValue="password"></FormControl>
                 </InputGroup>
               </FormGroup>
-              <FormGroup controllId="staied" className="flex-lr">
-                <Checkbox inline checked={true}>记住我的登录</Checkbox>
+              <FormGroup className="flex-lr">
+                <Checkbox inline defaultChecked>记住我的登录</Checkbox>
                 <div className="links">
                   <a style={{paddingRight: 16}}>忘记密码</a>
                   <Link to="/signup_0">现在注册</Link>

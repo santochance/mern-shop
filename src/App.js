@@ -69,6 +69,12 @@ class App extends ItemList {
   componentDidMount() {
     this.getHomeData()
       .then(home => this.setState({ home }))
+    this.getLoginedUser()
+      .then(user => {
+        if (user) {
+          this.setState({ logined: true, user })
+        }
+      })
   }
   componentWillReceiveProps(nextProps) {
     // 如果Route跳转目标
@@ -92,12 +98,17 @@ class App extends ItemList {
     fetch('/api/signin', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: 'include',
     }).then(res => {
       if (res.ok) {
         res.json().then(user => {
+          console.log('logined user:', user)
           // 登录成功
-          this.setState({ logined: true })
+          this.setState({
+            logined: true,
+            user
+          })
         })
       } else {
         res.json().then(console.error)
@@ -106,7 +117,9 @@ class App extends ItemList {
   }
 
   logout() {
-    fetch('/signout').then(res => {
+    fetch('signout', {
+      credentials: 'include'
+    }).then(res => {
       if (res.ok) {
         // 退出成功
         this.setState({ logined: false })
@@ -179,10 +192,23 @@ class App extends ItemList {
       .catch(console.error)
   }
 
+  getLoginedUser() {
+    return fetch('/users/logined')
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          return console.log('no logined user')
+        }
+      })
+      .catch(console.error)
+  }
+
   render() {
     let {
       logined,
       cart,
+      user,
       home,
     } = this.state
     if (!home) return null
@@ -191,7 +217,7 @@ class App extends ItemList {
       <div className="app">
         {this.state.debug && <DevIndex />}
         <Header {...{logined, cart, app: this, term: this.state.inputedTerm}}/>
-        <div className="wrapper" style={{ minHeight: 420 }}>
+        <div className="wrapper" style={{ minHeight: 440 }}>
           <Route path="/" exact render={props => (
             <Home {...props} data={home} app={this} />
           )} />
@@ -205,7 +231,7 @@ class App extends ItemList {
           <PrivateRoute path="/cart-details" component={CartDetails}
             isAuthed={logined} cart={cart} app={this} />
           <PrivateRoute path="/user-center" component={UserCenter}
-            isAuthed={logined} />
+            isAuthed={logined} user={user} />
 
           <Route path="/product-details/:id" render={props => (
             <ProductDetails {...props} app={this} />
