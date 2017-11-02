@@ -175,3 +175,23 @@ exports.signout = function(req, res) {
   // res.redirect('/');
   res.json('signout successfully!')
 };
+
+// 获取当前登录的用户
+// Get /users/logined[?has_id=<id>]
+exports.getLogined = function(req, res) {
+  // 查询当前是否有已登录的用户
+  if (!req.user) {
+    //  没有已登录的用户
+    console.log('user not found')
+    return res.status(404).end()
+  }
+  // 有已登录的用户
+  if (String(req.query.has_id) === String(req.user._id)) {
+    // 且与客户端发来的id相同
+    console.log('user not modified')
+    return res.status(304).end()
+  }
+  // 客户端没有发来id或者两个id不相同
+  console.log('user get')
+  return res.status(200).json(req.user)
+}
