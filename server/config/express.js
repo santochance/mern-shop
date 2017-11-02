@@ -41,7 +41,8 @@ module.exports = function() {
   app.use(session({
     saveUninitialized: true,
     resave: true,
-    secret: 'mern-shop-dev-session-secret'
+    secret: 'mern-shop-dev-session-secret',
+    cookie: { maxAge: 60000 },
   }))
   // app.set('views', './app/views')
   // app.set('view engine', 'ejs')
@@ -52,6 +53,14 @@ module.exports = function() {
   app.use(passport.initialize())
   // It is using the Express session to keep track of your user's session
   app.use(passport.session())
+
+  // 测试session
+  app.use(function(req, res, next) {
+    // debugger
+    console.log('session:', JSON.stringify(req.session, null, 2))
+    console.log('current authed user:', req.user && req.user.username)
+    next()
+  })
 
   require('../server.routes.js')(app)
 

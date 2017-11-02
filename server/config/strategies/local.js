@@ -8,8 +8,10 @@ var passport = require('passport'),
 
 // Create the Local strategy configuration method
 module.exports = function() {
-  // Use the Passport's Local strategy 
+  // Use the Passport's Local strategy
   passport.use(new LocalStrategy(function(username, password, done) {
+    console.log('exec in local strategy')
+
     // Use the 'User' model 'findOne' method to find a user with the current username
     User.findOne({
       username: username
@@ -18,7 +20,7 @@ module.exports = function() {
       if (err) {
         return done(err);
       }
-      
+
       // If a user was not found, continue to the next middleware with an error message
       if (!user) {
         return done(null, false, {
@@ -32,7 +34,7 @@ module.exports = function() {
           message: 'Invalid password'
         });
       }
-      
+
       // Otherwise, continue to the next middleware with the user object
       return done(null, user);
     });
