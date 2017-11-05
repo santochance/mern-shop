@@ -147,7 +147,7 @@ class ProductDetails extends React.Component {
             <div className="detail-header">
               <h3 style={{
                 fontSize: 20,
-                padding: '20px 0',
+                padding: '20px 10px',
                 margin: '20px 0',
                 backgroundColor: '#eee',
               }}>商品详情</h3>
@@ -188,7 +188,19 @@ class Gallery extends React.Component {
     }
 
   }
+  componentDidMount() {
+    // console.log('gallery did mount')
+    this.mgr = createManager({
+      total: this.props.smUrls.length, /* 图片list的items数量 */
+      size: 5
+    })
+  }
+
   componentWillReceiveProps(nextProps) {
+    // 由于添加ProductDetails.state.loaded改变了Gallery的渲染时机
+    // Gallery在DidMount时就参接收到smUrls
+    // 并且最初不会触发WillReceiveProps
+    // console.log('gallery will receive props')
     if (!this.mgr && nextProps.smUrls) {
       // 添加Gallery的list index管理器
       this.mgr = createManager({
