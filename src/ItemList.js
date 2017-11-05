@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { notification } from 'antd'
 /* 171014 未测试
   重新写了一个包含了向上遍历和向下遍历的函数
   把checked的修改逻辑也整合到求和对象中
@@ -180,6 +181,21 @@ class ItemList extends React.Component {
       this.appendItem(cart, this.appendItem(this.createList(), this.createItem(product, amount, checked)))
     )
 
+    // 显示反馈消息
+    notification.open({
+      message: '已经添加到购物车',
+      description: (
+        <div className="clearfix" style={{ paddingTop: 10 }}>
+          <img src={product.imageUrl} alt="" height="50" width="50" className="fl mr-10" />
+          <div style={{
+            overflow: 'hidden',
+            lineHeight: 1.5,
+            height: '3em',
+          }}>{product.title}</div>
+        </div>
+      ),
+      duration: 2,
+    })
     console.log('cart:\n', cart)
   }
 
