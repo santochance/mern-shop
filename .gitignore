@@ -29,3 +29,6 @@ yarn-error.log*
 src/**/*.css
 
 /exp
+
+# 独立用于gh-pages的文件夹
+/gh-pages
