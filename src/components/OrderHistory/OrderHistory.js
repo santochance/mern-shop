@@ -161,7 +161,7 @@ const TableView = (props) => {
                 {/* 订单信息栏 */}
                 <div className="order-info">
                   <span className="order-date">
-                    {<order className="created">{new Date(order.created).toISOString().slice(0, 10)}</order>}
+                    {<order className="created">{new Date(order.createdAt).format('yyyy-MM-dd hh:mm:ss')}</order>}
                   </span>
                   <span className="order-serial">
                   订单编号：{order._id}

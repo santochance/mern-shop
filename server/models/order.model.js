@@ -47,7 +47,7 @@ var OrderSchema = new Schema({
   shipping: { type: Number },
   realPay: { type: Number },
   paymentStatus: Schema.Types.Mixed,
-  paymentType: { type: String, default: 'braintree' },
+  paymentType: { type: String, default: '' },
   paymentDate: { type: Number },
   nonce: String,
   status: {
@@ -55,7 +55,7 @@ var OrderSchema = new Schema({
     default: 'pending',
     enum: ['pending', 'created', 'paid', 'delivered', 'finish', 'canceled', 'refunded']
   }, // pending, created, paid/failed, delivered, canceled, refunded.
-  created: { type: Number, default: Date.now }
+  createdAt: { type: Number, default: Date.now }
 });
 
 // execute payment
