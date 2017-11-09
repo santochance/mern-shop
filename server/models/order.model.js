@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var Braintree = require('../braintree/braintree.model');
 
 var OrderDetailsSchema = new Schema({
-  product: { type: Schema.Types.ObjectId, ref: 'Product' },
+  content: { type: Schema.Types.ObjectId, ref: 'Product' },
   amount: Number,
   // price: { type: Number, get: getPrice, set: setPrice },
   // discount: { type: Number, get: getPrice, set: setPrice },

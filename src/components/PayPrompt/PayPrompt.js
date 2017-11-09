@@ -73,7 +73,7 @@ class PayPrompt extends React.Component {
       this.props.history.replace('/')
       return null
     }
-    let { msg } = this.state    
+    let { msg } = this.state
     // 暂时只处理一个订单
     let order = orders && orders[0]
 
@@ -158,8 +158,8 @@ class PayPrompt extends React.Component {
                     <div className="items-wrap mb-20">
                       {order.items.map((item, idx) => (
                         <div key={idx} className="tr item-content">
-                          <div className="td cell-info">{item.product.title}</div>
-                          <div className="td cell-price">￥{item.product.price}</div>
+                          <div className="td cell-info">{item.content.title}</div>
+                          <div className="td cell-price">￥{item.content.price}</div>
                           <div className="td cell-amount">{item.amount}</div>
                           <div className="td cell-sum">￥{item.realPay}</div>
                         </div>

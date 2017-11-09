@@ -176,15 +176,15 @@ const TableView = (props) => {
                   <div key={i} className="tr item-content">
                     <div className="td cell-product">
                       <div className="td product-image">
-                        <Link to={`/product-details/${item.product._id}`}>
-                          <img src={item.product.imageUrl} alt=""/>
+                        <Link to={`/product-details/${item.content._id}`}>
+                          <img src={item.content.imageUrl} alt=""/>
                         </Link>
                       </div>
                       <div className="td product-info">
-                        <Link to={`/product-details/${item.product._id}`} className="link-tn" href="">{item.product.title}</Link>
+                        <Link to={`/product-details/${item.content._id}`} className="link-tn" href="">{item.content.title}</Link>
                       </div>
                     </div>
-                    <div className="td cell-price">￥{item.product.price || 'xxx.xx'}</div>
+                    <div className="td cell-price">￥{item.content.price || 'xxx.xx'}</div>
                     <div className="td cell-amount">{item.amount}</div>
                     <div className="td cell-oper">
                       {['paid'].indexOf(order.status) >= 0 && (<a href="#">退款</a>)}

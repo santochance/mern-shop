@@ -77,7 +77,7 @@ exports.create = function(req, res) {
     order.items = order.items.map(item =>
       Object.assign(item, {
         // 测试文件中使用item.product存放_id
-        product: new mongoose.Types.ObjectId(item.content._id || item.product)
+        content: new mongoose.Types.ObjectId(item.content._id || item.product)
       })
     )
     return order
@@ -90,7 +90,7 @@ exports.create = function(req, res) {
       // 要使用`{_id: []}`的格式构造传入参数
       Order.find({ _id: ids })
         .populate('buyer')
-        .populate('items.product')
+        .populate('items.content')
     )
     .then(respondWithResult(res, 201))
     .catch(handleError(res))
@@ -99,7 +99,7 @@ exports.create = function(req, res) {
 exports.list = function(req, res) {
   Order.find().sort({_id: -1})
     .populate('buyer')
-    .populate('items.product')
+    .populate('items.content')
     .execAsync()
     .then(respondWithResult(res))
     .catch(handleError(res))
