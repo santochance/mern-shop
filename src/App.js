@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import ItemList from './ItemList'
 
 import _ from 'lodash'
+import './helper/formatDate.js'
 
 import {
   BrowserRouter as Router,
@@ -19,6 +20,7 @@ import routes, {
   Header,
   Footer,
   SiteNav,
+  Signup2,
   Signin,
   ProductDetails,
   ProductShow,
@@ -62,6 +64,7 @@ class App extends ItemList {
       inputedTerm: '',
       debug: true,
     }
+    this.register = this.register.bind(this)
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
     this.submitOrders = this.submitOrders.bind(this)
@@ -69,12 +72,13 @@ class App extends ItemList {
   componentDidMount() {
     this.getHomeData()
       .then(home => this.setState({ home }))
-    this.getLoginedUser()
-      .then(user => {
-        if (user) {
-          this.setState({ logined: true, user })
-        }
-      })
+    // this.getLoginedUser()
+    //   .then(user => {
+    //     if (user) {
+    //       this.setState({ logined: true, user })
+    //     }
+    //   })
+      .catch(console.error)
   }
   componentWillReceiveProps(nextProps) {
     // 如果Route跳转目标
@@ -87,12 +91,32 @@ class App extends ItemList {
   //   console.log('App ask should update')
   //   return true
   // }
-  // componentWillUpdate(nextProps, nextState) {
-  //   console.log('App will update')
-  // }
+  componentWillUpdate(nextProps, nextState) {
+    console.log('App will update')
+  }
   // componentDidUpdate(prevProps, prevState) {
   //   console.log('App updated')
   // }
+
+  register(data) {
+    fetch('/api/signup', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    }).then(res => {
+      if (res.ok) {
+        res.json().then(user => {
+          console.log('logined user: ', user)
+          this.setState({
+            logined: true,
+            user
+          })
+        })
+      } else {
+        res.json().then(console.error)
+      }
+    }).catch(console.error)
+  }
 
   login(data) {
     fetch('/api/signin', {
@@ -220,6 +244,9 @@ class App extends ItemList {
         <div className="wrapper" style={{ minHeight: 440 }}>
           <Route path="/" exact render={props => (
             <Home {...props} data={home} app={this} />
+          )} />
+          <Route path="/signup_0" render={props => (
+            <Signup2 {...props} register={this.register} isLogined={this.state.logined} />
           )} />
           <Route path="/signin" render={props => (
             <Signin {...props} login={this.login} isLogined={this.state.logined} />

@@ -51,6 +51,7 @@ const routes = [
   {
     path: '/signup_0',
     component: Signup2,
+    hidden: true,
   },
   {
     path: '/login',
