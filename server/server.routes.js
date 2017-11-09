@@ -64,7 +64,7 @@ module.exports = function(app) {
       // res.json(rst = { id: req.user._id, username: req.user.username })
     })
 
-  app.get('/signout', users.signout)
+  app.get('/api/signout', users.signout)
 
   // routes for products
   app.route('/products')

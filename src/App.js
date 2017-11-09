@@ -117,7 +117,7 @@ class App extends ItemList {
   }
 
   logout() {
-    fetch('signout', {
+    fetch('/api/signout', {
       credentials: 'include'
     }).then(res => {
       if (res.ok) {
