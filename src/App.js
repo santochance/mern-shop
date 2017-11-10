@@ -62,7 +62,7 @@ class App extends ItemList {
       cart: this.state.itemlist,
       logined: false,
       inputedTerm: '',
-      debug: true,
+      debug: false,
     }
     this.register = this.register.bind(this)
     this.login = this.login.bind(this)

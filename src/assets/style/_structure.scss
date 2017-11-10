@@ -5,7 +5,6 @@
 }
 
 .wrapper {
-  position: relative;
   width: 1190px;
   margin-left: auto;
   margin-right: auto;
@@ -21,3 +20,38 @@
   @include inbl-center-box;
 }
 
+.pa-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// 自适应页脚贴底布局
+// ------------------
+// 要求：
+//    - 指定footer高度
+//    - 保证footer以body作为定位父元素
+// ------------------
+html {
+  height: 100%;
+  padding-top: 100px; /* header的高度 */
+  padding-bottom: 200px; /* footer的高度 */
+  box-sizing: border-box; /* 保证height包含padding */
+}
+body {
+  position: relative;
+  min-height: 100%;
+  height: auto !important;
+}
+.main-footer {
+  position: absolute;
+  height: 200px;
+  bottom: -200px;  /* footer的高度 */
+}
+
+.top-header {
+  position: absolute;
+  height: 100px;
+  top: -100px;  /* header的高度 */
+}
