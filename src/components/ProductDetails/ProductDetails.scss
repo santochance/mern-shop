@@ -120,22 +120,22 @@ $useAuxiOtl: false;
     }
     .pic-prev {
       left: 0;
-      background: url("/__sprite.png") 0 -54px;
+      background: url("/static/media/__sprite.png") 0 -54px;
       &:hover {
-        background: url("/hover-prev.png");
+        background: url("/static/media/hover-prev.png");
       }
       &.disabled {
-        background: url("/disabled-prev.png");
+        background: url("/static/media/disabled-prev.png");
       }
     }
     .pic-next {
       right: 0;
-      background: url("/__sprite.png") -78px 0;
+      background: url("/static/media/__sprite.png") -78px 0;
       &:hover {
-        background: url("/hover-next.png");
+        background: url("/static/media/hover-next.png");
       }
       &.disabled {
-        background: url("/disabled-next.png");
+        background: url("/static/media/disabled-next.png");
       }
     }
   }

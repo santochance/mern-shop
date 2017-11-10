@@ -100,8 +100,8 @@ class PayPrompt extends React.Component {
                 </div>
               */}
               {[
-                { url: '/alipay@2x.png', value: 'alipay' },
-                { url: '/weixinpay@2x.png', value: 'weixinpay' },
+                { url: '/static/media/alipay@2x.png', value: 'alipay' },
+                { url: '/static/media/weixinpay@2x.png', value: 'weixinpay' },
               ].map((opt, idx) => (
                 <div key={opt.value} className={'type-item ' + (this.state.payType === opt.value ? 'active' : '')}
                   onClick={() => this.setState({ payType: opt.value })}>
