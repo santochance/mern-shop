@@ -28,7 +28,7 @@ class Signin extends React.Component {
     e.preventDefault()
     const data = form2json(e.target)
 
-    console.log('data to be submited:', data)
+    // console.log('data to be submited:', data)
 
     this.props.login(data)
   }

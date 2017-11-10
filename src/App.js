@@ -72,12 +72,12 @@ class App extends ItemList {
   componentDidMount() {
     this.getHomeData()
       .then(home => this.setState({ home }))
-    // this.getLoginedUser()
-    //   .then(user => {
-    //     if (user) {
-    //       this.setState({ logined: true, user })
-    //     }
-    //   })
+    this.getLoginedUser()
+      .then(user => {
+        if (user) {
+          this.setState({ logined: true, user })
+        }
+      })
       .catch(console.error)
   }
   componentWillReceiveProps(nextProps) {
@@ -212,7 +212,7 @@ class App extends ItemList {
         if (res.ok) {
           return res.json()
         } else {
-          throw res.json()
+          throw res
         }
       })
       .catch(console.error)
