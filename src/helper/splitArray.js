@@ -1,7 +1,18 @@
 function splitArray(arr, size) {
+  if (typeof size !== 'number') {
+    throw new Error('size must be a number!')
+  }
+  if (!Array.isArray(arr)) {
+    throw new Error('arr must be an array!')
+  }
+  // 提问：如果arr是空数组，返回什么？
+  // 返回空数组
+  if (size < 0 || !arr.length) {
+    return arr
+  }
+  let rst = []
   let count = Math.ceil(arr.length / size)
   // console.log('count:', count)
-  let rst = []
 
   while (count--) {
     rst.unshift(arr.slice(count * size, (count + 1) * size))

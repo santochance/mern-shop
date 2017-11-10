@@ -24,7 +24,7 @@ class Page {
       _rawdata: data,
       _entries: entries,
       _displayer: displayer,
-      data: entries[index],
+      data: entries[index] || [],
       size,
       total,
       sort,

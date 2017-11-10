@@ -72,11 +72,14 @@ class OrderHistory extends React.Component {
     }
 
     let {
-      data: orders,
+      data: orders = [],
       index,
-      indexKeys
+      indexKeys = []
     } = page
 
+    if (!orders.length) {
+      return null
+    }
     return (
       <div className="order-history">
         <div className="wrapper">
