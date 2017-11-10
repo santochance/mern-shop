@@ -35,6 +35,7 @@ class ControlledCarousel extends Component {
     super(props)
     this.state = {
       width: 1190,
+      height: 300,
     }
     this.handleSelect = this.handleSelect.bind(this)
   }
