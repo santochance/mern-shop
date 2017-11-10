@@ -164,7 +164,7 @@ const TableView = (props) => {
                     {<order className="created">{new Date(order.createdAt).format('yyyy-MM-dd hh:mm:ss')}</order>}
                   </span>
                   <span className="order-serial">
-                  订单编号：{order._id}
+                  订单编号：{order._id || order.objectId}
                   </span>
                 </div>
                 {/*
@@ -176,12 +176,12 @@ const TableView = (props) => {
                   <div key={i} className="tr item-content">
                     <div className="td cell-product">
                       <div className="td product-image">
-                        <Link to={`/product-details/${item.content._id}`}>
+                        <Link to={`/product-details/${item.content._id || item.content.objectId}`}>
                           <img src={item.content.imageUrl} alt=""/>
                         </Link>
                       </div>
                       <div className="td product-info">
-                        <Link to={`/product-details/${item.content._id}`} className="link-tn" href="">{item.content.title}</Link>
+                        <Link to={`/product-details/${item.content._id || item.content.objectId}`} className="link-tn" href="">{item.content.title}</Link>
                       </div>
                     </div>
                     <div className="td cell-price">￥{item.content.price || 'xxx.xx'}</div>

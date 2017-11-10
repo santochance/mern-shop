@@ -148,14 +148,14 @@ const CartItem = ({ item, removeItem, key }) => {
       <div className="item-content tr">
         <div className="cell-pic td">
           <div className="pic-wrapper">
-            <Link to={`/product-details/${item.content._id}`}>
+            <Link to={`/product-details/${item.content._id || item.content.objectId}`}>
               <img src={item.content.imageUrl} alt=""/>
             </Link>
           </div>
         </div>
         <div className="cell-info td">
           <div className="info-title">
-            <Link to={`/product-details/${item.content._id}`} className="link">
+            <Link to={`/product-details/${item.content._id || item.content.objectId}`} className="link">
               {item.content.title}
             </Link>
           </div>

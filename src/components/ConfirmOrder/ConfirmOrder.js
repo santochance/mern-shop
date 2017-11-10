@@ -56,13 +56,13 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
                   <div key={i} className="tr item-content">
                     <div className="td cell-info">
                       <div className="info-image">
-                        <Link to={`/product-details/${item.content._id}`} className="image-wrapper" href="">
+                        <Link to={`/product-details/${item.content._id || item.content.objectId}`} className="image-wrapper" href="">
                           <img src={item.content.imageUrl} alt=""/>
                         </Link>
                       </div>
                       <div className="info-content">
                         <div className="info-title">
-                          <Link to={`/product-details/${item.content._id}`} className='link'>{item.content.title}</Link>
+                          <Link to={`/product-details/${item.content._id || item.content.objectId}`} className='link'>{item.content.title}</Link>
                         </div>
                         <div className="info-icons"></div>
                       </div>

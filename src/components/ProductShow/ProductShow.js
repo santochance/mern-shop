@@ -224,12 +224,12 @@ const ProductItem = ({ item, addToCart }) => {
   return (
     <div className="product-item">
       <div className="product-pic">
-        <Link to={`/product-details/${item._id}`} className="pic-wrapper">
+        <Link to={`/product-details/${item._id || item.objectId}`} className="pic-wrapper">
           <img style={{ width: '100%', height: '100%' }} src={item.imageUrl || '/01.jpg'} alt=""/>
         </Link>
       </div>
       <div className="product-info">
-        <Link to={`/product-details/${item._id}`} className="product-title link">
+        <Link to={`/product-details/${item._id || item.objectId}`} className="product-title link">
           {item.title || item.productName}
         </Link>
         <div className="product-desc">

@@ -59,12 +59,12 @@ const CardB = ({item, className}) => {
       <div className="wrap">
         <div className="content">
           <div className="top">
-            <Link to={`/product-details/${item._id}`}>
+            <Link to={`/product-details/${item._id || item.objectId}`}>
               <img src={item.imageUrl} alt=""/>
             </Link>
             <div className="price">￥{item.price}</div>
             <div className="desc" title={item.description || item.desc}>
-              <Link to={`/product-details/${item._id}`}>
+              <Link to={`/product-details/${item._id || item.objectId}`}>
                 {item.description || item.desc}
               </Link>
             </div>

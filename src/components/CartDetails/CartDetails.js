@@ -77,12 +77,12 @@ const CartDetails = ({ app, cart }) => {
                     </div>
                     <div className="col cell-info">
                       <div className="info-image">
-                        <Link to={`/product-details/${item.content._id}`}>
+                        <Link to={`/product-details/${item.content._id || item.content.objectId}`}>
                           <img src={item.content.imageUrl} alt=""/>
                         </Link>
                       </div>
                       <div className="info-title">
-                        <Link to={`/product-details/${item.content._id}`} className="link">
+                        <Link to={`/product-details/${item.content._id || item.content.objectId}`} className="link">
                           {item.content.title || '商品标题...'}
                         </Link>
                       </div>
