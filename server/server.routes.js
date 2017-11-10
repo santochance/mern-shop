@@ -4,6 +4,7 @@ const products = require('./controllers/product.controller')
 const catalogs = require('./controllers/catalog.controller')
 const orders = require('./controllers/order.controller')
 
+const c = require('./common/custom_console')
 const crud = require('./controllers/crud.js')
 // const products = crud(require('./controllers/product.controller'))
 const properties = crud(require('./models/property.model.js'))
@@ -97,6 +98,9 @@ module.exports = function(app) {
     .patch(catalogs.update)
     .delete(catalogs.delete)
 
+  // 鉴权路由
+  app.all('/orders(/*)?', requireAuthentication)
+
   // routes for orders
   app.route('/orders')
     .post(orders.create)
@@ -109,6 +113,16 @@ module.exports = function(app) {
     .delete(orders.delete)
   app.route('/orders/pay')
     .post(orders.pay)
+
+  function requireAuthentication(req, res, next) {
+    c.log('checking auth...')
+    if (!req.user) {
+      c.log('You have not authenticated yet.')
+      return res.status(401).json({message: 'You have not authenticated yet.'})
+    }
+    c.log('  access %s %s by %s', req.method, req.path, req.user.username)
+    next()
+  }
 
   function registerRoutes(app, model, controller) {
     app.route(`/${model}`)
