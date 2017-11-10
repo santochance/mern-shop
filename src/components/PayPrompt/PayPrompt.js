@@ -46,7 +46,8 @@ class PayPrompt extends React.Component {
     fetch('/orders/pay', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payedOrders)
+      body: JSON.stringify(payedOrders),
+      credentials: 'include',
     })
       .then(res => {
         if (res.ok) {

@@ -49,7 +49,9 @@ class OrderHistory extends React.Component {
     }
 
     return new Promise((resolve, reject) =>
-      fetch(url)
+      fetch(url, {
+      credentials: 'include'
+      })
         .then(res => {
           if (res.ok) {
             res.json().then(data => resolve(data))

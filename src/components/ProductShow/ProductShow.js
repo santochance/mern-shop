@@ -48,7 +48,9 @@ class ProductShow extends Component {
     // query留于search功能时使用
     let url = '/products' + (term ? `/${term}/search` : '')
     console.log('load products from url:', url)
-    return fetch(url)
+    return fetch(url, {
+      credentials: 'include'
+    })
       .then(res => res.json())
       .then(dataSource => this.process('load', { dataSource }))
       .catch(console.error)

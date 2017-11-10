@@ -102,7 +102,8 @@ class App extends ItemList {
     fetch('/api/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: 'include',
     }).then(res => {
       if (res.ok) {
         res.json().then(user => {
@@ -190,7 +191,8 @@ class App extends ItemList {
       body: JSON.stringify(submittedOrders, function(key, value) {
         if (key === 'parent') return
         return value
-      })
+      }),
+      credentials: 'include',
     })
       .then(res => {
         if (res.ok) {
@@ -217,7 +219,9 @@ class App extends ItemList {
   }
 
   getLoginedUser() {
-    return fetch('/users/logined')
+    return fetch('/users/logined', {
+      credentials: 'include'
+    })
       .then(res => {
         if (res.ok) {
           return res.json()

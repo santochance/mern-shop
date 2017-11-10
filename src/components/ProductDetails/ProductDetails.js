@@ -56,7 +56,9 @@ class ProductDetails extends React.Component {
     let id = this.props.match.params['id']
     console.log('product details for:', id)
     if (id) {
-      fetch(`/products/${id}`)
+      fetch(`/products/${id}`, {
+        credentials: 'include'
+      })
         .then(res => {
           if (res.ok) {
             return res.json()
