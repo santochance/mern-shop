@@ -78,7 +78,15 @@ class OrderHistory extends React.Component {
     } = page
 
     if (!orders.length) {
-      return null
+      return (
+        <div className="order-history">
+          <div className="wrapper">
+            <div className="history-empty">
+              你还没有创建任何的订单
+            </div>
+          </div>
+        </div>
+      )
     }
     return (
       <div className="order-history">
