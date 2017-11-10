@@ -42,7 +42,7 @@ module.exports = function() {
     saveUninitialized: true,
     resave: true,
     secret: 'mern-shop-dev-session-secret',
-    cookie: { maxAge: 60000 },
+    cookie: { maxAge: 3600000 },
   }))
   // app.set('views', './app/views')
   // app.set('view engine', 'ejs')

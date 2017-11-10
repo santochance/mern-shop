@@ -19,7 +19,7 @@ function handleError(res, statusCode = 500) {
 
 function respondWithResult(res, statusCode = 200) {
   return function(entity) {
-    console.log('response entity:', JSON.stringify(entity, null, 2))
+    // console.log('response entity:', JSON.stringify(entity, null, 2))
     if (entity) {
       res.status(statusCode).json(entity)
     }
@@ -72,7 +72,8 @@ exports.create = function(req, res) {
   if (!Array.isArray(orders)) orders = [orders]
 
   orders.map(order => {
-    order.buyer = new mongoose.Types.ObjectId(order.buyer)
+    // 使用当前登录用户作为订单的buyer
+    order.buyer = new mongoose.Types.ObjectId(req.user._id)
     order.seller = new mongoose.Types.ObjectId(order.seller)
     order.items = order.items.map(item =>
       Object.assign(item, {
@@ -97,7 +98,10 @@ exports.create = function(req, res) {
 }
 
 exports.list = function(req, res) {
-  Order.find().sort({_id: -1})
+  let mongoose = User.base
+  // 查询当前登录用户的订单
+  Order.find({buyer: new mongoose.Types.ObjectId(req.user._id)})
+    .sort({_id: -1})
     .populate('buyer')
     .populate('items.content')
     .execAsync()
