@@ -7,6 +7,12 @@ import { notification } from 'antd'
   用使用类似redux的reducer的方式，在reduce中执行指定的回调
 
 */
+
+notification.config({
+  placement: 'topRight',
+  top: 110,
+  duration: 2,
+})
 function refreshNode(node, direction = 'all') {
 
   if (direction === 'down') {
@@ -194,7 +200,6 @@ class ItemList extends React.Component {
           }}>{product.title}</div>
         </div>
       ),
-      duration: 2,
     })
     console.log('cart:\n', cart)
   }
