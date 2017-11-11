@@ -30,8 +30,10 @@
 // 自适应页脚贴底布局
 // ------------------
 // 要求：
-//    - 指定footer高度
-//    - 保证footer以body作为定位父元素
+//    - 指定footer高度, header高度
+//    - 保证foote, headerr以body作为定位父元素
+// 注意：
+//    - body需要设置特定样式保证后代元素的margin不会跑到body之外, 例如设置非0垂直padding
 // ------------------
 html {
   height: 100%;
@@ -43,6 +45,7 @@ body {
   position: relative;
   min-height: 100%;
   height: auto !important;
+  padding: 10px 0; /* 设置垂直padding避免body后代元素的margin跑到body之外 */
 }
 .main-footer {
   position: absolute;
