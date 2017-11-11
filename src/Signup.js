@@ -41,11 +41,8 @@ class Signup extends React.Component {
 
     return (
       <div className="signup">
-        <div className="signup-box" style={{
+        <div className="signup-box center-block pa-center" style={{
           width: 360,
-          minHeight: 600,
-          margin: '0 auto',
-          marginTop: 20,
         }}>
           <div className="signup-content" style={{
             padding: 40,

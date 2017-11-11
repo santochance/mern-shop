@@ -245,7 +245,7 @@ class App extends ItemList {
       <div className="app">
         {this.state.debug && <DevIndex />}
         <Header {...{logined, cart, app: this, term: this.state.inputedTerm}}/>
-        <div className="wrapper" style={{ minHeight: 440 }}>
+        <div className="wrapper" style={{ minHeight: 510 }}>
           <Route path="/" exact render={props => (
             <Home {...props} data={home} app={this} />
           )} />

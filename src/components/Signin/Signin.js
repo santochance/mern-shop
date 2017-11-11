@@ -45,7 +45,7 @@ class Signin extends React.Component {
       <div className="signin" style={{
         // backgroundColor: '#ddd',
       }}>
-        <div className="signin-box center-block" style={{
+        <div className="signin-box center-block pa-center" style={{
           width: 360
         }}>
           <div className="signin-content" style={{
