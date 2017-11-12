@@ -8,6 +8,7 @@ const methodOverride = require('method-override') // Lets you use HTTP verbs suc
 const session = require('express-session')
 const flash = require('connect-flash')
 const passport = require('passport')
+const path = require('path')
 
 const notice = function (req, res, next) {
   console.log(`\n
@@ -61,17 +62,11 @@ module.exports = function() {
   // It is using the Express session to keep track of your user's session
   app.use(passport.session())
 
-  // 测试session
-  app.use(function(req, res, next) {
-    // debugger
-    console.log('session:', JSON.stringify(req.session, null, 2))
-    console.log('current authed user:', req.user && req.user.username)
-    next()
-  })
-
   require('../server.routes.js')(app)
 
-  app.use(express.static('./public'))
+  // 注意static路径是相对于运行server.js文件的package.json
+  // 如果需要相对于当前执行脚本的路径，请使用__dirname
+  app.use(express.static(path.join(__dirname, '../public')))
 
   return app
 }
