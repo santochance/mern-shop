@@ -19,10 +19,10 @@ const uploadOptions = {
 }
 
 module.exports = function(app) {
-  app.get('/', (req, res, next) => {
-    let username = req.user && req.user.username ? ', ' + req.user.username : ''
-    res.send(`<h1>Welcome to Express${username}!</h1>`)
-  })
+  // app.get('/', (req, res, next) => {
+  //   let username = req.user && req.user.username ? ', ' + req.user.username : ''
+  //   res.send(`<h1>Welcome to Express${username}!</h1>`)
+  // })
 
   app.route('/users')
     .post(users.create)
