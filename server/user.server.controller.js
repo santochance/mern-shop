@@ -197,5 +197,5 @@ exports.getLogined = function(req, res) {
       user = Object.assign({}, req.user)
     }
   }
-  res.json({ user })
+  res.json(user)
 }
