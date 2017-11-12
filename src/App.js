@@ -74,8 +74,20 @@ class App extends ItemList {
       .then(home => this.setState({ home }))
     this.getLoginedUser()
       .then(user => {
+        // 获取购物车
+        var cart
         if (user) {
-          this.setState({ logined: true, user })
+          cart = this.deserializeCart(
+            window.localStorage.getItem(user._id || user.objectId)
+          )
+          console.log('user cart:', cart)
+          this.setState({ logined: true, user, cart })
+        } else {
+          cart = this.deserializeCart(
+            window.localStorage.getItem('guest')
+          )
+          console.log('guest cart:', cart)
+          this.setState({ logined: false, cart })
         }
       })
       .catch(console.error)
@@ -99,6 +111,9 @@ class App extends ItemList {
   // }
 
   register(data) {
+    // 保存游客购物车
+    window.localStorage.setItem('guest', this.serializeCart())
+
     fetch('/api/signup', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -108,10 +123,12 @@ class App extends ItemList {
       if (res.ok) {
         res.json().then(user => {
           console.log('logined user: ', user)
-          this.setState({
-            logined: true,
-            user
-          })
+          // 获取用户购物车
+          let cart = this.deserializeCart(
+            window.localStorage.getItem(user._id || user.objectId))
+          console.log('user cart:', cart)
+          // 登录成功
+          this.setState({ logined: true, user, cart })
         })
       } else {
         res.json().then(console.error)
@@ -120,6 +137,9 @@ class App extends ItemList {
   }
 
   login(data) {
+    // 保存游客购物车
+    window.localStorage.setItem('guest', this.serializeCart())
+
     fetch('/api/signin', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -129,11 +149,12 @@ class App extends ItemList {
       if (res.ok) {
         res.json().then(user => {
           console.log('logined user:', user)
+          // 获取用户购物车
+          let cart = this.deserializeCart(
+            window.localStorage.getItem(user._id || user.objectId))
+          console.log('user cart:', cart)
           // 登录成功
-          this.setState({
-            logined: true,
-            user
-          })
+          this.setState({ logined: true, user, cart })
         })
       } else {
         res.json().then(console.error)
@@ -142,12 +163,23 @@ class App extends ItemList {
   }
 
   logout() {
+    // 保存用户购物车
+    let { user } = this.state
+    window.localStorage.setItem(user._id || user.objectId, this.serializeCart())
+
     fetch('/api/signout', {
       credentials: 'include'
     }).then(res => {
       if (res.ok) {
         // 退出成功
-        this.setState({ logined: false })
+        this.setState({
+          logined: false,
+          user: null,
+          // 游客购物车
+          cart: this.deserializeCart(
+            window.localStorage.getItem('guest')
+          )
+        })
       }
     }).catch(console.error)
   }
