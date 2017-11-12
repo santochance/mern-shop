@@ -6,13 +6,13 @@ import './ConfirmOrder.css'
 
 let mockAddresses = [
   {
-    name: 'Vincent',
-    addr: '广东省 深圳市 龙华新区 民治塘水围新村三区3幢1102',
+    name: '黄先生',
+    addr: '广东省 深圳市 龙华新区 民治塘水围新村x区x幢xxxx',
     phone: '138xxxx7697'
   },
   {
-    name: 'Santochance',
-    addr: '广东省 江门市 蓬江区 棠下镇中芬村xxxx',
+    name: '黄先生',
+    addr: '广东省 广州市 番禺区 广州大学城x区x幢xxxx',
     phone: '138xxxx7697'
   }
 ]
@@ -27,7 +27,7 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
         <div className="order-address">
           <Selector options={mockAddresses} onClick={(opt) => {
             selectedAddr = opt
-            app.setState()
+            app.forceUpdate()
           }}/>
         </div>
         <div className="order-orderDesc">
