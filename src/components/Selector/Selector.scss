@@ -12,6 +12,8 @@
   .option-wrapper {
     overflow: hidden;
     position: relative;
+    // 建立堆叠上下文，避免绝对定位子元素遮挡border
+    z-index: 0;
     display: inline-block;
     vertical-align: top;
     margin: 10px;
@@ -96,7 +98,6 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1;
     width: 100%;
     background-color: #bbb;
     transform: translate(0, 100%);

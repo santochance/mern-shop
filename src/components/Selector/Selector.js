@@ -17,7 +17,7 @@ class Selector extends React.Component {
   preventE(fn, ...args) {
     let _this = this
     return function(e) {
-      console.log('exec in preventE with\nfn:%s\nargs:', fn.name, ...args)
+      // console.log('exec in preventE with\nfn:%s\nargs:', fn.name, ...args)
       e.preventDefault()
       e.stopPropagation()
       fn.call(_this, ...args)
