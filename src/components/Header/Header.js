@@ -112,7 +112,7 @@ const CartSummary = ({ cart, app }) => {
         ) : (
           <div className="cart-content">
             {cart.children.map((order, idx) => (
-              <CartOrder>
+              <CartOrder key={idx}>
                 {order.children.map((item, idx) => (
                   <CartItem key={idx} item={item} removeItem={app.removeItem} />
                 ))}

@@ -90,6 +90,8 @@ class ItemList extends React.Component {
     this.getCheckedItems = this.getCheckedItems.bind(this)
     this.getAllItems = this.getAllItems.bind(this)
     this.removeItem = this.removeItem.bind(this)
+
+    window.itemlist = this
   }
 
   componentDidMount() {
@@ -471,6 +473,33 @@ class ItemList extends React.Component {
     return itemlist.children.reduce((rst, order) =>
       rst.concat(order.children),
     [])
+  }
+
+  serializeCart() {
+    var { cart: _cart } = this.state
+    return JSON.stringify(_cart, function(key, value) {
+      if (key === 'parent') return
+      return value
+    })
+  }
+  deserializeCart(_cart) {
+    // 如果没有数据，返回初始化值
+    if (!_cart) {
+      return ({
+        title: 'ItemList',
+        parent: null,
+        children: [],
+        checked: false,
+      })
+    }
+    var cart = JSON.parse(_cart)
+    cart.children.forEach(order => {
+      order.parent = cart
+      order.children.forEach(item => {
+        item.parent = order
+      })
+    })
+    return cart
   }
 
   render() {
