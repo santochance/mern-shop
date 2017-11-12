@@ -10,19 +10,11 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const path = require('path')
 
-const notice = function (req, res, next) {
-  console.log(`\n
-############################################
-          ${new Date().toISOString()}
-            New Request Comes in!
-############################################
-    `)
-  console.log('req:', req.constructor.name)
-  console.log('req.method:', req.method)
-  console.log('req.url:', req.url)
-  console.log('req.headers:', req.headers)
-  console.log('req.body:\n', JSON.stringify(req.body, null, 2).slice(0, 2000))
-  console.log('############################################\n')
+const notice = (req, res, next) => {
+  console.log('\n%s--request %s %s', new Date().toISOString().slice(2, 18), req.method, req.url)
+  // 测试session
+  // console.log('session:', JSON.stringify(req.session, null, 2))
+  // console.log('current authed user:', req.user && req.user.username)
   next()
 }
 
