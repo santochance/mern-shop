@@ -2,7 +2,7 @@
 
 const path = require('path')
 
-let imgHost = 'http://oyziwoiqy.bkt.clouddn.com'
+let imgHost = 'oyziwoiqy.bkt.clouddn.com/mernshop/'
 
 let banner = [
   '/banner/00_1500x300.jpg',
@@ -12,7 +12,7 @@ let banner = [
 ]
 
 if (imgHost) {
-  banner = banner.map(url => path.posix.join(imgHost, url, '?imageslim'))
+  banner = banner.map(url => 'http://' + path.posix.join(imgHost, url) + '?imageslim')
 }
 
 module.exports = {
