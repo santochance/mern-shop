@@ -1,10 +1,22 @@
+'use strict'
+
+const path = require('path')
+
+let imgHost = 'http://oyziwoiqy.bkt.clouddn.com'
+
+let banner = [
+  '/banner/00_1500x300.jpg',
+  '/banner/01_1500x300.jpg',
+  '/banner/02_1500x300.jpg',
+  '/banner/03_1500x300.jpg',
+]
+
+if (imgHost) {
+  banner = banner.map(url => path.posix.join(imgHost, url, '?imageslim'))
+}
+
 module.exports = {
-  banner: [
-    '/banner/20170911-gaming-promotionbanner-1500x300._CB516094719_.jpg',
-    '/banner/PC-ATF-wangjian-1710._CB513597907_.jpg',
-    '/banner/ljj_20170925_1500300_PC_CTA._CB514375057_.jpg',
-    '/banner/lqj-20170930-pc1500-300-mege._CB514772316_.jpg',
-  ],
+  banner,
   hot: [],
   floors: [
     {
