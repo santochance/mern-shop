@@ -39,11 +39,11 @@ class ProductDetails extends React.Component {
         sales: 40,
         commentsNum: 130,
         detailContent: [
-          '/product_images/59f3b8913b3bf5f5c28dada2/particulars/592e35e7N0dc9ccad.jpg',
-          '/product_images/59f3b8913b3bf5f5c28dada2/particulars/592e35e8N5ebbc61e.jpg',
-          '/product_images/59f3b8913b3bf5f5c28dada2/particulars/592e35e8Ne1cd19dd.jpg',
-          '/product_images/59f3b8913b3bf5f5c28dada2/particulars/592e35e8Nee54df79.jpg',
-          '/product_images/59f3b8913b3bf5f5c28dada2/particulars/5993ae15N35429a29.jpg',
+          'http://oyziwoiqy.bkt.clouddn.com/mernshop/product/59f3b8913b3bf5f5c28dada2/particulars/592e35e7N0dc9ccad.jpg?imageslim',
+          'http://oyziwoiqy.bkt.clouddn.com/mernshop/product/59f3b8913b3bf5f5c28dada2/particulars/592e35e8N5ebbc61e.jpg?imageslim',
+          'http://oyziwoiqy.bkt.clouddn.com/mernshop/product/59f3b8913b3bf5f5c28dada2/particulars/592e35e8Ne1cd19dd.jpg?imageslim',
+          'http://oyziwoiqy.bkt.clouddn.com/mernshop/product/59f3b8913b3bf5f5c28dada2/particulars/592e35e8Nee54df79.jpg?imageslim',
+          'http://oyziwoiqy.bkt.clouddn.com/mernshop/product/59f3b8913b3bf5f5c28dada2/particulars/5993ae15N35429a29.jpg?imageslim',
         ], // 商品详情描述图片数组
       },
       selected: {
