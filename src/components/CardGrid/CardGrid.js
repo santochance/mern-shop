@@ -9,7 +9,7 @@ const CartGrid = ({ header, items }) => {
     <div className="card-grid">
       <header className="grid-hd">
         <h1 className="title">{header}</h1>
-        <a className="more" href="">查看更多 ></a>
+        <Link to='product-show' className="more">查看更多 ></Link>
       </header>
       <div className="grid-bd-2">
         <div className="items">
