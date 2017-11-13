@@ -92,7 +92,7 @@ function productsInCategory(catalog) {
 }
 
 function saveUploadedImages(images, dist) {
-  return function (product) {
+  return function(product) {
     images = Array.isArray(images) ? images : [images]
     // let imgPaths = images.['01.jpg', '02.jpg', '03.jpg']
     let imgPaths = images.map(img => img.path)
@@ -100,6 +100,38 @@ function saveUploadedImages(images, dist) {
     let newDir = path.join(dist, String(product._id))
     return saveImgs(imgPaths, newDir, imgBasenames)
       .then(album => Object.assign(product, { album }).saveAsync())
+  }
+}
+
+// 商品详情页的图片路径生成
+const schema = 'http://'
+const imgHost = 'oyziwoiqy.bkt.clouddn.com/mernshop'
+
+function getImgUrls(id) {
+  const section = '/product'
+  const dir = path.posix.join(imgHost, section, id)
+  const img_sub = '/images'
+  const parti_sub = '/paticulars'
+  return function(product) {
+    let smUrls = []
+    let mdUrls = []
+    let lgUrls = []
+
+    // 商品图片bases
+    let bases = product['imgUrls'] || []
+
+    bases.forEach(base => {
+      smUrls.push(schema + path.posix.join(dir, img_sub, base) + '?imageslim&imageView2/2/w/52')
+      mdUrls.push(schema + path.posix.join(dir, img_sub, base) + '?imageslim')
+      lgUrls.push(schema + path.posix.join(dir, img_sub, base) + '?imageslim')
+    })
+
+    let partiUrls
+    // 商品详情图片bases
+    let particulars = product['partiImgUrls'] || []
+    partiUrls = particulars.map(dtBase => schema + path.posix.join(dir, parti_sub, dtbase) + '?imageslim')
+
+    return Object.assign({}, product._doc, { smUrls, mdUrls, lgUrls, partiUrls })
   }
 }
 
@@ -129,6 +161,7 @@ exports.list = function(req, res) {
 exports.read = function(req, res) {
   console.log('read product')
   Product.findByIdAsync(req.params.id)
+    .then(getImgUrls(req.params.id))
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res))

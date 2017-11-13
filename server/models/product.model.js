@@ -13,6 +13,7 @@ var ProductSchema = new Schema({
   album: [{ type: String }],
   imageBin: { data: Buffer, contentType: String },
   imageUrl: String,
+  imgUrls: [{ type: String }],
   categories: [{ type: Schema.Types.ObjectId, ref: 'Catalog', index: true }],
 
   basicProps: {},
