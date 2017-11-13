@@ -135,6 +135,17 @@ function getImgUrls(id) {
   }
 }
 
+// 商品列表的封面图片路径生成
+function getCoverUrls() {
+  return function(products) {
+    return products.map(product => (
+      Object.assign({}, product._doc, {
+        imageUrl: schema + path.posix.join(imgHost, 'product', product._id.toString(), 'images', product.imgUrls[0]) + '?imageslim&imageView2/2/w/200'
+      })
+    ))
+  }
+}
+
 exports.create = function(req, res) {
   // 创建product数据
   // 查询获取product._id
@@ -154,6 +165,7 @@ exports.create = function(req, res) {
 
 exports.list = function(req, res) {
   Product.findAsync(req.query)
+    .then(getCoverUrls())
     .then(respondWithResult(res))
     .catch(handleError(res))
 }
@@ -269,6 +281,7 @@ exports.getHomeData = function(req, res) {
   // 替换floors内items数组的product_id字符串为数据实体
   Promise.all(homeData.floors.map(floor =>
     Product.find({ _id: floor.items })
+      .then(getCoverUrls())
       .then(products => (floor.items = _.shuffle(products)))
   ))
     .then(() => homeData)
