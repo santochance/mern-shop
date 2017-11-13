@@ -6,6 +6,10 @@ img[src=""] {
   background: 100% 100%;
 }
 
+input[type='checkbox'] {
+  cursor: pointer;
+}
+
 .link {
   color: $link-color;
   &:hover,
