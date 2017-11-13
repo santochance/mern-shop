@@ -23,7 +23,7 @@ class UserCenter extends React.Component {
         <div className="slide" style={{ width: 200, float: 'left' }}>
           <Affix>
             <div className="user-panel">
-              <img className="avatar" src={user.avatar || '/avatar.jpg'} alt=""/>
+              <img className="avatar" src={user.avatar || '/default-avatar.png'} alt=""/>
               <span className="username">{user.nickname || user.username}</span>
             </div>
             <Sider match={match} />
