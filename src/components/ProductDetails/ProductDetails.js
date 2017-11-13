@@ -67,18 +67,18 @@ class ProductDetails extends React.Component {
           }
         })
         .then(product => {
-          var smUrls, mdUrls
+          // var smUrls, mdUrls
 
-          // 如果imgUrls为非空数组
-          if (product.imgUrls && product.imgUrls.length) {
-            smUrls = (product.imgUrls).map(base =>
-              replacePath(product.imgPath, { id: product._id, size: 'list', base }))
-            mdUrls = smUrls.map(url => url.replace('list', 'preview'))
-          }
+          // // 如果imgUrls为非空数组
+          // if (product.imgUrls && product.imgUrls.length) {
+          //   smUrls = (product.imgUrls).map(base =>
+          //     replacePath(product.imgPath, { id: product._id, size: 'list', base }))
+          //   mdUrls = smUrls.map(url => url.replace('list', 'preview'))
+          // }
           this.setState({
             product: Object.assign({}, this.state.product, product),
-            smUrls,
-            mdUrls,
+            smUrls: product.smUrls,
+            mdUrls: product.mdUrls,
             loaded: true,
           })
         })
