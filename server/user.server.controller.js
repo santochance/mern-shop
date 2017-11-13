@@ -180,22 +180,6 @@ exports.signout = function(req, res) {
 // Get /users/logined[?has_id=<id>]
 exports.getLogined = function(req, res) {
   // 查询当前是否有已登录的用户
-  let user
-  if (!req.user) {
-    //  没有已登录的用户
-    console.log('user not found')
-    user = false
-  } else {
-    // 有已登录的用户
-    // 且与客户端发来的id相同
-    if (String(req.query.has_id) === String(req.user._id)) {
-      console.log('user not modified')
-      user = true
-    } else {
-      // 客户端没有发来id或者两个id不相同
-      console.log('user get')
-      user = Object.assign({}, req.user)
-    }
-  }
-  res.json(user)
+  let user = req.user
+  return res.json({ user })
 }

@@ -83,6 +83,7 @@ class App extends ItemList {
           console.log('user cart:', cart)
           this.setState({ logined: true, user, cart })
         } else {
+          console.log('no logined user')
           cart = this.deserializeCart(
             window.localStorage.getItem('guest')
           )
@@ -256,7 +257,7 @@ class App extends ItemList {
     })
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json().user
         } else {
           return console.log('no logined user')
         }
