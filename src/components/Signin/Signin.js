@@ -85,7 +85,10 @@ class Signin extends React.Component {
                 <Checkbox inline defaultChecked>记住我的登录</Checkbox>
                 <div className="links">
                   <a style={{paddingRight: 16}}>忘记密码</a>
-                  <Link to="/signup_0">现在注册</Link>
+                  <Link to={{
+                    pathname: '/signup_0',
+                    state: { from }
+                  }}>现在注册</Link>
                 </div>
               </FormGroup>
               <Button className="btn btn-primary login-btn" type="submit" style={{ display: 'block', width: '100%' }}>登&nbsp;录</Button>

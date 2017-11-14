@@ -13,6 +13,7 @@ notification.config({
   top: 110,
   duration: 2,
 })
+
 function refreshNode(node, direction = 'all') {
 
   if (direction === 'down') {
@@ -162,8 +163,17 @@ class ItemList extends React.Component {
 
   // 通过"加入购物车"触发updateItem时，自动勾选item
   addToCart(product, amount = 1, checked = true) {
+    // 检查用户是否登录
+    if (this.state.logined) {
+      this.putInProduct({ product, amount, checked })
+    } else {
+      // 跳转到登录页, 标记当前页面为来源页
+      this.props.history.push('/signin', { from: this.props.location })
+    }
+  }
+
+  putInProduct({ product, amount, checked }) {
     let { cart } = this.state
-    // let { updateItem, createItem, createList, appendItem } = this
 
     // 遍历寻找所属order
     cart.children.some(order => {
@@ -203,9 +213,7 @@ class ItemList extends React.Component {
         </div>
       ),
     })
-    console.log('cart:\n', cart)
   }
-
   createItem(content, amount, checked = false) {
     let { price = 0, discount = 0, shipping = 0 } = content
     return {

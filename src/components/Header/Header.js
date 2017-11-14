@@ -114,7 +114,7 @@ const CartSummary = ({ cart, app }) => {
             {cart.children.map((order, idx) => (
               <CartOrder key={idx}>
                 {order.children.map((item, idx) => (
-                  <CartItem key={idx} item={item} removeItem={app.removeItem} />
+                  <CartItem key={idx} item={item} removeItem={app.removeItem} index={idx} />
                 ))}
               </CartOrder>
             ))}
@@ -141,7 +141,7 @@ const CartOrder = ({ children, content }) => {
   )
 }
 
-const CartItem = ({ item, removeItem, key }) => {
+const CartItem = ({ item, removeItem, index }) => {
 
   return (
     <div className="cart-item">
@@ -167,7 +167,7 @@ const CartItem = ({ item, removeItem, key }) => {
           </div>
         </div>
         <div className="cell-oper td">
-          <span className="delete-btn" title="删除商品" onClick={() => removeItem(item, key)}>
+          <span className="delete-btn" title="删除商品" onClick={() => removeItem(item, index)}>
             <Icon className="icon" type={'close-circle-o'} />
           </span>
         </div>

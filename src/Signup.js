@@ -4,7 +4,7 @@
 import React from 'react'
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
 
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 function form2json(form) {
   let controls = form.elements
@@ -82,7 +82,10 @@ class Signup extends React.Component {
                 placeholder="请输入电子邮箱"
               />
               <div className="clearfix links" style={{ marginBottom: 12 }}>
-                <a className="fr">使用已有账号登录</a>
+                <Link to={{
+                  pathname: '/signin',
+                  state: { from }
+                }} className="fr">使用已有账号登录</Link>
               </div>
               <Button className="btn btn-primary register-btn" type="submit" style={{ display: 'block', width: '100%' }}>注&nbsp;册</Button>
             </Form>
