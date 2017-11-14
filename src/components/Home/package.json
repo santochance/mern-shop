@@ -1,8 +1,8 @@
 {
-  "name": "FormModal",
+  "name": "Home",
   "version": "1.0.0",
   "description": "",
-  "main": "FormModal.js",
+  "main": "Home.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

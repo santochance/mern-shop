@@ -1,5 +1,4 @@
 import {
-  Playground,
   Home,
   Signin,
   Signup,
@@ -13,6 +12,7 @@ import {
   CartDetails,
   PayPrompt,
   PayCompleted,
+  // Playground,
   // TestCart
   // CreateProduct,
   // DataGrid,
@@ -31,11 +31,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const routes = [
-  {
-    path: '/dev/playground',
-    component: Playground,
-    label: 'Playground',
-  },
+  // {
+  //   path: '/dev/playground',
+  //   component: Playground,
+  //   label: 'Playground',
+  // },
   {
     path: '/',
     component: Home,

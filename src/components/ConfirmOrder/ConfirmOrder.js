@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Selector from '../Selector'
+import Selector from './Selector'
 import './ConfirmOrder.css'
 // import './ConfirmOrder2.css'
 
