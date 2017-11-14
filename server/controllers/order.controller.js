@@ -72,6 +72,7 @@ exports.create = function(req, res) {
   if (!Array.isArray(orders)) orders = [orders]
 
   orders.map(order => {
+    order.status = 'created'
     // 使用当前登录用户作为订单的buyer
     order.buyer = new mongoose.Types.ObjectId(req.user._id)
     order.seller = new mongoose.Types.ObjectId(order.seller)

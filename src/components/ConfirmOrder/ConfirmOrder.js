@@ -129,7 +129,7 @@ const ConfirmOrder = ({ app, cart, addresses, user }) => {
             <Link to="/cart-details" className="go-back">返回购物车</Link>
             */}
             <button href="" className="btn btn-danger go-submit"
-              onClick={app.submitOrders}>提交订单</button>
+              onClick={() => app.submitOrders({ address: selectedAddr })}>提交订单</button>
           </div>
         </div>
       </div>

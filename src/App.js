@@ -185,7 +185,7 @@ class App extends ItemList {
     }).catch(console.error)
   }
 
-  submitOrders() {
+  submitOrders({ address }) {
     let { cart } = this.state
     let submittedOrders = []
     let removedItems = []
@@ -204,14 +204,8 @@ class App extends ItemList {
         }
       }
 
-      // 添加公共属性
-      Object.assign(filteredList, {
-        // 添加购买者id
-        buyer: '599a9ab2d8d1cd3200c509ab',
-        // address: 'address from itemlist',
-        // 更改订单状态为'created'
-        status: 'created',
-      })
+      // 添加地址信息
+      Object.assign(filteredList, { address })
 
       // 存入输出结果
       submittedOrders.push(filteredList)

@@ -28,7 +28,7 @@ var OrderSchema = new Schema({
 
   address: {
     name: String,
-    tel: String,
+    phone: String,
     addr: String,
   },
   items: [OrderDetailsSchema],

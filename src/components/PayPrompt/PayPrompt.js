@@ -139,9 +139,9 @@ class PayPrompt extends React.Component {
                     <div className="title mb-10">
                       收货信息
                     </div>
-                    <p className="detail">姓名：</p>
-                    <p className="detail">联系电话：</p>
-                    <p className="detail">详细信息: </p>
+                    <p className="detail">姓名：{order.address.name}</p>
+                    <p className="detail">联系电话：{order.address.phone}</p>
+                    <p className="detail">详细信息: {order.address.addr}</p>
                   </div>
                   <div className="order-items">
                     <div className="tr desc-wrap mb-10">
