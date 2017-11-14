@@ -181,5 +181,8 @@ exports.signout = function(req, res) {
 exports.getLogined = function(req, res) {
   // 查询当前是否有已登录的用户
   let user = req.user
-  return res.json({ user })
+  if (!user) {
+    return res.json(null)
+  }
+  return res.json(user)
 }

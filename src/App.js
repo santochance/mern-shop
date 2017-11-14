@@ -266,7 +266,7 @@ class App extends ItemList {
     })
       .then(res => {
         if (res.ok) {
-          return res.json().user
+          return res.json()
         } else {
           return console.log('no logined user')
         }
