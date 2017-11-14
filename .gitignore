@@ -36,3 +36,7 @@ src/**/*.css
 # 只用于生产代码测试的public
 
 server/public/
+
+# 未使用的组件
+
+src/components/\!unused/
