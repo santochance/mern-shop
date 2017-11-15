@@ -119,6 +119,8 @@ function getImgUrls(id) {
 
     // 商品图片bases
     let bases = product['imgUrls'] || []
+    // 获取商品封面图片
+    let coverUrl = schema + path.posix.join(dir, img_sub, bases[0]) + '?imageslim&imageView2/2/w/200'
 
     bases.forEach(base => {
       smUrls.push(schema + path.posix.join(dir, img_sub, base) + '?imageslim&imageView2/2/w/52')
@@ -131,7 +133,7 @@ function getImgUrls(id) {
     let particulars = product['partiImgUrls'] || []
     partiUrls = particulars.map(dtBase => schema + path.posix.join(dir, parti_sub, dtbase) + '?imageslim')
 
-    return Object.assign({}, product._doc, { smUrls, mdUrls, lgUrls, partiUrls })
+    return Object.assign({}, product._doc, { smUrls, mdUrls, lgUrls, partiUrls, imageUrl: coverUrl })
   }
 }
 
