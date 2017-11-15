@@ -168,10 +168,8 @@ class ProductShow extends Component {
       <div className="product-show" style={{
         marginTop: 20
       }}>
-        <p>找到 {this.state.dataSource.length} 件商品</p>
         {dataSource.length > 0 ? (
           <div className="wrapper">
-            <p>搜索关键词：{_.get(this.props, 'location.state.term') || '无关键词'}</p>
             <Sortbar onClick={this.onSortClick} onSubmit={this.onFilterChange}
               {...{sortKey, sortOrder}} />
             <ProductList visibleData={visibleData} addToCart={addToCart} />
