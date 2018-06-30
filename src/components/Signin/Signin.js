@@ -9,7 +9,7 @@ import './Signin.css'
 
 function form2json(form) {
   let controls = form.elements
-  let names = Object.keys(controls).filter(key => isNaN(Number(key)))
+  let names = Object.getOwnPropertyNames(controls).filter(key => isNaN(Number(key)))
   let rst = names.reduce((data, name) => ({...data, [name]: controls[name].value || undefined}), {})
   // rst['username'] && (rst['username'] += Date.now())
   return rst
@@ -69,7 +69,7 @@ class Signin extends React.Component {
                   <InputGroup.Addon style={{ padding: '6px 8px' }}>
                     <Icon type="user" style={{fontSize: 20}}/>
                   </InputGroup.Addon>
-                  <FormControl placeholder="用户名" defaultValue="santochance"></FormControl>
+                  <FormControl name="username" placeholder="用户名" defaultValue="santochance"></FormControl>
                 </InputGroup>
               </FormGroup>
               <FormGroup controlId="password">
@@ -78,7 +78,7 @@ class Signin extends React.Component {
                   <InputGroup.Addon style={{ padding: '6px 8px' }}>
                     <Icon type="lock" style={{fontSize: 20}}/>
                   </InputGroup.Addon>
-                  <FormControl type="password" placeholder="登录密码" defaultValue="password"></FormControl>
+                  <FormControl type="password" name="password" placeholder="登录密码" defaultValue="password"></FormControl>
                 </InputGroup>
               </FormGroup>
               <FormGroup className="flex-lr">
