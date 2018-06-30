@@ -5,7 +5,7 @@
   "//": "The 'node-sass-chokidar' is for using CSS preprocessor(Sass, Less etc.) in React. To enable importing files without using relative paths, use the `--include-path` option",
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && npm run build-js && npm run lean",
+    "build": "npm run build-css && npm run build-js && npm run move:public",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-app-rewired start",
@@ -15,7 +15,7 @@
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject",
     "dev": "concurrently -p \"[{name}] {time}\" -t HH:mm:ss.SSS -n \"React,Express\" -c \"bgGreen.bold,bgBlue\" \"npm start\" \"npm run server\" --allow-restart",
-    "lean": "rm -rf \"C:\\Users\\Vincent\\Data\\010 Workspace\\lean-mernshop\\public\" && cp -r build \"C:\\Users\\Vincent\\Data\\010 Workspace\\lean-mernshop\\public\""
+    "move:public": "rm -rf ../lean-mernshop/public && cp -r build ../lean-mernshop/public"
   },
   "dependencies": {
     "antd": "^2.13.3",
