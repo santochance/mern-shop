@@ -31,7 +31,8 @@ class ProductShow extends Component {
     // 目前搜索栏显示的关键词是由绑定到App.state.inputedTerm
     // ProductShow使用搜索关键词是由Header页面通过location.state传入
     // 于是，通过history的POP动作返回的ProductShow的关键词不会影响Header显示的关键词
-    this.loadData()
+    let term = _.get(this.props, 'location.state.term', '')
+    this.loadData(term)
     console.log('ProductShow mounted')
   }
 
